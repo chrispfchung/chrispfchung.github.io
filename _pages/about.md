@@ -1,9 +1,9 @@
 ---
 
 title: "About"
-peralink: /about/
+permalink: /about/
 header:
-  image: "/images/fireworks.gif"
+  image: "/images/84405568.jpg"
 
 ---
 
