@@ -108,7 +108,7 @@ analytics:
 # Site Author
 author:
   name             : "Chris Chung"
-  avatar           : "/images/bio-pic"
+  avatar           : "/images/bio-pic.png"
   bio              : "Data Science Portfolio"
   location         : "New York, NY"
   email            :
