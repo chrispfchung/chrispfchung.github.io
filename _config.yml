@@ -128,12 +128,13 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/chrispfchung"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/chrispfchung"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin-square"
       url: "https://www.linkedin.com/in/chrischung28/"
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      url: "https://instagram.com/chrispfchung"
+
 
 # Site Footer
 footer:
