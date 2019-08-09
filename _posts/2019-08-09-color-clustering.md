@@ -8,12 +8,15 @@ header:
 excerpt: "Has a teacher ever handed your class a bag of candy to count..."
 mathjax: "true"
 ---
+
+{% include toc icon="cog" title="Table of Contents" %}<br/>
+
 <br/>
 ## Project Description
 Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.<br/>
 
-**Project Replicated From**:
- ["https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"]
+**Project Replicated From**:<br/>
+ (https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/)
 
 
 ## TL;DR <a name="tl;dr"></a>
@@ -22,7 +25,7 @@ Used k-means clustering to visualize dominant colors of an image whereas busines
 ## Introduction <a name="introduction"></a>
 Has a teacher ever handed your class a bag of candy to count out the number of each color? How would you have done this? K-means clustering is a machine learning technique that groups large amounts of data together based on their similarities. For this particular project, "Using K-means Clustering to Visualize Dominant Colors in an Image", I will identify and visualize the dominant colors of a web image.
 
-## Basic of Images <a name="basic of images"></a>
+
 ```python
 # Neat trick to print out everything at once, as seen in the next cell
 from IPython.core.interactiveshell import InteractiveShell  
@@ -44,8 +47,7 @@ scipy.__version__
     '1.1.0'
 
 
-
-### JPG Images <a name="jpg images"></a>
+## JPG Image Basics <a name="basic of images"></a>
 
 A JPG image is made up of pixels and each pixel is made up of different values of three component colors, red, green and blue (RGB). In this project, we will work with Dataquest's logo in JPG format.
 
@@ -443,5 +445,3 @@ I enjoyed doing this project because I could see if I was off or not. I also und
 In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.<br/>
 
 Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and Spark to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.
-
-{% include toc icon="cog" title="Table of Contents" %}
