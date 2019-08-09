@@ -8,13 +8,12 @@ header:
 excerpt: "Has a teacher ever handed your class a bag of candy to count..."
 mathjax: "true"
 ---
-# Using K-means Clustering to Visualize Dominant Colors in an Image
 <br/>
 ## Project Description
-"Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation."
+Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.
 <br/>
 
-#### Project Replicated From: "https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"
+#### Project Replicated From: <p>"https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"<p/>
 <br/>
 ### Table of Contents
 + [TL;DR][#tl;dr]
@@ -57,25 +56,11 @@ import scipy
 scipy.__version__
 ```
 
-
-
-
     '3.0.2'
-
-
-
-
-
 
     '5.4.1'
 
-
-
-
-
-
     '1.1.0'
-
 
 
 #### Basic of Images <a name="basic of images"></a>
@@ -102,20 +87,9 @@ img = img.imread('./dataquest.jpg')
 img[0,0] #RGB values of 1 pixel
 img.shape
 ```
-
-
-
-
     array([255, 255, 255], dtype=uint8)
 
-
-
-
-
-
     (200, 200, 3)
-
-
 
 Building off the last cell, we will reuse our "img" variable that contains the color values of each pixel.
 
@@ -126,15 +100,10 @@ from matplotlib import pyplot as plt
 plt.imshow(img)
 ```
 
-
-
-
     <matplotlib.image.AxesImage at 0x11e1daeb8>
 
 
-
-
-![png](k-means%20cluster_files/k-means%20cluster_9_1.png)
+![png](/images/k-means-color-cluster/k-means%20cluster_9_1.png)
 
 
 Now before moving on to the clustering step. We have another step of processing. We need to create a list for each color that will contain every value of the color that shows up on each pixel. We should have 40,000 colors in each list because (200x200) means the area is 40,000 and each pixel contains red  green and blue values.
@@ -234,7 +203,7 @@ plt.show()
 
 
 
-![png](k-means%20cluster_files/k-means%20cluster_16_4.png)
+![png](/images/k-means-color-cluster/k-means%20cluster_16_4.png)
 
 
 ## K-means Clustering with SciPy [<a name="k-means of clustering with scipy"></a>]
@@ -570,14 +539,16 @@ plt.imshow(colors)
 
 
 
-![png](/images/k-means-color-cluster/k-means%cluster_files/k-means%20cluster_files/k-means%20cluster_35_1.png)
+![png](/images/k-means-color-cluster/k-means%20cluster_35_1.png)
 
 
 ## Conclusion <a name="conclusion"></a>
-In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. Then we used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Then we scaled the image values and transformed them in ways that helped us interpret their meaning and usable in our kmeans algorithm.
+In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. We used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Then we scaled the image values and transformed them in ways that helped us interpret their meaning and usable in our k-means algorithm.
 <br/>
 I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author's code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.
-<br/>
+<br/><br/>
+1. How to convert jupyter notebooks into markdown format: https://ipython.org/ipython-doc/dev/notebook/nbconvert.html
+<br><br>
 In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.
 <br/>
 Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and Spark to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.
