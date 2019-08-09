@@ -444,4 +444,4 @@ In the future I want to try using a different image like a bag of gumballs with 
 
 Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and Spark to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.
 
-{% include toc icon="cog" title="Table of Contents" toc sticky="true" %}
+{% include toc icon="cog" title="Table of Contents" %}
