@@ -10,28 +10,11 @@ mathjax: "true"
 ---
 <br/>
 ## Project Description
-Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.
-<br/>
+Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.<br/>
 
 **Project Replicated From**:
- "https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"
+ ["https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"]
 
-
-+ [TL;DR][#tl;dr]
-+ [Introduction](#introduction)
-+ [Basic of Images][#basic of images]
-  - [JPG Images][#jpg images]
-  - [Reading in an Image][#reading in an image]
-+ [Basics of Clustering][#basics of clustering]
-+ [Number of Clusters][#number of clusters]
-+ [K-means Clustering with SciPy][#k-means clustering with scipy]
-+ [3 Steps to Clustering][#3 steps to clustering]
-  - [Standardize Data][#standardize data]
-  - [Create Cluster Centers][#create cluster centers]
-  - [Display Dominant Colors][#display dominant colors]
-+ [Display Dominant Colors][#display dominant colors]
-+ [Conclusion][#conclusion]
-<br/>
 
 ## TL;DR <a name="tl;dr"></a>
 Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.
@@ -68,21 +51,19 @@ A JPG image is made up of pixels and each pixel is made up of different values o
 
 ## Reading in an Image <a name="reading in an image"></a>
 
-How do you read in the image?
-<br>
-First, using matplotlib's class image, input image.imread() to transform our logo into a matrix of RGB values.This matrix of RGB values represents every combination of color values of every pixel. Why? The computer reads in the RGB values and then is able to display it.
-<br>
+How do you read in the image? <br/>
+First, using matplotlib's class image, input image.imread() to transform our logo into a matrix of RGB values.This matrix of RGB values represents every combination of color values of every pixel. Why? The computer reads in the RGB values and then is able to display it.<br/>
 Our shape (200,200,3) represents width, height, and number of color lists (red + green + blue). 200x200 is a small image as we will see below.
 <br/>
-It returns an array with each pixels [r,g,b] values
+It returns an array with each pixels RGB values
 
 
 
 ```python
 from matplotlib import image as img
 img = img.imread('./dataquest.jpg')
-img[0,0] #RGB values of 1 pixel
-img.shape
+img[0,0] # [255, 255, 255] : RGB values of 1 pixel
+img.shape # (200, 200, 3)
 ```
     array([255, 255, 255], dtype=uint8)
 
@@ -96,9 +77,6 @@ Building off the last cell, we will reuse our "img" variable that contains the c
 from matplotlib import pyplot as plt
 plt.imshow(img)
 ```
-
-    <matplotlib.image.AxesImage at 0x11e1daeb8>
-
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_9_1.png)
 
@@ -123,31 +101,10 @@ for line in img:
         g.append(gvalue)
         b.append(bvalue)
 
-r[39995:]
-g[9950:9955]
-b[0:5]
+r[39995:] # [255, 255, 255, 255, 255]
+g[9950:9955] # [82, 82, 82, 82, 82]
+b[0:5] # [255, 255, 255, 255, 255]
 ```
-
-
-
-
-    [255, 255, 255, 255, 255]
-
-
-
-
-
-
-    [82, 82, 82, 82, 82]
-
-
-
-
-
-
-    [255, 255, 255, 255, 255]
-
-
 
 ## Clustering Basics
 
@@ -168,36 +125,6 @@ ax.set_ylabel('$Y = Green$')
 ax.set_zlabel('$Z = Blue$') # create axis labels
 ax.scatter(r,g,b)
 plt.show()
-```
-
-
-
-
-    Text(0.5, 0, '$X = Red$')
-
-
-
-
-
-
-    Text(0.5, 0, '$Y = Green$')
-
-
-
-
-
-
-    Text(0.5, 0, '$Z = Blue$')
-
-
-
-
-
-
-    <mpl_toolkits.mplot3d.art3d.Path3DCollection at 0x11e659278>
-
-
-
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_16_4.png)
 
@@ -276,7 +203,6 @@ df.sample(5)
 
 
 ## 3 Steps to Clustering
-<br>
 <b>
 1. Standarize data<b>
 <br>
@@ -284,7 +210,7 @@ df.sample(5)
 <br>
 3. Generate cluster labels for each data point (in our case we will only be identifying dominant colors)
 
-#### 1. Standardize Data <a name="standardize data"></a>
+### 1. Standardize Data <a name="standardize data"></a>
 You want the scale of the data even. 255,255,255 for one pixel will affect our model more than a 60,60,60 pixel. Putting the pixels on an equal scale ensures accurate results. We will use the **whiten( )** method. Mathematically we divide each data point by its standard deviation.
 
 
@@ -326,8 +252,6 @@ df['scaled_g'] = whiten(g)
 df['scaled_b'] = whiten(b) # pretty straightforward code, whiten standarizes the values
 df.sample(3) #to see a variety of values
 ```
-
-
 
 
 <div>
@@ -390,7 +314,7 @@ df.sample(3) #to see a variety of values
 
 
 
-#### 2. Create Cluster Centers
+### 2. Create Cluster Centers
 
 
 
@@ -431,7 +355,7 @@ print(cluster_centers) # our cluster centers
      [0.91844555 1.05218697 1.44734558]]
 
 
-#### 3. Display Dominant Colors
+### 3. Display Dominant Colors
 
 We will need to take our centroid_center values and multiply them by their standard deviation to essentially reverse standardize them so that they mean something to us.
 
@@ -501,11 +425,6 @@ plt.imshow(colors)
 
 
 
-
-    <matplotlib.image.AxesImage at 0x621cf3828>
-
-
-
 ![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_35_1.png)
 
 ## Final Output
@@ -519,10 +438,10 @@ In this project we overviewed what an image was made of. We referred to the red 
 
 I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author's code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.<br/>
 
-1. How to convert jupyter notebooks into markdown format: https://ipython.org/ipython-doc/dev/notebook/nbconvert.html<br/>
+1. How to convert jupyter notebooks into markdown format: [https://ipython.org/ipython-doc/dev/notebook/nbconvert.html]<br/>
 
 In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.<br/>
 
 Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and Spark to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.
 
-{% include toc icon="cog" title="Table of Contents" %}
+{% include toc icon="cog" title="Table of Contents" toc sticky="true" %}
