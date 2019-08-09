@@ -551,21 +551,12 @@ colors
 ```
 
 
-
-
     [(0.9610478786610961, 0.9856646918396453, 0.9821297287115202),
      (0.29936548922183137, 0.3319227505937144, 0.40313374434676263)]
 
 
-
-
-
-
     [[(0.9610478786610961, 0.9856646918396453, 0.9821297287115202),
       (0.29936548922183137, 0.3319227505937144, 0.40313374434676263)]]
-
-
-
 
 ```python
 plt.imshow(colors)
@@ -579,20 +570,14 @@ plt.imshow(colors)
 
 
 
-![png](k-means%20cluster_files/k-means%20cluster_35_1.png)
+![png](/images/k-means-color-cluster/k-means%cluster_files/k-means%20cluster_files/k-means%20cluster_35_1.png)
 
 
 ## Conclusion <a name="conclusion"></a>
 In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. Then we used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Then we scaled the image values and transformed them in ways that helped us interpret their meaning and usable in our kmeans algorithm.
 <br/>
-I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author's code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material. In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.
+I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author's code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.
+<br/>
+In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.
 <br/>
 Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and Spark to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.
-
-layout: post
-title: Using K-means Clustering to Visualize Dominant Colors in an Image
-description: Using K-means Clustering to Visualize Dominant Colors in an Image
-image: /images/bio-pic.png
-permalink: Using-K-means-Clustering-to-Visualize-Dominant-Colors-in-an-Image
-author: chris_chung
-comments: true
