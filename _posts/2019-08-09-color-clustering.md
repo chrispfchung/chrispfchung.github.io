@@ -7,15 +7,21 @@ header:
   image: "/images/k-means-color-cluster/bagofjellybeans.jpeg"
 excerpt: "Has a teacher ever handed your class a bag of candy to count..."
 mathjax: "true"
+toc: "true"
+toc_label: "Table of Contents"
+toc_icon: "cog"
+toc_sticky: "true"
 ---
 <br/>
 ## Project Description
 Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.
 <br/>
 
-#### Project Replicated From: <p>"https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"<p/>
-<br/>
+#### Project Replicated From:
+ "https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"<p/>
+
 ### Table of Contents
+
 + [TL;DR][#tl;dr]
 + [Introduction](#introduction)
 + [Basic of Images][#basic of images]
@@ -103,8 +109,7 @@ plt.imshow(img)
     <matplotlib.image.AxesImage at 0x11e1daeb8>
 
 
-![png](/images/k-means-color-cluster/k-means%20cluster_9_1.png)
-
+![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_9_1.png)
 
 Now before moving on to the clustering step. We have another step of processing. We need to create a list for each color that will contain every value of the color that shows up on each pixel. We should have 40,000 colors in each list because (200x200) means the area is 40,000 and each pixel contains red  green and blue values.
 <br>
@@ -203,8 +208,7 @@ plt.show()
 
 
 
-![png](/images/k-means-color-cluster/k-means%20cluster_16_4.png)
-
+![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_16_4.png)
 
 ## K-means Clustering with SciPy [<a name="k-means of clustering with scipy"></a>]
 
@@ -538,9 +542,7 @@ plt.imshow(colors)
 
 
 
-
-![png](/images/k-means-color-cluster/k-means%20cluster_35_1.png)
-
+![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_35_1.png)
 
 ## Conclusion <a name="conclusion"></a>
 In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. We used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Then we scaled the image values and transformed them in ways that helped us interpret their meaning and usable in our k-means algorithm.
