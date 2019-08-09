@@ -7,13 +7,10 @@ header:
   image: "/images/k-means-color-cluster/bagofjellybeans.jpeg"
 excerpt: "Has a teacher ever handed your class a bag of candy to count..."
 mathjax: "true"
-toc: true
-toc_icon : "book-open"
-toc_sticky: true
 
 ---
 
-<!-- {% include toc icon="cog" title="Table of Contents" %}<br/> -->
+{% include toc icon="book-open" title="Table of Contents" %}<br/>
 
 <br/>
 ## Project Description
