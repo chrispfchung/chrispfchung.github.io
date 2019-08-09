@@ -13,10 +13,9 @@ mathjax: "true"
 Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.
 <br/>
 
-#### Project Replicated From:
- "https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"<p/>
+**Project Replicated From**:
+ "https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/"
 
-### Table of Contents
 
 + [TL;DR][#tl;dr]
 + [Introduction](#introduction)
@@ -34,21 +33,18 @@ Used k-means clustering to visualize dominant colors of an image whereas busines
 + [Conclusion][#conclusion]
 <br/>
 
-#### TL;DR <a name="tl;dr"></a>
+## TL;DR <a name="tl;dr"></a>
 Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.
 
-#### Introduction <a name="introduction"></a>
+## Introduction <a name="introduction"></a>
 Has a teacher ever handed your class a bag of candy to count out the number of each color? How would you have done this? K-means clustering is a machine learning technique that groups large amounts of data together based on their similarities. For this particular project, "Using K-means Clustering to Visualize Dominant Colors in an Image", I will identify and visualize the dominant colors of a web image.
 
-#### Basic of Images <a name="basic of images"></a>
+## Basic of Images <a name="basic of images"></a>
 ```python
 # Neat trick to print out everything at once, as seen in the next cell
 from IPython.core.interactiveshell import InteractiveShell  
 InteractiveShell.ast_node_interactivity = "all"
-```
 
-
-```python
 import matplotlib
 matplotlib.__version__
 #pillow to view imagess
@@ -65,9 +61,8 @@ scipy.__version__
     '1.1.0'
 
 
-#### Basic of Images <a name="basic of images"></a>
 
-## JPG Images <a name="jpg images"></a>
+### JPG Images <a name="jpg images"></a>
 
 A JPG image is made up of pixels and each pixel is made up of different values of three component colors, red, green and blue (RGB). In this project, we will work with Dataquest's logo in JPG format.
 
@@ -154,11 +149,11 @@ b[0:5]
 
 
 
-## Basics of Clustering <a name="basics of clustering"></a>
+## Clustering Basics
 
 Clustering is when you group items based on their similarities. First you determine how many clusters or groups your data should be in. If you determined 3 clusters, then three cluster centers will be plotted. That will be the first iteration. In the next iteration, each cluster center is assigned to their nearest data point. Then the distance is calculated and the center will readjust itself to be in the center of those points. This process is repeated until there are no more changes.
 
-## Number of Clusters <a name="number of clusters"></a>
+## Deciding # of Clusters <a name="number of clusters"></a>
 
 Our next step is to determine how many clusters to group our colors into. By visualizing our data, we can see how many clusters we might need. We can also use this elbow method to determine how many clusters are optimal for the data that we have. In our case, after plotting out our data in a scatter plot, we have two areas where there are many more points suggesting that there are mainly two colors.
 
@@ -206,7 +201,7 @@ plt.show()
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_16_4.png)
 
-## K-means Clustering with SciPy [<a name="k-means of clustering with scipy"></a>]
+### K-means Clustering with SciPy
 
 Let's look at our data easier by visualizing with a pandas dataframe.
 
@@ -280,7 +275,7 @@ df.sample(5)
 
 
 
-## 3 Steps to Clustering: <a name="3 Steps to Clustering"></a>
+## 3 Steps to Clustering
 <br>
 <b>
 1. Standarize data<b>
@@ -289,7 +284,7 @@ df.sample(5)
 <br>
 3. Generate cluster labels for each data point (in our case we will only be identifying dominant colors)
 
-### 1. Standardize Data <a name="standardize data"></a>
+#### 1. Standardize Data <a name="standardize data"></a>
 You want the scale of the data even. 255,255,255 for one pixel will affect our model more than a 60,60,60 pixel. Putting the pixels on an equal scale ensures accurate results. We will use the **whiten( )** method. Mathematically we divide each data point by its standard deviation.
 
 
@@ -303,23 +298,9 @@ np.std(b) # divide each color value by its respective standard deviation to get 
 255 / np.std(g)
 255 / np.std(b) # scaled values match whiten() outputs below
 ```
-
-
-
-
     83.11570119050913
 
-
-
-
-
-
     80.44125788486512
-
-
-
-
-
 
     71.02506887282827
 
@@ -330,22 +311,9 @@ np.std(b) # divide each color value by its respective standard deviation to get 
 
     3.0680123772945818
 
-
-
-
-
-
     3.1700150731727654
 
-
-
-
-
-
     3.5902816293861304
-
-
-
 
 ```python
 # imported different classes than the guide as his were not working
@@ -422,7 +390,7 @@ df.sample(3) #to see a variety of values
 
 
 
-### 2. Create Cluster Centers <a name="create cluster centers"></a>
+#### 2. Create Cluster Centers
 
 
 
@@ -463,7 +431,7 @@ print(cluster_centers) # our cluster centers
      [0.91844555 1.05218697 1.44734558]]
 
 
-### 3. Display Dominant Colors / Essentially Our Cluster Labels <a name="display dominant colors"></a>
+#### 3. Display Dominant Colors
 
 We will need to take our centroid_center values and multiply them by their standard deviation to essentially reverse standardize them so that they mean something to us.
 
@@ -484,7 +452,7 @@ std_r, std_g, std_b = df[['red','green','blue']].std()
 
 
 
-After getting our color values, we need to render it in a format where we can display the image using imshow( ).
+After getting our color values, we need to render it in a format where we can display the image using imshow( ).<br/>
 The output will be divided by 255 so that the imshow( ) method can read the values. If you plot the values then you will get 6 different colors. By putting the colors list into its own list, the centroid_centers are separated finally outputting two colors. I have displayed both colors and \[colors] below.
 
 
@@ -540,15 +508,21 @@ plt.imshow(colors)
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_35_1.png)
 
-## Conclusion <a name="conclusion"></a>
-In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. We used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Then we scaled the image values and transformed them in ways that helped us interpret their meaning and usable in our k-means algorithm.
-<br/>
-I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author's code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.
-<br/><br/>
-1. How to convert jupyter notebooks into markdown format: https://ipython.org/ipython-doc/dev/notebook/nbconvert.html
-<br><br>
-In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.
-<br/>
+## Final Output
+And finally, the two most dominant colors in the image.
+
+
+![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_5_6.png)
+
+## Conclusion
+In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. We used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Finally we scaled the image values and transformed them in ways that helped us interpret their meaning and use in our k-means algorithm.<br/>
+
+I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author's code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.<br/>
+
+1. How to convert jupyter notebooks into markdown format: https://ipython.org/ipython-doc/dev/notebook/nbconvert.html<br/>
+
+In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.<br/>
+
 Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and Spark to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.
 
 {% include toc icon="cog" title="Table of Contents" %}
