@@ -7,16 +7,19 @@ header:
   image: "/images/k-means-color-cluster/bagofjellybeans.jpeg"
 excerpt: "Has a teacher ever handed your class a bag of candy to count..."
 mathjax: "true"
+toc: true
+toc_sticky: true
+
 ---
 
-{% include toc icon="cog" title="Table of Contents" %}<br/>
+<!-- {% include toc icon="cog" title="Table of Contents" %}<br/> -->
 
 <br/>
 ## Project Description
 Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.<br/>
 
 **Project Replicated From**:<br/>
- (https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/)
+ <https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/>
 
 
 ## TL;DR <a name="tl;dr"></a>
@@ -127,8 +130,10 @@ ax.set_ylabel('$Y = Green$')
 ax.set_zlabel('$Z = Blue$') # create axis labels
 ax.scatter(r,g,b)
 plt.show()
+```
 
 ![alt]({{ site.url }}{{ site.baseurl }}/images/k-means-color-cluster/k-means%20cluster_16_4.png)
+
 
 ### K-means Clustering with SciPy
 
@@ -218,30 +223,14 @@ You want the scale of the data even. 255,255,255 for one pixel will affect our m
 
 ```python
 import numpy as np
-np.std(r)
-np.std(g)
+np.std(r) # 83.11570119050913
+np.std(g) # 80.44125788486512
 np.std(b) # divide each color value by its respective standard deviation to get scaled value
 
-255 / np.std(r)
-255 / np.std(g)
+255 / np.std(r) # 3.0680123772945818
+255 / np.std(g) # 3.1700150731727654
 255 / np.std(b) # scaled values match whiten() outputs below
 ```
-    83.11570119050913
-
-    80.44125788486512
-
-    71.02506887282827
-
-
-
-
-
-
-    3.0680123772945818
-
-    3.1700150731727654
-
-    3.5902816293861304
 
 ```python
 # imported different classes than the guide as his were not working
@@ -327,23 +316,10 @@ cluster_centers, distortion = kmeans(df[['scaled_r','scaled_g', 'scaled_b']], 2)
 
 
 ```python
-cluster_centers
+cluster_centers # array([[2.94846993, 3.12453287, 3.52607825],
+                #       [0.91844555, 1.05218697, 1.44734558]])
 distortion # the author did not go indepth with distortion. My understanding is that the lower the distortion is, the better the clustering was.
 ```
-
-
-
-
-    array([[2.94846993, 3.12453287, 3.52607825],
-           [0.91844555, 1.05218697, 1.44734558]])
-
-
-
-
-
-
-    0.15382134439326323
-
 
 
 In our array, we have two sets that represent our cluster centers. Each center represents the color data points that were closest to them. We are almost there!
@@ -367,16 +343,10 @@ We will need to take our centroid_center values and multiply them by their stand
 df[['red','green','blue']].std()
 std_r, std_g, std_b = df[['red','green','blue']].std()
 ```
-
-
-
-
     red      83.116740
     green    80.442263
     blue     71.025957
     dtype: float64
-
-
 
 After getting our color values, we need to render it in a format where we can display the image using imshow( ).<br/>
 The output will be divided by 255 so that the imshow( ) method can read the values. If you plot the values then you will get 6 different colors. By putting the colors list into its own list, the centroid_centers are separated finally outputting two colors. I have displayed both colors and \[colors] below.
@@ -392,24 +362,13 @@ for center in cluster_centers:
     scaled_g * std_g / 255,
     scaled_b * std_b / 255)) #careful to make sure the append stays within the loop
 ```
+    array([2.94846993, 3.12453287, 3.52607825]) # first cluster center
 
 
-
-
-    array([2.94846993, 3.12453287, 3.52607825])
-
-
-
-
-
-
-    array([0.91844555, 1.05218697, 1.44734558])
-
-
-
+    array([0.91844555, 1.05218697, 1.44734558]) # second cluster center
 
 ```python
-colors
+colors # each individual color
 [colors] #imshow reads in dimension of 1
 ```
 
