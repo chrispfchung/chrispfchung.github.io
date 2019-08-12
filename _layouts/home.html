@@ -15,6 +15,16 @@ layout: archive
   <br/>
   <br/>
 
+
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+
+{% for post in paginator.posts %}
+  {% include archive-single.html %}
+{% endfor %}
+
+{% include paginator.html %}
+
+
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Projects by Tag" }}</h3>
 
 <div id="main" role="main">
@@ -27,11 +37,3 @@ layout: archive
     {% endfor %}
   </div>
 </div>
-
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
-
-{% for post in paginator.posts %}
-  {% include archive-single.html %}
-{% endfor %}
-
-{% include paginator.html %}
