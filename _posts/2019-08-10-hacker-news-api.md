@@ -208,6 +208,6 @@ for article in sorted_dict:
 
 
 **Resources Consulted:**
-    1. Why use requests? <https://2.python-requests.org/en/master/user/quickstart/>
-    2. What are the parameters of the HackerNews API? <https://github.com/HackerNews/API>
-    3. What is the purpose '\n'? <https://teamtreehouse.com/community/why-does-the-print-syntax-append-a-n-at-the-end-of-a-line>
+    1. Why use requests? <https://2.python-requests.org/en/master/user/quickstart/><br>
+    2. What are the parameters of the HackerNews API? <br> <https://github.com/HackerNews/API><br>
+    3. What is the purpose '\n'?<br> <https://teamtreehouse.com/community/why-does-the-print-syntax-append-a-n-at-the-end-of-a-line>
