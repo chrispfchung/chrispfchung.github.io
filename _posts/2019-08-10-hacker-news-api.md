@@ -3,7 +3,7 @@ title: "Used API calls to extract top articles from Hacker News (YCombinator)"
 
 date: 2019-08-10
 tags: [API, python, data extraction]
-<!-- header: -->
+header:
   <!-- image: "/images/k-means-color-cluster/bagofjellybeans.jpeg" -->
 excerpt: "false"
 mathjax: "true"
