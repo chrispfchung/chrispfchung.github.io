@@ -240,7 +240,7 @@ ax.title.set(y=1.025)
 ```
 
 
-![png](/images/lifecycle-of-a-plot/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
+![png](lifecycle-of-a-plot/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
 
 
 ## Save Plot
@@ -298,7 +298,8 @@ ax.set_xticks([0, 25e3, 50e3, 75e3, 100e3, 125e3]);
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png)
+<!-- ![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png) -->
+![gif](/images/ig-likes.gif)
 
 
 ### Resources Consulted:
@@ -306,7 +307,7 @@ ax.set_xticks([0, 25e3, 50e3, 75e3, 100e3, 125e3]);
 2. How do you highlight text in markdown? <https://stackoverflow.com/questions/25104738/text-highlight-in-markdown>
 3. What does the 'rc' stand for in rcparam? <https://stackoverflow.com/questions/37728087/rc-params-in-matplotlib-what-does-rc-stand-for>
 4. How do I use .format()? <https://mkaz.blog/code/python-string-format-cookbook/>
-5. How do I use .format() pt.2? <https://pyformat.info/>
+5. Can you elaborate on formatting numbers? <https://pyformat.info/>
 
 ## Conclusion
 We went over the fig and ax subplots. We work on each plot with ax and change the properties of all plots at once with fig. We read in our data and grouped them into our x/y axis. We labeled our x/y axis, titles, and set properties such as label format. We formatted the prices from long digits to a cleaner format. We added in another axes that represents the average mean of prices.  Finally, we saved our figure into PNG format.
