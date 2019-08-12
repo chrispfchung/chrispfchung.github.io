@@ -4,7 +4,7 @@ title: "Using K-means Clustering to Visualize Dominant Colors in an Image"
 date: 2019-08-09
 tags: [unlabeled, python, matplotlib, clustering, image, k-means]
 header:
-  image: "/images/glowlights.jpg
+  image: "/images/glowlights.jpg"
 
 excerpt: "Has a teacher ever handed your class a bag of candy to count..."
 mathjax: "true"
