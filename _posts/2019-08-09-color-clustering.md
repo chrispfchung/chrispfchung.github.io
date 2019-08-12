@@ -396,8 +396,8 @@ And finally, the two most dominant colors in the image.
 In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. We used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Finally we scaled the image values and transformed them in ways that helped us interpret their meaning and use in our k-means algorithm.<br/>
 
 I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author's code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.<br/>
-
-1. How to convert jupyter notebooks into markdown format: [https://ipython.org/ipython-doc/dev/notebook/nbconvert.html]<br/>
+e.g
+1. How to convert jupyter notebooks into markdown format: <https://ipython.org/ipython-doc/dev/notebook/nbconvert.html><br/>
 
 In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.<br/>
 
