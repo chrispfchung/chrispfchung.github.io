@@ -4,7 +4,7 @@ title: "Created a detailed plot using Matplotlib to visualize sample sales data"
 date: 2019-08-10
 tags: [API, python, data extraction]
 header:
-  image: "/images/chalk-plot.jpg"
+  image: "/images/stock-coins.jpg"
 excerpt: "We will visualize sample sales data using Matplotlib..."
 mathjax: "true"
 classes: wide #expand the page
