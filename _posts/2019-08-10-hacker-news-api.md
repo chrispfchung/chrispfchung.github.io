@@ -4,7 +4,7 @@ title: "Used API calls to extract top articles from Hacker News (YCombinator)"
 date: 2019-08-10
 tags: [API, python, data extraction]
 header:
-  image: "/images/slantedworld.jpg"
+  image: "/images/slanted-world.jpg"
 excerpt: "Let's get the top stories with the most comments..."
 mathjax: "true"
 classes: wide #expand the page
