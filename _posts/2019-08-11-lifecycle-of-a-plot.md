@@ -298,7 +298,7 @@ ax.set_xticks([0, 25e3, 50e3, 75e3, 100e3, 125e3]);
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png)
+![png](images/lifecycle-of-a-plot/lifecycle-of-a-plot_33_0.png)
 
 
 ### Resources Consulted:
