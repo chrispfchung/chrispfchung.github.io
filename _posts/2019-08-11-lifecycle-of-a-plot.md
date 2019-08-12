@@ -67,7 +67,7 @@ fig, ax = plt.subplots()
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_10_0.png)
+![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_10_0.png)
 
 
 Once this is created, we can start plotting on top of it. We alter the plot by calling **ax** then the type of graph you want followed by your data in the parameters. If I input the alteration code, it will return an object. I need to call ```fig, ax = plt.subplots()``` within the same cell.
