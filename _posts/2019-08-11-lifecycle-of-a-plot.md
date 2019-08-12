@@ -91,7 +91,7 @@ ax.barh(group_companies, group_sales);
 ```
 
 
-![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_13_0.png)
+![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_13_0.png)
 
 
 <mark>You can remove the output text by adding a semicolon at the end of the code</mark>
@@ -142,7 +142,7 @@ ax.set(title='2014 Revenue', xlim=([-10000,140000])); #xlim space in beginning a
 ```
 
 
-![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_20_0.png)
+![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_20_0.png)
 
 
 We can tighten up the figure by using rcParams. The 'r' stands for run and 'c' stands for config. With rcParams,
@@ -160,7 +160,7 @@ ax.set(title='2014 Revenue', xlim=([-10000,140000])); #xlim space in beginning a
 ```
 
 
-![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_22_0.png)
+![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_22_0.png)
 
 
 ## Customize Label
@@ -207,7 +207,7 @@ ax.xaxis.set_major_formatter(formatter) # set formatter currency function
 ```
 
 
-![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_25_0.png)
+![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_25_0.png)
 
 
 ## Annotating Plot
@@ -240,7 +240,7 @@ ax.title.set(y=1.025)
 ```
 
 
-![](lifecycle-of-a-plot/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
+![png](/images/lifecycle-of-a-plot/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
 
 
 ## Save Plot
@@ -298,7 +298,7 @@ ax.set_xticks([0, 25e3, 50e3, 75e3, 100e3, 125e3]);
 ```
 
 
-![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png)
+![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png)
 
 
 ### Resources Consulted:
