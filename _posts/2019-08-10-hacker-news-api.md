@@ -7,6 +7,7 @@ header:
   image: "/images/k-means-color-cluster/bagofjellybeans.jpeg"
 excerpt: "Let's get the top stories with the most comments..."
 mathjax: "true"
+classes: wide #expand the page
 
 ---
 
