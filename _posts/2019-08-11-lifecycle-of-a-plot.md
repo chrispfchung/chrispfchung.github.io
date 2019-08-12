@@ -17,7 +17,7 @@ classes: wide #expand the page
 Visualized companies' revenue using Matplotlib by showing how much different companies made using sample sales data
 
 **Project Replicated From:**
-1. <https://matplotlib.org/tutorials/introductory/lifecycle.html#sphx-glr-tutorials-introductory-lifecycle-py>
+1.<https://matplotlib.org/tutorials/introductory/lifecycle.html#sphx-glr-tutorials-introductory-lifecycle-py>
 2. <https://pbpython.com/effective-matplotlib.html>
 
 ## Introduction
@@ -240,7 +240,7 @@ ax.title.set(y=1.025)
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
+![png](/images/lifecycle-of-a-plot/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
 
 
 ## Save Plot
@@ -298,17 +298,15 @@ ax.set_xticks([0, 25e3, 50e3, 75e3, 100e3, 125e3]);
 ```
 
 
-![png](images/lifecycle-of-a-plot/lifecycle-of-a-plot_33_0.png)
+![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png)
 
 
 ### Resources Consulted:
-1. https://pbpython.com/effective-matplotlib.html # original tutorial post
-2. https://matplotlib.org/tutorials/introductory/lifecycle.html#sphx-glr-tutorials-introductory-lifecycle-py # tutorial post
-3. https://www.geeksforgeeks.org/python-matplotlib-pyplot-ticks/ # what is a tick?
-4. https://stackoverflow.com/questions/25104738/text-highlight-in-markdown # highlight text
-5. https://stackoverflow.com/questions/37728087/rc-params-in-matplotlib-what-does-rc-stand-for # what does the rc stand for in rcparam?
-6. https://mkaz.blog/code/python-string-format-cookbook/ # formatting numbers
-7. https://pyformat.info/ # formatting guide
+1. What is a tick? <https://www.geeksforgeeks.org/python-matplotlib-pyplot-ticks/>
+2. How do you highlight text in markdown? <https://stackoverflow.com/questions/25104738/text-highlight-in-markdown>
+3. What does the 'rc' stand for in rcparam? <https://stackoverflow.com/questions/37728087/rc-params-in-matplotlib-what-does-rc-stand-for>
+4. How do I use .format()? <https://mkaz.blog/code/python-string-format-cookbook/>
+5. How do I use .format() pt.2? <https://pyformat.info/>
 
 ## Conclusion
 We went over the fig and ax subplots. We work on each plot with ax and change the properties of all plots at once with fig. We read in our data and grouped them into our x/y axis. We labeled our x/y axis, titles, and set properties such as label format. We formatted the prices from long digits to a cleaner format. We added in another axes that represents the average mean of prices.  Finally, we saved our figure into PNG format.
