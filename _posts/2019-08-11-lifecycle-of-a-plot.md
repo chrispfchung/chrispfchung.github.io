@@ -67,7 +67,7 @@ fig, ax = plt.subplots()
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_10_0.png)
+![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_10_0.png)
 
 
 Once this is created, we can start plotting on top of it. We alter the plot by calling **ax** then the type of graph you want followed by your data in the parameters. If I input the alteration code, it will return an object. I need to call ```fig, ax = plt.subplots()``` within the same cell.
@@ -91,7 +91,7 @@ ax.barh(group_companies, group_sales);
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_13_0.png)
+![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_13_0.png)
 
 
 <mark>You can remove the output text by adding a semicolon at the end of the code</mark>
@@ -142,7 +142,7 @@ ax.set(title='2014 Revenue', xlim=([-10000,140000])); #xlim space in beginning a
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_20_0.png)
+![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_20_0.png)
 
 
 We can tighten up the figure by using rcParams. The 'r' stands for run and 'c' stands for config. With rcParams,
@@ -160,7 +160,7 @@ ax.set(title='2014 Revenue', xlim=([-10000,140000])); #xlim space in beginning a
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_22_0.png)
+![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_22_0.png)
 
 
 ## Customize Label
@@ -207,7 +207,7 @@ ax.xaxis.set_major_formatter(formatter) # set formatter currency function
 ```
 
 
-![png](lifecycle-of-a-plot_files/lifecycle-of-a-plot_25_0.png)
+![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_25_0.png)
 
 
 ## Annotating Plot
@@ -240,7 +240,7 @@ ax.title.set(y=1.025)
 ```
 
 
-![png](lifecycle-of-a-plot/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
+![](lifecycle-of-a-plot/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
 
 
 ## Save Plot
@@ -298,8 +298,7 @@ ax.set_xticks([0, 25e3, 50e3, 75e3, 100e3, 125e3]);
 ```
 
 
-<!-- ![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png) -->
-![](/images/ig-likes.gif)
+![](lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png)
 
 
 ### Resources Consulted:
