@@ -25,7 +25,7 @@ layout: archive
   {% endfor %}
 </ul>
 
-<!-- {% for i in (1..tags_max) reversed %}
+{% for i in (1..tags_max) reversed %}
   {% for tag in site.tags %}
     {% if tag[1].size == i %}
       <section id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
@@ -39,4 +39,4 @@ layout: archive
       </section>
     {% endif %}
   {% endfor %}
-{% endfor %} -->
+{% endfor %}
