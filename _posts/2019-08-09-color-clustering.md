@@ -7,7 +7,7 @@ header:
   image: "/images/glowlights.jpg"
 excerpt: "Has a teacher ever handed your class a bag of candy to count..."
 mathjax: "true"
-author_profile: "true"
+author_profile: true
 
 ---
 
