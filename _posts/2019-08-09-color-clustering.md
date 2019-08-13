@@ -1,8 +1,8 @@
 ---
-title: "Using K-means Clustering to Visualize Dominant Colors in an Image"
+title: "Used K-means Clustering to Visualize Dominant Colors in an Image"
 
 date: 2019-08-09
-tags: [unlabeled, python, matplotlib, clustering, image, k-means]
+tags: [unlabeled, python, transform, clustering, image]
 header:
   image: "/images/glowlights.jpg"
 excerpt: "Has a teacher ever handed your class a bag of candy to count..."
@@ -397,7 +397,7 @@ In this project we overviewed what an image was made of. We referred to the red 
 
 I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author's code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.<br/>
 e.g
-1. How to convert jupyter notebooks into markdown format: <https://ipython.org/ipython-doc/dev/notebook/nbconvert.html><br/>
+1. How to convert jupyter notebooks into markdown format:<br> <https://ipython.org/ipython-doc/dev/notebook/nbconvert.html><br/>
 
 In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.<br/>
 
