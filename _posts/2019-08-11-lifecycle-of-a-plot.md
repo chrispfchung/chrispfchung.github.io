@@ -240,7 +240,7 @@ ax.title.set(y=1.025)
 ```
 
 
-![png](/images/lifecycle-of-a-plot/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
+![png](/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png)
 
 
 ## Save Plot
