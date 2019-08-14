@@ -113,10 +113,10 @@ author:
   location         : "New York, NY"
   email            :
   links:
-    - label: "Email"
+    - label: "Email Me"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:chrispfchung@gmail.com
-    - label: "Website"
+    - label: "Portfolio"
       icon: "fas fa-fw fa-link"
       url: "https://chrispfchung.github.io"
     - label: "Twitter"
@@ -139,10 +139,10 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Email"
+    - label: "Email Me"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:chrispfchung@gmail.com
-      label: "Website"
+      label: "Portfolio"
       icon: "fas fa-fw fa-link"
       url: "https://chrispfchung.github.io"
     - label: "Twitter"

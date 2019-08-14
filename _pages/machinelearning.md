@@ -5,6 +5,7 @@ title: "Projects"
 author_profile: true
 header:
   image: "/images/binaryblue.jpg"
+layout: categories
 ---
 
 
