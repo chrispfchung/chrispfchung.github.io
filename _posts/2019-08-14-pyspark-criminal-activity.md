@@ -5,7 +5,7 @@ date: 2019-08-10
 tags: [government data, data analysis, Spark, Google Colab]
 header:
   image: "/images/slanted-world.jpg"
-excerpt: "Let's get the top stories with the most comments..."
+excerpt: "Let's get into the Chicago Reported Crime Dataset to find out..."
 mathjax: "true"
 classes: wide #expand the page
 
