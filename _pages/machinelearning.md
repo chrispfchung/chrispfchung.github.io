@@ -5,7 +5,6 @@ title: "Projects"
 author_profile: true
 header:
   image: "/images/binaryblue.jpg"
-layout: categories
 ---
 
 
@@ -19,3 +18,6 @@ layout: categories
     {% include archive-single.html %}
   {% endfor %}
 {% endfor %}
+
+
+{% include group-by-array.html collection=site.posts field='categories' %}
