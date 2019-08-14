@@ -18,6 +18,3 @@ header:
     {% include archive-single.html %}
   {% endfor %}
 {% endfor %}
-
-
-{% include group-by-array.html collection=site.posts field='categories' %}

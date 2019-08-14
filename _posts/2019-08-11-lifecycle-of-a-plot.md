@@ -1,7 +1,7 @@
 ---
 title: "Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data"
 
-date: 2019-08-10
+date: 2019-08-11
 tags: [matplotlib, python, visualization]
 header:
   image: "/images/stock-coins.jpg"

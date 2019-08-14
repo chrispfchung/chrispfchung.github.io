@@ -1,7 +1,7 @@
 ---
 title: "Utilized the Spark DataFrame API to extract data from Chicago's Reported Crime Dataset (2001-2018)"
 
-date: 2019-08-10
+date: 2019-08-14
 tags: [government data, data analysis, Spark, Google Colab]
 header:
   image: "/images/slanted-world.jpg"
