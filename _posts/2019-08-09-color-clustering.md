@@ -2,7 +2,7 @@
 title: "Used K-means Clustering to Visualize Dominant Colors in an Image"
 
 date: 2019-08-09
-tags: [unlabeled data, python, k-means clustering, image data]
+tags: [unlabeled, python, transform, clustering, image]
 categories: [Transform Data, Model Data, Next Steps]
 header:
   image: "/images/glowlights.jpg"
