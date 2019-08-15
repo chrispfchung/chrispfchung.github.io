@@ -17,15 +17,37 @@ title: Projects listed by Data Science Process
   <br/>
 
 
+<!-- Default -->
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html %}
+{% elsif page.header.video.id and page.header.video.provider %}
+  {% include page__hero_video.html %}
+{% endif %}
 
+{% if page.url != "/" and site.breadcrumbs %}
+  {% unless paginator %}
+    {% include breadcrumbs.html %}
+  {% endunless %}
+{% endif %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <div class="archive">
+    {% unless page.header.overlay_color or page.header.overlay_image %}
+      <h1 id="page-title" class="page__title">{{ page.title }}</h1>
+    {% endunless %}
+    {{ content }}
+  </div>
+</div>
 
   {% for post in site.categories.Import%Data %}
    <li><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 
-  {% for post in site.categories.Store%Data %}
+  <!-- {% for post in site.categories.Store%Data %}
    <li><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
+  {% endfor %} -->
 
   <!-- {% assign categories_max = 0 %}
   {% for category in site.categories %}
@@ -48,22 +70,6 @@ title: Projects listed by Data Science Process
     {% endfor %}
   </ul>
 
-  {% for i in (1..categories_max) reversed %}
-    {% for category in site.categories %}
-      {% if category[1].size == i %}
-        <section id="{{ category[0] | slugify | downcase }}" class="taxonomy__section">
-          <h2 class="archive__subtitle">{{ category[0] }}</h2>
-          <div class="entries-{{ page.entries_layout | default: 'list' }}">
-            {% for post in category.last %}
-              {% include archive-single.html type=page.entries_layout %}
-            {% endfor %}
-          </div>
-          <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
-        </section>
-      {% endif %}
-    {% endfor %}
-  {% endfor %} -->
-
 
   {% assign tags_max = 0 %}
   {% for tag in site.tags %}
@@ -85,19 +91,3 @@ title: Projects listed by Data Science Process
       {% endfor %}
     {% endfor %}
   </ul>
-
-  {% for i in (1..tags_max) reversed %}
-    {% for tag in site.tags %}
-      {% if tag[1].size == i %}
-        <section id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
-          <h2 class="archive__subtitle">{{ tag[0] }}</h2>
-          <div class="entries-{{ page.entries_layout | default: 'list' }}">
-            {% for post in tag.last %}
-              {% include archive-single.html type=page.entries_layout %}
-            {% endfor %}
-          </div>
-          <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
-        </section>
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
