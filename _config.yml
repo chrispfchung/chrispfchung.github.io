@@ -20,7 +20,7 @@ title                    : "Chris Chung"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Chris Chung"
-description              : "Data Science Portfolio"
+description              : "Data Science Project Portfolio"
 url                      : "https://chrispfchung.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -113,7 +113,7 @@ author:
   location         : "New York, NY"
   email            :
   links:
-    - label: "Email Me"
+    - label: "chrispfchung@gmail.com"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:chrispfchung@gmail.com
     - label: "Portfolio"
@@ -142,7 +142,7 @@ footer:
     - label: "Email Me"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:chrispfchung@gmail.com
-      label: "Portfolio"
+    - label: "Portfolio"
       icon: "fas fa-fw fa-link"
       url: "https://chrispfchung.github.io"
     - label: "Twitter"
@@ -274,17 +274,23 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+tooltag_archive:
+  type: liquid
+  path: /tooltags/
 # https://github.com/jekyll/jekyll-archives
 jekyll-archives:
   enabled:
     - categories
     - tags
+    - tooltags
   layouts:
     category: archive-taxonomy
     tag: archive-taxonomy
+    tooltag: archive-taxonomy
   permalinks:
     category: /categories/:name/
     tag: /tags/:name/
+    tooltag: /tooltags/:name/
 
 
 # HTML Compression

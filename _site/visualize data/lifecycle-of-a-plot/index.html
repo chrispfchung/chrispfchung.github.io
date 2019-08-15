@@ -1,0 +1,936 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data - Chris Chung</title>
+<meta name="description" content="We will visualize sample sales data using Matplotlib…">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Chris Chung">
+<meta property="og:title" content="Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data">
+<meta property="og:url" content="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/">
+
+
+  <meta property="og:description" content="We will visualize sample sales data using Matplotlib…">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/images/stock-coins.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-08-11T00:00:00+08:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chris Chung",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chris Chung Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Chris Chung
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/" >Projects</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/images/stock-coins.jpg" alt="Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-pic.png" alt="Chris Chung" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chris Chung</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Data Science Project Portfolio</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">New York, NY</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email Me</a></li>
+          
+        
+          
+            <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data">
+    <meta itemprop="description" content="We will visualize sample sales data using Matplotlib…">
+    <meta itemprop="datePublished" content="August 11, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#our-dataset" id="markdown-toc-our-dataset">Our Dataset</a></li>
+  <li><a href="#plotting-data" id="markdown-toc-plotting-data">Plotting Data</a></li>
+  <li><a href="#customizing-plot" id="markdown-toc-customizing-plot">Customizing Plot</a></li>
+  <li><a href="#customize-label" id="markdown-toc-customize-label">Customize Label</a></li>
+  <li><a href="#annotating-plot" id="markdown-toc-annotating-plot">Annotating Plot</a></li>
+  <li><a href="#save-plot" id="markdown-toc-save-plot">Save Plot</a>    <ul>
+      <li><a href="#parameter-overview" id="markdown-toc-parameter-overview">Parameter overview</a></li>
+    </ul>
+  </li>
+  <li><a href="#recall-from-beginning" id="markdown-toc-recall-from-beginning">Recall from Beginning</a>    <ul>
+      <li><a href="#resources-consulted" id="markdown-toc-resources-consulted">Resources Consulted:</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+  </nav>
+</aside>
+<p><br /></p>
+
+<h2 id="project-description">Project Description</h2>
+<p>Visualized companies’ revenue using Matplotlib by showing how much different companies made using sample sales data</p>
+
+<p><strong>Project Replicated From:</strong>
+1.<a href="https://matplotlib.org/tutorials/introductory/lifecycle.html#sphx-glr-tutorials-introductory-lifecycle-py">https://matplotlib.org/tutorials/introductory/lifecycle.html#sphx-glr-tutorials-introductory-lifecycle-py</a></p>
+<ol>
+  <li><a href="https://pbpython.com/effective-matplotlib.html">https://pbpython.com/effective-matplotlib.html</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+<p>I looked for visualization projects to work on and saw that matplotlib’s documentation contained this in-depth guide to creating a detailed plot. Visualizing data is one of the most important things in data science and I’d like to be very good at it. This guide will dive into Matplotlib, some Pandas, and more specifically help us nail down the differences between the <em>Axes</em> and <em>Figures</em> objects, customize plots, and do cool things like add a red dash line through the plot that could signify exceptional performance and combining plots. I will be following two main sources, the original blog post by Chris Moffitt and the transformed post-to-tutorial by Chris Holdgraf.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The author makes it clear that understanding <em>Axes</em> and <em>Figure</em> instances are important to grasp the power of Matplotlib. <em>axes.Axes</em>, not to be confused with <em>Axis</em>, is an individual plot. <em>figure.Figure</em> is the final image rendered so that it can contain many plots. Holdgraf says,</p>
+<blockquote>
+  <p>The Figure is like a canvas, and the Axes is a part of that canvas on which we will make a particular visualization</p>
+</blockquote>
+
+<h2 id="our-dataset">Our Dataset</h2>
+
+<p>We’ll create the sample data by reading in the original excel file from Moffitt (author of original post). Although we could plot many data points, we will work with the first 10 companies.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FuncFormatter</span> <span class="c1"># to customize the little quantifier labels
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> <span class="c1"># to calculate mean
+</span>
+<span class="c1"># paste in given company to revenue data
+</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Barton LLC'</span><span class="p">:</span> <span class="mf">109438.50</span><span class="p">,</span>
+        <span class="s">'Frami, Hills and Schmidt'</span><span class="p">:</span> <span class="mf">103569.59</span><span class="p">,</span>
+        <span class="s">'Fritsch, Russel and Anderson'</span><span class="p">:</span> <span class="mf">112214.71</span><span class="p">,</span>
+        <span class="s">'Jerde-Hilpert'</span><span class="p">:</span> <span class="mf">112591.43</span><span class="p">,</span>
+        <span class="s">'Keeling LLC'</span><span class="p">:</span> <span class="mf">100934.30</span><span class="p">,</span>
+        <span class="s">'Koepp Ltd'</span><span class="p">:</span> <span class="mf">103660.54</span><span class="p">,</span>
+        <span class="s">'Kulas Inc'</span><span class="p">:</span> <span class="mf">137351.96</span><span class="p">,</span>
+        <span class="s">'Trantow-Barrows'</span><span class="p">:</span> <span class="mf">123381.38</span><span class="p">,</span>
+        <span class="s">'White-Trantow'</span><span class="p">:</span> <span class="mf">135841.99</span><span class="p">,</span>
+        <span class="s">'Will LLC'</span><span class="p">:</span> <span class="mf">104437.60</span><span class="p">}</span>
+
+<span class="c1"># group data by company
+</span><span class="n">group_companies</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="c1"># for our y-axis
+</span><span class="n">group_sales</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="c1"># for our x-axis
+</span><span class="n">group_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group_sales</span><span class="p">)</span> <span class="c1"># we will use this to calculate our cut off line
+</span></code></pre></div></div>
+
+<h2 id="plotting-data">Plotting Data</h2>
+
+<p>First we will create our canvas and plot instance through matplotlib subplots. Our canvas is <strong>figure</strong> and our single plot is <strong>axes</strong>. We can create them in one line of code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_10_0.png" alt="png" /></p>
+
+<p>Once this is created, we can start plotting on top of it. We alter the plot by calling <strong>ax</strong> then the type of graph you want followed by your data in the parameters. If I input the alteration code, it will return an object. I need to call <code class="highlighter-rouge">fig, ax = plt.subplots()</code> within the same cell.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">group_companies</span><span class="p">,</span> <span class="n">group_sales</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;BarContainer object of 10 artists&gt;
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">group_companies</span><span class="p">,</span> <span class="n">group_sales</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_13_0.png" alt="png" /></p>
+
+<p><mark>You can remove the output text by adding a semicolon at the end of the code</mark></p>
+
+<h2 id="customizing-plot">Customizing Plot</h2>
+
+<p>To access the list of styles to customize your plot:
+Input <code class="highlighter-rouge">plt.style.available</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span><span class="p">)</span> <span class="c1"># there are 26 different styles to choose from
+</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># see first 5
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['seaborn-dark',
+ 'seaborn-darkgrid',
+ 'seaborn-ticks',
+ 'fivethirtyeight',
+ 'seaborn-whitegrid']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>After choosing my style, I will need to remake the plot by calling the code with fig, ax from before. Below I customized and commented my code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># figsize(width, height)
+</span><span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">group_companies</span><span class="p">,</span> <span class="n">group_sales</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span> <span class="c1"># create labels object
+</span><span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span> <span class="c1">#set property an element on the figure
+# horizontal alignment is which side of tick you want your label on
+# you can customize labels
+</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Total Revenue'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Company'</span><span class="p">)</span>
+
+<span class="c1"># you can also customize all at once with ax.set
+</span><span class="n">ax</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'2014 Revenue'</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">([</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span><span class="mi">140000</span><span class="p">]));</span> <span class="c1">#xlim space in beginning and cut extra space at end
+</span>
+</code></pre></div></div>
+
+<p><img src="/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_20_0.png" alt="png" /></p>
+
+<p>We can tighten up the figure by using rcParams. The ‘r’ stands for run and ‘c’ stands for config. With rcParams,</p>
+<blockquote>
+  <p>You can control the defaults of almost every property in matplotlib: figure size and dpi, line width, color and style, axes, axis and grid properties, text and font properties and so on.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">'figure.autolayout'</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">group_companies</span><span class="p">,</span> <span class="n">group_sales</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span> <span class="c1">#set property for anything on a figure
+</span><span class="n">ax</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'2014 Revenue'</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">([</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span><span class="mi">140000</span><span class="p">]));</span> <span class="c1">#xlim space in beginning and cut extra space at end
+</span></code></pre></div></div>
+
+<p><img src="/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_22_0.png" alt="png" /></p>
+
+<h2 id="customize-label">Customize Label</h2>
+<p>We will use our ticker.FuncFormatter we imported at the beginning to customize our labels in the form of functions. We create a function that will transform our label. Let’s use this on your x-axis label to change revenue format. E.G. 60000 to 60K.</p>
+
+<dl>
+  <dt>Looks like “f” represents the format of the number. Then you set the The digit before it is the amount of decimals to include. The number after the colon is the amount of space you want between the first ‘$’ sign and the first digit. The colon is padding, the space between left and right side of your formatting. By default without any arrows signaling which direction to pad, it is left.</dt>
+  <dd>
+    <p>= to format numbers <br />
+f = to format float (our revenues contain decimals)<br />
+1 = amount of space between ‘$’ and ‘K’<br />
+0 = Number of digits to include after the decimal points</p>
+  </dd>
+</dl>
+
+<p>To change the value:<br />
+x*1e-3 = snips the last 3 zeroes from the number<br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">currency</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">'${:1.0f}K'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># create objects
+</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># figsize(width, height)
+</span><span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">group_companies</span><span class="p">,</span> <span class="n">group_sales</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span> <span class="c1">#set property an element on the figure
+# horizontal alignment is which side of tick you want your label on
+# you can customize labels
+</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Total Revenue'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Company'</span><span class="p">)</span>
+
+<span class="c1"># you can also customize all at once with ax.set
+</span><span class="n">ax</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'2014 Revenue'</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">([</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span><span class="mi">140000</span><span class="p">]));</span> <span class="c1">#xlim space in beginning and cut extra space at end
+</span>
+<span class="c1"># function
+</span><span class="k">def</span> <span class="nf">currency</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">'${:1.0f}K'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">)</span>
+
+<span class="c1">#first create formatter variable
+</span><span class="n">formatter</span> <span class="o">=</span> <span class="n">FuncFormatter</span><span class="p">(</span><span class="n">currency</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span> <span class="c1"># set formatter currency function
+</span></code></pre></div></div>
+
+<p><img src="/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_25_0.png" alt="png" /></p>
+
+<h2 id="annotating-plot">Annotating Plot</h2>
+
+<p>Let’s add a dashed red line representing the companies’ average revenue.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># figsize(width, height)
+</span><span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">group_companies</span><span class="p">,</span> <span class="n">group_sales</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span>
+
+<span class="c1"># set labels and properties
+</span><span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'2014 Revenue'</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span><span class="mi">140000</span><span class="p">],</span> <span class="n">xlabel</span><span class="o">=</span><span class="s">'Total Revenue'</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s">'Company'</span><span class="p">)</span>
+
+<span class="c1"># formatter for currency
+</span><span class="n">formatter</span> <span class="o">=</span> <span class="n">FuncFormatter</span><span class="p">(</span><span class="n">currency</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span> <span class="c1"># set formatter currency function
+</span>
+<span class="c1"># create red dash line showing average revenue
+</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">group_mean</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s">'--'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span> <span class="c1">#ls is line style, can be [':','-', and more]
+</span>
+<span class="c1"># annotate graph to label 'new companies'
+</span><span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">142000</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="s">"New Company"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s">'center'</span><span class="p">)</span>
+
+<span class="c1">#push up title position for space
+</span><span class="n">ax</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">1.025</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_28_0.png" alt="png" /></p>
+
+<h2 id="save-plot">Save Plot</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To see what type of files formats you can save in
+</span><span class="k">print</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">get_supported_filetypes</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'ps': 'Postscript', 'eps': 'Encapsulated Postscript', 'pdf': 'Portable Document Format', 'pgf': 'PGF code for LaTeX', 'png': 'Portable Network Graphics', 'raw': 'Raw RGBA bitmap', 'rgba': 'Raw RGBA bitmap', 'svg': 'Scalable Vector Graphics', 'svgz': 'Scalable Vector Graphics', 'jpg': 'Joint Photographic Experts Group', 'jpeg': 'Joint Photographic Experts Group', 'tif': 'Tagged Image File Format', 'tiff': 'Tagged Image File Format'}
+</code></pre></div></div>
+
+<h4 id="parameter-overview">Parameter overview</h4>
+<ol>
+  <li>transparent boolean to set background transparent<br /></li>
+  <li>dpi controls resolution<br /></li>
+  <li>bbox_inches removes extra spacing around plot<br />
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">'sales.png'</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s">"tight"</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="recall-from-beginning">Recall from Beginning</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># first create fig, ax instance
+</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="c1"># with ax to play with this one plot, we create our axes with our data
+</span><span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">group_companies</span><span class="p">,</span><span class="n">group_sales</span><span class="p">)</span>
+<span class="c1"># create labels
+</span><span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span> <span class="c1">#ax.set_xticks() initially
+# customize label property
+</span><span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">horizontalalignment</span> <span class="o">=</span> <span class="s">'right'</span><span class="p">)</span>
+<span class="c1"># label labels
+</span><span class="n">ax</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'2014 Revenue'</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s">'Total Revenue'</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s">'Company'</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span>
+                                                                            <span class="mi">140000</span><span class="p">]);</span>
+<span class="c1"># create currency format function
+</span><span class="k">def</span> <span class="nf">currency</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">'${:1.0f}K'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">)</span>
+
+<span class="c1"># create formatter
+</span><span class="n">formatter</span> <span class="o">=</span> <span class="n">FuncFormatter</span><span class="p">(</span><span class="n">currency</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span> <span class="c1"># did not get this right off the bat
+</span>
+<span class="c1"># create dash red line
+</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">group_mean</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s">'--'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">);</span>
+
+<span class="c1"># Annotate New Company, make sure to input paramters in the correct order
+</span><span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">145000</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="s">'New Company'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">verticalalignment</span> <span class="o">=</span><span class="s">'center'</span><span class="p">)</span>
+
+<span class="c1"># to bucket the x axis tick labels
+</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">25e3</span><span class="p">,</span> <span class="mf">50e3</span><span class="p">,</span> <span class="mf">75e3</span><span class="p">,</span> <span class="mf">100e3</span><span class="p">,</span> <span class="mf">125e3</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<p><img src="/images/lifecycle-of-a-plot_files/lifecycle-of-a-plot_33_0.png" alt="png" /></p>
+
+<h3 id="resources-consulted">Resources Consulted:</h3>
+<ol>
+  <li>What is a tick? <a href="https://www.geeksforgeeks.org/python-matplotlib-pyplot-ticks/">https://www.geeksforgeeks.org/python-matplotlib-pyplot-ticks/</a></li>
+  <li>How do you highlight text in markdown? <a href="https://stackoverflow.com/questions/25104738/text-highlight-in-markdown">https://stackoverflow.com/questions/25104738/text-highlight-in-markdown</a></li>
+  <li>What does the ‘rc’ stand for in rcparam? <a href="https://stackoverflow.com/questions/37728087/rc-params-in-matplotlib-what-does-rc-stand-for">https://stackoverflow.com/questions/37728087/rc-params-in-matplotlib-what-does-rc-stand-for</a></li>
+  <li>How do I use .format()? <a href="https://mkaz.blog/code/python-string-format-cookbook/">https://mkaz.blog/code/python-string-format-cookbook/</a></li>
+  <li>Can you elaborate on formatting numbers? <a href="https://pyformat.info/">https://pyformat.info/</a></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>We went over the fig and ax subplots. We work on each plot with ax and change the properties of all plots at once with fig. We read in our data and grouped them into our x/y axis. We labeled our x/y axis, titles, and set properties such as label format. We formatted the prices from long digits to a cleaner format. We added in another axes that represents the average mean of prices.  Finally, we saved our figure into PNG format.</p>
+
+<p>Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#matplotlib" class="page__taxonomy-item" rel="tag">matplotlib</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#sales-data" class="page__taxonomy-item" rel="tag">sales data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#sample-data" class="page__taxonomy-item" rel="tag">sample data</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#visualize-data" class="page__taxonomy-item" rel="tag">Visualize Data</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-11T00:00:00+08:00">August 11, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Created+a+Detailed+Plot+Using+Matplotlib+to+Visualize+Sample+Sales+Data%20http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Flifecycle-of-a-plot%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Flifecycle-of-a-plot%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Flifecycle-of-a-plot%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/extract%20data/hacker-news-api/" class="pagination--pager" title="Used API calls to extract top articles from Hacker News (YCombinator)
+">Previous</a>
+    
+    
+      <a href="/import%20data/extract%20data/pyspark-by-example/" class="pagination--pager" title="Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/import%20data/extract%20data/pyspark-by-example/" rel="permalink">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get into the Chicago Reported Crime Dataset to find out…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/extract%20data/hacker-news-api/" rel="permalink">Used API calls to extract top articles from Hacker News (YCombinator)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get the top stories with the most comments…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/transform%20data/model%20data/next%20steps/color-clustering/" rel="permalink">Used K-means Clustering to Visualize Dominant Colors in an Image
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Has a teacher ever handed your class a bag of candy to count…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/test/" rel="permalink">Machine Learning Project: Perceptron
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Machine Learning, Perceptron, Data Science
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Chris Chung. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+  </body>
+</html>
