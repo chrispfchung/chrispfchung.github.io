@@ -310,3 +310,5 @@ ax.set_xticks([0, 25e3, 50e3, 75e3, 100e3, 125e3]);
 
 ## Conclusion
 We went over the fig and ax subplots. We work on each plot with ax and change the properties of all plots at once with fig. We read in our data and grouped them into our x/y axis. We labeled our x/y axis, titles, and set properties such as label format. We formatted the prices from long digits to a cleaner format. We added in another axes that represents the average mean of prices.  Finally, we saved our figure into PNG format.
+
+Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.

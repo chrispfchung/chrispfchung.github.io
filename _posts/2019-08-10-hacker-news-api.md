@@ -206,8 +206,9 @@ for article in sorted_dict:
     Discussion Link: http://nsaphra.github.io/post/hands/
     Comments: 0
 
-
 **Resources Consulted:**
     1. Why use requests? <https://2.python-requests.org/en/master/user/quickstart/><br>
     2. What are the parameters of the HackerNews API? <br> <https://github.com/HackerNews/API><br>
     3. What is the purpose '\n'?<br> <https://teamtreehouse.com/community/why-does-the-print-syntax-append-a-n-at-the-end-of-a-line>
+
+Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.
