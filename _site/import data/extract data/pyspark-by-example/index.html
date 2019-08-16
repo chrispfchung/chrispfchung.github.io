@@ -1,0 +1,943 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018) - Chris Chung</title>
+<meta name="description" content="Let’s get into the Chicago Reported Crime Dataset to find out…">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Chris Chung">
+<meta property="og:title" content="Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)">
+<meta property="og:url" content="http://localhost:4000/import%20data/extract%20data/pyspark-by-example/">
+
+
+  <meta property="og:description" content="Let’s get into the Chicago Reported Crime Dataset to find out…">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/images/pyspark-by-example/police-ban.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-08-15T00:00:00+08:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/import%20data/extract%20data/pyspark-by-example/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chris Chung",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chris Chung Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Chris Chung
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/" >Projects</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/images/pyspark-by-example/police-ban.png" alt="Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-pic.png" alt="Chris Chung" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chris Chung</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Data Science Project Portfolio</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">New York, NY</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> chrispfchung@gmail.com</a></li>
+          
+        
+          
+            <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)">
+    <meta itemprop="description" content="Let’s get into the Chicago Reported Crime Dataset to find out…">
+    <meta itemprop="datePublished" content="August 15, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#download-and-install-spark" id="markdown-toc-download-and-install-spark">Download and install Spark</a></li>
+  <li><a href="#setup-environment" id="markdown-toc-setup-environment">Setup environment</a></li>
+  <li><a href="#downloading-and-preprocessing-chicagos-reported-crime-data" id="markdown-toc-downloading-and-preprocessing-chicagos-reported-crime-data">Downloading and preprocessing Chicago’s Reported Crime Data</a></li>
+  <li><a href="#challenge-questions" id="markdown-toc-challenge-questions">Challenge questions</a>    <ul>
+      <li><a href="#question-1---what-percentage-of-reported-crimes-resulted-in-an-arrest" id="markdown-toc-question-1---what-percentage-of-reported-crimes-resulted-in-an-arrest">Question 1 - What percentage of reported crimes resulted in an arrest?</a>        <ul>
+          <li><a href="#my-way" id="markdown-toc-my-way">My Way</a></li>
+          <li><a href="#authors-way" id="markdown-toc-authors-way">Author’s Way</a></li>
+        </ul>
+      </li>
+      <li><a href="#question-2---what-are-the-top-3-locations-for-reported-crimes" id="markdown-toc-question-2---what-are-the-top-3-locations-for-reported-crimes">Question 2 - What are the top 3 locations for reported crimes?</a>        <ul>
+          <li><a href="#my-way-1" id="markdown-toc-my-way-1">My Way</a></li>
+        </ul>
+      </li>
+      <li><a href="#authors-way-1" id="markdown-toc-authors-way-1">Author’s Way</a></li>
+    </ul>
+  </li>
+  <li><a href="#final-answers" id="markdown-toc-final-answers">Final Answers</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+  </nav>
+</aside>
+<p><br /></p>
+
+<h2 id="project-description">Project Description</h2>
+<p>Discovered what percentage of reported crimes in Chicago resulted in an arrest and pinpointed the top three locations of reported crimes by working with the Spark DataFrame API to extract data from a large dataset.</p>
+
+<h2 id="introduction">Introduction</h2>
+<p>Apache Spark allows you to store and extract data from huge datasets. In this project, “Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)”, I follow the coursework of “Apache PySpark by Example” to answer 2 questions:</p>
+
+<ol>
+  <li>“What percentage of reported crimes resulted in an arrest?”<br /></li>
+  <li>“What are the top 3 locations for reported crimes?”<br /></li>
+</ol>
+
+<h2 id="download-and-install-spark">Download and install Spark</h2>
+
+<p>I work within Google Colab, setup Spark, download the dataset, and run my own query attempt vs the author’s query to contrast and improve my approach.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check current directory. Only sample_data folder initally show up until post-installing/downloading
+</span><span class="err">!</span><span class="n">ls</span> <span class="c1">#sample_data
+</span></code></pre></div></div>
+
+<p>Install FindSpark files. Author has this code cell nicely laid out.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># !apt-get update
+# !apt-get install openjdk-8-jdk-headless -qq &gt; /dev/null
+# !wget -q http://archive.apache.org/dist/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz
+# !tar xf spark-2.3.1-bin-hadoop2.7.tgz
+# !pip install -q findspark
+</span></code></pre></div></div>
+
+<h2 id="setup-environment">Setup environment</h2>
+
+<p>Setup Spark session, import PySpark. Author also has this code cell nicely laid out.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">"JAVA_HOME"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"/usr/lib/jvm/java-8-openjdk-amd64"</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">"SPARK_HOME"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"/content/spark-2.3.1-bin-hadoop2.7"</span>
+
+<span class="kn">import</span> <span class="nn">findspark</span>
+<span class="n">findspark</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+<span class="kn">import</span> <span class="nn">pyspark</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="n">spark</span>
+</code></pre></div></div>
+
+<h2 id="downloading-and-preprocessing-chicagos-reported-crime-data">Downloading and preprocessing Chicago’s Reported Crime Data</h2>
+
+<p>Copy download link address of dataset from Chicago government site and paste after !wget.
+The download took me a while. Previously, there were exercises showing how to work with columns, rows, and schemas. Problem is, the exercise files were located in different notebooks. Every time I uploaded another notebook, I had to redownload this massive file. From where I am, it took a while each time.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># !wget https://data.cityofchicago.org/api/views/ijzp-q8t2/rows.csv?accessType=DOWNLOAD
+# !ls -l
+</span></code></pre></div></div>
+
+<p>Rename file to something shorter and understandable</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># !mv rows.csv\?accessType\=DOWNLOAD reported-crimes.csv
+# !ls -l
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total 1783140
+-rw-r--r-- 1 root root 1825926298 Aug 14 11:22 reported-crimes.csv
+drwxr-xr-x 1 root root       4096 Aug  2 16:06 sample_data
+</code></pre></div></div>
+
+<p>Steps to read in CSV and organize the data <br /></p>
+<ol>
+  <li>Read in CSV using spark.read.csv(filename).</li>
+  <li>.withColumn, change the formatting to time stamp and enter format</li>
+  <li>Filter by dates before November 12, 2018.</li>
+</ol>
+
+<p>Filter dates until November 12th because so that the author and my results remain consistent.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">to_timestamp</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">lit</span>
+<span class="n">rc</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">'reported-crimes.csv'</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'Date'</span><span class="p">,</span><span class="n">to_timestamp</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">'Date'</span><span class="p">),</span><span class="s">'MM/dd/yyyy hh:mm:ss a'</span><span class="p">))</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">'Date'</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">lit</span><span class="p">(</span><span class="s">'2018-11-12'</span><span class="p">))</span>
+<span class="n">rc</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="challenge-questions">Challenge questions</h2>
+
+<h3 id="question-1---what-percentage-of-reported-crimes-resulted-in-an-arrest">Question 1 - What percentage of reported crimes resulted in an arrest?</h3>
+
+<h4 id="my-way">My Way</h4>
+
+<p>After returning all values ,  I can add the count values together. My formula looks like:
+(Successful Arrests / Succ. Arrests + No Arrest) <br />
+With numbers plugged in: <strong>(1873664 + (1873664/4877955))</strong><br /></p>
+
+<p>This is my way but I wonder if I can return a query that calculates the percentage for me.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First showed the Boolean count of Arrests
+</span><span class="n">rc</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s">'Arrest'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+-------+
+|Arrest|  count|
++------+-------+
+| false|4877955|
+|  true|1873664|
++------+-------+
+</code></pre></div></div>
+
+<p><strong>My Answer: (1873664 + (1873664/4877955)) = 27.78%</strong></p>
+
+<h4 id="authors-way">Author’s Way</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First what values Arrest is made up of. Author prefers to look at all possible values before querying.
+</span><span class="n">rc</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'Arrest'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+
+|Arrest|
++------+
+| false|
+|  true|
++------+
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Print out schema to see what data type Arrest is. It's String type
+</span><span class="n">rc</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span> <span class="c1"># Thus, in the filter must be string too, 'true'. If boolean type, True
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root
+ |-- ID: string (nullable = true)
+ |-- Case Number: string (nullable = true)
+ |-- Date: timestamp (nullable = true)
+ |-- Block: string (nullable = true)
+ |-- IUCR: string (nullable = true)
+ |-- Primary Type: string (nullable = true)
+ |-- Description: string (nullable = true)
+ |-- Location Description: string (nullable = true)
+ |-- Arrest: string (nullable = true)
+ |-- Domestic: string (nullable = true)
+ |-- Beat: string (nullable = true)
+ |-- District: string (nullable = true)
+ |-- Ward: string (nullable = true)
+ |-- Community Area: string (nullable = true)
+ |-- FBI Code: string (nullable = true)
+ |-- X Coordinate: string (nullable = true)
+ |-- Y Coordinate: string (nullable = true)
+ |-- Year: string (nullable = true)
+ |-- Updated On: string (nullable = true)
+ |-- Latitude: string (nullable = true)
+ |-- Longitude: string (nullable = true)
+ |-- Location: string (nullable = true)
+ |-- Historical Wards 2003-2015: string (nullable = true)
+ |-- Zip Codes: string (nullable = true)
+ |-- Community Areas: string (nullable = true)
+ |-- Census Tracts: string (nullable = true)
+ |-- Wards: string (nullable = true)
+ |-- Boundaries - ZIP Codes: string (nullable = true)
+ |-- Police Districts: string (nullable = true)
+ |-- Police Beats: string (nullable = true)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Query all successful arrests and divde by total
+</span><span class="n">rc</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">'Arrest'</span><span class="p">)</span> <span class="o">==</span> <span class="s">'true'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">/</span> <span class="n">rc</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'Arrest'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.27751328977538575
+</code></pre></div></div>
+
+<p><strong>Answer: 27.8% of reported crimes in Chicago lead to a successful arrest</strong></p>
+
+<h3 id="question-2---what-are-the-top-3-locations-for-reported-crimes">Question 2 - What are the top 3 locations for reported crimes?</h3>
+
+<h4 id="my-way-1">My Way</h4>
+
+<p>I want to group by Location and then count them. Then I order them by highest to lowest. Finally I show it within a dataframe.</p>
+
+<p>My query returns coordinates and the top location is null. Why is it null?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rc</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s">'Location'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s">'count'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-----+
+|            Location|count|
++--------------------+-----+
+|                null|63783|
+|(41.976290414, -8...|13114|
+|(41.754592961, -8...| 9434|
++--------------------+-----+
+only showing top 3 rows
+</code></pre></div></div>
+
+<p><strong>My Answer: The top 3 locations for reported crimes in Chicago are…coordinates, one being null.</strong></p>
+
+<p>Although coordinates is technically correct, a location in coordinates is not useful to me. After seeing the author’s way, I realize that looking at Location Description will provide much more insightful info. I am also curious about why 63783 cases have a null location.</p>
+
+<h3 id="authors-way-1">Author’s Way</h3>
+
+<p>First the author looks at all the possible locations and counts them.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rc</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Location Description'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+------+
+|Location Description| count|
++--------------------+------+
+|   RAILROAD PROPERTY|    13|
+|AIRPORT TERMINAL ...|  1604|
+|EXPRESSWAY EMBANK...|     1|
+|POLICE FACILITY/V...| 17599|
+|               MOTEL|     5|
+|            SIDEWALK|665531|
+|AIRPORT TERMINAL ...|    77|
+|PUBLIC GRAMMAR SC...|     1|
+|CTA GARAGE / OTHE...|  9939|
+|            CAR WASH|  2775|
+|   TRUCKING TERMINAL|     1|
+|    AIRPORT/AIRCRAFT| 16108|
+|            HOSPITAL|     5|
+|MEDICAL/DENTAL OF...|  7101|
+|    FEDERAL BUILDING|   777|
+|             TRAILER|     3|
+|         CTA STATION|  3916|
+|SCHOOL, PUBLIC, G...| 28994|
+|SPORTS ARENA/STADIUM|  4999|
+|                FARM|     2|
++--------------------+------+
+only showing top 20 rows
+</code></pre></div></div>
+
+<p>Then, he orders them by the top 3. Pretty self-explanatory. However, because I got the answer wrong, I learned that I should not take question prompts at face value, I should dig a bit further to see where the usable information is. In this case, ‘Location’ does provide a location but it gives coordinates. ‘Location Description’ shows what the location is.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rc</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Location Description'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s">'count'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+-------+
+|Location Description|  count|
++--------------------+-------+
+|              STREET|1770710|
+|           RESIDENCE|1144091|
+|           APARTMENT| 697980|
++--------------------+-------+
+only showing top 3 rows
+</code></pre></div></div>
+
+<p><strong>Answer: The top 3 locations for reported crimes are on Streets, Residences, and Apartments</strong></p>
+
+<h2 id="final-answers">Final Answers</h2>
+
+<p><strong>What percentage of reported crimes resulted in an arrest?</strong></p>
+<ul>
+  <li>27.8% of reported crimes in Chicago lead to a successful arrest<br /></li>
+</ul>
+
+<p><strong>What are the top 3 locations for reported crimes?</strong><br /></p>
+<ul>
+  <li><em>Streets, Residences, and Apartments</em></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this project, I installed PySPark and set up the environment. Then I used !wget and downloaded the 1.6 GB Chicago Crime Dataset from the government website. I used groupBy, count(), select() and orderBy to extract and sort my query results. Using show() at the end of my queries, I return a neat dataframe. Using select(), I return a row result which I could then use to perform calculations.</p>
+
+<p>With the first question, I queried the dataframe and manually calculated the answer with my results. The author used select() to directly get the value and divide it by another select() query. Let the  computer do the calculations!</p>
+
+<p>In the second question, I made the mistake of following too closely to the question and grouped by the ‘Location’ column when I needed to group to ‘Location Description’ in order to return understandable locations.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#data-analysis" class="page__taxonomy-item" rel="tag">data analysis</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#google-colab" class="page__taxonomy-item" rel="tag">Google Colab</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#government-data" class="page__taxonomy-item" rel="tag">government data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#spark" class="page__taxonomy-item" rel="tag">Spark</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#extract-data" class="page__taxonomy-item" rel="tag">Extract Data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#import-data" class="page__taxonomy-item" rel="tag">Import Data</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-15T00:00:00+08:00">August 15, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Utilized+the+Spark+DataFrame+API+to+extract+data+from+Chicago%27s+Reported+Crime+Dataset+%282001-2018%29%20http%3A%2F%2Flocalhost%3A4000%2Fimport%2520data%2Fextract%2520data%2Fpyspark-by-example%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fimport%2520data%2Fextract%2520data%2Fpyspark-by-example%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fimport%2520data%2Fextract%2520data%2Fpyspark-by-example%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/visualize%20data/lifecycle-of-a-plot/" class="pagination--pager" title="Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/visualize%20data/lifecycle-of-a-plot/" rel="permalink">Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">We will visualize sample sales data using Matplotlib…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/extract%20data/hacker-news-api/" rel="permalink">Used API calls to extract top articles from Hacker News (YCombinator)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get the top stories with the most comments…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/transform%20data/model%20data/next%20steps/color-clustering/" rel="permalink">Used K-means Clustering to Visualize Dominant Colors in an Image
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Has a teacher ever handed your class a bag of candy to count…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/test/" rel="permalink">Machine Learning Project: Perceptron
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Machine Learning, Perceptron, Data Science
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email Me</a></li>
+        
+      
+        
+          <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Chris Chung. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+  </body>
+</html>

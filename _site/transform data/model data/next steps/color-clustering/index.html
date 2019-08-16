@@ -1,0 +1,1039 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Used K-means Clustering to Visualize Dominant Colors in an Image - Chris Chung</title>
+<meta name="description" content="Has a teacher ever handed your class a bag of candy to count…">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Chris Chung">
+<meta property="og:title" content="Used K-means Clustering to Visualize Dominant Colors in an Image">
+<meta property="og:url" content="http://localhost:4000/transform%20data/model%20data/next%20steps/color-clustering/">
+
+
+  <meta property="og:description" content="Has a teacher ever handed your class a bag of candy to count…">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/images/glowlights.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-08-09T00:00:00+08:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/transform%20data/model%20data/next%20steps/color-clustering/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chris Chung",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chris Chung Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Chris Chung
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/" >Projects</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/images/glowlights.jpg" alt="Used K-means Clustering to Visualize Dominant Colors in an Image" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-pic.png" alt="Chris Chung" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chris Chung</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Data Science Project Portfolio</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">New York, NY</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> chrispfchung@gmail.com</a></li>
+          
+        
+          
+            <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Used K-means Clustering to Visualize Dominant Colors in an Image">
+    <meta itemprop="description" content="Has a teacher ever handed your class a bag of candy to count…">
+    <meta itemprop="datePublished" content="August 09, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Used K-means Clustering to Visualize Dominant Colors in an Image
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#tldr-" id="markdown-toc-tldr-">TL;DR <a name="tl;dr"></a></a></li>
+  <li><a href="#introduction-" id="markdown-toc-introduction-">Introduction <a name="introduction"></a></a></li>
+  <li><a href="#jpg-image-basics-" id="markdown-toc-jpg-image-basics-">JPG Image Basics <a name="basic of images"></a></a></li>
+  <li><a href="#reading-in-an-image-" id="markdown-toc-reading-in-an-image-">Reading in an Image <a name="reading in an image"></a></a></li>
+  <li><a href="#clustering-basics" id="markdown-toc-clustering-basics">Clustering Basics</a></li>
+  <li><a href="#deciding--of-clusters-" id="markdown-toc-deciding--of-clusters-">Deciding # of Clusters <a name="number of clusters"></a></a>    <ul>
+      <li><a href="#k-means-clustering-with-scipy" id="markdown-toc-k-means-clustering-with-scipy">K-means Clustering with SciPy</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-steps-to-clustering" id="markdown-toc-3-steps-to-clustering">3 Steps to Clustering</a>    <ul>
+      <li><a href="#1-standardize-data-" id="markdown-toc-1-standardize-data-">1. Standardize Data <a name="standardize data"></a></a></li>
+      <li><a href="#2-create-cluster-centers" id="markdown-toc-2-create-cluster-centers">2. Create Cluster Centers</a></li>
+      <li><a href="#3-display-dominant-colors" id="markdown-toc-3-display-dominant-colors">3. Display Dominant Colors</a></li>
+    </ul>
+  </li>
+  <li><a href="#final-output" id="markdown-toc-final-output">Final Output</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+  </nav>
+</aside>
+<p><br /></p>
+
+<p><br /></p>
+<h2 id="project-description">Project Description</h2>
+<p>Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.<br /></p>
+
+<p><strong>Project Replicated From</strong>:<br />
+ <a href="https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/">https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/</a></p>
+
+<h2 id="tldr-">TL;DR <a name="tl;dr"></a></h2>
+<p>Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.</p>
+
+<h2 id="introduction-">Introduction <a name="introduction"></a></h2>
+<p>Has a teacher ever handed your class a bag of candy to count out the number of each color? How would you have done this? K-means clustering is a machine learning technique that groups large amounts of data together based on their similarities. For this particular project, “Using K-means Clustering to Visualize Dominant Colors in an Image”, I will identify and visualize the dominant colors of a web image.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Neat trick to print out everything at once, as seen in the next cell
+</span><span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>  
+<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s">"all"</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">__version__</span>
+<span class="c1">#pillow to view imagess
+</span><span class="kn">import</span> <span class="nn">PIL</span>
+<span class="n">PIL</span><span class="o">.</span><span class="n">__version__</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="n">scipy</span><span class="o">.</span><span class="n">__version__</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'3.0.2'
+
+'5.4.1'
+
+'1.1.0'
+</code></pre></div></div>
+
+<h2 id="jpg-image-basics-">JPG Image Basics <a name="basic of images"></a></h2>
+
+<p>A JPG image is made up of pixels and each pixel is made up of different values of three component colors, red, green and blue (RGB). In this project, we will work with Dataquest’s logo in JPG format.</p>
+
+<h2 id="reading-in-an-image-">Reading in an Image <a name="reading in an image"></a></h2>
+
+<p>How do you read in the image? <br />
+First, using matplotlib’s class image, input image.imread() to transform our logo into a matrix of RGB values.This matrix of RGB values represents every combination of color values of every pixel. Why? The computer reads in the RGB values and then is able to display it.<br />
+Our shape (200,200,3) represents width, height, and number of color lists (red + green + blue). 200x200 is a small image as we will see below.
+<br />
+It returns an array with each pixels RGB values</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">image</span> <span class="k">as</span> <span class="n">img</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'./dataquest.jpg'</span><span class="p">)</span>
+<span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># [255, 255, 255] : RGB values of 1 pixel
+</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># (200, 200, 3)
+</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([255, 255, 255], dtype=uint8)
+
+(200, 200, 3)
+</code></pre></div></div>
+
+<p>Building off the last cell, we will reuse our “img” variable that contains the color values of each pixel.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/images/k-means-color-cluster/k-means%20cluster_9_1.png" alt="alt" /></p>
+
+<p>Now before moving on to the clustering step. We have another step of processing. We need to create a list for each color that will contain every value of the color that shows up on each pixel. We should have 40,000 colors in each list because (200x200) means the area is 40,000 and each pixel contains red  green and blue values.
+<br />
+<br />
+We will loop through each pixel in our logo which contains our 3 channel RGB values, and then loop through each RGB value within each pixel, identify it as a variable and then add them to their respective list.
+<br />
+Why are we doing this?
+<br />
+We need to know how dominant each color is on their value scale of 0 - 255. After getting</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">img</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">pixel</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">rvalue</span><span class="p">,</span> <span class="n">gvalue</span><span class="p">,</span> <span class="n">bvalue</span> <span class="o">=</span> <span class="n">pixel</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rvalue</span><span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gvalue</span><span class="p">)</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bvalue</span><span class="p">)</span>
+
+<span class="n">r</span><span class="p">[</span><span class="mi">39995</span><span class="p">:]</span> <span class="c1"># [255, 255, 255, 255, 255]
+</span><span class="n">g</span><span class="p">[</span><span class="mi">9950</span><span class="p">:</span><span class="mi">9955</span><span class="p">]</span> <span class="c1"># [82, 82, 82, 82, 82]
+</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># [255, 255, 255, 255, 255]
+</span></code></pre></div></div>
+
+<h2 id="clustering-basics">Clustering Basics</h2>
+
+<p>Clustering is when you group items based on their similarities. First you determine how many clusters or groups your data should be in. If you determined 3 clusters, then three cluster centers will be plotted. That will be the first iteration. In the next iteration, each cluster center is assigned to their nearest data point. Then the distance is calculated and the center will readjust itself to be in the center of those points. This process is repeated until there are no more changes.</p>
+
+<h2 id="deciding--of-clusters-">Deciding # of Clusters <a name="number of clusters"></a></h2>
+
+<p>Our next step is to determine how many clusters to group our colors into. By visualizing our data, we can see how many clusters we might need. We can also use this elbow method to determine how many clusters are optimal for the data that we have. In our case, after plotting out our data in a scatter plot, we have two areas where there are many more points suggesting that there are mainly two colors.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d.axes3d</span> <span class="kn">import</span> <span class="n">Axes3D</span> <span class="k">as</span> <span class="n">axe</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> <span class="c1"># create figure class
+</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axe</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span> <span class="c1">#use Axes3D class to render 3D space
+</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'$X = Red$'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'$Y = Green$'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s">'$Z = Blue$'</span><span class="p">)</span> <span class="c1"># create axis labels
+</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/images/k-means-color-cluster/k-means%20cluster_16_4.png" alt="alt" /></p>
+
+<h3 id="k-means-clustering-with-scipy">K-means Clustering with SciPy</h3>
+
+<p>Let’s look at our data easier by visualizing with a pandas dataframe.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'red'</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span> <span class="s">'green'</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="s">'blue'</span> <span class="p">:</span> <span class="n">b</span><span class="p">})</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>red</th>
+      <th>green</th>
+      <th>blue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20995</th>
+      <td>77</td>
+      <td>83</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>26694</th>
+      <td>77</td>
+      <td>86</td>
+      <td>103</td>
+    </tr>
+    <tr>
+      <th>36546</th>
+      <td>69</td>
+      <td>76</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>19181</th>
+      <td>75</td>
+      <td>82</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <th>6253</th>
+      <td>75</td>
+      <td>82</td>
+      <td>101</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="3-steps-to-clustering">3 Steps to Clustering</h2>
+<p><b></b></p>
+<ol>
+  <li>Standarize data<b>
+<br /></b></li>
+  <li>Create cluster centers
+<br /></li>
+  <li>Generate cluster labels for each data point (in our case we will only be identifying dominant colors)</li>
+</ol>
+
+<h3 id="1-standardize-data-">1. Standardize Data <a name="standardize data"></a></h3>
+<p>You want the scale of the data even. 255,255,255 for one pixel will affect our model more than a 60,60,60 pixel. Putting the pixels on an equal scale ensures accurate results. We will use the <strong>whiten( )</strong> method. Mathematically we divide each data point by its standard deviation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="c1"># 83.11570119050913
+</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="c1"># 80.44125788486512
+</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># divide each color value by its respective standard deviation to get scaled value
+</span>
+<span class="mi">255</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="c1"># 3.0680123772945818
+</span><span class="mi">255</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="c1"># 3.1700150731727654
+</span><span class="mi">255</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># scaled values match whiten() outputs below
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># imported different classes than the guide as his were not working
+# import libraries
+# vq = vector quantization
+# whiten = our standardizer class
+</span><span class="kn">from</span> <span class="nn">scipy.cluster.vq</span> <span class="kn">import</span> <span class="n">vq</span><span class="p">,</span> <span class="n">kmeans</span><span class="p">,</span> <span class="n">whiten</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'scaled_r'</span><span class="p">]</span> <span class="o">=</span> <span class="n">whiten</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'scaled_g'</span><span class="p">]</span> <span class="o">=</span> <span class="n">whiten</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'scaled_b'</span><span class="p">]</span> <span class="o">=</span> <span class="n">whiten</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># pretty straightforward code, whiten standarizes the values
+</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#to see a variety of values
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>red</th>
+      <th>green</th>
+      <th>blue</th>
+      <th>scaled_r</th>
+      <th>scaled_g</th>
+      <th>scaled_b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>34360</th>
+      <td>73</td>
+      <td>81</td>
+      <td>100</td>
+      <td>0.878294</td>
+      <td>1.006946</td>
+      <td>1.407954</td>
+    </tr>
+    <tr>
+      <th>22878</th>
+      <td>73</td>
+      <td>76</td>
+      <td>91</td>
+      <td>0.878294</td>
+      <td>0.944789</td>
+      <td>1.281238</td>
+    </tr>
+    <tr>
+      <th>1351</th>
+      <td>255</td>
+      <td>255</td>
+      <td>255</td>
+      <td>3.068012</td>
+      <td>3.170015</td>
+      <td>3.590282</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="2-create-cluster-centers">2. Create Cluster Centers</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.cluster.vq</span> <span class="kn">import</span> <span class="n">vq</span><span class="p">,</span> <span class="n">kmeans</span><span class="p">,</span> <span class="n">whiten</span>
+<span class="n">cluster_centers</span><span class="p">,</span> <span class="n">distortion</span> <span class="o">=</span> <span class="n">kmeans</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s">'scaled_r'</span><span class="p">,</span><span class="s">'scaled_g'</span><span class="p">,</span> <span class="s">'scaled_b'</span><span class="p">]],</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># parameters our data and number of clusters
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cluster_centers</span> <span class="c1"># array([[2.94846993, 3.12453287, 3.52607825],
+</span>                <span class="c1">#       [0.91844555, 1.05218697, 1.44734558]])
+</span><span class="n">distortion</span> <span class="c1"># the author did not go indepth with distortion. My understanding is that the lower the distortion is, the better the clustering was.
+</span></code></pre></div></div>
+
+<p>In our array, we have two sets that represent our cluster centers. Each center represents the color data points that were closest to them. We are almost there!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">cluster_centers</span><span class="p">)</span> <span class="c1"># our cluster centers
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[2.94846993 3.12453287 3.52607825]
+ [0.91844555 1.05218697 1.44734558]]
+</code></pre></div></div>
+
+<h3 id="3-display-dominant-colors">3. Display Dominant Colors</h3>
+
+<p>We will need to take our centroid_center values and multiply them by their standard deviation to essentially reverse standardize them so that they mean something to us.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># standard deviations of each color
+</span><span class="n">df</span><span class="p">[[</span><span class="s">'red'</span><span class="p">,</span><span class="s">'green'</span><span class="p">,</span><span class="s">'blue'</span><span class="p">]]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_r</span><span class="p">,</span> <span class="n">std_g</span><span class="p">,</span> <span class="n">std_b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">'red'</span><span class="p">,</span><span class="s">'green'</span><span class="p">,</span><span class="s">'blue'</span><span class="p">]]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>red      83.116740
+green    80.442263
+blue     71.025957
+dtype: float64
+</code></pre></div></div>
+
+<p>After getting our color values, we need to render it in a format where we can display the image using imshow( ).<br />
+The output will be divided by 255 so that the imshow( ) method can read the values. If you plot the values then you will get 6 different colors. By putting the colors list into its own list, the centroid_centers are separated finally outputting two colors. I have displayed both colors and [colors] below.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">colors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">center</span> <span class="ow">in</span> <span class="n">cluster_centers</span><span class="p">:</span>
+    <span class="n">center</span>
+    <span class="n">scaled_r</span><span class="p">,</span> <span class="n">scaled_g</span><span class="p">,</span> <span class="n">scaled_b</span> <span class="o">=</span> <span class="n">center</span>
+    <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span>
+    <span class="n">scaled_r</span> <span class="o">*</span> <span class="n">std_r</span> <span class="o">/</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="n">scaled_g</span> <span class="o">*</span> <span class="n">std_g</span> <span class="o">/</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="n">scaled_b</span> <span class="o">*</span> <span class="n">std_b</span> <span class="o">/</span> <span class="mi">255</span><span class="p">))</span> <span class="c1">#careful to make sure the append stays within the loop
+</span></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2.94846993, 3.12453287, 3.52607825]) # first cluster center
+
+
+array([0.91844555, 1.05218697, 1.44734558]) # second cluster center
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">colors</span> <span class="c1"># each individual color
+</span><span class="p">[</span><span class="n">colors</span><span class="p">]</span> <span class="c1">#imshow reads in dimension of 1
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(0.9610478786610961, 0.9856646918396453, 0.9821297287115202),
+ (0.29936548922183137, 0.3319227505937144, 0.40313374434676263)]
+
+
+[[(0.9610478786610961, 0.9856646918396453, 0.9821297287115202),
+  (0.29936548922183137, 0.3319227505937144, 0.40313374434676263)]]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/images/k-means-color-cluster/k-means%20cluster_35_1.png" alt="alt" /></p>
+
+<h2 id="final-output">Final Output</h2>
+<p>And finally, the two most dominant colors in the image.</p>
+
+<p><img src="http://localhost:4000/images/k-means-color-cluster/k-means%20cluster_5_6.png" alt="alt" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. We used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Finally we scaled the image values and transformed them in ways that helped us interpret their meaning and use in our k-means algorithm.<br /></p>
+
+<p>I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author’s code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.<br />
+e.g</p>
+<ol>
+  <li>How to convert jupyter notebooks into markdown format:<br /> <a href="https://ipython.org/ipython-doc/dev/notebook/nbconvert.html">https://ipython.org/ipython-doc/dev/notebook/nbconvert.html</a><br /></li>
+</ol>
+
+<p>In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.<br /></p>
+
+<p>Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#image-data" class="page__taxonomy-item" rel="tag">image data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#k-means-clustering" class="page__taxonomy-item" rel="tag">k-means clustering</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#unlabeled-data" class="page__taxonomy-item" rel="tag">unlabeled data</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#model-data" class="page__taxonomy-item" rel="tag">Model Data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#next-steps" class="page__taxonomy-item" rel="tag">Next Steps</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#transform-data" class="page__taxonomy-item" rel="tag">Transform Data</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-09T00:00:00+08:00">August 09, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Used+K-means+Clustering+to+Visualize+Dominant+Colors+in+an+Image%20http%3A%2F%2Flocalhost%3A4000%2Ftransform%2520data%2Fmodel%2520data%2Fnext%2520steps%2Fcolor-clustering%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Ftransform%2520data%2Fmodel%2520data%2Fnext%2520steps%2Fcolor-clustering%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Ftransform%2520data%2Fmodel%2520data%2Fnext%2520steps%2Fcolor-clustering%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/test/" class="pagination--pager" title="Machine Learning Project: Perceptron
+">Previous</a>
+    
+    
+      <a href="/extract%20data/hacker-news-api/" class="pagination--pager" title="Used API calls to extract top articles from Hacker News (YCombinator)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/import%20data/extract%20data/pyspark-by-example/" rel="permalink">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get into the Chicago Reported Crime Dataset to find out…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/visualize%20data/lifecycle-of-a-plot/" rel="permalink">Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">We will visualize sample sales data using Matplotlib…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/extract%20data/hacker-news-api/" rel="permalink">Used API calls to extract top articles from Hacker News (YCombinator)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get the top stories with the most comments…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/test/" rel="permalink">Machine Learning Project: Perceptron
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Machine Learning, Perceptron, Data Science
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email Me</a></li>
+        
+      
+        
+          <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Chris Chung. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+  </body>
+</html>

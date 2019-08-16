@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/test/</loc>
+<lastmod>2019-08-07T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/transform%20data/model%20data/next%20steps/color-clustering/</loc>
+<lastmod>2019-08-09T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/extract%20data/hacker-news-api/</loc>
+<lastmod>2019-08-10T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/visualize%20data/lifecycle-of-a-plot/</loc>
+<lastmod>2019-08-11T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/import%20data/extract%20data/pyspark-by-example/</loc>
+<lastmod>2019-08-15T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/about/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/projects/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/images/photodune-XkDMpemY-yosemite-valley-at-cloudy-autumn-morning-file-and-license/photodune-20648073-yosemite-valley-at-cloudy-autumn-morning-license.pdf</loc>
+<lastmod>2019-07-30T16:22:42+08:00</lastmod>
+</url>
+</urlset>

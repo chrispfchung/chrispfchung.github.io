@@ -1,70 +1,146 @@
 ---
-layout: default
+layout: archive
 title: Projects listed by Data Science Process
 ---
 
 {{ content }}
 
 <h1>Chris Chung<h1>
+
 <h2>Data Science Project Portfolio<h2>
-  <br/>
-  <p>Chris Chung is a data scientist with a background in retail who focuses on
-    solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems
-    and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.</p>
-    <br/>
-  <p>This data science portfolio is comprised of projects covering the full spectrum of the data science process. This portfolio’s projects apply Python and SQL within a data science context to provide value to computer game companies.</p>
-  <br/>
-  <br/>
+
+<h4>Chris Chung is a data scientist with a background in retail who focuses on
+solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems
+and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.<br><br>
+
+This data science portfolio is comprised of projects covering the full spectrum of the data science process. This portfolio’s projects apply Python and SQL within a data science context to provide value to computer game companies.<br><h4>
 
 
+<h2>Projects Listed by Data Science Process<h2>
 
-  {% for post in site.categories.Import%Data %}
-   <li><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
+<h3>1. Import Data<h3>
 
-  <!-- {% for post in site.categories.Store%Data %}
-   <li><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %} -->
+  <h5><li{% for post in site.categories['Import Data'] %}
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}</li><h5>
 
-  <!-- {% assign categories_max = 0 %}
-  {% for category in site.categories %}
-    {% if category[1].size > categories_max %}
-      {% assign categories_max = category[1].size %}
-    {% endif %}
-  {% endfor %}
 
-  <ul class="taxonomy__index">
-    {% for i in (1..categories_max) reversed %}
-      {% for category in site.categories %}
-        {% if category[1].size == i %}
-          <li>
-            <a href="#{{ category[0] | slugify }}">
-              <strong>{{ category[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
-            </a>
-          </li>
-        {% endif %}
-      {% endfor %}
+<h3>2. Store Data<h3>
+
+  <h5>{% for post in site.categories['Store Data'] %}
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}<h5>
+
+  <h3>3. Extract Data<h3>
+
+    <h5>{% for post in site.categories['Extract Data'] %}
+     <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span><h5>
+
+<h3>4. Organize<h3>
+
+  <h5>{% for post in site.categories['Organize Data'] %}
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}<h5>
+
+  <h3>5. Tidy<h3>
+
+    <h5>{% for post in site.categories['Tidy Data'] %}
+     <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+    {% endfor %}<h5>
+
+  <h3>6. Transform Data<h3>
+
+    <h5>{% for post in site.categories['Transform Data'] %}
+     <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+    {% endfor %}<h5>
+
+    <h3>7. Visualize Data<h3>
+
+      <h5>{% for post in site.categories['Visualize Data'] %}
+       <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+      {% endfor %}<h5>
+
+      <h3>8. Model Data<h3>
+
+        <h5>{% for post in site.categories['Model Data'] %}
+         <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+        {% endfor %}<h5>
+
+        <h3>9. Coding Model<h3>
+
+          <h5>{% for post in site.categories['Coding Model'] %}
+           <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+          {% endfor %}<h5>
+
+          <h3>10. Understand the Data<h3>
+
+            <h5>{% for post in site.categories['Understand the Data'] %}
+             <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+            {% endfor %}<h5>
+
+            <h3>11. Communication<h3>
+
+              <h5>{% for post in site.categories['Communication'] %}
+               <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+              {% endfor %}<h5>
+
+      <h3>12. Next Steps<h3>
+
+      <h5>{% for post in site.categories['Next Steps'] %}
+       <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+      {% endfor %}<h5>
+
+
+      <h3>13. Document<h3>
+
+      <h5>{% for post in site.categories['Document'] %}
+       <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+      {% endfor %}<h5>
+
     {% endfor %}
-  </ul>
 
 
-  {% assign tags_max = 0 %}
-  {% for tag in site.tags %}
-    {% if tag[1].size > tags_max %}
-      {% assign tags_max = tag[1].size %}
-    {% endif %}
-  {% endfor %}
 
-  <ul class="taxonomy__index">
+
+
+
+<h2>Project Tags<h2>
+
+  <h3>Project Tags: Tools <h3>
+
+    {% assign tags_max = 0 %}
+    {% for tag in site.tags %}
+      {% if tag[1].size > tags_max %}
+        {% assign tags_max = tag[1].size %}
+      {% endif %}
+    {% endfor %}
+
+    <ul class="taxonomy__index">
+      {% for i in (1..tags_max) reversed %}
+        {% for tag in site.tags %}
+          {% if tag[1].size == i %}
+            <li>
+              <a href="#{{ tag[0] | slugify }}">
+                <strong>{{ tag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+
     {% for i in (1..tags_max) reversed %}
       {% for tag in site.tags %}
         {% if tag[1].size == i %}
-          <li>
-            <a href="#{{ tag[0] | slugify }}">
-              <strong>{{ tag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
-            </a>
-          </li>
+          <id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
+
+
         {% endif %}
       {% endfor %}
     {% endfor %}
-  </ul>
+
+
+    <h3>Project Tags: Techniques<h3>
+
+
+      <h3>Project Tags: Data<h3>
