@@ -3,7 +3,7 @@ title: "Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data"
 
 date: 2019-08-11
 tags: [matplotlib, python, sales data, sample data]
-tooltags: WORK
+tooltags: [WORK]
 categories: [Visualize Data]
 header:
   image: "/images/stock-coins.jpg"
