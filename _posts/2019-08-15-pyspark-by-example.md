@@ -299,3 +299,5 @@ In this project, I installed PySPark and set up the environment. Then I used !wg
 With the first question, I queried the dataframe and manually calculated the answer with my results. The author used select() to directly get the value and divide it by another select() query. Let the  computer do the calculations!
 
 In the second question, I made the mistake of following too closely to the question and grouped by the 'Location' column when I needed to group to 'Location Description' in order to return understandable locations.
+
+Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.
