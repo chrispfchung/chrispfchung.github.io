@@ -21,6 +21,10 @@
 <lastmod>2019-08-15T00:00:00+08:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/import%20data/extract%20data/seatgeek-extract-data/</loc>
+<lastmod>2019-08-16T00:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -28,6 +32,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/projects/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page2/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/images/photodune-XkDMpemY-yosemite-valley-at-cloudy-autumn-morning-file-and-license/photodune-20648073-yosemite-valley-at-cloudy-autumn-morning-license.pdf</loc>

@@ -23,4 +23,9 @@ var store = [{
         "excerpt":"Table of Contents Project Description Introduction Download and install Spark Setup environment Downloading and preprocessing Chicago’s Reported Crime Data Challenge questions Question 1 - What percentage of reported crimes resulted in an arrest? My Way Author’s Way Question 2 - What are the top 3 locations for reported crimes? My...","categories": ["Import Data","Extract Data"],
         "tags": ["government data","data analysis","Spark","Google Colab"],
         "url": "http://localhost:4000/import%20data/extract%20data/pyspark-by-example/",
+        "teaser":null},{
+        "title": "Constructed Functions to Extract Live Concert Music Data from SeatGeek's API",
+        "excerpt":"Table of Contents Project Description Introduction Import Libraries Access API with requests.get(url) Overview of Event Data Looking at Data of One NY Concert Calling SeatGeek API for NY venue data for concerts Venue Data Our NY Concert Data Event Information Performer Information Ticket Data Venue Other Final API Function with...","categories": ["Import Data","Extract Data"],
+        "tags": ["pandas","API","python","JSON","music data"],
+        "url": "http://localhost:4000/import%20data/extract%20data/seatgeek-extract-data/",
         "teaser":null}]

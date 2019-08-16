@@ -1,0 +1,1140 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API - Chris Chung</title>
+<meta name="description" content="It’s always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet…">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Chris Chung">
+<meta property="og:title" content="Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API">
+<meta property="og:url" content="http://localhost:4000/import%20data/extract%20data/seatgeek-extract-data/">
+
+
+  <meta property="og:description" content="It’s always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet…">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/images/live-concert-blue-bg-header.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-08-16T00:00:00+08:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/import%20data/extract%20data/seatgeek-extract-data/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chris Chung",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chris Chung Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Chris Chung
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/" >Projects</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/images/live-concert-blue-bg-header.jpg" alt="Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-pic.png" alt="Chris Chung" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chris Chung</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Data Science Project Portfolio</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">New York, NY</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> chrispfchung@gmail.com</a></li>
+          
+        
+          
+            <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API">
+    <meta itemprop="description" content="It’s always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet…">
+    <meta itemprop="datePublished" content="August 16, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#import-libraries" id="markdown-toc-import-libraries">Import Libraries</a></li>
+  <li><a href="#access-api-with-requestsgeturl" id="markdown-toc-access-api-with-requestsgeturl">Access API with requests.get(url)</a></li>
+  <li><a href="#overview-of-event-data" id="markdown-toc-overview-of-event-data">Overview of Event Data</a></li>
+  <li><a href="#looking-at-data-of-one-ny-concert" id="markdown-toc-looking-at-data-of-one-ny-concert">Looking at Data of One NY Concert</a></li>
+  <li><a href="#calling-seatgeek-api-for-ny-venue-data-for-concerts" id="markdown-toc-calling-seatgeek-api-for-ny-venue-data-for-concerts">Calling SeatGeek API for NY venue data for concerts</a>    <ul>
+      <li><a href="#venue-data" id="markdown-toc-venue-data">Venue Data</a></li>
+    </ul>
+  </li>
+  <li><a href="#our-ny-concert-data" id="markdown-toc-our-ny-concert-data">Our NY Concert Data</a>    <ul>
+      <li><a href="#event-information" id="markdown-toc-event-information">Event Information</a></li>
+      <li><a href="#performer-information" id="markdown-toc-performer-information">Performer Information</a></li>
+      <li><a href="#ticket-data" id="markdown-toc-ticket-data">Ticket Data</a></li>
+      <li><a href="#venue" id="markdown-toc-venue">Venue</a></li>
+      <li><a href="#other" id="markdown-toc-other">Other</a></li>
+    </ul>
+  </li>
+  <li><a href="#final-api-function-with-comments" id="markdown-toc-final-api-function-with-comments">Final API Function with Comments</a></li>
+  <li><a href="#storing-data" id="markdown-toc-storing-data">Storing Data</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+  </nav>
+</aside>
+<p><br /></p>
+
+<h2 id="project-description">Project Description</h2>
+
+<p>Built a function that retrieves data from a public website for visualization and analysis by using SeatGeek’s API to extract data of about 3000 upcoming music events in New York. I also import this data into a dataframe for easier access.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>It’s always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet. Many websites now have an API interface that allows you to access their data by following their API documentation. In this project, “Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API”, I will utilize requests.get() to get access to their API and navigate event data within a nested JSON dictionary to extract specific information about upcoming music concert events. Then I will save it into a JSON file and finally a dataframe for future use.</p>
+
+<h2 id="import-libraries">Import Libraries</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+
+<h2 id="access-api-with-requestsgeturl">Access API with requests.get(url)</h2>
+
+<p>We use a client ID to access their API. You can request your own with instructions at <a href="https://platform.seatgeek.com/">https://platform.seatgeek.com/</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># CONTROL CENTER / BASE URL LOCATION
+# Testing
+</span><span class="n">client_ID</span> <span class="o">=</span> <span class="s">'MTUwODYzODJ8MTU0ODg3NjU2Mi4yOQ'</span>
+<span class="n">client_SECRET</span> <span class="o">=</span> <span class="s">'aa2c.......'</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.seatgeek.com/2/events/?'</span> <span class="o">+</span> <span class="s">'client_id='</span> <span class="o">+</span> <span class="n">client_ID</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="c1"># r.json()
+</span></code></pre></div></div>
+
+<h2 id="overview-of-event-data">Overview of Event Data</h2>
+
+<p>First, I use the ‘meta’ key to look at how many events are available</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Meta key shows quick stats, includes all types of seatgeek events (broadway, sports, festivals, concerts)
+</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'meta'</span><span class="p">]</span> <span class="c1">#109754 results
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'geolocation': None, 'per_page': 10, 'total': 109754, 'took': 7, 'page': 1}
+</code></pre></div></div>
+
+<p>Sample of what our data can return:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#data in JSON format
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Format - ['events'][event number]['data you want']
+</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">'title'</span><span class="p">]</span>
+
+<span class="c1"># Michel Simard
+# West Virginia Black Bears at Batavia Muckdogs
+# Mahoning Valley Scrappers at State College Spikes
+</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">'type'</span><span class="p">]</span>
+
+<span class="c1"># concert
+# minor_league_baseball
+# minor_league_baseball
+</span></code></pre></div></div>
+
+<h2 id="looking-at-data-of-one-ny-concert">Looking at Data of One NY Concert</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Look at NY concerts metadata
+# Testing for 1 result to see what info is available
+</span><span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.seatgeek.com/2/events?type=concert</span><span class="se">\
+</span><span class="s">&amp;venue.state=NY&amp;client_id='</span> <span class="o">+</span> <span class="n">client_ID</span> <span class="o">+</span> \
+<span class="s">'&amp;per_page=5&amp;format=json'</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">events</span><span class="p">[</span><span class="s">'meta'</span><span class="p">]</span> <span class="c1"># number of NY events: 2783
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'geolocation': None, 'per_page': 5, 'total': 2783, 'took': 5, 'page': 1}
+</code></pre></div></div>
+
+<h2 id="calling-seatgeek-api-for-ny-venue-data-for-concerts">Calling SeatGeek API for NY venue data for concerts</h2>
+
+<p>Let’s focus only on New York concert data.</p>
+
+<p>There’s a ton of information that is nested into even more info! I list the the keys which you can navigate even further to get more details.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># There's a long list of available data for one event! Let's get more specific.
+</span><span class="nb">list</span><span class="p">(</span><span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['links',
+ 'event_promotion',
+ 'conditional',
+ 'is_open',
+ 'id',
+ 'stats',
+ 'title',
+ 'announce_date',
+ 'score',
+ 'access_method',
+ 'announcements',
+ 'taxonomies',
+ 'type',
+ 'status',
+ 'description',
+ 'datetime_local',
+ 'visible_until_utc',
+ 'time_tbd',
+ 'date_tbd',
+ 'performers',
+ 'url',
+ 'created_at',
+ 'popularity',
+ 'venue',
+ 'enddatetime_utc',
+ 'short_title',
+ 'datetime_utc',
+ 'datetime_tbd']
+</code></pre></div></div>
+
+<h3 id="venue-data">Venue Data</h3>
+
+<p>Looking at Venue information, we get location information like postal code which is great for locating neighborhoods, link to purchase the ticket and other info like score and capacity. Score is based on ticket sales and Capacity is the venue’s occupancy.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create new url string that focuses only on New York concerts.
+</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.seatgeek.com/2/events?type=concert</span><span class="se">\
+</span><span class="s">&amp;venue.state=NY&amp;client_id='</span> <span class="o">+</span> <span class="n">client_ID</span> <span class="o">+</span> \
+<span class="s">'&amp;per_page=5&amp;format=json'</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">events</span><span class="p">[</span><span class="s">'meta'</span><span class="p">]</span> <span class="c1"># Number of NY concerts: 2812
+</span><span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s">'venue'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'links': [],
+ 'metro_code': 538,
+ 'postal_code': '14424',
+ 'timezone': 'America/New_York',
+ 'has_upcoming_events': True,
+ 'id': 434155,
+ 'city': 'Canandaigua',
+ 'extended_address': 'Canandaigua, NY 14424',
+ 'display_location': 'Canandaigua, NY',
+ 'state': 'NY',
+ 'score': 0,
+ 'location': {'lat': 42.8451, 'lon': -77.2218},
+ 'access_method': None,
+ 'num_upcoming_events': 1,
+ 'address': '3792 New York 247',
+ 'capacity': 0,
+ 'slug': 'lincoln-hill-farms',
+ 'name': 'Lincoln Hill Farms',
+ 'url': 'https://seatgeek.com/venues/lincoln-hill-farms/tickets',
+ 'country': 'US',
+ 'popularity': 0,
+ 'name_v2': 'Lincoln Hill Farms'}
+</code></pre></div></div>
+
+<h2 id="our-ny-concert-data">Our NY Concert Data</h2>
+
+<p><em>I use a large function to extract all the data that I want. The data includes:</em></p>
+
+<h4 id="event-information">Event Information</h4>
+<ol>
+  <li>Event Title</li>
+  <li>Type of Event</li>
+  <li>Date and Time of Event</li>
+  <li>Event Announcement Date</li>
+  <li>Event Visible Until Date</li>
+</ol>
+
+<h4 id="performer-information">Performer Information</h4>
+<ol>
+  <li>Performer Name</li>
+  <li>Performer Genre</li>
+</ol>
+
+<h4 id="ticket-data">Ticket Data</h4>
+<ol>
+  <li>Ticket Prices - Average, Median, Lowest and Highest</li>
+  <li>Ticket Listing Count</li>
+</ol>
+
+<h4 id="venue">Venue</h4>
+<ol>
+  <li>Venue Name</li>
+  <li>Venue City</li>
+  <li>Venue Zipcode</li>
+  <li>Upcoming events (True/False)</li>
+  <li>Venue Score</li>
+  <li>Venue Capacity</li>
+</ol>
+
+<h4 id="other">Other</h4>
+<ol>
+  <li>URL for event reference</li>
+</ol>
+
+<p><em>Within the function, I have included code to save our data into a json file called ‘ny-concerts.json’.</em></p>
+
+<h2 id="final-api-function-with-comments">Final API Function with Comments</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># If you alter the type_concert parameter, you can retrieve info for the other types of events
+# All events pulled on 8/16/19
+</span>
+<span class="n">client_ID</span> <span class="o">=</span> <span class="s">'MTUwODYzODJ8MTU0ODg3NjU2Mi4yOQ'</span>
+<span class="c1"># client_SECRET = 'aa2c.......'
+</span>
+<span class="k">def</span> <span class="nf">ny_events</span><span class="p">(</span><span class="n">type_concert</span><span class="p">):</span>
+
+    <span class="c1"># This is where all of our data will be at the end
+</span>    <span class="n">parsed_events</span><span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Range: since there are 2783 events, start from page 1 and loop 3 pages (1000 events each)
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s">'https://api.seatgeek.com/2/events?type='</span><span class="o">+</span><span class="n">type_concert</span><span class="o">+</span>\
+        <span class="s">'&amp;venue.state=NY&amp;client_id='</span> <span class="o">+</span> <span class="n">client_ID</span> <span class="o">+</span> \
+        <span class="s">'&amp;per_page=1000&amp;format=json&amp;page='</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># Create URL again with looped page count
+</span>        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">events</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="c1"># Loop through events on each page
+</span>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">):</span>
+
+            <span class="c1"># 'stats' for ticket info, current events to extract data
+</span>            <span class="n">stats</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'stats'</span><span class="p">]</span>
+            <span class="n">current_event</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="c1"># Event Data
+</span>            <span class="n">current_event</span><span class="p">[</span><span class="s">'event_title'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'title'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'type_event'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'type'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'date&amp;time_event'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'datetime_local'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'announce_date'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'announce_date'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'visible_until_utc'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'visible_until_utc'</span><span class="p">]</span>
+
+            <span class="c1"># Performer Data
+</span>            <span class="n">current_event</span><span class="p">[</span><span class="s">'performer_name'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'performers'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'name'</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s">'genres'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'performers'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">current_event</span><span class="p">[</span><span class="s">'performer_genre'</span><span class="p">]</span> <span class="o">=</span> <span class="s">''</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">current_event</span><span class="p">[</span><span class="s">'performer_genre'</span><span class="p">]</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'performers'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'genres'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'name'</span><span class="p">]</span>
+
+            <span class="c1"># Ticket Data
+</span>            <span class="n">current_event</span><span class="p">[</span><span class="s">'ticket_listing_count'</span><span class="p">]</span><span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="s">'listing_count'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'average_price'</span><span class="p">]</span><span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="s">'average_price'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'median_price'</span><span class="p">]</span><span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="s">'median_price'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'lowest_price'</span><span class="p">]</span><span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="s">'lowest_price'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'highest_price'</span><span class="p">]</span><span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="s">'highest_price'</span><span class="p">]</span>
+
+            <span class="c1"># Venue Data
+</span>            <span class="n">current_event</span><span class="p">[</span><span class="s">'venue_name'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'venue'</span><span class="p">][</span><span class="s">'name'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'venue_city'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'venue'</span><span class="p">][</span><span class="s">'city'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'venue_zipcode'</span><span class="p">]</span><span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'venue'</span><span class="p">][</span><span class="s">'postal_code'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'upcoming_events?'</span><span class="p">]</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'venue'</span><span class="p">][</span><span class="s">'has_upcoming_events'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'venue_score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'venue'</span><span class="p">][</span><span class="s">'score'</span><span class="p">]</span>
+            <span class="n">current_event</span><span class="p">[</span><span class="s">'venue_capacity'</span><span class="p">]</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'venue'</span><span class="p">][</span><span class="s">'capacity'</span><span class="p">]</span>
+
+            <span class="c1"># Other
+</span>            <span class="n">current_event</span><span class="p">[</span><span class="s">'url'</span><span class="p">]</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="s">'events'</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s">'url'</span><span class="p">]</span>
+
+<span class="c1">#             print(range(1,j)) , show the loop is working
+</span>
+            <span class="c1"># Events stop at 783
+</span>            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">782</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="c1"># Add all of this data to our edited events
+</span>            <span class="n">parsed_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_event</span><span class="p">)</span>
+
+            <span class="c1"># Save file
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ny-concerts.json'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">parsed_events</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parsed_events</span>
+<span class="c1"># ny_events('concert')  to run the function, it may take a few minutes
+</span></code></pre></div></div>
+
+<h2 id="storing-data">Storing Data</h2>
+
+<p>Within the function above, I have included code to save the file into my directory. We will load it into our notebook and convert it into a dataframe to view our data easier.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First I load it into a variable called 'datastore'
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ny-concerts.json'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">datastore</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Then I use pandas to convert it
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">datastore</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>announce_date</th>
+      <th>average_price</th>
+      <th>date&amp;time_event</th>
+      <th>event_title</th>
+      <th>highest_price</th>
+      <th>lowest_price</th>
+      <th>median_price</th>
+      <th>performer_genre</th>
+      <th>performer_name</th>
+      <th>ticket_listing_count</th>
+      <th>type_event</th>
+      <th>upcoming_events?</th>
+      <th>url</th>
+      <th>venue_capacity</th>
+      <th>venue_city</th>
+      <th>venue_name</th>
+      <th>venue_score</th>
+      <th>venue_zipcode</th>
+      <th>visible_until_utc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-08-14T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-08-16T17:00:00</td>
+      <td>Big Eyed Phish Live</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td></td>
+      <td>Big Eyed Phish Live</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/big-eyed-phish-live-ticke...</td>
+      <td>0</td>
+      <td>Canandaigua</td>
+      <td>Lincoln Hill Farms</td>
+      <td>0.0</td>
+      <td>14424</td>
+      <td>2019-08-17T01:00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019-04-20T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-08-16T17:00:00</td>
+      <td>George Fitzgerald</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Electronic</td>
+      <td>George Fitzgerald</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/george-fitzgerald-tickets...</td>
+      <td>0</td>
+      <td>Brooklyn</td>
+      <td>Elsewhere</td>
+      <td>0.0</td>
+      <td>11237</td>
+      <td>2019-08-17T01:00:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-08-13T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-08-16T17:30:00</td>
+      <td>The Birdland Big Band</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Blues</td>
+      <td>The Birdland Big Band</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/the-birdland-big-band-tic...</td>
+      <td>0</td>
+      <td>New York</td>
+      <td>Birdland</td>
+      <td>0.0</td>
+      <td>10036</td>
+      <td>2019-08-17T01:30:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-05-09T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-08-16T18:00:00</td>
+      <td>Gatsby</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td></td>
+      <td>Gatsby</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/gatsby-tickets/new-york-n...</td>
+      <td>0</td>
+      <td>New York</td>
+      <td>Club Bonafide</td>
+      <td>0.0</td>
+      <td>10022</td>
+      <td>2019-08-17T02:00:00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-06-16T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-08-16T18:00:00</td>
+      <td>No Zodiac, Kaonashi, VCTMS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td></td>
+      <td>No Zodiac, Kaonashi, VCTMS</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/no-zodiac-kaonashi-vctms-...</td>
+      <td>0</td>
+      <td>Brooklyn</td>
+      <td>Gold Sounds Bar</td>
+      <td>0.0</td>
+      <td>11237</td>
+      <td>2019-08-17T02:00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>We have a lot of information that we may or may not need. I would rather take as much data as I can before finding out later that I need more. Also, the data here can be altered and used in many ways, such as changing date and time into evening or afternoon.</p>
+
+<p>At first glance using df.head(), I see the first 5 events contain missing ticket info. When I visit the links, there are currently no tickets available. It might be because the event is about to happen and they’re off the market. We can look into why and dealing with these missing values in another post!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this project, we accessed SeatGeek’s API by following their documentation on <a href="https://platform.seatgeek.com/">https://platform.seatgeek.com/</a>. We took a bird’s eye view of all data and what’s available for us to extract. Then we honed in on NY concert data and created a function that pulls all the information that I want. Finally we saved it into a json file and converted it into a dataframe for easier access.</p>
+
+<p>Looking online for more info on saving JSON files, I reminded myself that many other people are also looking programming information up and–people are providing this information for us. This community is vast and I love how people are in different stages getting involved.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#api" class="page__taxonomy-item" rel="tag">API</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#json" class="page__taxonomy-item" rel="tag">JSON</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#music-data" class="page__taxonomy-item" rel="tag">music data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#pandas" class="page__taxonomy-item" rel="tag">pandas</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#extract-data" class="page__taxonomy-item" rel="tag">Extract Data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#import-data" class="page__taxonomy-item" rel="tag">Import Data</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-16T00:00:00+08:00">August 16, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Constructed+Functions+to+Extract+Live+Concert+Music+Data+from+SeatGeek%27s+API%20http%3A%2F%2Flocalhost%3A4000%2Fimport%2520data%2Fextract%2520data%2Fseatgeek-extract-data%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fimport%2520data%2Fextract%2520data%2Fseatgeek-extract-data%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fimport%2520data%2Fextract%2520data%2Fseatgeek-extract-data%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/import%20data/extract%20data/pyspark-by-example/" class="pagination--pager" title="Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/import%20data/extract%20data/pyspark-by-example/" rel="permalink">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get into the Chicago Reported Crime Dataset to find out…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/visualize%20data/lifecycle-of-a-plot/" rel="permalink">Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">We will visualize sample sales data using Matplotlib…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/extract%20data/hacker-news-api/" rel="permalink">Used API calls to extract top articles from Hacker News (YCombinator)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get the top stories with the most comments…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/transform%20data/model%20data/next%20steps/color-clustering/" rel="permalink">Used K-means Clustering to Visualize Dominant Colors in an Image
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Has a teacher ever handed your class a bag of candy to count…
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email Me</a></li>
+        
+      
+        
+          <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Chris Chung. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+  </body>
+</html>

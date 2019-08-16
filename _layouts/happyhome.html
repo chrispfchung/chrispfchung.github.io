@@ -20,87 +20,81 @@ This data science portfolio is comprised of projects covering the full spectrum 
 
 <h3>1. Import Data<h3>
 
-  <h5><li{% for post in site.categories['Import Data'] %}
+  <h5>{% for post in site.categories['Import Data'] %}<h5>
    <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-  {% endfor %}</li><h5>
-
+  {% endfor %}
 
 <h3>2. Store Data<h3>
 
-  <h5>{% for post in site.categories['Store Data'] %}
+  <h5>{% for post in site.categories['Store Data'] %}<h5>
    <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-  {% endfor %}<h5>
+  {% endfor %}
 
-  <h3>3. Extract Data<h3>
+<h3>3. Extract Data<h3>
 
-    <h5>{% for post in site.categories['Extract Data'] %}
-     <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span><h5>
+  <h5>{% for post in site.categories['Extract Data'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}
 
 <h3>4. Organize<h3>
 
-  <h5>{% for post in site.categories['Organize Data'] %}
+  <h5>{% for post in site.categories['Organize Data'] %}<h5>
    <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-  {% endfor %}<h5>
+  {% endfor %}
 
-  <h3>5. Tidy<h3>
+<h3>5. Tidy<h3>
 
-    <h5>{% for post in site.categories['Tidy Data'] %}
-     <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-    {% endfor %}<h5>
+  <h5>{% for post in site.categories['Tidy Data'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}
 
-  <h3>6. Transform Data<h3>
+<h3>6. Transform Data<h3>
 
-    <h5>{% for post in site.categories['Transform Data'] %}
-     <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-    {% endfor %}<h5>
+  <h5>{% for post in site.categories['Transform Data'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}
 
-    <h3>7. Visualize Data<h3>
+<h3>7. Visualize Data<h3>
 
-      <h5>{% for post in site.categories['Visualize Data'] %}
-       <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-      {% endfor %}<h5>
+  <h5>{% for post in site.categories['Visualize Data'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}
 
-      <h3>8. Model Data<h3>
+<h3>8. Model Data<h3>
 
-        <h5>{% for post in site.categories['Model Data'] %}
-         <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-        {% endfor %}<h5>
+  <h5>{% for post in site.categories['Model Data'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}
 
-        <h3>9. Coding Model<h3>
+<h3>9. Coding Model<h3>
 
-          <h5>{% for post in site.categories['Coding Model'] %}
-           <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-          {% endfor %}<h5>
+  <h5>{% for post in site.categories['Coding Model'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}
 
-          <h3>10. Understand the Data<h3>
+<h3>10. Understand the Data<h3>
 
-            <h5>{% for post in site.categories['Understand the Data'] %}
-             <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-            {% endfor %}<h5>
+  <h5>{% for post in site.categories['Understand the Data'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}
 
-            <h3>11. Communication<h3>
+<h3>11. Communication<h3>
 
-              <h5>{% for post in site.categories['Communication'] %}
-               <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-              {% endfor %}<h5>
+  <h5>{% for post in site.categories['Communication'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+  {% endfor %}
 
-      <h3>12. Next Steps<h3>
+<h3>12. Next Steps<h3>
 
-      <h5>{% for post in site.categories['Next Steps'] %}
-       <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-      {% endfor %}<h5>
+<h5>{% for post in site.categories['Next Steps'] %}<h5>
+ <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+{% endfor %}
 
+<h3>13. Document<h3>
 
-      <h3>13. Document<h3>
-
-      <h5>{% for post in site.categories['Document'] %}
-       <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
-      {% endfor %}<h5>
-
-    {% endfor %}
-
-
-
+  <h5>{% for post in site.categories['Document'] %}<h5>
+   <span><a href="{{ post.url }}">{{ post.title }}</a> &nbsp; {{ post.date | date_to_string }}</span>
+   {% endfor %}
 
 
 
@@ -141,6 +135,37 @@ This data science portfolio is comprised of projects covering the full spectrum 
 
 
     <h3>Project Tags: Techniques<h3>
+
+      {% assign tags_max = 0 %}
+      {% for tag in site.tooltags %}
+        {% if tag[1].size > tags_max %}
+          {% assign tags_max = tag[1].size %}
+        {% endif %}
+      {% endfor %}
+
+      <ul class="taxonomy__index">
+        {% for i in (1..tags_max) reversed %}
+          {% for tag in site.tooltags %}
+            {% if tag[1].size == i %}
+              <li>
+                <a href="#{{ tag[0] | slugify }}">
+                  <strong>{{ tag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+
+      {% for i in (1..tags_max) reversed %}
+        {% for tag in site.tooltags %}
+          {% if tag[1].size == i %}
+            <id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
+
+
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
 
 
       <h3>Project Tags: Data<h3>
