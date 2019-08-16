@@ -5,3 +5,7 @@
 {% if site.category_archive.type and page.categories[0] %}
   {% include category-list.html %}
 {% endif %}
+
+{% if site.tooltag_archive.type and page.tooltags[0] %}
+  {% include tagtool-list.html %}
+{% endif %}
