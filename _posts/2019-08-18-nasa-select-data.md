@@ -2,7 +2,7 @@
 title: "Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query"
 
 date: 2019-08-16
-tags: [pandas, API, python, JSON, music data]
+tags: [sqlite3, sample data, pandas, sql]
 categories: [Store Data, Extract Data]
 header:
   image: "/images/nasa-select-/data/night-planet.jpg"
