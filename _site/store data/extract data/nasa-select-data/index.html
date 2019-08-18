@@ -1,0 +1,1564 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query - Chris Chung</title>
+<meta name="description" content="SQLite3 is a database where I can perform SQL commands to extract…">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Chris Chung">
+<meta property="og:title" content="Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query">
+<meta property="og:url" content="http://localhost:4000/store%20data/extract%20data/nasa-select-data/">
+
+
+  <meta property="og:description" content="SQLite3 is a database where I can perform SQL commands to extract…">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/images/nasa-select-/data/night-planet.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-08-16T00:00:00+08:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/store%20data/extract%20data/nasa-select-data/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chris Chung",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+  <meta name="google-site-verification" content="eTEQHHs6V5HyxKsaNQsx3NZ6pw6ULe6bYc0B2x4-RrU" />
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chris Chung Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Chris Chung
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/" >Projects</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/images/nasa-select-/data/night-planet.jpg" alt="Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-pic.png" alt="Chris Chung" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chris Chung</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Data Science Project Portfolio</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact Info</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">New York, NY</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> chrispfchung@gmail.com</a></li>
+          
+        
+          
+            <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query">
+    <meta itemprop="description" content="SQLite3 is a database where I can perform SQL commands to extract…">
+    <meta itemprop="datePublished" content="August 16, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  13 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#project-replicated-from" id="markdown-toc-project-replicated-from">Project Replicated From:</a></li>
+  <li><a href="#1-introduction" id="markdown-toc-1-introduction">1. Introduction</a></li>
+  <li><a href="#2-start-sqlite3" id="markdown-toc-2-start-sqlite3">2. Start SQLite3</a></li>
+  <li><a href="#3-create-a-table" id="markdown-toc-3-create-a-table">3. Create a Table</a></li>
+  <li><a href="#5-alter-the-table" id="markdown-toc-5-alter-the-table">5. Alter the table</a></li>
+  <li><a href="#6-add-and-remove-data" id="markdown-toc-6-add-and-remove-data">6. Add and remove data</a>    <ul>
+      <li><a href="#add-data" id="markdown-toc-add-data">Add Data</a></li>
+      <li><a href="#remove-data-from-the-table" id="markdown-toc-remove-data-from-the-table">Remove data from the table</a></li>
+      <li><a href="#update-table-data" id="markdown-toc-update-table-data">Update table data</a></li>
+    </ul>
+  </li>
+  <li><a href="#sql-to-pandas" id="markdown-toc-sql-to-pandas">SQL to Pandas</a></li>
+  <li><a href="#select-data" id="markdown-toc-select-data">Select Data</a>    <ul>
+      <li><a href="#select-just-the-name-and-color-of-each-planet" id="markdown-toc-select-just-the-name-and-color-of-each-planet">Select just the name and color of each planet</a></li>
+      <li><a href="#select-all-columns-for-each-planet-whose-mass-is-greater-than-100" id="markdown-toc-select-all-columns-for-each-planet-whose-mass-is-greater-than-100">Select all columns for each planet whose mass is greater than 1.00</a>        <ul>
+          <li><a href="#similar-query-select-the-name-and-mass-of-each-planet-whose-mass-is-less-than-or-equal-to-100" id="markdown-toc-similar-query-select-the-name-and-mass-of-each-planet-whose-mass-is-less-than-or-equal-to-100">Similar Query: Select the name and mass of each planet whose mass is less than or equal to 1.00</a></li>
+        </ul>
+      </li>
+      <li><a href="#select-the-name-and-color-of-each-planet-that-has-more-than-10-moons" id="markdown-toc-select-the-name-and-color-of-each-planet-that-has-more-than-10-moons">Select the name and color of each planet that has more than 10 moons</a>        <ul>
+          <li><a href="#similar-query-select-the-planet-that-has-at-least-one-moon-and-a-mass-less-than-100" id="markdown-toc-similar-query-select-the-planet-that-has-at-least-one-moon-and-a-mass-less-than-100">Similar Query: Select the planet that has at least one moon and a mass less than 1.00</a></li>
+        </ul>
+      </li>
+      <li><a href="#select-the-name-and-color-of-planets-that-have-a-color-of-blue-light-blue-or-dark-blue" id="markdown-toc-select-the-name-and-color-of-planets-that-have-a-color-of-blue-light-blue-or-dark-blue">Select the name and color of planets that have a color of blue, light blue, or dark blue</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ul>
+
+  </nav>
+</aside>
+<p><br /></p>
+
+<h2 id="project-description">Project Description</h2>
+
+<p>Created a datastore on SQLite3 where I added planet attributes, altered columns and queried specific data regarding the 9 planets (8 when we remove Pluto from our database!).</p>
+
+<h2 id="project-replicated-from">Project Replicated From:</h2>
+<p><a href="https://github.com/learn-co-students/dsc-1-05-06-selecting-data-lab-nyc-career-ds-102218">https://github.com/learn-co-students/dsc-1-05-06-selecting-data-lab-nyc-career-ds-102218</a></p>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p>SQLite3 is a database where I can perform SQL commands to extract the data that I want. This is an easy to use database that I can use as a file from my computer. In this project “Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query”, I’m going to create a sqlite3 object to work with, set up a table, add a column, add and remove data, and use select commands to query data about the planets. We’ll set up our sqlite3 database into a pandas dataframe that we can visually see and work easily with.</p>
+
+<h2 id="2-start-sqlite3">2. Start SQLite3</h2>
+
+<p>To use sqlite3, we must establish a connection object that represents the database. We will call sqlite3 then connect() to a new database called ‘planets.db’.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sqlite3</span> <span class="c1"># import library
+</span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'planets.db'</span><span class="p">)</span> <span class="c1"># use connect class and enter database name
+</span><span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="c1"># then use that connection and enter the cursor class
+</span></code></pre></div></div>
+
+<p>The cursor class is important because it is used to perform SQL commands. Those are the first steps for beginning a sqlite3 project.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sqlite3</span> <span class="c1"># import library
+</span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">'planets.db'</span><span class="p">)</span> <span class="c1"># use connect class and enter database name
+</span><span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="c1"># then use that connection and enter the cursor class
+</span></code></pre></div></div>
+
+<h2 id="3-create-a-table">3. Create a Table</h2>
+
+<p>I’d like to start the project with what the author’s background story. The scenario, “NASA is interested in comparing each planet across several characteristics.  They want to know each planet’s name,  color, number of moons, and mass (relative to earth).  Your columns should be the following types:”</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>column</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>integer</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td>num_of_moons</td>
+      <td>integer</td>
+    </tr>
+    <tr>
+      <td>mass</td>
+      <td>real</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Notes:</strong> Make sure to set the <code class="highlighter-rouge">id</code> column as the table’s primary key.”</p>
+</blockquote>
+
+<p>We use our cursor object and execute() to perform a SQL command. I was originally trying to add to the database without ‘cur.execute’ but that would the computer does not know what I’m coding.  We’ll need a triple “”” before and after each command. I’ve also used a single quotation and it worked too. It may be a preference. Please let me know if you know why.</p>
+
+<p>First I created the command format:<br /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""CREATE TABLE database_name
+(column DATATYPE PRIMARY-KEY-IF-IT-IS,
+column DATATYPE,
+column DATATYPE);
+
+"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>After a successful execution, it will return a cursor object.</p>
+
+<p><em>My thoughts</em>:
+Follow closely to the format I wrote out above
+Make sure to add id primary key</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""CREATE TABLE planets
+(id INTEGER PRIMARY KEY,
+name TEXT,
+color TEXT,
+num_of_moons INTEGER,
+mass REAL);
+
+"""</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This query also returns cursor object.</p>
+
+<h2 id="5-alter-the-table">5. Alter the table</h2>
+
+<p>We can update our table columns by using the ALTER TABLE command.<br /></p>
+
+<p>Since our imaginary NASA notices that several planets have rings around them, we will add a new column that shows if a planet has rings or not. In other words, we need a boolean data type.<br /></p>
+
+<p>First I’ll type out cur.execute() to make a command to our table. It has similar syntax to CREATE TABLE.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""ALTER TABLE planets
+ADD COLUMN rings BOOLEAN;
+"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="6-add-and-remove-data">6. Add and remove data</h2>
+
+<h3 id="add-data">Add Data</h3>
+
+<p>The author has a table of planet data to add to our datastore. To save time typing out the data, the author recommends feeling free to open up the cell and copy/pasting some of the text to modify into our insert command. You could copy each row in the database, highlight each string and press ‘ . Remove the arrow in between each value and replace it with a ‘,’ .</p>
+
+<p>Note: sqlite3 does not use boolean values and instead uses 0 for false and 1 for true. Therefore, when I insert the data into the columns, I replace the yes/no values to 0/1 integers.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>color</th>
+      <th>num_of_moons</th>
+      <th>mass</th>
+      <th>rings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mercury</td>
+      <td>gray</td>
+      <td>0</td>
+      <td>0.55</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Venus</td>
+      <td>yellow</td>
+      <td>0</td>
+      <td>0.82</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Earth</td>
+      <td>blue</td>
+      <td>1</td>
+      <td>1.00</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Mars</td>
+      <td>red</td>
+      <td>2</td>
+      <td>0.11</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Jupiter</td>
+      <td>orange</td>
+      <td>53</td>
+      <td>317.90</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Saturn</td>
+      <td>hazel</td>
+      <td>62</td>
+      <td>95.19</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>Uranus</td>
+      <td>light blue</td>
+      <td>27</td>
+      <td>14.54</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>Neptune</td>
+      <td>dark blue</td>
+      <td>14</td>
+      <td>17.15</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>Pluto</td>
+      <td>brown</td>
+      <td>5</td>
+      <td>0.003</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#For each row, the format goes like:
+</span>
+<span class="c1"># cur.execute("""INSERT INTO (database name) (column_names) VALUE (column_values); """)
+</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""INSERT INTO planets
+(name, color, num_of_moons, mass, rings) VALUES ('Mercury', 'gray', 0, 0.55, 0),
+('Venus', 'yellow', 0, 0.82, 0),
+('Earth', 'blue', 1,1.00,0),
+('Mars', 'red', 2, 0.11, 0),
+('Jupiter', 'orange', 53, 317.90, 0),
+('Saturn', 'hazel', 62, 95.19, 1),
+('Uranus', 'light blue', 27, 14.54, 1),
+('Neptune', 'dark blue', 14, 17.15, 1),
+('Pluto', 'brown', 5, 0.003, 0);
+
+
+"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;sqlite3.Cursor at 0x10aa11d50&gt;
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""INSERT INTO planets
+(name, color, num_of_moons, mass, rings) VALUES ('Mercury', 'gray', 0, 0.55, 0),
+('Venus', 'yellow', 0, 0.82, 0),
+('Earth', 'blue', 1,1.00,0),
+('Mars', 'red', 2, 0.11, 0),
+('Jupiter', 'orange', 53, 317.90, 0),
+('Saturn', 'hazel', 62, 95.19, 1),
+('Uranus', 'light blue', 27, 14.54, 1),
+('Neptune', 'dark blue', 14, 17.15, 1),
+('Pluto', 'brown', 5, 0.003, 0);
+
+
+"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;sqlite3.Cursor at 0x110e9b180&gt;
+</code></pre></div></div>
+
+<h3 id="remove-data-from-the-table">Remove data from the table</h3>
+
+<p>Since Pluto is no longer a planet, we’ll remove it from the table using the DELETE FROM command.</p>
+
+<p>It’s getting easier to type things out without referring to the tutorial! The syntax is consistent throughout the different SQL commands.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""DELETE FROM planets
+WHERE name = 'Pluto';
+
+"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It’s getting easier to type things out without needing to refer to the tutorial! The syntax is consistent throughout the different SQL commands.</p>
+
+<h3 id="update-table-data">Update table data</h3>
+
+<p>The author says that NASA found out that Jupiter has 15 more moons so we use the <code class="highlighter-rouge">UPDATE</code> command to <code class="highlighter-rouge">SET</code> the number of moons column to 53 for the Jupiter row</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Similar syntax as above
+</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""UPDATE planets
+SET num_of_moons = 53 WHERE name = 'Jupiter';
+
+
+
+"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;sqlite3.Cursor at 0x10aa11d50&gt;
+</code></pre></div></div>
+
+<h2 id="sql-to-pandas">SQL to Pandas</h2>
+
+<p>Below is the <code class="highlighter-rouge">planets.db</code> database information that we just entered above. This was used from the author’s repo.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>color</th>
+      <th>num_of_moons</th>
+      <th>mass</th>
+      <th>rings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mercury</td>
+      <td>gray</td>
+      <td>0</td>
+      <td>0.55</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Venus</td>
+      <td>yellow</td>
+      <td>0</td>
+      <td>0.82</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Earth</td>
+      <td>blue</td>
+      <td>1</td>
+      <td>1.00</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Mars</td>
+      <td>red</td>
+      <td>2</td>
+      <td>0.11</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Jupiter</td>
+      <td>orange</td>
+      <td>67</td>
+      <td>317.90</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>Saturn</td>
+      <td>hazel</td>
+      <td>62</td>
+      <td>95.19</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>Uranus</td>
+      <td>light blue</td>
+      <td>27</td>
+      <td>14.54</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>Neptune</td>
+      <td>dark blue</td>
+      <td>14</td>
+      <td>17.15</td>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We will turn our planets database into a pandas dataframe for easier acces to our data. We continue to use cur.execute to perform SQL commands. The author first turns our data into a list and then converts the list into a dataframe.</p>
+
+<p>We use cur.execute(SQL command to select what data we want).fetchall() to retrieve all data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span> <span class="c1"># import pandas to use
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The command retrieves a list of all of our data
+</span><span class="n">results</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""select * from planets;"""</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="n">results</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(1, 'Mercury', 'gray', 0, 0.55, 0),
+ (2, 'Venus', 'yellow', 0, 0.82, 0),
+ (3, 'Earth', 'blue', 1, 1.0, 0),
+ (4, 'Mars', 'red', 2, 0.11, 0),
+ (5, 'Jupiter', 'orange', 53, 317.9, 0),
+ (6, 'Saturn', 'hazel', 62, 95.19, 1),
+ (7, 'Uranus', 'light blue', 27, 14.54, 1),
+ (8, 'Neptune', 'dark blue', 14, 17.15, 1)]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Then turn the list into a dataframe
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="c1"># input data into DataFrame parameter
+</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Mercury</td>
+      <td>gray</td>
+      <td>0</td>
+      <td>0.55</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Venus</td>
+      <td>yellow</td>
+      <td>0</td>
+      <td>0.82</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Earth</td>
+      <td>blue</td>
+      <td>1</td>
+      <td>1.00</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Mars</td>
+      <td>red</td>
+      <td>2</td>
+      <td>0.11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Jupiter</td>
+      <td>orange</td>
+      <td>53</td>
+      <td>317.90</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Columns are listed 0-5. We need to change them into our planets columns!</p>
+
+<p><code class="highlighter-rouge">cur.description()</code> pulls up a list of column names in tuple form. We can use it to extract the column names and plug it into <code class="highlighter-rouge">df.columns</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cur</span><span class="o">.</span><span class="n">description</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(('id', None, None, None, None, None, None),
+ ('name', None, None, None, None, None, None),
+ ('color', None, None, None, None, None, None),
+ ('num_of_moons', None, None, None, None, None, None),
+ ('mass', None, None, None, None, None, None),
+ ('rings', None, None, None, None, None, None))
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Creating column names
+</span>
+<span class="c1"># Breaking down the for loop in steps
+</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">description</span><span class="p">:</span>
+    <span class="n">columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+
+<span class="c1">#Or you can do this with list comprehension, which the author used
+</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">description</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['id', 'name', 'color', 'num_of_moons', 'mass', 'rings'], dtype='object')
+</code></pre></div></div>
+
+<p>Author recommends using a function to do this all in one step in case you want to do this multiple times or create a dataframe with different data. We will need to use this function to turn our SQL queries into pandas dataframes. This will make selecting data a breeze.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sql_select_to_df</span><span class="p">(</span><span class="n">SQL_COMMAND</span><span class="p">,</span> <span class="n">cur</span><span class="o">=</span><span class="n">cur</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">SQL_COMMAND</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span>  <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">description</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></div>
+
+<p>I created it by plugging in each line of code I used above and replaced the SQL command with a parameter.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">'''select * from planets;'''</span><span class="p">)</span> <span class="c1"># query to look at our entire database
+</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># to save space we'll see the top 5
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>color</th>
+      <th>num_of_moons</th>
+      <th>mass</th>
+      <th>rings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Mercury</td>
+      <td>gray</td>
+      <td>0</td>
+      <td>0.55</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Venus</td>
+      <td>yellow</td>
+      <td>0</td>
+      <td>0.82</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Earth</td>
+      <td>blue</td>
+      <td>1</td>
+      <td>1.00</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Mars</td>
+      <td>red</td>
+      <td>2</td>
+      <td>0.11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Jupiter</td>
+      <td>orange</td>
+      <td>53</td>
+      <td>317.90</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="select-data">Select Data</h2>
+
+<p>Below are several queries to select data from our df dataframe. There are a few that have queries similar to the one before it so I nested it under without the output. I also have 2 solutions that are different from the author’s. Let’s go!</p>
+
+<h3 id="select-just-the-name-and-color-of-each-planet">Select just the name and color of each planet</h3>
+
+<p>I love how this function turns all my queries into pandas dataframes. I find this very useful for looking at the data in this form. At first I messed up the SQL query by mixing up the order of the column names and values but I nailed it after. The query syntax is easy: select the column names of what you want from the name of your database! It gets easier.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">'''select name, color FROM planets'''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mercury</td>
+      <td>gray</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Venus</td>
+      <td>yellow</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Earth</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mars</td>
+      <td>red</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jupiter</td>
+      <td>orange</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Saturn</td>
+      <td>hazel</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Uranus</td>
+      <td>light blue</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Neptune</td>
+      <td>dark blue</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>I love how this function turns all my queries into pandas dataframes. I find this very useful for looking at the data in this form. At first I messed up the SQL query but nailed it after. The query syntax is easy: select the column names of what you want from the name of your database! Select all columns for each planet whose mass is greater than 1.00</p>
+
+<h3 id="select-all-columns-for-each-planet-whose-mass-is-greater-than-100">Select all columns for each planet whose mass is greater than 1.00</h3>
+
+<p>The query syntax is snowballing off of each other in terms of easiness. The query syntax below: select all columns(*) from the name of your database WHERE the column name and conditional.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">'''select * from planets WHERE mass &gt; 1.00'''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>color</th>
+      <th>num_of_moons</th>
+      <th>mass</th>
+      <th>rings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5</td>
+      <td>Jupiter</td>
+      <td>orange</td>
+      <td>53</td>
+      <td>317.90</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>Saturn</td>
+      <td>hazel</td>
+      <td>62</td>
+      <td>95.19</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>Uranus</td>
+      <td>light blue</td>
+      <td>27</td>
+      <td>14.54</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8</td>
+      <td>Neptune</td>
+      <td>dark blue</td>
+      <td>14</td>
+      <td>17.15</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h4 id="similar-query-select-the-name-and-mass-of-each-planet-whose-mass-is-less-than-or-equal-to-100">Similar Query: Select the name and mass of each planet whose mass is less than or equal to 1.00</h4>
+<p>Essentially the same code except that we switch the greater than sign to less than sign. I will combine the code and my comments.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">'''select * from planets WHERE mass &lt;= 1.00'''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="select-the-name-and-color-of-each-planet-that-has-more-than-10-moons">Select the name and color of each planet that has more than 10 moons</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">'''select name, color from planets where num_of_moons &gt; 10'''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jupiter</td>
+      <td>orange</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Saturn</td>
+      <td>hazel</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Uranus</td>
+      <td>light blue</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Neptune</td>
+      <td>dark blue</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Note: If we want to check our answer, we can always look back at the ‘df’ dataframe we first created by entering the code df.</p>
+
+<h4 id="similar-query-select-the-planet-that-has-at-least-one-moon-and-a-mass-less-than-100">Similar Query: Select the planet that has at least one moon and a mass less than 1.00</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">'''select name from planets WHERE num_of_moons &gt;= 1 AND mass &lt; 1.00'''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>The author has it differently</em>: The query asked for the planet with a mass less than 1.00. The author’s query is:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">"""select * from planets where num_of_moons &gt;=1 and mass &lt;= 1;"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>I may be totally wrong.</p>
+
+<h3 id="select-the-name-and-color-of-planets-that-have-a-color-of-blue-light-blue-or-dark-blue">Select the name and color of planets that have a color of blue, light blue, or dark blue</h3>
+
+<p>This was a really tricky one! But I’m so glad it worked out. I didn’t want to use multiple OR or AND statements in order to get the planets with ‘blue’ in their names. After looking online, I found a post that nailed it.
+<a href="https://stackoverflow.com/questions/32734233/sql-select-rows-where-column-contains-any-of-word-from-string">https://stackoverflow.com/questions/32734233/sql-select-rows-where-column-contains-any-of-word-from-string</a></p>
+
+<p>We use the LIKE SQL command to return values that contain that word.</p>
+
+<p>Then we use the % wildcard operator that makes returns values that are after or after blue, which in our case is ‘light’ or ‘dark’.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">"""select name, color FROM planets WHERE color LIKE '</span><span class="si">%</span><span class="s">blue</span><span class="si">%</span><span class="s">'"""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Earth</td>
+      <td>blue</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Uranus</td>
+      <td>light blue</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Neptune</td>
+      <td>dark blue</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The author does it differently - instead of using <code class="highlighter-rouge">LIKE</code> as I have, the author used <code class="highlighter-rouge">WHERE</code> and then listed the conditionals individually. My query is simpler because it does not require someone to type out all the column names and colors. However, I think the author’s query would be a good idea if there were types of blues that you would not have wanted like sky blue or navy blue.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sql_select_to_df</span><span class="p">(</span><span class="s">"""SELECT name,
+                           color
+                           FROM planets
+                           WHERE color == 'blue'
+                           OR color == 'light blue'
+                           OR color == 'dark blue';
+                 """</span>
+                <span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Author ends with, “Congratulations! NASA is one step closer to embarking upon its mission to Mars. In this lab, we created a table to track all the planets in the solar system, altered the table to include another column, inserted values to populate the table, and we deleted data from the table. Then we practiced writing select statements that query a single table to get specific information. We also used other clauses and specified column names to cherry pick the data we wanted to retrieve.”</p>
+
+<p>We went over how to create a connection with the sqlite3 database. Then we used sql queries to create a table called planets into the database called planets.db. Then we made some changes using alter table and update. After, we created a function that transforms our queries into a dataframe. Finally, we made several SQL queries using WHERE, LIKE and the ‘&gt;’ ‘&lt;’ operators.</p>
+
+<p>This project we went over several key SQL commands that I know will serve me well in data science. It lays the foundation to create tables and then make basic queries with it. We also have some queries that are different from how the author did it. As they have more experience and knowledge than me, I may be incorrect in that their solution is better – cleaner, optimized. That being said, I stick to my strong reasoning that mine are correct.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+<p>With these basic SQL queries demonstrated within this project, I want to not only continue to practice them but also find them in future queries that are more advanced.</p>
+
+<p>Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#api" class="page__taxonomy-item" rel="tag">API</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#json" class="page__taxonomy-item" rel="tag">JSON</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#music-data" class="page__taxonomy-item" rel="tag">music data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#pandas" class="page__taxonomy-item" rel="tag">pandas</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#extract-data" class="page__taxonomy-item" rel="tag">Extract Data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#store-data" class="page__taxonomy-item" rel="tag">Store Data</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-16T00:00:00+08:00">August 16, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Created+a+Database+of+Planet+Information+to+Store+Data+so+That+Our+Imaginary+NASA+Has+Data+to+Query%20http%3A%2F%2Flocalhost%3A4000%2Fstore%2520data%2Fextract%2520data%2Fnasa-select-data%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fstore%2520data%2Fextract%2520data%2Fnasa-select-data%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fstore%2520data%2Fextract%2520data%2Fnasa-select-data%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/store%20data/extract%20data/seatgeek-extract-data/" class="pagination--pager" title="Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/store%20data/extract%20data/seatgeek-extract-data/" rel="permalink">Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">It’s always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/import%20data/pyspark-by-example/" rel="permalink">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get into the Chicago Reported Crime Dataset to find out…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/visualize%20data/lifecycle-of-a-plot/" rel="permalink">Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">We will visualize sample sales data using Matplotlib…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/extract%20data/hacker-news-api/" rel="permalink">Used API calls to extract top articles from Hacker News (YCombinator)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get the top stories with the most comments…
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact Info:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email Me</a></li>
+        
+      
+        
+          <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Chris Chung. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+  </body>
+</html>

@@ -161,17 +161,12 @@ This data science portfolio is comprised of projects covering the full spectrum 
       {% for i in (1..tooltags_max) reversed %}
         {% for tooltag in site.tooltags %}
           {% if tooltag[1].size == i %}
-            <section id="{{ tooltag[0] | slugify | downcase }}" class="taxonomy__section">
-              <h2 class="archive__subtitle">{{ tooltag[0] }}</h2>
-              <div class="entries-{{ page.entries_layout | default: 'list' }}">
-                {% for post in tooltag.last %}
-                  {% include archive-single.html type=page.entries_layout %}
-                {% endfor %}
-              </div>
-              <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
-            </section>
+            <id="{{ tooltag[0] | slugify | downcase }}" class="taxonomy__section">
+
+
           {% endif %}
         {% endfor %}
       {% endfor %}
+
 
       <h3>Project Tags: Data<h3>

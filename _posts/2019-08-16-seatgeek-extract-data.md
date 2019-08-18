@@ -3,9 +3,9 @@ title: "Constructed Functions to Extract Live Concert Music Data from SeatGeek's
 
 date: 2019-08-16
 tags: [pandas, API, python, JSON, music data]
-categories: [Import Data, Extract Data]
+categories: [Store Data, Extract Data]
 header:
-  image: "/images/live-concert-blue-bg-header.jpg"
+  image: "/images/seatgeek-extract-data/live-concert-blue-bg-header.jpg"
 excerpt: "It's always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet..."
 mathjax: "true"
 classes: wide #expand the page

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-16T18:40:26+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Chung</title><subtitle>Data Science Project Portfolio</subtitle><author><name>Chris Chung</name></author><entry><title type="html">Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API</title><link href="http://localhost:4000/import%20data/extract%20data/seatgeek-extract-data/" rel="alternate" type="text/html" title="Constructed Functions to Extract Live Concert Music Data from SeatGeek's API" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/import%20data/extract%20data/seatgeek-extract-data</id><content type="html" xml:base="http://localhost:4000/import%20data/extract%20data/seatgeek-extract-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-18T12:58:31+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Chung</title><subtitle>Data Science Project Portfolio</subtitle><author><name>Chris Chung</name></author><entry><title type="html">Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API</title><link href="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/" rel="alternate" type="text/html" title="Constructed Functions to Extract Live Concert Music Data from SeatGeek's API" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -480,7 +480,908 @@
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;In this project, we accessed SeatGeek’s API by following their documentation on &lt;a href=&quot;https://platform.seatgeek.com/&quot;&gt;https://platform.seatgeek.com/&lt;/a&gt;. We took a bird’s eye view of all data and what’s available for us to extract. Then we honed in on NY concert data and created a function that pulls all the information that I want. Finally we saved it into a json file and converted it into a dataframe for easier access.&lt;/p&gt;
 
-&lt;p&gt;Looking online for more info on saving JSON files, I reminded myself that many other people are also looking programming information up and–people are providing this information for us. This community is vast and I love how people are in different stages getting involved.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="pandas" /><category term="API" /><category term="python" /><category term="JSON" /><category term="music data" /><summary type="html">It's always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet...</summary></entry><entry><title type="html">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)</title><link href="http://localhost:4000/import%20data/extract%20data/pyspark-by-example/" rel="alternate" type="text/html" title="Utilized the Spark DataFrame API to extract data from Chicago's Reported Crime Dataset (2001-2018)" /><published>2019-08-15T00:00:00+08:00</published><updated>2019-08-15T00:00:00+08:00</updated><id>http://localhost:4000/import%20data/extract%20data/pyspark-by-example</id><content type="html" xml:base="http://localhost:4000/import%20data/extract%20data/pyspark-by-example/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Looking online for more info on saving JSON files, I reminded myself that many other people are also looking programming information up and–people are providing this information for us. This community is vast and I love how people are in different stages getting involved.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="pandas" /><category term="API" /><category term="python" /><category term="JSON" /><category term="music data" /><summary type="html">It's always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet...</summary></entry><entry><title type="html">Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query</title><link href="http://localhost:4000/store%20data/extract%20data/nasa-select-data/" rel="alternate" type="text/html" title="Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/store%20data/extract%20data/nasa-select-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/nasa-select-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;nav class=&quot;toc&quot;&gt;
+    &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
+&lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#project-description&quot; id=&quot;markdown-toc-project-description&quot;&gt;Project Description&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#project-replicated-from&quot; id=&quot;markdown-toc-project-replicated-from&quot;&gt;Project Replicated From:&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-introduction&quot; id=&quot;markdown-toc-1-introduction&quot;&gt;1. Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-start-sqlite3&quot; id=&quot;markdown-toc-2-start-sqlite3&quot;&gt;2. Start SQLite3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-create-a-table&quot; id=&quot;markdown-toc-3-create-a-table&quot;&gt;3. Create a Table&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5-alter-the-table&quot; id=&quot;markdown-toc-5-alter-the-table&quot;&gt;5. Alter the table&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#6-add-and-remove-data&quot; id=&quot;markdown-toc-6-add-and-remove-data&quot;&gt;6. Add and remove data&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#add-data&quot; id=&quot;markdown-toc-add-data&quot;&gt;Add Data&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#remove-data-from-the-table&quot; id=&quot;markdown-toc-remove-data-from-the-table&quot;&gt;Remove data from the table&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#update-table-data&quot; id=&quot;markdown-toc-update-table-data&quot;&gt;Update table data&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sql-to-pandas&quot; id=&quot;markdown-toc-sql-to-pandas&quot;&gt;SQL to Pandas&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#select-data&quot; id=&quot;markdown-toc-select-data&quot;&gt;Select Data&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#select-just-the-name-and-color-of-each-planet&quot; id=&quot;markdown-toc-select-just-the-name-and-color-of-each-planet&quot;&gt;Select just the name and color of each planet&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#select-all-columns-for-each-planet-whose-mass-is-greater-than-100&quot; id=&quot;markdown-toc-select-all-columns-for-each-planet-whose-mass-is-greater-than-100&quot;&gt;Select all columns for each planet whose mass is greater than 1.00&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#similar-query-select-the-name-and-mass-of-each-planet-whose-mass-is-less-than-or-equal-to-100&quot; id=&quot;markdown-toc-similar-query-select-the-name-and-mass-of-each-planet-whose-mass-is-less-than-or-equal-to-100&quot;&gt;Similar Query: Select the name and mass of each planet whose mass is less than or equal to 1.00&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#select-the-name-and-color-of-each-planet-that-has-more-than-10-moons&quot; id=&quot;markdown-toc-select-the-name-and-color-of-each-planet-that-has-more-than-10-moons&quot;&gt;Select the name and color of each planet that has more than 10 moons&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#similar-query-select-the-planet-that-has-at-least-one-moon-and-a-mass-less-than-100&quot; id=&quot;markdown-toc-similar-query-select-the-planet-that-has-at-least-one-moon-and-a-mass-less-than-100&quot;&gt;Similar Query: Select the planet that has at least one moon and a mass less than 1.00&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#select-the-name-and-color-of-planets-that-have-a-color-of-blue-light-blue-or-dark-blue&quot; id=&quot;markdown-toc-select-the-name-and-color-of-planets-that-have-a-color-of-blue-light-blue-or-dark-blue&quot;&gt;Select the name and color of planets that have a color of blue, light blue, or dark blue&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#next-steps&quot; id=&quot;markdown-toc-next-steps&quot;&gt;Next Steps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/nav&gt;
+&lt;/aside&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;project-description&quot;&gt;Project Description&lt;/h2&gt;
+
+&lt;p&gt;Created a datastore on SQLite3 where I added planet attributes, altered columns and queried specific data regarding the 9 planets (8 when we remove Pluto from our database!).&lt;/p&gt;
+
+&lt;h2 id=&quot;project-replicated-from&quot;&gt;Project Replicated From:&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/learn-co-students/dsc-1-05-06-selecting-data-lab-nyc-career-ds-102218&quot;&gt;https://github.com/learn-co-students/dsc-1-05-06-selecting-data-lab-nyc-career-ds-102218&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
+
+&lt;p&gt;SQLite3 is a database where I can perform SQL commands to extract the data that I want. This is an easy to use database that I can use as a file from my computer. In this project “Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query”, I’m going to create a sqlite3 object to work with, set up a table, add a column, add and remove data, and use select commands to query data about the planets. We’ll set up our sqlite3 database into a pandas dataframe that we can visually see and work easily with.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-start-sqlite3&quot;&gt;2. Start SQLite3&lt;/h2&gt;
+
+&lt;p&gt;To use sqlite3, we must establish a connection object that represents the database. We will call sqlite3 then connect() to a new database called ‘planets.db’.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlite3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# import library
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqlite3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'planets.db'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# use connect class and enter database name
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# then use that connection and enter the cursor class
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The cursor class is important because it is used to perform SQL commands. Those are the first steps for beginning a sqlite3 project.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlite3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# import library
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqlite3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'planets.db'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# use connect class and enter database name
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# then use that connection and enter the cursor class
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;3-create-a-table&quot;&gt;3. Create a Table&lt;/h2&gt;
+
+&lt;p&gt;I’d like to start the project with what the author’s background story. The scenario, “NASA is interested in comparing each planet across several characteristics.  They want to know each planet’s name,  color, number of moons, and mass (relative to earth).  Your columns should be the following types:”&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;column&lt;/th&gt;
+      &lt;th&gt;type&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;id&lt;/td&gt;
+      &lt;td&gt;integer&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;name&lt;/td&gt;
+      &lt;td&gt;text&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;color&lt;/td&gt;
+      &lt;td&gt;text&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;num_of_moons&lt;/td&gt;
+      &lt;td&gt;integer&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;mass&lt;/td&gt;
+      &lt;td&gt;real&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Notes:&lt;/strong&gt; Make sure to set the &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; column as the table’s primary key.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We use our cursor object and execute() to perform a SQL command. I was originally trying to add to the database without ‘cur.execute’ but that would the computer does not know what I’m coding.  We’ll need a triple “”” before and after each command. I’ve also used a single quotation and it worked too. It may be a preference. Please let me know if you know why.&lt;/p&gt;
+
+&lt;p&gt;First I created the command format:&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;CREATE TABLE database_name
+(column DATATYPE PRIMARY-KEY-IF-IT-IS,
+column DATATYPE,
+column DATATYPE);
+
+&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After a successful execution, it will return a cursor object.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;My thoughts&lt;/em&gt;:
+Follow closely to the format I wrote out above
+Make sure to add id primary key&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;CREATE TABLE planets
+(id INTEGER PRIMARY KEY,
+name TEXT,
+color TEXT,
+num_of_moons INTEGER,
+mass REAL);
+
+&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This query also returns cursor object.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-alter-the-table&quot;&gt;5. Alter the table&lt;/h2&gt;
+
+&lt;p&gt;We can update our table columns by using the ALTER TABLE command.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since our imaginary NASA notices that several planets have rings around them, we will add a new column that shows if a planet has rings or not. In other words, we need a boolean data type.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;First I’ll type out cur.execute() to make a command to our table. It has similar syntax to CREATE TABLE.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;ALTER TABLE planets
+ADD COLUMN rings BOOLEAN;
+&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;6-add-and-remove-data&quot;&gt;6. Add and remove data&lt;/h2&gt;
+
+&lt;h3 id=&quot;add-data&quot;&gt;Add Data&lt;/h3&gt;
+
+&lt;p&gt;The author has a table of planet data to add to our datastore. To save time typing out the data, the author recommends feeling free to open up the cell and copy/pasting some of the text to modify into our insert command. You could copy each row in the database, highlight each string and press ‘ . Remove the arrow in between each value and replace it with a ‘,’ .&lt;/p&gt;
+
+&lt;p&gt;Note: sqlite3 does not use boolean values and instead uses 0 for false and 1 for true. Therefore, when I insert the data into the columns, I replace the yes/no values to 0/1 integers.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;color&lt;/th&gt;
+      &lt;th&gt;num_of_moons&lt;/th&gt;
+      &lt;th&gt;mass&lt;/th&gt;
+      &lt;th&gt;rings&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mercury&lt;/td&gt;
+      &lt;td&gt;gray&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.55&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Venus&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.82&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Earth&lt;/td&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1.00&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mars&lt;/td&gt;
+      &lt;td&gt;red&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;0.11&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jupiter&lt;/td&gt;
+      &lt;td&gt;orange&lt;/td&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;317.90&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Saturn&lt;/td&gt;
+      &lt;td&gt;hazel&lt;/td&gt;
+      &lt;td&gt;62&lt;/td&gt;
+      &lt;td&gt;95.19&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Uranus&lt;/td&gt;
+      &lt;td&gt;light blue&lt;/td&gt;
+      &lt;td&gt;27&lt;/td&gt;
+      &lt;td&gt;14.54&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Neptune&lt;/td&gt;
+      &lt;td&gt;dark blue&lt;/td&gt;
+      &lt;td&gt;14&lt;/td&gt;
+      &lt;td&gt;17.15&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Pluto&lt;/td&gt;
+      &lt;td&gt;brown&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;0.003&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#For each row, the format goes like:
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# cur.execute(&quot;&quot;&quot;INSERT INTO (database name) (column_names) VALUE (column_values); &quot;&quot;&quot;)
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;INSERT INTO planets
+(name, color, num_of_moons, mass, rings) VALUES ('Mercury', 'gray', 0, 0.55, 0),
+('Venus', 'yellow', 0, 0.82, 0),
+('Earth', 'blue', 1,1.00,0),
+('Mars', 'red', 2, 0.11, 0),
+('Jupiter', 'orange', 53, 317.90, 0),
+('Saturn', 'hazel', 62, 95.19, 1),
+('Uranus', 'light blue', 27, 14.54, 1),
+('Neptune', 'dark blue', 14, 17.15, 1),
+('Pluto', 'brown', 5, 0.003, 0);
+
+
+&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;sqlite3.Cursor at 0x10aa11d50&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;INSERT INTO planets
+(name, color, num_of_moons, mass, rings) VALUES ('Mercury', 'gray', 0, 0.55, 0),
+('Venus', 'yellow', 0, 0.82, 0),
+('Earth', 'blue', 1,1.00,0),
+('Mars', 'red', 2, 0.11, 0),
+('Jupiter', 'orange', 53, 317.90, 0),
+('Saturn', 'hazel', 62, 95.19, 1),
+('Uranus', 'light blue', 27, 14.54, 1),
+('Neptune', 'dark blue', 14, 17.15, 1),
+('Pluto', 'brown', 5, 0.003, 0);
+
+
+&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;sqlite3.Cursor at 0x110e9b180&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;remove-data-from-the-table&quot;&gt;Remove data from the table&lt;/h3&gt;
+
+&lt;p&gt;Since Pluto is no longer a planet, we’ll remove it from the table using the DELETE FROM command.&lt;/p&gt;
+
+&lt;p&gt;It’s getting easier to type things out without referring to the tutorial! The syntax is consistent throughout the different SQL commands.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;DELETE FROM planets
+WHERE name = 'Pluto';
+
+&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It’s getting easier to type things out without needing to refer to the tutorial! The syntax is consistent throughout the different SQL commands.&lt;/p&gt;
+
+&lt;h3 id=&quot;update-table-data&quot;&gt;Update table data&lt;/h3&gt;
+
+&lt;p&gt;The author says that NASA found out that Jupiter has 15 more moons so we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;UPDATE&lt;/code&gt; command to &lt;code class=&quot;highlighter-rouge&quot;&gt;SET&lt;/code&gt; the number of moons column to 53 for the Jupiter row&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Similar syntax as above
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;UPDATE planets
+SET num_of_moons = 53 WHERE name = 'Jupiter';
+
+
+
+&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;sqlite3.Cursor at 0x10aa11d50&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;sql-to-pandas&quot;&gt;SQL to Pandas&lt;/h2&gt;
+
+&lt;p&gt;Below is the &lt;code class=&quot;highlighter-rouge&quot;&gt;planets.db&lt;/code&gt; database information that we just entered above. This was used from the author’s repo.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;color&lt;/th&gt;
+      &lt;th&gt;num_of_moons&lt;/th&gt;
+      &lt;th&gt;mass&lt;/th&gt;
+      &lt;th&gt;rings&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mercury&lt;/td&gt;
+      &lt;td&gt;gray&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.55&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Venus&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.82&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Earth&lt;/td&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1.00&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mars&lt;/td&gt;
+      &lt;td&gt;red&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;0.11&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jupiter&lt;/td&gt;
+      &lt;td&gt;orange&lt;/td&gt;
+      &lt;td&gt;67&lt;/td&gt;
+      &lt;td&gt;317.90&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Saturn&lt;/td&gt;
+      &lt;td&gt;hazel&lt;/td&gt;
+      &lt;td&gt;62&lt;/td&gt;
+      &lt;td&gt;95.19&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Uranus&lt;/td&gt;
+      &lt;td&gt;light blue&lt;/td&gt;
+      &lt;td&gt;27&lt;/td&gt;
+      &lt;td&gt;14.54&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Neptune&lt;/td&gt;
+      &lt;td&gt;dark blue&lt;/td&gt;
+      &lt;td&gt;14&lt;/td&gt;
+      &lt;td&gt;17.15&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;We will turn our planets database into a pandas dataframe for easier acces to our data. We continue to use cur.execute to perform SQL commands. The author first turns our data into a list and then converts the list into a dataframe.&lt;/p&gt;
+
+&lt;p&gt;We use cur.execute(SQL command to select what data we want).fetchall() to retrieve all data.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# import pandas to use
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# The command retrieves a list of all of our data
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;select * from planets;&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetchall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[(1, 'Mercury', 'gray', 0, 0.55, 0),
+ (2, 'Venus', 'yellow', 0, 0.82, 0),
+ (3, 'Earth', 'blue', 1, 1.0, 0),
+ (4, 'Mars', 'red', 2, 0.11, 0),
+ (5, 'Jupiter', 'orange', 53, 317.9, 0),
+ (6, 'Saturn', 'hazel', 62, 95.19, 1),
+ (7, 'Uranus', 'light blue', 27, 14.54, 1),
+ (8, 'Neptune', 'dark blue', 14, 17.15, 1)]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Then turn the list into a dataframe
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# input data into DataFrame parameter
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;th&gt;5&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Mercury&lt;/td&gt;
+      &lt;td&gt;gray&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.55&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Venus&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.82&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Earth&lt;/td&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1.00&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Mars&lt;/td&gt;
+      &lt;td&gt;red&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;0.11&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Jupiter&lt;/td&gt;
+      &lt;td&gt;orange&lt;/td&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;317.90&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Columns are listed 0-5. We need to change them into our planets columns!&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cur.description()&lt;/code&gt; pulls up a list of column names in tuple form. We can use it to extract the column names and plug it into &lt;code class=&quot;highlighter-rouge&quot;&gt;df.columns&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(('id', None, None, None, None, None, None),
+ ('name', None, None, None, None, None, None),
+ ('color', None, None, None, None, None, None),
+ ('num_of_moons', None, None, None, None, None, None),
+ ('mass', None, None, None, None, None, None),
+ ('rings', None, None, None, None, None, None))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Creating column names
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Breaking down the for loop in steps
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#Or you can do this with list comprehension, which the author used
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Index(['id', 'name', 'color', 'num_of_moons', 'mass', 'rings'], dtype='object')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Author recommends using a function to do this all in one step in case you want to do this multiple times or create a dataframe with different data. We will need to use this function to turn our SQL queries into pandas dataframes. This will make selecting data a breeze.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SQL_COMMAND&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SQL_COMMAND&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetchall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I created it by plugging in each line of code I used above and replaced the SQL command with a parameter.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'''select * from planets;'''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# query to look at our entire database
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# to save space we'll see the top 5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;color&lt;/th&gt;
+      &lt;th&gt;num_of_moons&lt;/th&gt;
+      &lt;th&gt;mass&lt;/th&gt;
+      &lt;th&gt;rings&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Mercury&lt;/td&gt;
+      &lt;td&gt;gray&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.55&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Venus&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.82&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Earth&lt;/td&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1.00&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;Mars&lt;/td&gt;
+      &lt;td&gt;red&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;0.11&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Jupiter&lt;/td&gt;
+      &lt;td&gt;orange&lt;/td&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;317.90&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;select-data&quot;&gt;Select Data&lt;/h2&gt;
+
+&lt;p&gt;Below are several queries to select data from our df dataframe. There are a few that have queries similar to the one before it so I nested it under without the output. I also have 2 solutions that are different from the author’s. Let’s go!&lt;/p&gt;
+
+&lt;h3 id=&quot;select-just-the-name-and-color-of-each-planet&quot;&gt;Select just the name and color of each planet&lt;/h3&gt;
+
+&lt;p&gt;I love how this function turns all my queries into pandas dataframes. I find this very useful for looking at the data in this form. At first I messed up the SQL query by mixing up the order of the column names and values but I nailed it after. The query syntax is easy: select the column names of what you want from the name of your database! It gets easier.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'''select name, color FROM planets'''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;color&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Mercury&lt;/td&gt;
+      &lt;td&gt;gray&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Venus&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Earth&lt;/td&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Mars&lt;/td&gt;
+      &lt;td&gt;red&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Jupiter&lt;/td&gt;
+      &lt;td&gt;orange&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;Saturn&lt;/td&gt;
+      &lt;td&gt;hazel&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;Uranus&lt;/td&gt;
+      &lt;td&gt;light blue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;Neptune&lt;/td&gt;
+      &lt;td&gt;dark blue&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I love how this function turns all my queries into pandas dataframes. I find this very useful for looking at the data in this form. At first I messed up the SQL query but nailed it after. The query syntax is easy: select the column names of what you want from the name of your database! Select all columns for each planet whose mass is greater than 1.00&lt;/p&gt;
+
+&lt;h3 id=&quot;select-all-columns-for-each-planet-whose-mass-is-greater-than-100&quot;&gt;Select all columns for each planet whose mass is greater than 1.00&lt;/h3&gt;
+
+&lt;p&gt;The query syntax is snowballing off of each other in terms of easiness. The query syntax below: select all columns(*) from the name of your database WHERE the column name and conditional.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'''select * from planets WHERE mass &amp;gt; 1.00'''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;color&lt;/th&gt;
+      &lt;th&gt;num_of_moons&lt;/th&gt;
+      &lt;th&gt;mass&lt;/th&gt;
+      &lt;th&gt;rings&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Jupiter&lt;/td&gt;
+      &lt;td&gt;orange&lt;/td&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;317.90&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;Saturn&lt;/td&gt;
+      &lt;td&gt;hazel&lt;/td&gt;
+      &lt;td&gt;62&lt;/td&gt;
+      &lt;td&gt;95.19&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Uranus&lt;/td&gt;
+      &lt;td&gt;light blue&lt;/td&gt;
+      &lt;td&gt;27&lt;/td&gt;
+      &lt;td&gt;14.54&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Neptune&lt;/td&gt;
+      &lt;td&gt;dark blue&lt;/td&gt;
+      &lt;td&gt;14&lt;/td&gt;
+      &lt;td&gt;17.15&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;similar-query-select-the-name-and-mass-of-each-planet-whose-mass-is-less-than-or-equal-to-100&quot;&gt;Similar Query: Select the name and mass of each planet whose mass is less than or equal to 1.00&lt;/h4&gt;
+&lt;p&gt;Essentially the same code except that we switch the greater than sign to less than sign. I will combine the code and my comments.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'''select * from planets WHERE mass &amp;lt;= 1.00'''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;select-the-name-and-color-of-each-planet-that-has-more-than-10-moons&quot;&gt;Select the name and color of each planet that has more than 10 moons&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'''select name, color from planets where num_of_moons &amp;gt; 10'''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;color&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Jupiter&lt;/td&gt;
+      &lt;td&gt;orange&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Saturn&lt;/td&gt;
+      &lt;td&gt;hazel&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Uranus&lt;/td&gt;
+      &lt;td&gt;light blue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Neptune&lt;/td&gt;
+      &lt;td&gt;dark blue&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note: If we want to check our answer, we can always look back at the ‘df’ dataframe we first created by entering the code df.&lt;/p&gt;
+
+&lt;h4 id=&quot;similar-query-select-the-planet-that-has-at-least-one-moon-and-a-mass-less-than-100&quot;&gt;Similar Query: Select the planet that has at least one moon and a mass less than 1.00&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'''select name from planets WHERE num_of_moons &amp;gt;= 1 AND mass &amp;lt; 1.00'''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;The author has it differently&lt;/em&gt;: The query asked for the planet with a mass less than 1.00. The author’s query is:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;select * from planets where num_of_moons &amp;gt;=1 and mass &amp;lt;= 1;&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I may be totally wrong.&lt;/p&gt;
+
+&lt;h3 id=&quot;select-the-name-and-color-of-planets-that-have-a-color-of-blue-light-blue-or-dark-blue&quot;&gt;Select the name and color of planets that have a color of blue, light blue, or dark blue&lt;/h3&gt;
+
+&lt;p&gt;This was a really tricky one! But I’m so glad it worked out. I didn’t want to use multiple OR or AND statements in order to get the planets with ‘blue’ in their names. After looking online, I found a post that nailed it.
+&lt;a href=&quot;https://stackoverflow.com/questions/32734233/sql-select-rows-where-column-contains-any-of-word-from-string&quot;&gt;https://stackoverflow.com/questions/32734233/sql-select-rows-where-column-contains-any-of-word-from-string&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We use the LIKE SQL command to return values that contain that word.&lt;/p&gt;
+
+&lt;p&gt;Then we use the % wildcard operator that makes returns values that are after or after blue, which in our case is ‘light’ or ‘dark’.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;select name, color FROM planets WHERE color LIKE '&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;color&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Earth&lt;/td&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Uranus&lt;/td&gt;
+      &lt;td&gt;light blue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Neptune&lt;/td&gt;
+      &lt;td&gt;dark blue&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The author does it differently - instead of using &lt;code class=&quot;highlighter-rouge&quot;&gt;LIKE&lt;/code&gt; as I have, the author used &lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt; and then listed the conditionals individually. My query is simpler because it does not require someone to type out all the column names and colors. However, I think the author’s query would be a good idea if there were types of blues that you would not have wanted like sky blue or navy blue.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sql_select_to_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;SELECT name,
+                           color
+                           FROM planets
+                           WHERE color == 'blue'
+                           OR color == 'light blue'
+                           OR color == 'dark blue';
+                 &quot;&quot;&quot;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Author ends with, “Congratulations! NASA is one step closer to embarking upon its mission to Mars. In this lab, we created a table to track all the planets in the solar system, altered the table to include another column, inserted values to populate the table, and we deleted data from the table. Then we practiced writing select statements that query a single table to get specific information. We also used other clauses and specified column names to cherry pick the data we wanted to retrieve.”&lt;/p&gt;
+
+&lt;p&gt;We went over how to create a connection with the sqlite3 database. Then we used sql queries to create a table called planets into the database called planets.db. Then we made some changes using alter table and update. After, we created a function that transforms our queries into a dataframe. Finally, we made several SQL queries using WHERE, LIKE and the ‘&amp;gt;’ ‘&amp;lt;’ operators.&lt;/p&gt;
+
+&lt;p&gt;This project we went over several key SQL commands that I know will serve me well in data science. It lays the foundation to create tables and then make basic queries with it. We also have some queries that are different from how the author did it. As they have more experience and knowledge than me, I may be incorrect in that their solution is better – cleaner, optimized. That being said, I stick to my strong reasoning that mine are correct.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
+&lt;p&gt;With these basic SQL queries demonstrated within this project, I want to not only continue to practice them but also find them in future queries that are more advanced.&lt;/p&gt;
+
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="pandas" /><category term="API" /><category term="python" /><category term="JSON" /><category term="music data" /><summary type="html">SQLite3 is a database where I can perform SQL commands to extract...</summary></entry><entry><title type="html">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)</title><link href="http://localhost:4000/import%20data/pyspark-by-example/" rel="alternate" type="text/html" title="Utilized the Spark DataFrame API to extract data from Chicago's Reported Crime Dataset (2001-2018)" /><published>2019-08-15T00:00:00+08:00</published><updated>2019-08-15T00:00:00+08:00</updated><id>http://localhost:4000/import%20data/pyspark-by-example</id><content type="html" xml:base="http://localhost:4000/import%20data/pyspark-by-example/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -1252,7 +2153,7 @@ Comments: 0
     2. What are the parameters of the HackerNews API? &lt;br /&gt; &lt;a href=&quot;https://github.com/HackerNews/API&quot;&gt;https://github.com/HackerNews/API&lt;/a&gt;&lt;br /&gt;
     3. What is the purpose ‘\n’?&lt;br /&gt; &lt;a href=&quot;https://teamtreehouse.com/community/why-does-the-print-syntax-append-a-n-at-the-end-of-a-line&quot;&gt;https://teamtreehouse.com/community/why-does-the-print-syntax-append-a-n-at-the-end-of-a-line&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="API" /><category term="python" /><summary type="html">Let's get the top stories with the most comments...</summary></entry><entry><title type="html">Used K-means Clustering to Visualize Dominant Colors in an Image</title><link href="http://localhost:4000/transform%20data/model%20data/next%20steps/color-clustering/" rel="alternate" type="text/html" title="Used K-means Clustering to Visualize Dominant Colors in an Image" /><published>2019-08-09T00:00:00+08:00</published><updated>2019-08-09T00:00:00+08:00</updated><id>http://localhost:4000/transform%20data/model%20data/next%20steps/color-clustering</id><content type="html" xml:base="http://localhost:4000/transform%20data/model%20data/next%20steps/color-clustering/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="API" /><category term="python" /><summary type="html">Let's get the top stories with the most comments...</summary></entry><entry><title type="html">Used K-means Clustering to Visualize Dominant Colors in an Image</title><link href="http://localhost:4000/transform%20data/model%20data/color-clustering/" rel="alternate" type="text/html" title="Used K-means Clustering to Visualize Dominant Colors in an Image" /><published>2019-08-09T00:00:00+08:00</published><updated>2019-08-09T00:00:00+08:00</updated><id>http://localhost:4000/transform%20data/model%20data/color-clustering</id><content type="html" xml:base="http://localhost:4000/transform%20data/model%20data/color-clustering/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
