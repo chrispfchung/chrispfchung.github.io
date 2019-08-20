@@ -17,7 +17,7 @@ classes: wide #expand the page
 Cleaning concert data from SeatGeek that were previously extracted using a data pipeline in my previous project. We will use pandas to examine what data is available, deal with missing values and tidy up formatting. This dataset may be used in several projects including but not limited to creating interactive dashboards showing upcoming events for someone trying to sell their tickets or see what events are available and k-means clustering to group the concerts by category. I'm curious to find out what unsupervised learning will discover!
 
 ## Introduction
-It's a cliché that data cleaning takes 85% or so of a data scientists time. In this project, "I want to have multiple purposes for this data. 1) for an interactive dashboard and 2) machine learning if possible. Super ambitious, unrealistic at times, dreaming and not expecting how much work it actually takes to finish something ambitious.
+It's a cliché that data cleaning takes 85% or so of a data scientists time. In this project, "I want to have multiple purposes for this data. 1) for an interactive dashboard and 2) machine learning if possible. I can get super ambitious, unrealistic at times, but would love to eventually see this dataset come to life!
 
 ## Load Libraries and Dataset
 
@@ -52,22 +52,23 @@ df.isna().sum() # find out categories are missing data
 
 
     announce_date             0
-    average_price             0
+    average_price           982
     date&time_event           0
     event_title               0
     highest_price           982
     lowest_price            982
-    median_price              0
-    performer_genre           0
+    median_price            982
+    performer_genre         725
     performer_name            0
     ticket_listing_count    982
+    type_event                0
     upcoming_events?          0
     url                       0
     venue_capacity            0
     venue_city                0
     venue_name                0
     venue_score               0
-    venue_zipcode             0
+    venue_zipcode             3
     visible_until_utc         0
     dtype: int64
 
@@ -85,7 +86,7 @@ I think there are 3 reasons why there is missing ticket price info.
 
 
 ```python
-df[df['average_price'].isna()].sample(3) # We are looking at 'date&time_event' column
+df[df['average_price'].isna()].sample(3) # My reasons based on looking at 'date&time_event' column
 ```
 
 
@@ -132,70 +133,70 @@ df[df['average_price'].isna()].sample(3) # We are looking at 'date&time_event' c
   </thead>
   <tbody>
     <tr>
-      <th>418</th>
-      <td>2019-05-31T00:00:00</td>
+      <th>1963</th>
+      <td>2019-07-24T00:00:00</td>
       <td>NaN</td>
-      <td>2019-08-28T19:00:00</td>
-      <td>Mutilatred Skincarver Livid All You Know is Hell</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>2019-10-25T20:00:00</td>
+      <td>Nightfall</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>Mutilatred Skincarver Livid All You Know is Hell</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Nightfall</td>
       <td>NaN</td>
       <td>concert</td>
       <td>True</td>
-      <td>https://seatgeek.com/mutilatred-skincarver-liv...</td>
+      <td>https://seatgeek.com/nightfall-tickets/brookly...</td>
       <td>0</td>
       <td>Brooklyn</td>
-      <td>The Kingsland Bar and Grill</td>
+      <td>Green-Wood</td>
       <td>0.000000</td>
-      <td>11222</td>
-      <td>2019-08-29T03:00:00</td>
+      <td>11232</td>
+      <td>2019-10-26T04:00:00</td>
     </tr>
     <tr>
-      <th>703</th>
-      <td>2019-06-13T00:00:00</td>
+      <th>1251</th>
+      <td>2019-06-10T00:00:00</td>
       <td>NaN</td>
-      <td>2019-09-07T20:00:00</td>
-      <td>The Budos Band</td>
+      <td>2019-09-25T20:00:00</td>
+      <td>AbbeyRoad50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>AbbeyRoad50</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/abbeyroad50-tickets/new-y...</td>
+      <td>0</td>
+      <td>New York</td>
+      <td>Rockwood Music Hall - Stage 2</td>
+      <td>0.000000</td>
+      <td>10002</td>
+      <td>2019-09-26T04:00:00</td>
+    </tr>
+    <tr>
+      <th>794</th>
+      <td>2019-07-24T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-09-11T20:30:00</td>
+      <td>The Unlikely Candidates (18+)</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>Pop</td>
-      <td>The Budos Band</td>
+      <td>The Unlikely Candidates</td>
       <td>NaN</td>
       <td>concert</td>
       <td>True</td>
-      <td>https://seatgeek.com/the-budos-band-tickets/br...</td>
-      <td>0</td>
+      <td>https://seatgeek.com/the-unlikely-candidates-1...</td>
+      <td>250</td>
       <td>Brooklyn</td>
-      <td>Industry City</td>
-      <td>0.000000</td>
-      <td>11232</td>
-      <td>2019-09-08T04:00:00</td>
-    </tr>
-    <tr>
-      <th>743</th>
-      <td>2019-08-09T00:00:00</td>
-      <td>NaN</td>
-      <td>2019-09-09T20:00:00</td>
-      <td>Jules &amp; The Jinks</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Jules &amp; The Jinks</td>
-      <td>NaN</td>
-      <td>concert</td>
-      <td>True</td>
-      <td>https://seatgeek.com/jules-and-the-jinks-ticke...</td>
-      <td>600</td>
-      <td>Brooklyn</td>
-      <td>Brooklyn Bowl</td>
-      <td>0.527452</td>
-      <td>11201</td>
-      <td>2019-09-10T04:00:00</td>
+      <td>Rough Trade NYC</td>
+      <td>0.513713</td>
+      <td>11249</td>
+      <td>2019-09-12T04:30:00</td>
     </tr>
   </tbody>
 </table>
@@ -530,42 +531,21 @@ df.performer_genre.replace(np.NaN, 'NaN', inplace=True) #replace NaN values with
 
 I'm going to leave this as is because if there's no tickets on sale, I'm not going to change that.
 
+### Confirm Complete
+
 
 ```python
-# Confirm: Highest, lowest price and ticket listing count have not been changed
+# Highest, lowest price and ticket listing count still have missing values, that's intentional
 # All other missing data have been handled
 df.isna().sum()
+None
 ```
-
-
-
-
-    announce_date             0
-    average_price             0
-    date&time_event           0
-    event_title               0
-    highest_price           982
-    lowest_price            982
-    median_price              0
-    performer_genre           0
-    performer_name            0
-    ticket_listing_count    982
-    type_event                0
-    upcoming_events?          0
-    url                       0
-    venue_capacity            0
-    venue_city                0
-    venue_name                0
-    venue_score               0
-    venue_zipcode             0
-    visible_until_utc         0
-    dtype: int64
-
-
 
 ## DateTime
 
 ### Convert String Date Columns into DateTime
+
+I plan to use the DateTime column to pick and choose what day/time to use. Eventually I want to visualize the events based on time and day. Below I convert any date related columns into DateTime columns.
 
 
 ```python
@@ -584,11 +564,12 @@ type(df['announce_date'][0]) # pandas._libs.tslibs.timestamps.Timestamp
 None
 ```
 
-## Drop Uneccessary Columns
+## Drop Any Uneccessary Column
+
+I'm going to drop the 'Type_event' column because all the events are concerts.
 
 
 ```python
-# Type_event I'm going to drop this column as all are concerts
 df[df['type_event'].str.contains('concert')]
 df.drop(columns='type_event',inplace=True)
 ```
@@ -643,67 +624,67 @@ df.sample(3)
   </thead>
   <tbody>
     <tr>
-      <th>469</th>
-      <td>2019-04-16</td>
-      <td>127.0</td>
-      <td>2019-08-30 19:00:00</td>
-      <td>Brantley Gilbert with Michael Ray</td>
-      <td>464.0</td>
-      <td>40.0</td>
-      <td>105.0</td>
-      <td>Country</td>
-      <td>Brantley Gilbert</td>
-      <td>270.0</td>
-      <td>True</td>
-      <td>https://seatgeek.com/brantley-gilbert-with-mic...</td>
-      <td>21000</td>
-      <td>Darien Center</td>
-      <td>Darien Lake Performing Arts Center</td>
-      <td>0.718968</td>
-      <td>14040</td>
-      <td>2019-08-31 03:00:00</td>
-    </tr>
-    <tr>
-      <th>1660</th>
-      <td>2019-05-29</td>
-      <td>184.0</td>
-      <td>2019-10-11 20:00:00</td>
-      <td>Renaissance</td>
-      <td>426.0</td>
-      <td>78.0</td>
-      <td>171.0</td>
+      <th>1905</th>
+      <td>2019-04-02</td>
+      <td>378.0</td>
+      <td>2019-10-22 19:30:00</td>
+      <td>Ghost with Nothing More</td>
+      <td>11079.0</td>
+      <td>23.0</td>
+      <td>121.0</td>
       <td>Pop</td>
-      <td>Renaissance</td>
-      <td>28.0</td>
+      <td>Ghost</td>
+      <td>180.0</td>
       <td>True</td>
-      <td>https://seatgeek.com/renaissance-tickets/new-y...</td>
-      <td>1495</td>
-      <td>New York</td>
-      <td>The Town Hall</td>
-      <td>0.612554</td>
-      <td>10036</td>
-      <td>2019-10-12 04:00:00</td>
+      <td>https://seatgeek.com/ghost-with-nothing-more-t...</td>
+      <td>8000</td>
+      <td>Syracuse</td>
+      <td>War Memorial At OnCenter</td>
+      <td>0.579858</td>
+      <td>13202</td>
+      <td>2019-10-23 03:30:00</td>
     </tr>
     <tr>
-      <th>2352</th>
-      <td>2019-04-20</td>
-      <td>242.0</td>
-      <td>2019-11-16 20:00:00</td>
-      <td>Joe Bonamassa</td>
-      <td>1233.0</td>
-      <td>112.0</td>
-      <td>197.0</td>
-      <td>Rock</td>
-      <td>Joe Bonamassa</td>
-      <td>350.0</td>
+      <th>657</th>
+      <td>2019-04-04</td>
+      <td>67.0</td>
+      <td>2019-09-06 20:00:00</td>
+      <td>Blackberry Smoke with Simo (21+)</td>
+      <td>106.0</td>
+      <td>53.0</td>
+      <td>64.0</td>
+      <td>Country</td>
+      <td>Blackberry Smoke</td>
+      <td>25.0</td>
       <td>True</td>
-      <td>https://seatgeek.com/joe-bonamassa-tickets/new...</td>
-      <td>2894</td>
-      <td>New York</td>
-      <td>Beacon Theatre</td>
-      <td>0.741140</td>
-      <td>10023</td>
-      <td>2019-11-17 05:00:00</td>
+      <td>https://seatgeek.com/blackberry-smoke-with-sim...</td>
+      <td>600</td>
+      <td>Brooklyn</td>
+      <td>Brooklyn Bowl</td>
+      <td>0.527452</td>
+      <td>11201</td>
+      <td>2019-09-07 04:00:00</td>
+    </tr>
+    <tr>
+      <th>1903</th>
+      <td>2019-06-03</td>
+      <td>176.0</td>
+      <td>2019-10-22 19:00:00</td>
+      <td>The California Honeydrops</td>
+      <td>387.0</td>
+      <td>49.0</td>
+      <td>156.0</td>
+      <td>Blues</td>
+      <td>The California Honeydrops</td>
+      <td>12.0</td>
+      <td>True</td>
+      <td>https://seatgeek.com/the-california-honeydrops...</td>
+      <td>200</td>
+      <td>Pawling</td>
+      <td>Daryl's House</td>
+      <td>0.448582</td>
+      <td>12564</td>
+      <td>2019-10-23 03:00:00</td>
     </tr>
   </tbody>
 </table>
@@ -720,3 +701,8 @@ It was tricky deciding what to do with missing values. At the back of my mind, i
 Happy to get feedback on my project. Thank you.
 
 <div class="alert alert-block alert-success"> The answer to the fun fact is Hozier. The average price for one of his tickets was $34003! </div>
+
+
+```python
+
+```
