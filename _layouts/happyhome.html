@@ -137,36 +137,5 @@ This data science portfolio is comprised of projects covering the full spectrum 
 
     <h3>Project Tags: Techniques<h3>
 
-      {% assign tooltags_max = 0 %}
-      {% for tooltag in site.tooltags %}
-        {% if tooltag[1].size > tooltags_max %}
-          {% assign tooltags_max = tooltag[1].size %}
-        {% endif %}
-      {% endfor %}
-
-      <ul class="taxonomy__index">
-        {% for i in (1..tooltags_max) reversed %}
-          {% for tooltag in site.tooltags %}
-            {% if tooltag[1].size == i %}
-              <li>
-                <a href="#{{ tooltag[0] | slugify }}">
-                  <strong>{{ tooltag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
-                </a>
-              </li>
-            {% endif %}
-          {% endfor %}
-        {% endfor %}
-      </ul>
-
-      {% for i in (1..tooltags_max) reversed %}
-        {% for tooltag in site.tooltags %}
-          {% if tooltag[1].size == i %}
-            <id="{{ tooltag[0] | slugify | downcase }}" class="taxonomy__section">
-
-
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
-
 
       <h3>Project Tags: Data<h3>
