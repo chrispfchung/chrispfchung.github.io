@@ -1,0 +1,1317 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis - Chris Chung</title>
+<meta name="description" content="It’s a cliché that data cleaning takes 85% …">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Chris Chung">
+<meta property="og:title" content="Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis">
+<meta property="og:url" content="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/">
+
+
+  <meta property="og:description" content="It’s a cliché that data cleaning takes 85% …">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/images/seatgeek-data-cleaning/concert-header.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-08-16T00:00:00+08:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chris Chung",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+  <meta name="google-site-verification" content="eTEQHHs6V5HyxKsaNQsx3NZ6pw6ULe6bYc0B2x4-RrU" />
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chris Chung Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Chris Chung
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/" >Projects</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/images/seatgeek-data-cleaning/concert-header.jpg" alt="Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-pic.png" alt="Chris Chung" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chris Chung</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Data Science Project Portfolio</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact Info</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">New York, NY</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> chrispfchung@gmail.com</a></li>
+          
+        
+          
+            <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis">
+    <meta itemprop="description" content="It’s a cliché that data cleaning takes 85% …">
+    <meta itemprop="datePublished" content="August 16, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#load-libraries-and-dataset" id="markdown-toc-load-libraries-and-dataset">Load Libraries and Dataset</a></li>
+  <li><a href="#missing-data" id="markdown-toc-missing-data">Missing Data</a>    <ul>
+      <li><a href="#missing-prices" id="markdown-toc-missing-prices">Missing Prices</a></li>
+      <li><a href="#unavailable-venue-score" id="markdown-toc-unavailable-venue-score">Unavailable Venue Score</a></li>
+      <li><a href="#unavailable-venue-capacity" id="markdown-toc-unavailable-venue-capacity">Unavailable Venue Capacity</a></li>
+      <li><a href="#missing-venue-zipcode" id="markdown-toc-missing-venue-zipcode">Missing Venue Zipcode</a></li>
+      <li><a href="#missing-performer-genre" id="markdown-toc-missing-performer-genre">Missing Performer Genre</a></li>
+      <li><a href="#missing-ticket-listing-count" id="markdown-toc-missing-ticket-listing-count">Missing Ticket Listing Count</a></li>
+      <li><a href="#confirm-complete" id="markdown-toc-confirm-complete">Confirm Complete</a></li>
+    </ul>
+  </li>
+  <li><a href="#datetime" id="markdown-toc-datetime">DateTime</a>    <ul>
+      <li><a href="#convert-string-date-columns-into-datetime" id="markdown-toc-convert-string-date-columns-into-datetime">Convert String Date Columns into DateTime</a></li>
+    </ul>
+  </li>
+  <li><a href="#drop-any-uneccessary-column" id="markdown-toc-drop-any-uneccessary-column">Drop Any Uneccessary Column</a></li>
+  <li><a href="#final-output" id="markdown-toc-final-output">Final Output</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+  </nav>
+</aside>
+<p><br /></p>
+
+<h2 id="project-description">Project Description</h2>
+<p>Cleaning concert data from SeatGeek that were previously extracted using a data pipeline in my previous project. We will use pandas to examine what data is available, deal with missing values and tidy up formatting. This dataset may be used in several projects including but not limited to creating interactive dashboards showing upcoming events for someone trying to sell their tickets or see what events are available and k-means clustering to group the concerts by category. I’m curious to find out what unsupervised learning will discover!</p>
+
+<h2 id="introduction">Introduction</h2>
+<p>It’s a cliché that data cleaning takes 85% or so of a data scientists time. In this project, “I want to have multiple purposes for this data. 1) for an interactive dashboard and 2) machine learning if possible. I can get super ambitious, unrealistic at times, but would love to eventually see this dataset come to life!</p>
+
+<h2 id="load-libraries-and-dataset">Load Libraries and Dataset</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Loading json files into dataframes. See Previous project where data came from
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s">'ny-concerts.json'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="missing-data">Missing Data</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check how much data we have
+</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># 2779 rows and 19 columns
+</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="c1"># performer_genre missing was set to '' in last project
+</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="c1"># find out categories are missing data
+</span>
+<span class="c1"># 982 tickets missing price / 725 missing performer genres / 3 missing venue zipcodes
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>announce_date             0
+average_price           982
+date&amp;time_event           0
+event_title               0
+highest_price           982
+lowest_price            982
+median_price            982
+performer_genre         725
+performer_name            0
+ticket_listing_count    982
+type_event                0
+upcoming_events?          0
+url                       0
+venue_capacity            0
+venue_city                0
+venue_name                0
+venue_score               0
+venue_zipcode             3
+visible_until_utc         0
+dtype: int64
+</code></pre></div></div>
+
+<p>With 2779 data points, my game plan is to keep as many rows as I can. It’s a lot of data to lose if I remove them! <br /><br />
+Let’s try to see why the info is missing and maybe I can find a solution to fill them in starting with prices.</p>
+
+<h3 id="missing-prices">Missing Prices</h3>
+
+<p>I think there are 3 reasons why there is missing ticket price info.</p>
+<ol>
+  <li>Ticket sales have ended</li>
+  <li>Tickets are not on sale yet</li>
+  <li>No one is selling their tickets</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'average_price'</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># My reasons based on looking at 'date&amp;time_event' column
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>announce_date</th>
+      <th>average_price</th>
+      <th>date&amp;time_event</th>
+      <th>event_title</th>
+      <th>highest_price</th>
+      <th>lowest_price</th>
+      <th>median_price</th>
+      <th>performer_genre</th>
+      <th>performer_name</th>
+      <th>ticket_listing_count</th>
+      <th>type_event</th>
+      <th>upcoming_events?</th>
+      <th>url</th>
+      <th>venue_capacity</th>
+      <th>venue_city</th>
+      <th>venue_name</th>
+      <th>venue_score</th>
+      <th>venue_zipcode</th>
+      <th>visible_until_utc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1963</th>
+      <td>2019-07-24T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-10-25T20:00:00</td>
+      <td>Nightfall</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Nightfall</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/nightfall-tickets/brookly...</td>
+      <td>0</td>
+      <td>Brooklyn</td>
+      <td>Green-Wood</td>
+      <td>0.000000</td>
+      <td>11232</td>
+      <td>2019-10-26T04:00:00</td>
+    </tr>
+    <tr>
+      <th>1251</th>
+      <td>2019-06-10T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-09-25T20:00:00</td>
+      <td>AbbeyRoad50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>AbbeyRoad50</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/abbeyroad50-tickets/new-y...</td>
+      <td>0</td>
+      <td>New York</td>
+      <td>Rockwood Music Hall - Stage 2</td>
+      <td>0.000000</td>
+      <td>10002</td>
+      <td>2019-09-26T04:00:00</td>
+    </tr>
+    <tr>
+      <th>794</th>
+      <td>2019-07-24T00:00:00</td>
+      <td>NaN</td>
+      <td>2019-09-11T20:30:00</td>
+      <td>The Unlikely Candidates (18+)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Pop</td>
+      <td>The Unlikely Candidates</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/the-unlikely-candidates-1...</td>
+      <td>250</td>
+      <td>Brooklyn</td>
+      <td>Rough Trade NYC</td>
+      <td>0.513713</td>
+      <td>11249</td>
+      <td>2019-09-12T04:30:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Upon further investigation getting a description of the data, I might want to use the median values of average_price and median_price columns because although it isn’t the true value, it won’t affect the distribution too much. Most of the data is between 25 and 189. There’s also an outlier for $34003 in average_price so I’m curious what that is.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">average_price</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="bp">None</span>
+<span class="c1"># number of priced tickets = 1797 out of 2779
+# lowest price = 25
+# highest price 340003
+# 25-75% of data is between 25 and 189
+</span></code></pre></div></div>
+
+<p><em>Let’s investigate the events with ticket prices over 1000. I show only the first 5. Remove head() to see the rest.</em><br /></p>
+<ol>
+  <li>They consist mostly of Madonna concerts for different dates. The highest priced tickets soar over 20000.</li>
+  <li>Some of the other concerts’ average prices are under 100 yet the highest ticket is way over 1000.</li>
+  <li>There’s about 200 high priced events</li>
+</ol>
+
+<p>If I replaced the average_price and median_price of tickets with the median, I think they will fit right in.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'highest_price'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># first 5
+</span></code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>announce_date</th>
+      <th>average_price</th>
+      <th>date&amp;time_event</th>
+      <th>event_title</th>
+      <th>highest_price</th>
+      <th>lowest_price</th>
+      <th>median_price</th>
+      <th>performer_genre</th>
+      <th>performer_name</th>
+      <th>ticket_listing_count</th>
+      <th>type_event</th>
+      <th>upcoming_events?</th>
+      <th>url</th>
+      <th>venue_capacity</th>
+      <th>venue_city</th>
+      <th>venue_name</th>
+      <th>venue_score</th>
+      <th>venue_zipcode</th>
+      <th>visible_until_utc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30</th>
+      <td>2019-05-30T00:00:00</td>
+      <td>294.0</td>
+      <td>2019-08-16T20:00:00</td>
+      <td>Pink</td>
+      <td>1889.0</td>
+      <td>79.0</td>
+      <td>250.0</td>
+      <td>Pop</td>
+      <td>Pink</td>
+      <td>564.0</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/pink-tickets/uniondale-ne...</td>
+      <td>16234</td>
+      <td>Uniondale</td>
+      <td>Nassau Veterans Memorial Coliseum</td>
+      <td>0.766856</td>
+      <td>11553</td>
+      <td>2019-08-17T04:00:00</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>2019-02-23T00:00:00</td>
+      <td>430.0</td>
+      <td>2019-08-17T19:00:00</td>
+      <td>Santana with The Doobie Brothers</td>
+      <td>6353.0</td>
+      <td>107.0</td>
+      <td>266.0</td>
+      <td>Country</td>
+      <td>The Doobie Brothers</td>
+      <td>95.0</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/santana-with-the-doobie-b...</td>
+      <td>15000</td>
+      <td>Bethel</td>
+      <td>Bethel Woods Center for the Arts</td>
+      <td>0.700694</td>
+      <td>12720</td>
+      <td>2019-08-18T03:00:00</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2018-11-27T00:00:00</td>
+      <td>249.0</td>
+      <td>2019-08-20T19:30:00</td>
+      <td>KISS</td>
+      <td>5549.0</td>
+      <td>54.0</td>
+      <td>147.0</td>
+      <td>Pop</td>
+      <td>KISS</td>
+      <td>679.0</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/kiss-tickets/brooklyn-new...</td>
+      <td>19000</td>
+      <td>Brooklyn</td>
+      <td>Barclays Center</td>
+      <td>0.830777</td>
+      <td>11217</td>
+      <td>2019-08-21T03:30:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Fill in average and median price with median prices
+</span><span class="n">df</span><span class="p">[</span><span class="s">'average_price'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'average_price'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'median_price'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'median_price'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Since I plan on visualizing this data, I’m going to leave highest price and lowest price missing because I want to keep that price as close as possible for people like myself to see the lowest and highest prices as they are.</p>
+
+<div class="alert alert-block alert-info">
+            <b>Fun fact:</b> The highest priced event is listed at $214749. Can you guess what artist? Hint: It's a pop artist. </div>
+
+<h3 id="unavailable-venue-score">Unavailable Venue Score</h3>
+
+<p>After listing out the value_counts for venue_score,  891 have a score of 0. That’s about 30% of the data. As per the SeatGeek API documentation, the events “are based on estimated sales volume on the secondary ticket market (normalized such that the most popular document has a score of 1).” Since we had a lot of data without ticket prices, as I did with the prices, I’m going to fill them in with the median score.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">venue_score</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.46814686
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'venue_score'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">venue_score</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It’s important to read the documentation when you’re getting stuck. Looking at “to_replace” parameter let me see what data I could put in there.
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html</a></p>
+
+<h3 id="unavailable-venue-capacity">Unavailable Venue Capacity</h3>
+
+<p>There’s 1109 rows without a venue capacity. It could be interesting to see the venue price changes depending on size. Unless I go through the events one by one to find their capacity, I’m not sure how else to find this data(any suggestions would be great!). Perhaps I could build a web scraper that goes on the web and finds it for me. Perhaps for another project. For these reasons, I will leave venue capacity at 0.</p>
+
+<h3 id="missing-venue-zipcode">Missing Venue Zipcode</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'venue_zipcode'</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>announce_date</th>
+      <th>average_price</th>
+      <th>date&amp;time_event</th>
+      <th>event_title</th>
+      <th>highest_price</th>
+      <th>lowest_price</th>
+      <th>median_price</th>
+      <th>performer_genre</th>
+      <th>performer_name</th>
+      <th>ticket_listing_count</th>
+      <th>type_event</th>
+      <th>upcoming_events?</th>
+      <th>url</th>
+      <th>venue_capacity</th>
+      <th>venue_city</th>
+      <th>venue_name</th>
+      <th>venue_score</th>
+      <th>venue_zipcode</th>
+      <th>visible_until_utc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>72</th>
+      <td>2019-08-12T00:00:00</td>
+      <td>118.0</td>
+      <td>2019-08-17T18:00:00</td>
+      <td>Bob DiGiovanna</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>98.0</td>
+      <td>NaN</td>
+      <td>Bob DiGiovanna</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/bob-digiovanna-tickets/ki...</td>
+      <td>0</td>
+      <td>Kismet</td>
+      <td>Surf's Out</td>
+      <td>0.468147</td>
+      <td>NaN</td>
+      <td>2019-08-18T02:00:00</td>
+    </tr>
+    <tr>
+      <th>1649</th>
+      <td>2019-05-22T00:00:00</td>
+      <td>118.0</td>
+      <td>2019-10-11T20:00:00</td>
+      <td>Ripe with Castlecomer</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>98.0</td>
+      <td>NaN</td>
+      <td>Ripe</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/ripe-with-castlecomer-tic...</td>
+      <td>0</td>
+      <td>Albany</td>
+      <td>Pearl St Pub</td>
+      <td>0.468147</td>
+      <td>NaN</td>
+      <td>2019-10-12T04:00:00</td>
+    </tr>
+    <tr>
+      <th>1731</th>
+      <td>2019-04-05T00:00:00</td>
+      <td>118.0</td>
+      <td>2019-10-14T19:00:00</td>
+      <td>The Broadway Musical- The Book Of Mormon</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>98.0</td>
+      <td>NaN</td>
+      <td>The Broadway Musical- The Book Of Mormon</td>
+      <td>NaN</td>
+      <td>concert</td>
+      <td>True</td>
+      <td>https://seatgeek.com/the-broadway-musical-the-...</td>
+      <td>0</td>
+      <td>New York</td>
+      <td>New York 226 W 46th St New York, NY 10036</td>
+      <td>0.468147</td>
+      <td>NaN</td>
+      <td>2019-10-15T03:00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>There’s only three events so I’m going to go through the venues’ url and manually input the zip code. Easy.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="mi">72</span><span class="p">,</span> <span class="s">'venue_zipcode'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'12207'</span> <span class="c1">#googled venue
+</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="mi">1649</span><span class="p">,</span> <span class="s">'venue_zipcode'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'07712'</span> <span class="c1">#googled city
+</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="mi">1731</span><span class="p">,</span> <span class="s">'venue_zipcode'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'10036'</span> <span class="c1"># zipcode is in the venue name
+</span></code></pre></div></div>
+
+<p>Actually, I had to look up how to change the value of one row value. Thank you to<br />
+<a href="https://stackoverflow.com/questions/19226488/change-one-value-based-on-another-value-in-pandas">https://stackoverflow.com/questions/19226488/change-one-value-based-on-another-value-in-pandas</a></p>
+
+<h3 id="missing-performer-genre">Missing Performer Genre</h3>
+
+<p>I’ve decided to make missing performer genre into it’s own category by replacing it with string ‘NaN’. I don’t want to run into any errors while modeling. The other option would’ve been to manually find their genre off their website. That would take too much time for data not necessarily critical to the project.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">performer_genre</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="s">'NaN'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1">#replace NaN values with string 'NaN'
+</span></code></pre></div></div>
+
+<h3 id="missing-ticket-listing-count">Missing Ticket Listing Count</h3>
+
+<p>I’m going to leave this as is because if there’s no tickets on sale, I’m not going to change that.</p>
+
+<h3 id="confirm-complete">Confirm Complete</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Highest, lowest price and ticket listing count still have missing values, that's intentional
+# All other missing data have been handled
+</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+<span class="bp">None</span>
+</code></pre></div></div>
+
+<h2 id="datetime">DateTime</h2>
+
+<h3 id="convert-string-date-columns-into-datetime">Convert String Date Columns into DateTime</h3>
+
+<p>I plan to use the DateTime column to pick and choose what day/time to use. Eventually I want to visualize the events based on time and day. Below I convert any date related columns into DateTime columns.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check current datatype of value date columns
+</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'announce_date'</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># str data type
+</span>
+<span class="c1"># `df.columns` to list out all columns to find remaining date columns
+</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">date_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'announce_date'</span><span class="p">,</span> <span class="s">'date&amp;time_event'</span><span class="p">,</span> <span class="s">'visible_until_utc'</span><span class="p">]</span>
+
+<span class="c1"># Change all date_columns to datetime format using a loop
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">date_columns</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'announce_date'</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># pandas._libs.tslibs.timestamps.Timestamp
+</span><span class="bp">None</span>
+</code></pre></div></div>
+
+<h2 id="drop-any-uneccessary-column">Drop Any Uneccessary Column</h2>
+
+<p>I’m going to drop the ‘Type_event’ column because all the events are concerts.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'type_event'</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s">'concert'</span><span class="p">)]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'type_event'</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="final-output">Final Output</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>announce_date</th>
+      <th>average_price</th>
+      <th>date&amp;time_event</th>
+      <th>event_title</th>
+      <th>highest_price</th>
+      <th>lowest_price</th>
+      <th>median_price</th>
+      <th>performer_genre</th>
+      <th>performer_name</th>
+      <th>ticket_listing_count</th>
+      <th>upcoming_events?</th>
+      <th>url</th>
+      <th>venue_capacity</th>
+      <th>venue_city</th>
+      <th>venue_name</th>
+      <th>venue_score</th>
+      <th>venue_zipcode</th>
+      <th>visible_until_utc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1905</th>
+      <td>2019-04-02</td>
+      <td>378.0</td>
+      <td>2019-10-22 19:30:00</td>
+      <td>Ghost with Nothing More</td>
+      <td>11079.0</td>
+      <td>23.0</td>
+      <td>121.0</td>
+      <td>Pop</td>
+      <td>Ghost</td>
+      <td>180.0</td>
+      <td>True</td>
+      <td>https://seatgeek.com/ghost-with-nothing-more-t...</td>
+      <td>8000</td>
+      <td>Syracuse</td>
+      <td>War Memorial At OnCenter</td>
+      <td>0.579858</td>
+      <td>13202</td>
+      <td>2019-10-23 03:30:00</td>
+    </tr>
+    <tr>
+      <th>657</th>
+      <td>2019-04-04</td>
+      <td>67.0</td>
+      <td>2019-09-06 20:00:00</td>
+      <td>Blackberry Smoke with Simo (21+)</td>
+      <td>106.0</td>
+      <td>53.0</td>
+      <td>64.0</td>
+      <td>Country</td>
+      <td>Blackberry Smoke</td>
+      <td>25.0</td>
+      <td>True</td>
+      <td>https://seatgeek.com/blackberry-smoke-with-sim...</td>
+      <td>600</td>
+      <td>Brooklyn</td>
+      <td>Brooklyn Bowl</td>
+      <td>0.527452</td>
+      <td>11201</td>
+      <td>2019-09-07 04:00:00</td>
+    </tr>
+    <tr>
+      <th>1903</th>
+      <td>2019-06-03</td>
+      <td>176.0</td>
+      <td>2019-10-22 19:00:00</td>
+      <td>The California Honeydrops</td>
+      <td>387.0</td>
+      <td>49.0</td>
+      <td>156.0</td>
+      <td>Blues</td>
+      <td>The California Honeydrops</td>
+      <td>12.0</td>
+      <td>True</td>
+      <td>https://seatgeek.com/the-california-honeydrops...</td>
+      <td>200</td>
+      <td>Pawling</td>
+      <td>Daryl's House</td>
+      <td>0.448582</td>
+      <td>12564</td>
+      <td>2019-10-23 03:00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this project, we used our ny-concert data from SeatGeek. We took stock of missing data and decided how we were going to deal with NaN prices and 0 value columns. We went through pricing and replaced the missing average and median prices with the median price of each respective column. We decided to leave the highest and lowest price columns as is because there were really no tickets available for those events. Because the venue_score was linked to ticket sales, I replaced the 0 value venue_scores with the median score in congruence with what we did with the ticket prices. I left venue_capacity as is as I did not have an optimal way of handling it. I also left ticket listing count at missing because there were no tickets on sale for those events. I handled missing zipcodes by googling them, easily because there were only 3. Then I made missing performer_genres in to its own category. I converted the string date columns into datetime. Finally we dropped a redundant column as all events were concerts.</p>
+
+<p>It was tricky deciding what to do with missing values. At the back of my mind, it always occurred to me whether we put something there or not, the value is not 100% true. I think this is a limitation that I wonder if someone could tell me what would be the best way to handle a certain NaN value. Nonetheless, I tried to justify my reasoning for dealing with those values. In the future, I would like to use the datetime to get a look at what events occur during what time of the day.</p>
+
+<p>Happy to get feedback on my project. Thank you.</p>
+
+<div class="alert alert-block alert-success"> The answer to the fun fact is Hozier. The average price for one of his tickets was $34003! </div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#concert-data" class="page__taxonomy-item" rel="tag">concert data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#pandas" class="page__taxonomy-item" rel="tag">pandas</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#tidy-data" class="page__taxonomy-item" rel="tag">Tidy Data</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-16T00:00:00+08:00">August 16, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Dove+into+SeatGeek+New+York+Concert+Dataset+to+Clean+Data+for+Future+Visualization+and+Analysis%20http%3A%2F%2Flocalhost%3A4000%2Ftidy%2520data%2Fseatgeek-data-cleaning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Ftidy%2520data%2Fseatgeek-data-cleaning%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Ftidy%2520data%2Fseatgeek-data-cleaning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/store%20data/extract%20data/nasa-select-data/" class="pagination--pager" title="Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query
+">Previous</a>
+    
+    
+      <a href="/postgres-window-functions/" class="pagination--pager" title="Postgres Window Functions
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/postgres-window-functions/" rel="permalink">Postgres Window Functions
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">&lt;!– —
+title: “Worked with Postgresql “
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/store%20data/extract%20data/nasa-select-data/" rel="permalink">Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  13 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">SQLite3 is a database where I can perform SQL commands to extract…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/store%20data/extract%20data/seatgeek-extract-data/" rel="permalink">Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">It’s always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/import%20data/pyspark-by-example/" rel="permalink">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Let’s get into the Chicago Reported Crime Dataset to find out…
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact Info:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email Me</a></li>
+        
+      
+        
+          <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Chris Chung. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+  </body>
+</html>

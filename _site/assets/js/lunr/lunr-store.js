@@ -31,6 +31,16 @@ var store = [{
         "teaser":null},{
         "title": "Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query",
         "excerpt":"Table of Contents Project Description Project Replicated From: 1. Introduction 2. Start SQLite3 3. Create a Table 5. Alter the table 6. Add and remove data Add Data Remove data from the table Update table data SQL to Pandas Select Data Select just the name and color of each planet...","categories": ["Store Data","Extract Data"],
-        "tags": ["pandas","API","python","JSON","music data"],
+        "tags": ["sqlite3","sample data","pandas","sql"],
         "url": "http://localhost:4000/store%20data/extract%20data/nasa-select-data/",
+        "teaser":null},{
+        "title": "Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis",
+        "excerpt":"Table of Contents Project Description Introduction Load Libraries and Dataset Missing Data Missing Prices Unavailable Venue Score Unavailable Venue Capacity Missing Venue Zipcode Missing Performer Genre Missing Ticket Listing Count Confirm Complete DateTime Convert String Date Columns into DateTime Drop Any Uneccessary Column Final Output Conclusion Project Description Cleaning concert...","categories": ["Tidy Data"],
+        "tags": ["pandas","concert data","python"],
+        "url": "http://localhost:4000/tidy%20data/seatgeek-data-cleaning/",
+        "teaser":null},{
+        "title": "Postgres Window Functions",
+        "excerpt":" ","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/postgres-window-functions/",
         "teaser":null}]
