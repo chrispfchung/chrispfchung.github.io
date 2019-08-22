@@ -4,7 +4,7 @@ title: "Utilized the Spark DataFrame API to extract data from Chicago's Reported
 date: 2019-08-15
 tags: [government data, data analysis, Spark, Google Colab]
 categories: [Import Data]
-tooltags: [Spark, PySpark]
+tooltags: [Spark, Google Colab]
 header:
   image: "/images/pyspark-by-example/police-ban.png"
 excerpt: "Let's get into the Chicago Reported Crime Dataset to find out..."

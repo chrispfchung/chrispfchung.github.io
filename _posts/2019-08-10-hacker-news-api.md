@@ -3,6 +3,7 @@ title: "Used API calls to extract top articles from Hacker News (YCombinator)"
 
 date: 2019-08-10
 tags: [API, python]
+tooltags: [python]
 categories: [Extract Data]
 header:
   image: "/images/slanted-world.jpg"
