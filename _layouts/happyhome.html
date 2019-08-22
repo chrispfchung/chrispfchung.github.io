@@ -98,11 +98,18 @@ This data science portfolio is comprised of projects covering the full spectrum 
 
 
 
+
+
+
+<!-- TAGS -->
+
+
 <h2>Project Tags<h2>
 
-  <h3>Project Tags: Tools <h3>
-<!-- tags.html -->
 
+
+  <h3><a name="tooltags"</a>Project Tags: Tools <h3>
+<!-- tags.html -->
     {% assign tags_max = 0 %}
     {% for tag in site.tags %}
       {% if tag[1].size > tags_max %}
@@ -111,9 +118,11 @@ This data science portfolio is comprised of projects covering the full spectrum 
     {% endfor %}
 
     <ul class="taxonomy__index">
+
       {% for i in (1..tags_max) reversed %}
         {% for tag in site.tags %}
           {% if tag[1].size == i %}
+
             <li>
               <a href="#{{ tag[0] | slugify }}">
                 <strong>{{ tag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
@@ -134,39 +143,25 @@ This data science portfolio is comprised of projects covering the full spectrum 
       {% endfor %}
     {% endfor %}
 
+          <h4>{% for i in (1..tags_max) reversed %}<h4>
+            {% for tag in site.tags %}
+              {% if tag[1].size == i %}
+                <section id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
+                  <h2 class="archive__subtitle">{{ tag[0] }}</h2>
+                  <div class="entries-{{ page.entries_layout | default: 'list' }}">
+                    {% for post in tag.last %}
+                      {% include archive-single.html type=page.entries_layout %}
+                    {% endfor %}
+                  </div>
+                  <a href="#tooltags" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_tools | default: 'Back to Tools' }} &uarr;</a>
+                </section>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+
+
 
     <h3>Project Tags: Techniques<h3>
-
-      {% assign tags_max = 0 %}
-      {% for tag in site.tooltags %}
-        {% if tag[1].size > tags_max %}
-          {% assign tags_max = tag[1].size %}
-        {% endif %}
-      {% endfor %}
-
-      <ul class="taxonomy__index">
-        {% for i in (1..tags_max) reversed %}
-          {% for tag in site.tooltags %}
-            {% if tag[1].size == i %}
-              <li>
-                <a href="#{{ tag[0] | slugify }}">
-                  <strong>{{ tag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
-                </a>
-              </li>
-            {% endif %}
-          {% endfor %}
-        {% endfor %}
-      </ul>
-
-      {% for i in (1..tags_max) reversed %}
-        {% for tag in site.tooltags %}
-          {% if tag[1].size == i %}
-            <id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
-
-
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
 
 
     <h3>Project Tags: Data<h3>

@@ -6,7 +6,7 @@ var store = [{
         "teaser":null},{
         "title": "Used K-means Clustering to Visualize Dominant Colors in an Image",
         "excerpt":"Table of Contents Project Description TL;DR Introduction JPG Image Basics Reading in an Image Clustering Basics Deciding # of Clusters K-means Clustering with SciPy 3 Steps to Clustering 1. Standardize Data 2. Create Cluster Centers 3. Display Dominant Colors Final Output Conclusion Project Description Used k-means clustering to visualize dominant...","categories": ["Transform Data","Model Data"],
-        "tags": ["unlabeled data","python","k-means clustering","image data"],
+        "tags": ["more tools"],
         "url": "http://localhost:4000/transform%20data/model%20data/color-clustering/",
         "teaser":null},{
         "title": "Used API calls to extract top articles from Hacker News (YCombinator)",

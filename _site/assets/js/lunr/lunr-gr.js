@@ -454,7 +454,6 @@ var idx = lunr(function () {
   this.field('excerpt')
   this.field('categories')
   this.field('tags')
-  this.field('tooltags')
   this.ref('id')
 
   this.pipeline.remove(lunr.trimmer)
@@ -467,7 +466,6 @@ var idx = lunr(function () {
       excerpt: store[item].excerpt,
       categories: store[item].categories,
       tags: store[item].tags,
-      tooltags: store[item].tooltags,
       id: item
     })
   }
