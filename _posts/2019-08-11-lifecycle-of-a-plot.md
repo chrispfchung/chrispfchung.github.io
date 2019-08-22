@@ -6,7 +6,7 @@ tags: [matplotlib, python, sales data, sample data]
 tooltags: [WORK]
 categories: [Visualize Data]
 header:
-  image: "/images/lifecycle_of_a_stock_files/stock-coins.jpg"
+  image: "/images/lifecycle-of-a-stock-files/stock-coins.jpg"
 excerpt: "We will visualize sample sales data using Matplotlib..."
 mathjax: "true"
 classes: wide #expand the page

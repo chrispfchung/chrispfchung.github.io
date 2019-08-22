@@ -5,7 +5,7 @@ date: 2019-08-16
 tags: [sqlite3, sample data, pandas, sql]
 categories: [Store Data, Extract Data]
 header:
-  image: "/images/nasa-select-/data/night-planet.jpg"
+  image: "/images/nasa-select-data/night-planet.jpg"
 excerpt: "SQLite3 is a database where I can perform SQL commands to extract..."
 mathjax: "true"
 classes: wide #expand the page

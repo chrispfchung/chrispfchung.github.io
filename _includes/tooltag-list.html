@@ -14,7 +14,7 @@
   {% assign tooltag_hashes = page_tooltags | split: ',' | sort %}
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].tooltags_label | default: "ToolTags:" }} </strong>
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].tooltags_label | default: "ToolTags:" }} </strong>
     <span itemprop="keywords">
     {% for hash in tooltag_hashes %}
       {% assign keyValue = hash | split: '|' %}
