@@ -42,6 +42,7 @@ var store = [
           {%- endif -%}
         "categories": {{ doc.categories | jsonify }},
         "tags": {{ doc.tags | jsonify }},
+        "tooltags": {{ doc.tooltags | jsonify }},
         "url": {{ doc.url | absolute_url | jsonify }},
         "teaser":
           {%- if teaser contains "://" -%}
