@@ -278,19 +278,19 @@ tooltag_archive:
   type: liquid
   path: /tooltags/
 # https://github.com/jekyll/jekyll-archives
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-    - tooltags
-  layouts:
-    category: archive-taxonomy
-    tag: archive-taxonomy
-    tooltag: archive-taxonomy
-  permalinks:
-    category: /categories/:name/
-    tag: /tags/:name/
-    tooltag: /tooltags/:name/
+# jekyll-archives:
+#   enabled:
+#     - categories
+#     - tags
+#     - tooltags
+#   layouts:
+#     category: archive-taxonomy
+#     tag: archive-taxonomy
+#     tooltag: archive-taxonomy
+#   permalinks:
+#     category: /categories/:name/
+#     tag: /tags/:name/
+#     tooltag: /tooltags/:name/
 
 
 # HTML Compression
