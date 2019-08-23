@@ -14,7 +14,7 @@
   {% assign technologytag_hashes = page_technologytags | split: ',' | sort %}
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].technologytags_label | default: "technologytags:" }} </strong>
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].technologytags_label | default: "Technology Tags:" }} </strong>
     <span itemprop="keywords">
     {% for hash in technologytag_hashes %}
       {% assign keyValue = hash | split: '|' %}
