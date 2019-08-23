@@ -14,7 +14,7 @@
   {% assign datatag_hashes = page_datatags | split: ',' | sort %}
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].datatags_label | default: "datatags:" }} </strong>
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].datatags_label | default: "Data Tags:" }} </strong>
     <span itemprop="keywords">
     {% for hash in datatag_hashes %}
       {% assign keyValue = hash | split: '|' %}

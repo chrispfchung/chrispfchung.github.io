@@ -1,0 +1,26 @@
+{% case site.techniquetag_archive.type %}
+  {% when "liquid" %}
+    {% assign path_type = "#" %}
+  {% when "jekyll-archives" %}
+    {% assign path_type = nil %}
+{% endcase %}
+
+{% if site.techniquetag_archive.path %}
+  {% comment %}
+    <!-- Sort alphabetically regardless of case e.g. a B c d E -->
+    <!-- modified from http://www.codeofclimber.ru/2015/sorting-site-tags-in-jekyll/ -->
+  {% endcomment %}
+  {% capture page_techniquetags %}{% for techniquetag in page.techniquetags %}{{ techniquetag | downcase }}|{{ techniquetag }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+  {% assign techniquetag_hashes = page_techniquetags | split: ',' | sort %}
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].techniquetags_label | default: "Technique Tags:" }} </strong>
+    <span itemprop="keywords">
+    {% for hash in techniquetag_hashes %}
+      {% assign keyValue = hash | split: '|' %}
+      {% capture techniquetag_word %}{{ keyValue[1] | strip_newlines }}{% endcapture %}
+      <a href="{{ techniquetag_word | slugify | prepend: path_type | prepend: site.techniquetag_archive.path | relative_url }}" class="page__taxonomy-item" rel="tag">{{ techniquetag_word }}</a>{% unless forloop.last %}<span class="sep">, </span>{% endunless %}
+    {% endfor %}
+    </span>
+  </p>
+{% endif %}
