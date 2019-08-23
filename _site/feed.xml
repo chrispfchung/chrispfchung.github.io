@@ -1,686 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-23T13:59:57+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Chung</title><subtitle>Data Science Project Portfolio</subtitle><author><name>Chris Chung</name></author><entry><title type="html">Postgres Window Functions</title><link href="http://localhost:4000/postgres-window-functions/" rel="alternate" type="text/html" title="Postgres Window Functions" /><published>2019-08-21T00:00:00+08:00</published><updated>2019-08-21T00:00:00+08:00</updated><id>http://localhost:4000/postgres-window-functions</id><content type="html" xml:base="http://localhost:4000/postgres-window-functions/">&lt;!-- ---
-title: &quot;Worked with Postgresql &quot;
-
-date: 2019-08-16
-tags: [pandas, concert data, python]
-categories: [Tidy Data]
-header:
-  image: &quot;/images/seatgeek-data-cleaning/concert-header.jpg&quot;
-excerpt: &quot;It's a cliché that data cleaning takes 85% ...&quot;
-mathjax: &quot;true&quot;
-classes: wide #expand the page
----
-
-&lt;aside class=&quot;sidebar__right&quot;&gt;
-&lt;nav class=&quot;toc&quot; markdown=&quot;1&quot;&gt;
-&lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
-*  Auto generated table of contents
-{:toc .toc__menu}
-&lt;/nav&gt;
-&lt;/aside&gt;&lt;br/&gt; --&gt;</content><author><name>Chris Chung</name></author><summary type="html">&amp;lt;!– — title: “Worked with Postgresql “</summary></entry><entry><title type="html">Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis</title><link href="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/" rel="alternate" type="text/html" title="Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/tidy%20data/seatgeek-data-cleaning</id><content type="html" xml:base="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/">&lt;aside class=&quot;sidebar__right&quot;&gt;
-&lt;nav class=&quot;toc&quot;&gt;
-    &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
-&lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#project-description&quot; id=&quot;markdown-toc-project-description&quot;&gt;Project Description&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#load-libraries-and-dataset&quot; id=&quot;markdown-toc-load-libraries-and-dataset&quot;&gt;Load Libraries and Dataset&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#missing-data&quot; id=&quot;markdown-toc-missing-data&quot;&gt;Missing Data&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#missing-prices&quot; id=&quot;markdown-toc-missing-prices&quot;&gt;Missing Prices&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#unavailable-venue-score&quot; id=&quot;markdown-toc-unavailable-venue-score&quot;&gt;Unavailable Venue Score&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#unavailable-venue-capacity&quot; id=&quot;markdown-toc-unavailable-venue-capacity&quot;&gt;Unavailable Venue Capacity&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#missing-venue-zipcode&quot; id=&quot;markdown-toc-missing-venue-zipcode&quot;&gt;Missing Venue Zipcode&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#missing-performer-genre&quot; id=&quot;markdown-toc-missing-performer-genre&quot;&gt;Missing Performer Genre&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#missing-ticket-listing-count&quot; id=&quot;markdown-toc-missing-ticket-listing-count&quot;&gt;Missing Ticket Listing Count&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#confirm-complete&quot; id=&quot;markdown-toc-confirm-complete&quot;&gt;Confirm Complete&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#datetime&quot; id=&quot;markdown-toc-datetime&quot;&gt;DateTime&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#convert-string-date-columns-into-datetime&quot; id=&quot;markdown-toc-convert-string-date-columns-into-datetime&quot;&gt;Convert String Date Columns into DateTime&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#drop-any-uneccessary-column&quot; id=&quot;markdown-toc-drop-any-uneccessary-column&quot;&gt;Drop Any Uneccessary Column&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#final-output&quot; id=&quot;markdown-toc-final-output&quot;&gt;Final Output&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-  &lt;/nav&gt;
-&lt;/aside&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;project-description&quot;&gt;Project Description&lt;/h2&gt;
-&lt;p&gt;Cleaning concert data from SeatGeek that were previously extracted using a data pipeline in my previous project. We will use pandas to examine what data is available, deal with missing values and tidy up formatting. This dataset may be used in several projects including but not limited to creating interactive dashboards showing upcoming events for someone trying to sell their tickets or see what events are available and k-means clustering to group the concerts by category. I’m curious to find out what unsupervised learning will discover!&lt;/p&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;It’s a cliché that data cleaning takes 85% or so of a data scientists time. In this project, “I want to have multiple purposes for this data. 1) for an interactive dashboard and 2) machine learning if possible. I can get super ambitious, unrealistic at times, but would love to eventually see this dataset come to life!&lt;/p&gt;
-
-&lt;h2 id=&quot;load-libraries-and-dataset&quot;&gt;Load Libraries and Dataset&lt;/h2&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Loading json files into dataframes. See Previous project where data came from
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ny-concerts.json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;missing-data&quot;&gt;Missing Data&lt;/h2&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Check how much data we have
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 2779 rows and 19 columns
-&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# performer_genre missing was set to '' in last project
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# find out categories are missing data
-&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# 982 tickets missing price / 725 missing performer genres / 3 missing venue zipcodes
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;announce_date             0
-average_price           982
-date&amp;amp;time_event           0
-event_title               0
-highest_price           982
-lowest_price            982
-median_price            982
-performer_genre         725
-performer_name            0
-ticket_listing_count    982
-type_event                0
-upcoming_events?          0
-url                       0
-venue_capacity            0
-venue_city                0
-venue_name                0
-venue_score               0
-venue_zipcode             3
-visible_until_utc         0
-dtype: int64
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;With 2779 data points, my game plan is to keep as many rows as I can. It’s a lot of data to lose if I remove them! &lt;br /&gt;&lt;br /&gt;
-Let’s try to see why the info is missing and maybe I can find a solution to fill them in starting with prices.&lt;/p&gt;
-
-&lt;h3 id=&quot;missing-prices&quot;&gt;Missing Prices&lt;/h3&gt;
-
-&lt;p&gt;I think there are 3 reasons why there is missing ticket price info.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Ticket sales have ended&lt;/li&gt;
-  &lt;li&gt;Tickets are not on sale yet&lt;/li&gt;
-  &lt;li&gt;No one is selling their tickets&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'average_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# My reasons based on looking at 'date&amp;amp;time_event' column
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div&gt;
-&lt;style scoped=&quot;&quot;&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr style=&quot;text-align: right;&quot;&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;announce_date&lt;/th&gt;
-      &lt;th&gt;average_price&lt;/th&gt;
-      &lt;th&gt;date&amp;amp;time_event&lt;/th&gt;
-      &lt;th&gt;event_title&lt;/th&gt;
-      &lt;th&gt;highest_price&lt;/th&gt;
-      &lt;th&gt;lowest_price&lt;/th&gt;
-      &lt;th&gt;median_price&lt;/th&gt;
-      &lt;th&gt;performer_genre&lt;/th&gt;
-      &lt;th&gt;performer_name&lt;/th&gt;
-      &lt;th&gt;ticket_listing_count&lt;/th&gt;
-      &lt;th&gt;type_event&lt;/th&gt;
-      &lt;th&gt;upcoming_events?&lt;/th&gt;
-      &lt;th&gt;url&lt;/th&gt;
-      &lt;th&gt;venue_capacity&lt;/th&gt;
-      &lt;th&gt;venue_city&lt;/th&gt;
-      &lt;th&gt;venue_name&lt;/th&gt;
-      &lt;th&gt;venue_score&lt;/th&gt;
-      &lt;th&gt;venue_zipcode&lt;/th&gt;
-      &lt;th&gt;visible_until_utc&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1963&lt;/th&gt;
-      &lt;td&gt;2019-07-24T00:00:00&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;2019-10-25T20:00:00&lt;/td&gt;
-      &lt;td&gt;Nightfall&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;Nightfall&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/nightfall-tickets/brookly...&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;Brooklyn&lt;/td&gt;
-      &lt;td&gt;Green-Wood&lt;/td&gt;
-      &lt;td&gt;0.000000&lt;/td&gt;
-      &lt;td&gt;11232&lt;/td&gt;
-      &lt;td&gt;2019-10-26T04:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1251&lt;/th&gt;
-      &lt;td&gt;2019-06-10T00:00:00&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;2019-09-25T20:00:00&lt;/td&gt;
-      &lt;td&gt;AbbeyRoad50&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;AbbeyRoad50&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/abbeyroad50-tickets/new-y...&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;New York&lt;/td&gt;
-      &lt;td&gt;Rockwood Music Hall - Stage 2&lt;/td&gt;
-      &lt;td&gt;0.000000&lt;/td&gt;
-      &lt;td&gt;10002&lt;/td&gt;
-      &lt;td&gt;2019-09-26T04:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;794&lt;/th&gt;
-      &lt;td&gt;2019-07-24T00:00:00&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;2019-09-11T20:30:00&lt;/td&gt;
-      &lt;td&gt;The Unlikely Candidates (18+)&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;Pop&lt;/td&gt;
-      &lt;td&gt;The Unlikely Candidates&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/the-unlikely-candidates-1...&lt;/td&gt;
-      &lt;td&gt;250&lt;/td&gt;
-      &lt;td&gt;Brooklyn&lt;/td&gt;
-      &lt;td&gt;Rough Trade NYC&lt;/td&gt;
-      &lt;td&gt;0.513713&lt;/td&gt;
-      &lt;td&gt;11249&lt;/td&gt;
-      &lt;td&gt;2019-09-12T04:30:00&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Upon further investigation getting a description of the data, I might want to use the median values of average_price and median_price columns because although it isn’t the true value, it won’t affect the distribution too much. Most of the data is between 25 and 189. There’s also an outlier for $34003 in average_price so I’m curious what that is.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;average_price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# number of priced tickets = 1797 out of 2779
-# lowest price = 25
-# highest price 340003
-# 25-75% of data is between 25 and 189
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Let’s investigate the events with ticket prices over 1000. I show only the first 5. Remove head() to see the rest.&lt;/em&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;They consist mostly of Madonna concerts for different dates. The highest priced tickets soar over 20000.&lt;/li&gt;
-  &lt;li&gt;Some of the other concerts’ average prices are under 100 yet the highest ticket is way over 1000.&lt;/li&gt;
-  &lt;li&gt;There’s about 200 high priced events&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;If I replaced the average_price and median_price of tickets with the median, I think they will fit right in.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'highest_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# first 5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div&gt;
-&lt;style scoped=&quot;&quot;&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr style=&quot;text-align: right;&quot;&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;announce_date&lt;/th&gt;
-      &lt;th&gt;average_price&lt;/th&gt;
-      &lt;th&gt;date&amp;amp;time_event&lt;/th&gt;
-      &lt;th&gt;event_title&lt;/th&gt;
-      &lt;th&gt;highest_price&lt;/th&gt;
-      &lt;th&gt;lowest_price&lt;/th&gt;
-      &lt;th&gt;median_price&lt;/th&gt;
-      &lt;th&gt;performer_genre&lt;/th&gt;
-      &lt;th&gt;performer_name&lt;/th&gt;
-      &lt;th&gt;ticket_listing_count&lt;/th&gt;
-      &lt;th&gt;type_event&lt;/th&gt;
-      &lt;th&gt;upcoming_events?&lt;/th&gt;
-      &lt;th&gt;url&lt;/th&gt;
-      &lt;th&gt;venue_capacity&lt;/th&gt;
-      &lt;th&gt;venue_city&lt;/th&gt;
-      &lt;th&gt;venue_name&lt;/th&gt;
-      &lt;th&gt;venue_score&lt;/th&gt;
-      &lt;th&gt;venue_zipcode&lt;/th&gt;
-      &lt;th&gt;visible_until_utc&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;30&lt;/th&gt;
-      &lt;td&gt;2019-05-30T00:00:00&lt;/td&gt;
-      &lt;td&gt;294.0&lt;/td&gt;
-      &lt;td&gt;2019-08-16T20:00:00&lt;/td&gt;
-      &lt;td&gt;Pink&lt;/td&gt;
-      &lt;td&gt;1889.0&lt;/td&gt;
-      &lt;td&gt;79.0&lt;/td&gt;
-      &lt;td&gt;250.0&lt;/td&gt;
-      &lt;td&gt;Pop&lt;/td&gt;
-      &lt;td&gt;Pink&lt;/td&gt;
-      &lt;td&gt;564.0&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/pink-tickets/uniondale-ne...&lt;/td&gt;
-      &lt;td&gt;16234&lt;/td&gt;
-      &lt;td&gt;Uniondale&lt;/td&gt;
-      &lt;td&gt;Nassau Veterans Memorial Coliseum&lt;/td&gt;
-      &lt;td&gt;0.766856&lt;/td&gt;
-      &lt;td&gt;11553&lt;/td&gt;
-      &lt;td&gt;2019-08-17T04:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;75&lt;/th&gt;
-      &lt;td&gt;2019-02-23T00:00:00&lt;/td&gt;
-      &lt;td&gt;430.0&lt;/td&gt;
-      &lt;td&gt;2019-08-17T19:00:00&lt;/td&gt;
-      &lt;td&gt;Santana with The Doobie Brothers&lt;/td&gt;
-      &lt;td&gt;6353.0&lt;/td&gt;
-      &lt;td&gt;107.0&lt;/td&gt;
-      &lt;td&gt;266.0&lt;/td&gt;
-      &lt;td&gt;Country&lt;/td&gt;
-      &lt;td&gt;The Doobie Brothers&lt;/td&gt;
-      &lt;td&gt;95.0&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/santana-with-the-doobie-b...&lt;/td&gt;
-      &lt;td&gt;15000&lt;/td&gt;
-      &lt;td&gt;Bethel&lt;/td&gt;
-      &lt;td&gt;Bethel Woods Center for the Arts&lt;/td&gt;
-      &lt;td&gt;0.700694&lt;/td&gt;
-      &lt;td&gt;12720&lt;/td&gt;
-      &lt;td&gt;2019-08-18T03:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;177&lt;/th&gt;
-      &lt;td&gt;2018-11-27T00:00:00&lt;/td&gt;
-      &lt;td&gt;249.0&lt;/td&gt;
-      &lt;td&gt;2019-08-20T19:30:00&lt;/td&gt;
-      &lt;td&gt;KISS&lt;/td&gt;
-      &lt;td&gt;5549.0&lt;/td&gt;
-      &lt;td&gt;54.0&lt;/td&gt;
-      &lt;td&gt;147.0&lt;/td&gt;
-      &lt;td&gt;Pop&lt;/td&gt;
-      &lt;td&gt;KISS&lt;/td&gt;
-      &lt;td&gt;679.0&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/kiss-tickets/brooklyn-new...&lt;/td&gt;
-      &lt;td&gt;19000&lt;/td&gt;
-      &lt;td&gt;Brooklyn&lt;/td&gt;
-      &lt;td&gt;Barclays Center&lt;/td&gt;
-      &lt;td&gt;0.830777&lt;/td&gt;
-      &lt;td&gt;11217&lt;/td&gt;
-      &lt;td&gt;2019-08-21T03:30:00&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Fill in average and median price with median prices
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'average_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fillna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'average_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'median_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fillna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'median_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Since I plan on visualizing this data, I’m going to leave highest price and lowest price missing because I want to keep that price as close as possible for people like myself to see the lowest and highest prices as they are.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-block alert-info&quot;&gt;
-            &lt;b&gt;Fun fact:&lt;/b&gt; The highest priced event is listed at $214749. Can you guess what artist? Hint: It's a pop artist. &lt;/div&gt;
-
-&lt;h3 id=&quot;unavailable-venue-score&quot;&gt;Unavailable Venue Score&lt;/h3&gt;
-
-&lt;p&gt;After listing out the value_counts for venue_score,  891 have a score of 0. That’s about 30% of the data. As per the SeatGeek API documentation, the events “are based on estimated sales volume on the secondary ticket market (normalized such that the most popular document has a score of 1).” Since we had a lot of data without ticket prices, as I did with the prices, I’m going to fill them in with the median score.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;venue_score&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0.46814686
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'venue_score'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;venue_score&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It’s important to read the documentation when you’re getting stuck. Looking at “to_replace” parameter let me see what data I could put in there.
-&lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html&quot;&gt;https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;unavailable-venue-capacity&quot;&gt;Unavailable Venue Capacity&lt;/h3&gt;
-
-&lt;p&gt;There’s 1109 rows without a venue capacity. It could be interesting to see the venue price changes depending on size. Unless I go through the events one by one to find their capacity, I’m not sure how else to find this data(any suggestions would be great!). Perhaps I could build a web scraper that goes on the web and finds it for me. Perhaps for another project. For these reasons, I will leave venue capacity at 0.&lt;/p&gt;
-
-&lt;h3 id=&quot;missing-venue-zipcode&quot;&gt;Missing Venue Zipcode&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'venue_zipcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div&gt;
-&lt;style scoped=&quot;&quot;&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr style=&quot;text-align: right;&quot;&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;announce_date&lt;/th&gt;
-      &lt;th&gt;average_price&lt;/th&gt;
-      &lt;th&gt;date&amp;amp;time_event&lt;/th&gt;
-      &lt;th&gt;event_title&lt;/th&gt;
-      &lt;th&gt;highest_price&lt;/th&gt;
-      &lt;th&gt;lowest_price&lt;/th&gt;
-      &lt;th&gt;median_price&lt;/th&gt;
-      &lt;th&gt;performer_genre&lt;/th&gt;
-      &lt;th&gt;performer_name&lt;/th&gt;
-      &lt;th&gt;ticket_listing_count&lt;/th&gt;
-      &lt;th&gt;type_event&lt;/th&gt;
-      &lt;th&gt;upcoming_events?&lt;/th&gt;
-      &lt;th&gt;url&lt;/th&gt;
-      &lt;th&gt;venue_capacity&lt;/th&gt;
-      &lt;th&gt;venue_city&lt;/th&gt;
-      &lt;th&gt;venue_name&lt;/th&gt;
-      &lt;th&gt;venue_score&lt;/th&gt;
-      &lt;th&gt;venue_zipcode&lt;/th&gt;
-      &lt;th&gt;visible_until_utc&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;72&lt;/th&gt;
-      &lt;td&gt;2019-08-12T00:00:00&lt;/td&gt;
-      &lt;td&gt;118.0&lt;/td&gt;
-      &lt;td&gt;2019-08-17T18:00:00&lt;/td&gt;
-      &lt;td&gt;Bob DiGiovanna&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;98.0&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;Bob DiGiovanna&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/bob-digiovanna-tickets/ki...&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;Kismet&lt;/td&gt;
-      &lt;td&gt;Surf's Out&lt;/td&gt;
-      &lt;td&gt;0.468147&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;2019-08-18T02:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1649&lt;/th&gt;
-      &lt;td&gt;2019-05-22T00:00:00&lt;/td&gt;
-      &lt;td&gt;118.0&lt;/td&gt;
-      &lt;td&gt;2019-10-11T20:00:00&lt;/td&gt;
-      &lt;td&gt;Ripe with Castlecomer&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;98.0&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;Ripe&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/ripe-with-castlecomer-tic...&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;Albany&lt;/td&gt;
-      &lt;td&gt;Pearl St Pub&lt;/td&gt;
-      &lt;td&gt;0.468147&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;2019-10-12T04:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1731&lt;/th&gt;
-      &lt;td&gt;2019-04-05T00:00:00&lt;/td&gt;
-      &lt;td&gt;118.0&lt;/td&gt;
-      &lt;td&gt;2019-10-14T19:00:00&lt;/td&gt;
-      &lt;td&gt;The Broadway Musical- The Book Of Mormon&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;98.0&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;The Broadway Musical- The Book Of Mormon&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;concert&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/the-broadway-musical-the-...&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;New York&lt;/td&gt;
-      &lt;td&gt;New York 226 W 46th St New York, NY 10036&lt;/td&gt;
-      &lt;td&gt;0.468147&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-      &lt;td&gt;2019-10-15T03:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;There’s only three events so I’m going to go through the venues’ url and manually input the zip code. Easy.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;72&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'venue_zipcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'12207'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#googled venue
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1649&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'venue_zipcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'07712'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#googled city
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1731&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'venue_zipcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'10036'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# zipcode is in the venue name
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Actually, I had to look up how to change the value of one row value. Thank you to&lt;br /&gt;
-&lt;a href=&quot;https://stackoverflow.com/questions/19226488/change-one-value-based-on-another-value-in-pandas&quot;&gt;https://stackoverflow.com/questions/19226488/change-one-value-based-on-another-value-in-pandas&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;missing-performer-genre&quot;&gt;Missing Performer Genre&lt;/h3&gt;
-
-&lt;p&gt;I’ve decided to make missing performer genre into it’s own category by replacing it with string ‘NaN’. I don’t want to run into any errors while modeling. The other option would’ve been to manually find their genre off their website. That would take too much time for data not necessarily critical to the project.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;performer_genre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'NaN'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#replace NaN values with string 'NaN'
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;missing-ticket-listing-count&quot;&gt;Missing Ticket Listing Count&lt;/h3&gt;
-
-&lt;p&gt;I’m going to leave this as is because if there’s no tickets on sale, I’m not going to change that.&lt;/p&gt;
-
-&lt;h3 id=&quot;confirm-complete&quot;&gt;Confirm Complete&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Highest, lowest price and ticket listing count still have missing values, that's intentional
-# All other missing data have been handled
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;datetime&quot;&gt;DateTime&lt;/h2&gt;
-
-&lt;h3 id=&quot;convert-string-date-columns-into-datetime&quot;&gt;Convert String Date Columns into DateTime&lt;/h3&gt;
-
-&lt;p&gt;I plan to use the DateTime column to pick and choose what day/time to use. Eventually I want to visualize the events based on time and day. Below I convert any date related columns into DateTime columns.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Check current datatype of value date columns
-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'announce_date'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# str data type
-&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# `df.columns` to list out all columns to find remaining date columns
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;date_columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'announce_date'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'date&amp;amp;time_event'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'visible_until_utc'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Change all date_columns to datetime format using a loop
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date_columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'announce_date'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# pandas._libs.tslibs.timestamps.Timestamp
-&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;drop-any-uneccessary-column&quot;&gt;Drop Any Uneccessary Column&lt;/h2&gt;
-
-&lt;p&gt;I’m going to drop the ‘Type_event’ column because all the events are concerts.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'type_event'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'concert'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'type_event'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;final-output&quot;&gt;Final Output&lt;/h2&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div&gt;
-&lt;style scoped=&quot;&quot;&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr style=&quot;text-align: right;&quot;&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;announce_date&lt;/th&gt;
-      &lt;th&gt;average_price&lt;/th&gt;
-      &lt;th&gt;date&amp;amp;time_event&lt;/th&gt;
-      &lt;th&gt;event_title&lt;/th&gt;
-      &lt;th&gt;highest_price&lt;/th&gt;
-      &lt;th&gt;lowest_price&lt;/th&gt;
-      &lt;th&gt;median_price&lt;/th&gt;
-      &lt;th&gt;performer_genre&lt;/th&gt;
-      &lt;th&gt;performer_name&lt;/th&gt;
-      &lt;th&gt;ticket_listing_count&lt;/th&gt;
-      &lt;th&gt;upcoming_events?&lt;/th&gt;
-      &lt;th&gt;url&lt;/th&gt;
-      &lt;th&gt;venue_capacity&lt;/th&gt;
-      &lt;th&gt;venue_city&lt;/th&gt;
-      &lt;th&gt;venue_name&lt;/th&gt;
-      &lt;th&gt;venue_score&lt;/th&gt;
-      &lt;th&gt;venue_zipcode&lt;/th&gt;
-      &lt;th&gt;visible_until_utc&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1905&lt;/th&gt;
-      &lt;td&gt;2019-04-02&lt;/td&gt;
-      &lt;td&gt;378.0&lt;/td&gt;
-      &lt;td&gt;2019-10-22 19:30:00&lt;/td&gt;
-      &lt;td&gt;Ghost with Nothing More&lt;/td&gt;
-      &lt;td&gt;11079.0&lt;/td&gt;
-      &lt;td&gt;23.0&lt;/td&gt;
-      &lt;td&gt;121.0&lt;/td&gt;
-      &lt;td&gt;Pop&lt;/td&gt;
-      &lt;td&gt;Ghost&lt;/td&gt;
-      &lt;td&gt;180.0&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/ghost-with-nothing-more-t...&lt;/td&gt;
-      &lt;td&gt;8000&lt;/td&gt;
-      &lt;td&gt;Syracuse&lt;/td&gt;
-      &lt;td&gt;War Memorial At OnCenter&lt;/td&gt;
-      &lt;td&gt;0.579858&lt;/td&gt;
-      &lt;td&gt;13202&lt;/td&gt;
-      &lt;td&gt;2019-10-23 03:30:00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;657&lt;/th&gt;
-      &lt;td&gt;2019-04-04&lt;/td&gt;
-      &lt;td&gt;67.0&lt;/td&gt;
-      &lt;td&gt;2019-09-06 20:00:00&lt;/td&gt;
-      &lt;td&gt;Blackberry Smoke with Simo (21+)&lt;/td&gt;
-      &lt;td&gt;106.0&lt;/td&gt;
-      &lt;td&gt;53.0&lt;/td&gt;
-      &lt;td&gt;64.0&lt;/td&gt;
-      &lt;td&gt;Country&lt;/td&gt;
-      &lt;td&gt;Blackberry Smoke&lt;/td&gt;
-      &lt;td&gt;25.0&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/blackberry-smoke-with-sim...&lt;/td&gt;
-      &lt;td&gt;600&lt;/td&gt;
-      &lt;td&gt;Brooklyn&lt;/td&gt;
-      &lt;td&gt;Brooklyn Bowl&lt;/td&gt;
-      &lt;td&gt;0.527452&lt;/td&gt;
-      &lt;td&gt;11201&lt;/td&gt;
-      &lt;td&gt;2019-09-07 04:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1903&lt;/th&gt;
-      &lt;td&gt;2019-06-03&lt;/td&gt;
-      &lt;td&gt;176.0&lt;/td&gt;
-      &lt;td&gt;2019-10-22 19:00:00&lt;/td&gt;
-      &lt;td&gt;The California Honeydrops&lt;/td&gt;
-      &lt;td&gt;387.0&lt;/td&gt;
-      &lt;td&gt;49.0&lt;/td&gt;
-      &lt;td&gt;156.0&lt;/td&gt;
-      &lt;td&gt;Blues&lt;/td&gt;
-      &lt;td&gt;The California Honeydrops&lt;/td&gt;
-      &lt;td&gt;12.0&lt;/td&gt;
-      &lt;td&gt;True&lt;/td&gt;
-      &lt;td&gt;https://seatgeek.com/the-california-honeydrops...&lt;/td&gt;
-      &lt;td&gt;200&lt;/td&gt;
-      &lt;td&gt;Pawling&lt;/td&gt;
-      &lt;td&gt;Daryl's House&lt;/td&gt;
-      &lt;td&gt;0.448582&lt;/td&gt;
-      &lt;td&gt;12564&lt;/td&gt;
-      &lt;td&gt;2019-10-23 03:00:00&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;In this project, we used our ny-concert data from SeatGeek. We took stock of missing data and decided how we were going to deal with NaN prices and 0 value columns. We went through pricing and replaced the missing average and median prices with the median price of each respective column. We decided to leave the highest and lowest price columns as is because there were really no tickets available for those events. Because the venue_score was linked to ticket sales, I replaced the 0 value venue_scores with the median score in congruence with what we did with the ticket prices. I left venue_capacity as is as I did not have an optimal way of handling it. I also left ticket listing count at missing because there were no tickets on sale for those events. I handled missing zipcodes by googling them, easily because there were only 3. Then I made missing performer_genres in to its own category. I converted the string date columns into datetime. Finally we dropped a redundant column as all events were concerts.&lt;/p&gt;
-
-&lt;p&gt;It was tricky deciding what to do with missing values. At the back of my mind, it always occurred to me whether we put something there or not, the value is not 100% true. I think this is a limitation that I wonder if someone could tell me what would be the best way to handle a certain NaN value. Nonetheless, I tried to justify my reasoning for dealing with those values. In the future, I would like to use the datetime to get a look at what events occur during what time of the day.&lt;/p&gt;
-
-&lt;p&gt;Happy to get feedback on my project. Thank you.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-block alert-success&quot;&gt; The answer to the fun fact is Hozier. The average price for one of his tickets was $34003! &lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Chris Chung</name></author><category term="pandas" /><category term="concert data" /><category term="python" /><summary type="html">It's a cliché that data cleaning takes 85% ...</summary></entry><entry><title type="html">Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query</title><link href="http://localhost:4000/store%20data/extract%20data/nasa-select-data/" rel="alternate" type="text/html" title="Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/store%20data/extract%20data/nasa-select-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/nasa-select-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-23T14:46:15+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Chung</title><subtitle>Data Science Project Portfolio</subtitle><author><name>Chris Chung</name></author><entry><title type="html">Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query</title><link href="http://localhost:4000/store%20data/extract%20data/nasa-select-data/" rel="alternate" type="text/html" title="Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/store%20data/extract%20data/nasa-select-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/nasa-select-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -1581,7 +899,7 @@ SET num_of_moons = 53 WHERE name = 'Jupiter';
 &lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
 &lt;p&gt;With these basic SQL queries demonstrated within this project, I want to not only continue to practice them but also find them in future queries that are more advanced.&lt;/p&gt;
 
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="sqlite3" /><category term="sample data" /><category term="pandas" /><category term="sql" /><summary type="html">SQLite3 is a database where I can perform SQL commands to extract...</summary></entry><entry><title type="html">Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API</title><link href="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/" rel="alternate" type="text/html" title="Constructed Functions to Extract Live Concert Music Data from SeatGeek's API" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">SQLite3 is a database where I can perform SQL commands to extract...</summary></entry><entry><title type="html">Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API</title><link href="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/" rel="alternate" type="text/html" title="Constructed Functions to Extract Live Concert Music Data from SeatGeek's API" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -2063,7 +1381,670 @@ SET num_of_moons = 53 WHERE name = 'Jupiter';
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;In this project, we accessed SeatGeek’s API by following their documentation on &lt;a href=&quot;https://platform.seatgeek.com/&quot;&gt;https://platform.seatgeek.com/&lt;/a&gt;. We took a bird’s eye view of all data and what’s available for us to extract. Then we honed in on NY concert data and created a function that pulls all the information that I want. Finally we saved it into a json file and converted it into a dataframe for easier access.&lt;/p&gt;
 
-&lt;p&gt;Looking online for more info on saving JSON files, I reminded myself that many other people are also looking programming information up and–people are providing this information for us. This community is vast and I love how people are in different stages getting involved.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="pandas" /><category term="API" /><category term="python" /><category term="JSON" /><category term="music data" /><summary type="html">It's always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet...</summary></entry><entry><title type="html">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)</title><link href="http://localhost:4000/import%20data/pyspark-by-example/" rel="alternate" type="text/html" title="Utilized the Spark DataFrame API to extract data from Chicago's Reported Crime Dataset (2001-2018)" /><published>2019-08-15T00:00:00+08:00</published><updated>2019-08-15T00:00:00+08:00</updated><id>http://localhost:4000/import%20data/pyspark-by-example</id><content type="html" xml:base="http://localhost:4000/import%20data/pyspark-by-example/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Looking online for more info on saving JSON files, I reminded myself that many other people are also looking programming information up and–people are providing this information for us. This community is vast and I love how people are in different stages getting involved.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">It's always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet...</summary></entry><entry><title type="html">Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis</title><link href="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/" rel="alternate" type="text/html" title="Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis" /><published>2019-08-16T00:00:00+08:00</published><updated>2019-08-16T00:00:00+08:00</updated><id>http://localhost:4000/tidy%20data/seatgeek-data-cleaning</id><content type="html" xml:base="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;nav class=&quot;toc&quot;&gt;
+    &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
+&lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#project-description&quot; id=&quot;markdown-toc-project-description&quot;&gt;Project Description&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#load-libraries-and-dataset&quot; id=&quot;markdown-toc-load-libraries-and-dataset&quot;&gt;Load Libraries and Dataset&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#missing-data&quot; id=&quot;markdown-toc-missing-data&quot;&gt;Missing Data&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#missing-prices&quot; id=&quot;markdown-toc-missing-prices&quot;&gt;Missing Prices&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unavailable-venue-score&quot; id=&quot;markdown-toc-unavailable-venue-score&quot;&gt;Unavailable Venue Score&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unavailable-venue-capacity&quot; id=&quot;markdown-toc-unavailable-venue-capacity&quot;&gt;Unavailable Venue Capacity&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#missing-venue-zipcode&quot; id=&quot;markdown-toc-missing-venue-zipcode&quot;&gt;Missing Venue Zipcode&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#missing-performer-genre&quot; id=&quot;markdown-toc-missing-performer-genre&quot;&gt;Missing Performer Genre&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#missing-ticket-listing-count&quot; id=&quot;markdown-toc-missing-ticket-listing-count&quot;&gt;Missing Ticket Listing Count&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#confirm-complete&quot; id=&quot;markdown-toc-confirm-complete&quot;&gt;Confirm Complete&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#datetime&quot; id=&quot;markdown-toc-datetime&quot;&gt;DateTime&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#convert-string-date-columns-into-datetime&quot; id=&quot;markdown-toc-convert-string-date-columns-into-datetime&quot;&gt;Convert String Date Columns into DateTime&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#drop-any-uneccessary-column&quot; id=&quot;markdown-toc-drop-any-uneccessary-column&quot;&gt;Drop Any Uneccessary Column&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#final-output&quot; id=&quot;markdown-toc-final-output&quot;&gt;Final Output&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/nav&gt;
+&lt;/aside&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;project-description&quot;&gt;Project Description&lt;/h2&gt;
+&lt;p&gt;Cleaning concert data from SeatGeek that were previously extracted using a data pipeline in my previous project. We will use pandas to examine what data is available, deal with missing values and tidy up formatting. This dataset may be used in several projects including but not limited to creating interactive dashboards showing upcoming events for someone trying to sell their tickets or see what events are available and k-means clustering to group the concerts by category. I’m curious to find out what unsupervised learning will discover!&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;It’s a cliché that data cleaning takes 85% or so of a data scientists time. In this project, “I want to have multiple purposes for this data. 1) for an interactive dashboard and 2) machine learning if possible. I can get super ambitious, unrealistic at times, but would love to eventually see this dataset come to life!&lt;/p&gt;
+
+&lt;h2 id=&quot;load-libraries-and-dataset&quot;&gt;Load Libraries and Dataset&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Loading json files into dataframes. See Previous project where data came from
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ny-concerts.json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;missing-data&quot;&gt;Missing Data&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Check how much data we have
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 2779 rows and 19 columns
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# performer_genre missing was set to '' in last project
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# find out categories are missing data
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 982 tickets missing price / 725 missing performer genres / 3 missing venue zipcodes
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;announce_date             0
+average_price           982
+date&amp;amp;time_event           0
+event_title               0
+highest_price           982
+lowest_price            982
+median_price            982
+performer_genre         725
+performer_name            0
+ticket_listing_count    982
+type_event                0
+upcoming_events?          0
+url                       0
+venue_capacity            0
+venue_city                0
+venue_name                0
+venue_score               0
+venue_zipcode             3
+visible_until_utc         0
+dtype: int64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With 2779 data points, my game plan is to keep as many rows as I can. It’s a lot of data to lose if I remove them! &lt;br /&gt;&lt;br /&gt;
+Let’s try to see why the info is missing and maybe I can find a solution to fill them in starting with prices.&lt;/p&gt;
+
+&lt;h3 id=&quot;missing-prices&quot;&gt;Missing Prices&lt;/h3&gt;
+
+&lt;p&gt;I think there are 3 reasons why there is missing ticket price info.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Ticket sales have ended&lt;/li&gt;
+  &lt;li&gt;Tickets are not on sale yet&lt;/li&gt;
+  &lt;li&gt;No one is selling their tickets&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'average_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# My reasons based on looking at 'date&amp;amp;time_event' column
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;announce_date&lt;/th&gt;
+      &lt;th&gt;average_price&lt;/th&gt;
+      &lt;th&gt;date&amp;amp;time_event&lt;/th&gt;
+      &lt;th&gt;event_title&lt;/th&gt;
+      &lt;th&gt;highest_price&lt;/th&gt;
+      &lt;th&gt;lowest_price&lt;/th&gt;
+      &lt;th&gt;median_price&lt;/th&gt;
+      &lt;th&gt;performer_genre&lt;/th&gt;
+      &lt;th&gt;performer_name&lt;/th&gt;
+      &lt;th&gt;ticket_listing_count&lt;/th&gt;
+      &lt;th&gt;type_event&lt;/th&gt;
+      &lt;th&gt;upcoming_events?&lt;/th&gt;
+      &lt;th&gt;url&lt;/th&gt;
+      &lt;th&gt;venue_capacity&lt;/th&gt;
+      &lt;th&gt;venue_city&lt;/th&gt;
+      &lt;th&gt;venue_name&lt;/th&gt;
+      &lt;th&gt;venue_score&lt;/th&gt;
+      &lt;th&gt;venue_zipcode&lt;/th&gt;
+      &lt;th&gt;visible_until_utc&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1963&lt;/th&gt;
+      &lt;td&gt;2019-07-24T00:00:00&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;2019-10-25T20:00:00&lt;/td&gt;
+      &lt;td&gt;Nightfall&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;Nightfall&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/nightfall-tickets/brookly...&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;Brooklyn&lt;/td&gt;
+      &lt;td&gt;Green-Wood&lt;/td&gt;
+      &lt;td&gt;0.000000&lt;/td&gt;
+      &lt;td&gt;11232&lt;/td&gt;
+      &lt;td&gt;2019-10-26T04:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1251&lt;/th&gt;
+      &lt;td&gt;2019-06-10T00:00:00&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;2019-09-25T20:00:00&lt;/td&gt;
+      &lt;td&gt;AbbeyRoad50&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;AbbeyRoad50&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/abbeyroad50-tickets/new-y...&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;New York&lt;/td&gt;
+      &lt;td&gt;Rockwood Music Hall - Stage 2&lt;/td&gt;
+      &lt;td&gt;0.000000&lt;/td&gt;
+      &lt;td&gt;10002&lt;/td&gt;
+      &lt;td&gt;2019-09-26T04:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;794&lt;/th&gt;
+      &lt;td&gt;2019-07-24T00:00:00&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;2019-09-11T20:30:00&lt;/td&gt;
+      &lt;td&gt;The Unlikely Candidates (18+)&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;Pop&lt;/td&gt;
+      &lt;td&gt;The Unlikely Candidates&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/the-unlikely-candidates-1...&lt;/td&gt;
+      &lt;td&gt;250&lt;/td&gt;
+      &lt;td&gt;Brooklyn&lt;/td&gt;
+      &lt;td&gt;Rough Trade NYC&lt;/td&gt;
+      &lt;td&gt;0.513713&lt;/td&gt;
+      &lt;td&gt;11249&lt;/td&gt;
+      &lt;td&gt;2019-09-12T04:30:00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Upon further investigation getting a description of the data, I might want to use the median values of average_price and median_price columns because although it isn’t the true value, it won’t affect the distribution too much. Most of the data is between 25 and 189. There’s also an outlier for $34003 in average_price so I’m curious what that is.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;average_price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# number of priced tickets = 1797 out of 2779
+# lowest price = 25
+# highest price 340003
+# 25-75% of data is between 25 and 189
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Let’s investigate the events with ticket prices over 1000. I show only the first 5. Remove head() to see the rest.&lt;/em&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;They consist mostly of Madonna concerts for different dates. The highest priced tickets soar over 20000.&lt;/li&gt;
+  &lt;li&gt;Some of the other concerts’ average prices are under 100 yet the highest ticket is way over 1000.&lt;/li&gt;
+  &lt;li&gt;There’s about 200 high priced events&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If I replaced the average_price and median_price of tickets with the median, I think they will fit right in.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'highest_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# first 5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;announce_date&lt;/th&gt;
+      &lt;th&gt;average_price&lt;/th&gt;
+      &lt;th&gt;date&amp;amp;time_event&lt;/th&gt;
+      &lt;th&gt;event_title&lt;/th&gt;
+      &lt;th&gt;highest_price&lt;/th&gt;
+      &lt;th&gt;lowest_price&lt;/th&gt;
+      &lt;th&gt;median_price&lt;/th&gt;
+      &lt;th&gt;performer_genre&lt;/th&gt;
+      &lt;th&gt;performer_name&lt;/th&gt;
+      &lt;th&gt;ticket_listing_count&lt;/th&gt;
+      &lt;th&gt;type_event&lt;/th&gt;
+      &lt;th&gt;upcoming_events?&lt;/th&gt;
+      &lt;th&gt;url&lt;/th&gt;
+      &lt;th&gt;venue_capacity&lt;/th&gt;
+      &lt;th&gt;venue_city&lt;/th&gt;
+      &lt;th&gt;venue_name&lt;/th&gt;
+      &lt;th&gt;venue_score&lt;/th&gt;
+      &lt;th&gt;venue_zipcode&lt;/th&gt;
+      &lt;th&gt;visible_until_utc&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;30&lt;/th&gt;
+      &lt;td&gt;2019-05-30T00:00:00&lt;/td&gt;
+      &lt;td&gt;294.0&lt;/td&gt;
+      &lt;td&gt;2019-08-16T20:00:00&lt;/td&gt;
+      &lt;td&gt;Pink&lt;/td&gt;
+      &lt;td&gt;1889.0&lt;/td&gt;
+      &lt;td&gt;79.0&lt;/td&gt;
+      &lt;td&gt;250.0&lt;/td&gt;
+      &lt;td&gt;Pop&lt;/td&gt;
+      &lt;td&gt;Pink&lt;/td&gt;
+      &lt;td&gt;564.0&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/pink-tickets/uniondale-ne...&lt;/td&gt;
+      &lt;td&gt;16234&lt;/td&gt;
+      &lt;td&gt;Uniondale&lt;/td&gt;
+      &lt;td&gt;Nassau Veterans Memorial Coliseum&lt;/td&gt;
+      &lt;td&gt;0.766856&lt;/td&gt;
+      &lt;td&gt;11553&lt;/td&gt;
+      &lt;td&gt;2019-08-17T04:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;75&lt;/th&gt;
+      &lt;td&gt;2019-02-23T00:00:00&lt;/td&gt;
+      &lt;td&gt;430.0&lt;/td&gt;
+      &lt;td&gt;2019-08-17T19:00:00&lt;/td&gt;
+      &lt;td&gt;Santana with The Doobie Brothers&lt;/td&gt;
+      &lt;td&gt;6353.0&lt;/td&gt;
+      &lt;td&gt;107.0&lt;/td&gt;
+      &lt;td&gt;266.0&lt;/td&gt;
+      &lt;td&gt;Country&lt;/td&gt;
+      &lt;td&gt;The Doobie Brothers&lt;/td&gt;
+      &lt;td&gt;95.0&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/santana-with-the-doobie-b...&lt;/td&gt;
+      &lt;td&gt;15000&lt;/td&gt;
+      &lt;td&gt;Bethel&lt;/td&gt;
+      &lt;td&gt;Bethel Woods Center for the Arts&lt;/td&gt;
+      &lt;td&gt;0.700694&lt;/td&gt;
+      &lt;td&gt;12720&lt;/td&gt;
+      &lt;td&gt;2019-08-18T03:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;177&lt;/th&gt;
+      &lt;td&gt;2018-11-27T00:00:00&lt;/td&gt;
+      &lt;td&gt;249.0&lt;/td&gt;
+      &lt;td&gt;2019-08-20T19:30:00&lt;/td&gt;
+      &lt;td&gt;KISS&lt;/td&gt;
+      &lt;td&gt;5549.0&lt;/td&gt;
+      &lt;td&gt;54.0&lt;/td&gt;
+      &lt;td&gt;147.0&lt;/td&gt;
+      &lt;td&gt;Pop&lt;/td&gt;
+      &lt;td&gt;KISS&lt;/td&gt;
+      &lt;td&gt;679.0&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/kiss-tickets/brooklyn-new...&lt;/td&gt;
+      &lt;td&gt;19000&lt;/td&gt;
+      &lt;td&gt;Brooklyn&lt;/td&gt;
+      &lt;td&gt;Barclays Center&lt;/td&gt;
+      &lt;td&gt;0.830777&lt;/td&gt;
+      &lt;td&gt;11217&lt;/td&gt;
+      &lt;td&gt;2019-08-21T03:30:00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Fill in average and median price with median prices
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'average_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fillna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'average_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'median_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fillna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'median_price'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since I plan on visualizing this data, I’m going to leave highest price and lowest price missing because I want to keep that price as close as possible for people like myself to see the lowest and highest prices as they are.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-block alert-info&quot;&gt;
+            &lt;b&gt;Fun fact:&lt;/b&gt; The highest priced event is listed at $214749. Can you guess what artist? Hint: It's a pop artist. &lt;/div&gt;
+
+&lt;h3 id=&quot;unavailable-venue-score&quot;&gt;Unavailable Venue Score&lt;/h3&gt;
+
+&lt;p&gt;After listing out the value_counts for venue_score,  891 have a score of 0. That’s about 30% of the data. As per the SeatGeek API documentation, the events “are based on estimated sales volume on the secondary ticket market (normalized such that the most popular document has a score of 1).” Since we had a lot of data without ticket prices, as I did with the prices, I’m going to fill them in with the median score.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;venue_score&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0.46814686
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'venue_score'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;venue_score&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It’s important to read the documentation when you’re getting stuck. Looking at “to_replace” parameter let me see what data I could put in there.
+&lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html&quot;&gt;https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;unavailable-venue-capacity&quot;&gt;Unavailable Venue Capacity&lt;/h3&gt;
+
+&lt;p&gt;There’s 1109 rows without a venue capacity. It could be interesting to see the venue price changes depending on size. Unless I go through the events one by one to find their capacity, I’m not sure how else to find this data(any suggestions would be great!). Perhaps I could build a web scraper that goes on the web and finds it for me. Perhaps for another project. For these reasons, I will leave venue capacity at 0.&lt;/p&gt;
+
+&lt;h3 id=&quot;missing-venue-zipcode&quot;&gt;Missing Venue Zipcode&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'venue_zipcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;announce_date&lt;/th&gt;
+      &lt;th&gt;average_price&lt;/th&gt;
+      &lt;th&gt;date&amp;amp;time_event&lt;/th&gt;
+      &lt;th&gt;event_title&lt;/th&gt;
+      &lt;th&gt;highest_price&lt;/th&gt;
+      &lt;th&gt;lowest_price&lt;/th&gt;
+      &lt;th&gt;median_price&lt;/th&gt;
+      &lt;th&gt;performer_genre&lt;/th&gt;
+      &lt;th&gt;performer_name&lt;/th&gt;
+      &lt;th&gt;ticket_listing_count&lt;/th&gt;
+      &lt;th&gt;type_event&lt;/th&gt;
+      &lt;th&gt;upcoming_events?&lt;/th&gt;
+      &lt;th&gt;url&lt;/th&gt;
+      &lt;th&gt;venue_capacity&lt;/th&gt;
+      &lt;th&gt;venue_city&lt;/th&gt;
+      &lt;th&gt;venue_name&lt;/th&gt;
+      &lt;th&gt;venue_score&lt;/th&gt;
+      &lt;th&gt;venue_zipcode&lt;/th&gt;
+      &lt;th&gt;visible_until_utc&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;72&lt;/th&gt;
+      &lt;td&gt;2019-08-12T00:00:00&lt;/td&gt;
+      &lt;td&gt;118.0&lt;/td&gt;
+      &lt;td&gt;2019-08-17T18:00:00&lt;/td&gt;
+      &lt;td&gt;Bob DiGiovanna&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;98.0&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;Bob DiGiovanna&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/bob-digiovanna-tickets/ki...&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;Kismet&lt;/td&gt;
+      &lt;td&gt;Surf's Out&lt;/td&gt;
+      &lt;td&gt;0.468147&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;2019-08-18T02:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1649&lt;/th&gt;
+      &lt;td&gt;2019-05-22T00:00:00&lt;/td&gt;
+      &lt;td&gt;118.0&lt;/td&gt;
+      &lt;td&gt;2019-10-11T20:00:00&lt;/td&gt;
+      &lt;td&gt;Ripe with Castlecomer&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;98.0&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;Ripe&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/ripe-with-castlecomer-tic...&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;Albany&lt;/td&gt;
+      &lt;td&gt;Pearl St Pub&lt;/td&gt;
+      &lt;td&gt;0.468147&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;2019-10-12T04:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1731&lt;/th&gt;
+      &lt;td&gt;2019-04-05T00:00:00&lt;/td&gt;
+      &lt;td&gt;118.0&lt;/td&gt;
+      &lt;td&gt;2019-10-14T19:00:00&lt;/td&gt;
+      &lt;td&gt;The Broadway Musical- The Book Of Mormon&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;98.0&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;The Broadway Musical- The Book Of Mormon&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;concert&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/the-broadway-musical-the-...&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;New York&lt;/td&gt;
+      &lt;td&gt;New York 226 W 46th St New York, NY 10036&lt;/td&gt;
+      &lt;td&gt;0.468147&lt;/td&gt;
+      &lt;td&gt;NaN&lt;/td&gt;
+      &lt;td&gt;2019-10-15T03:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There’s only three events so I’m going to go through the venues’ url and manually input the zip code. Easy.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;72&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'venue_zipcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'12207'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#googled venue
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1649&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'venue_zipcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'07712'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#googled city
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1731&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'venue_zipcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'10036'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# zipcode is in the venue name
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Actually, I had to look up how to change the value of one row value. Thank you to&lt;br /&gt;
+&lt;a href=&quot;https://stackoverflow.com/questions/19226488/change-one-value-based-on-another-value-in-pandas&quot;&gt;https://stackoverflow.com/questions/19226488/change-one-value-based-on-another-value-in-pandas&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;missing-performer-genre&quot;&gt;Missing Performer Genre&lt;/h3&gt;
+
+&lt;p&gt;I’ve decided to make missing performer genre into it’s own category by replacing it with string ‘NaN’. I don’t want to run into any errors while modeling. The other option would’ve been to manually find their genre off their website. That would take too much time for data not necessarily critical to the project.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;performer_genre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'NaN'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#replace NaN values with string 'NaN'
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;missing-ticket-listing-count&quot;&gt;Missing Ticket Listing Count&lt;/h3&gt;
+
+&lt;p&gt;I’m going to leave this as is because if there’s no tickets on sale, I’m not going to change that.&lt;/p&gt;
+
+&lt;h3 id=&quot;confirm-complete&quot;&gt;Confirm Complete&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Highest, lowest price and ticket listing count still have missing values, that's intentional
+# All other missing data have been handled
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;datetime&quot;&gt;DateTime&lt;/h2&gt;
+
+&lt;h3 id=&quot;convert-string-date-columns-into-datetime&quot;&gt;Convert String Date Columns into DateTime&lt;/h3&gt;
+
+&lt;p&gt;I plan to use the DateTime column to pick and choose what day/time to use. Eventually I want to visualize the events based on time and day. Below I convert any date related columns into DateTime columns.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Check current datatype of value date columns
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'announce_date'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# str data type
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# `df.columns` to list out all columns to find remaining date columns
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;date_columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'announce_date'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'date&amp;amp;time_event'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'visible_until_utc'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Change all date_columns to datetime format using a loop
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date_columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'announce_date'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# pandas._libs.tslibs.timestamps.Timestamp
+&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;drop-any-uneccessary-column&quot;&gt;Drop Any Uneccessary Column&lt;/h2&gt;
+
+&lt;p&gt;I’m going to drop the ‘Type_event’ column because all the events are concerts.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'type_event'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'concert'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'type_event'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;final-output&quot;&gt;Final Output&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;style scoped=&quot;&quot;&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&quot;text-align: right;&quot;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;announce_date&lt;/th&gt;
+      &lt;th&gt;average_price&lt;/th&gt;
+      &lt;th&gt;date&amp;amp;time_event&lt;/th&gt;
+      &lt;th&gt;event_title&lt;/th&gt;
+      &lt;th&gt;highest_price&lt;/th&gt;
+      &lt;th&gt;lowest_price&lt;/th&gt;
+      &lt;th&gt;median_price&lt;/th&gt;
+      &lt;th&gt;performer_genre&lt;/th&gt;
+      &lt;th&gt;performer_name&lt;/th&gt;
+      &lt;th&gt;ticket_listing_count&lt;/th&gt;
+      &lt;th&gt;upcoming_events?&lt;/th&gt;
+      &lt;th&gt;url&lt;/th&gt;
+      &lt;th&gt;venue_capacity&lt;/th&gt;
+      &lt;th&gt;venue_city&lt;/th&gt;
+      &lt;th&gt;venue_name&lt;/th&gt;
+      &lt;th&gt;venue_score&lt;/th&gt;
+      &lt;th&gt;venue_zipcode&lt;/th&gt;
+      &lt;th&gt;visible_until_utc&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1905&lt;/th&gt;
+      &lt;td&gt;2019-04-02&lt;/td&gt;
+      &lt;td&gt;378.0&lt;/td&gt;
+      &lt;td&gt;2019-10-22 19:30:00&lt;/td&gt;
+      &lt;td&gt;Ghost with Nothing More&lt;/td&gt;
+      &lt;td&gt;11079.0&lt;/td&gt;
+      &lt;td&gt;23.0&lt;/td&gt;
+      &lt;td&gt;121.0&lt;/td&gt;
+      &lt;td&gt;Pop&lt;/td&gt;
+      &lt;td&gt;Ghost&lt;/td&gt;
+      &lt;td&gt;180.0&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/ghost-with-nothing-more-t...&lt;/td&gt;
+      &lt;td&gt;8000&lt;/td&gt;
+      &lt;td&gt;Syracuse&lt;/td&gt;
+      &lt;td&gt;War Memorial At OnCenter&lt;/td&gt;
+      &lt;td&gt;0.579858&lt;/td&gt;
+      &lt;td&gt;13202&lt;/td&gt;
+      &lt;td&gt;2019-10-23 03:30:00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;657&lt;/th&gt;
+      &lt;td&gt;2019-04-04&lt;/td&gt;
+      &lt;td&gt;67.0&lt;/td&gt;
+      &lt;td&gt;2019-09-06 20:00:00&lt;/td&gt;
+      &lt;td&gt;Blackberry Smoke with Simo (21+)&lt;/td&gt;
+      &lt;td&gt;106.0&lt;/td&gt;
+      &lt;td&gt;53.0&lt;/td&gt;
+      &lt;td&gt;64.0&lt;/td&gt;
+      &lt;td&gt;Country&lt;/td&gt;
+      &lt;td&gt;Blackberry Smoke&lt;/td&gt;
+      &lt;td&gt;25.0&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/blackberry-smoke-with-sim...&lt;/td&gt;
+      &lt;td&gt;600&lt;/td&gt;
+      &lt;td&gt;Brooklyn&lt;/td&gt;
+      &lt;td&gt;Brooklyn Bowl&lt;/td&gt;
+      &lt;td&gt;0.527452&lt;/td&gt;
+      &lt;td&gt;11201&lt;/td&gt;
+      &lt;td&gt;2019-09-07 04:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1903&lt;/th&gt;
+      &lt;td&gt;2019-06-03&lt;/td&gt;
+      &lt;td&gt;176.0&lt;/td&gt;
+      &lt;td&gt;2019-10-22 19:00:00&lt;/td&gt;
+      &lt;td&gt;The California Honeydrops&lt;/td&gt;
+      &lt;td&gt;387.0&lt;/td&gt;
+      &lt;td&gt;49.0&lt;/td&gt;
+      &lt;td&gt;156.0&lt;/td&gt;
+      &lt;td&gt;Blues&lt;/td&gt;
+      &lt;td&gt;The California Honeydrops&lt;/td&gt;
+      &lt;td&gt;12.0&lt;/td&gt;
+      &lt;td&gt;True&lt;/td&gt;
+      &lt;td&gt;https://seatgeek.com/the-california-honeydrops...&lt;/td&gt;
+      &lt;td&gt;200&lt;/td&gt;
+      &lt;td&gt;Pawling&lt;/td&gt;
+      &lt;td&gt;Daryl's House&lt;/td&gt;
+      &lt;td&gt;0.448582&lt;/td&gt;
+      &lt;td&gt;12564&lt;/td&gt;
+      &lt;td&gt;2019-10-23 03:00:00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;In this project, we used our ny-concert data from SeatGeek. We took stock of missing data and decided how we were going to deal with NaN prices and 0 value columns. We went through pricing and replaced the missing average and median prices with the median price of each respective column. We decided to leave the highest and lowest price columns as is because there were really no tickets available for those events. Because the venue_score was linked to ticket sales, I replaced the 0 value venue_scores with the median score in congruence with what we did with the ticket prices. I left venue_capacity as is as I did not have an optimal way of handling it. I also left ticket listing count at missing because there were no tickets on sale for those events. I handled missing zipcodes by googling them, easily because there were only 3. Then I made missing performer_genres in to its own category. I converted the string date columns into datetime. Finally we dropped a redundant column as all events were concerts.&lt;/p&gt;
+
+&lt;p&gt;It was tricky deciding what to do with missing values. At the back of my mind, it always occurred to me whether we put something there or not, the value is not 100% true. I think this is a limitation that I wonder if someone could tell me what would be the best way to handle a certain NaN value. Nonetheless, I tried to justify my reasoning for dealing with those values. In the future, I would like to use the datetime to get a look at what events occur during what time of the day.&lt;/p&gt;
+
+&lt;p&gt;Happy to get feedback on my project. Thank you.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-block alert-success&quot;&gt; The answer to the fun fact is Hozier. The average price for one of his tickets was $34003! &lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Chris Chung</name></author><summary type="html">It's a cliché that data cleaning takes 85% ...</summary></entry><entry><title type="html">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)</title><link href="http://localhost:4000/import%20data/pyspark-by-example/" rel="alternate" type="text/html" title="Utilized the Spark DataFrame API to extract data from Chicago's Reported Crime Dataset (2001-2018)" /><published>2019-08-15T00:00:00+08:00</published><updated>2019-08-15T00:00:00+08:00</updated><id>http://localhost:4000/import%20data/pyspark-by-example</id><content type="html" xml:base="http://localhost:4000/import%20data/pyspark-by-example/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -2355,7 +2336,7 @@ only showing top 3 rows
 
 &lt;p&gt;In the second question, I made the mistake of following too closely to the question and grouped by the ‘Location’ column when I needed to group to ‘Location Description’ in order to return understandable locations.&lt;/p&gt;
 
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="government data" /><category term="data analysis" /><category term="Spark" /><category term="Google Colab" /><summary type="html">Let's get into the Chicago Reported Crime Dataset to find out...</summary></entry><entry><title type="html">Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data</title><link href="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/" rel="alternate" type="text/html" title="Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data" /><published>2019-08-11T00:00:00+08:00</published><updated>2019-08-11T00:00:00+08:00</updated><id>http://localhost:4000/visualize%20data/lifecycle-of-a-plot</id><content type="html" xml:base="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Let's get into the Chicago Reported Crime Dataset to find out...</summary></entry><entry><title type="html">Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data</title><link href="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/" rel="alternate" type="text/html" title="Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data" /><published>2019-08-11T00:00:00+08:00</published><updated>2019-08-11T00:00:00+08:00</updated><id>http://localhost:4000/visualize%20data/lifecycle-of-a-plot</id><content type="html" xml:base="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -2645,7 +2626,7 @@ x*1e-3 = snips the last 3 zeroes from the number&lt;br /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;We went over the fig and ax subplots. We work on each plot with ax and change the properties of all plots at once with fig. We read in our data and grouped them into our x/y axis. We labeled our x/y axis, titles, and set properties such as label format. We formatted the prices from long digits to a cleaner format. We added in another axes that represents the average mean of prices.  Finally, we saved our figure into PNG format.&lt;/p&gt;
 
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><category term="matplotlib" /><category term="python" /><category term="sales data" /><category term="sample data" /><summary type="html">We will visualize sample sales data using Matplotlib...</summary></entry><entry><title type="html">Used API calls to extract top articles from Hacker News (YCombinator)</title><link href="http://localhost:4000/extract%20data/hacker-news-api/" rel="alternate" type="text/html" title="Used API calls to extract top articles from Hacker News (YCombinator)" /><published>2019-08-10T00:00:00+08:00</published><updated>2019-08-10T00:00:00+08:00</updated><id>http://localhost:4000/extract%20data/hacker-news-api</id><content type="html" xml:base="http://localhost:4000/extract%20data/hacker-news-api/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">We will visualize sample sales data using Matplotlib...</summary></entry><entry><title type="html">Used API calls to extract top articles from Hacker News (YCombinator)</title><link href="http://localhost:4000/extract%20data/hacker-news-api/" rel="alternate" type="text/html" title="Used API calls to extract top articles from Hacker News (YCombinator)" /><published>2019-08-10T00:00:00+08:00</published><updated>2019-08-10T00:00:00+08:00</updated><id>http://localhost:4000/extract%20data/hacker-news-api</id><content type="html" xml:base="http://localhost:4000/extract%20data/hacker-news-api/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;

@@ -277,7 +277,9 @@ tag_archive:
 tooltag_archive:
   type: liquid
   path: /tooltags/
-
+techniquetag_archive:
+  type: liquid
+  path: /techniquetags/
 technologytag_archive:
     type: liquid
     path: /technologytags/

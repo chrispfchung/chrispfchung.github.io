@@ -56,6 +56,7 @@ en: &DEFAULT_EN
   back_to_techniques         : "Back to techniques"
   back_to_data               : "Back to data"
   back_to_technologies       : "Back to technologies"
+  back_to_project_tags       : "Back to project tags"
 en-US:
   <<: *DEFAULT_EN
 en-CA:

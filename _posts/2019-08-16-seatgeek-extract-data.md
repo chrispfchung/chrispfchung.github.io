@@ -2,8 +2,12 @@
 title: "Constructed Functions to Extract Live Concert Music Data from SeatGeek's API"
 
 date: 2019-08-16
-tags: [pandas, API, python, JSON, music data]
-tooltags: pandas
+
+datatags: [music data]
+technologytags: [pandas, JSON, python]
+techniquetags: [data pipeline]
+
+
 categories: [Store Data, Extract Data]
 header:
   image: "/images/seatgeek-extract-data/live-concert-blue-bg-header.jpg"

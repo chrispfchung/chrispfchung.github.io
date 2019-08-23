@@ -100,13 +100,82 @@ This data science portfolio is comprised of projects covering the full spectrum 
 
 
 
-
+<hr>
 <!-- TAGS -->
 
+<a name="project_tags"> </a>
+<h2>Project Tags (<a href= "#technology">Technologies</a>, <a href= "#data">Data</a>, <a href= "#techniques">Techniques</a>)<h2>
 
-<h2>Project Tags<h2>
 
-<a name="techniquetags" > </a>
+  <a name="technology"> </a>
+  <h3>Project Tags: Technologies<h3>
+
+        {% include base_path %}
+        {% include group-by-array collection=site.posts field="technologytags" %}
+
+      <h3><ul class="taxonomy__index">
+
+
+          {% for name in group_names %}
+            <li>
+              <a href="#{{ name | slugify }}">
+                <strong>{{ name }}</strong> <span class="taxonomy__count">{{ i }}</span>
+              </a>
+            </li>
+            {% endfor %}
+
+    </ul><h3><a href="#project_tags" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_project_tags | default: 'Back to Project Tags:' }} &uarr;</a>
+
+        {% for tag in group_names %}
+          {% assign posts = group_items[forloop.index0] %}
+          <h4 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h4>
+          <div class="entries-{{ page.entries_layout | default: 'list' }}">
+          {% for post in posts %}
+            <h4>{% include archive-single.html %}<h4>
+          {% endfor %}
+        </div>
+        <a href="#technology" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_technologies | default: 'Back to technologies' }} &uarr;</a>
+        {% endfor %}
+
+
+
+        <a name="data"> </a>
+        <h3>Project Tags: Data<h3>
+
+              {% include base_path %}
+              {% include group-by-array collection=site.posts field="datatags" %}
+
+            <h3><ul class="taxonomy__index">
+
+
+                {% for name in group_names %}
+                  <li>
+                    <a href="#{{ name | slugify }}">
+                      <strong>{{ name }}</strong> <span class="taxonomy__count">{{ i }}</span>
+                    </a>
+                  </li>
+                  {% endfor %}
+
+    </ul><h3><a href="#project_tags" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_project_tags | default: 'Back to Project Tags:' }} &uarr;</a>
+
+      {% for tag in group_names %}
+        {% assign posts = group_items[forloop.index0] %}
+        <h4 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h4>
+        <div class="entries-{{ page.entries_layout | default: 'list' }}">
+        {% for post in posts %}
+          <h4>{% include archive-single.html %}<h4>
+        {% endfor %}
+      </div>
+      <a href="#datatags" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_data | default: 'Back to data' }} &uarr;</a>
+      {% endfor %}
+
+
+
+
+
+
+
+<a name="techniques" > </a>
 
   <h3>Project Tags: Techniques <h3>
 <!-- tags.html -->
@@ -125,7 +194,12 @@ This data science portfolio is comprised of projects covering the full spectrum 
     </li>
     {% endfor %}
 
-</ul><h3>
+</ul><h3><a href="#project_tags" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_project_tags | default: 'Back to Project Tags:' }} &uarr;</a>
+
+
+
+
+
 
 {% for tag in group_names %}
   {% assign posts = group_items[forloop.index0] %}
@@ -135,95 +209,9 @@ This data science portfolio is comprised of projects covering the full spectrum 
     <h4>{% include archive-single.html %}<h4>
   {% endfor %}
 </div>
-<a href="#techniques" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_techqniues | default: 'Back to techniques' }} &uarr;</a>
+<a href="#techniques" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_techniques | default: 'Back to techniques' }} &uarr;</a>
 {% endfor %}
 
 
-
-      <a name="technology"> </a>
-      <h3>Project Tags: Technologies<h3>
-
-            {% include base_path %}
-            {% include group-by-array collection=site.posts field="techtags" %}
-
-          <h3><ul class="taxonomy__index">
-
-
-              {% for name in group_names %}
-                <li>
-                  <a href="#{{ name | slugify }}">
-                    <strong>{{ name }}</strong> <span class="taxonomy__count">{{ i }}</span>
-                  </a>
-                </li>
-                {% endfor %}
-
-        </ul><h3>
-
-            {% for tag in group_names %}
-              {% assign posts = group_items[forloop.index0] %}
-              <h4 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h4>
-              <div class="entries-{{ page.entries_layout | default: 'list' }}">
-              {% for post in posts %}
-                <h4>{% include archive-single.html %}<h4>
-              {% endfor %}
-            </div>
-            <a href="#technology" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_technologies | default: 'Back to technologies' }} &uarr;</a>
-            {% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a name="data"> </a>
-<h3>Project Tags: Data<h3>
-
-      {% include base_path %}
-      {% include group-by-array collection=site.posts field="datatags" %}
-
-      <!-- <ul class="taxonomy__index">
-      {% for tag in group_names %}
-        {% assign posts = group_items[forloop.index0] %}
-        <li>
-          <a href="#{{ tag | slugify }}"><strong>{{ tag }}</strong><span class="taxonomy__count">{{ '' }}</span>
-          </a>
-        </li>
-      {% endfor %}
-    </ul> -->
-
-    <h3><ul class="taxonomy__index">
-
-
-        {% for name in group_names %}
-          <li>
-            <a href="#{{ name | slugify }}">
-              <strong>{{ name }}</strong> <span class="taxonomy__count">{{ i }}</span>
-            </a>
-          </li>
-          {% endfor %}
-
-  </ul><h3>
-
-      {% for tag in group_names %}
-        {% assign posts = group_items[forloop.index0] %}
-        <h4 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h4>
-        <div class="entries-{{ page.entries_layout | default: 'list' }}">
-        {% for post in posts %}
-          <h4>{% include archive-single.html %}<h4>
-        {% endfor %}
-      </div>
-      <a href="#data" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_data | default: 'Back to Data Tags' }} &uarr;</a>
-      {% endfor %}
+<br><br>
+<a href="#" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
