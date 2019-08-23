@@ -3,7 +3,7 @@ title: "Dove into SeatGeek New York Concert Dataset to Clean Data for Future Vis
 
 date: 2019-08-16
 tags: [pandas, concert data, python]
-tooltags: [pandas]
+tooltags: pandas
 categories: [Tidy Data]
 header:
   image: "/images/seatgeek-data-cleaning/concert-header.jpg"

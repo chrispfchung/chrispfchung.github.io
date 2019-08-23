@@ -50,7 +50,9 @@ en: &DEFAULT_EN
   search_placeholder_text    : "Enter your search term..."
   results_found              : "Result(s) found"
   back_to_top                : "Back to top"
-  back_to_tools              : "Back to tools"
+  back_to_techniques         : "Back to techniques"
+  back_to_data               : "Back to data"
+  back_to_technologies       : "Back to technologies"
 en-US:
   <<: *DEFAULT_EN
 en-CA:

@@ -277,6 +277,13 @@ tag_archive:
 tooltag_archive:
   type: liquid
   path: /tooltags/
+
+technologytag_archive:
+    type: liquid
+    path: /technologytags/
+datatag_archive:
+  type: liquid
+  path: /datatags/
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
 #   enabled:
@@ -291,6 +298,7 @@ tooltag_archive:
 #     category: /categories/:name/
 #     tag: /tags/:name/
 #     tooltag: /tooltags/:name/
+
 
 
 # HTML Compression
@@ -314,6 +322,9 @@ defaults:
       comments: # true
       share: true
       related: true
+
+
+
 
   # _pages
   - scope:

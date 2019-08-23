@@ -9,3 +9,11 @@
 {% if site.tooltag_archive.type and page.tooltags[0] %}
   {% include tooltag-list.html %}
 {% endif %}
+
+{% if site.datatag_archive.type and page.datatags[0] %}
+  {% include datatag-list.html %}
+{% endif %}
+
+{% if site.technologytag_archive.type and page.technologytags[0] %}
+  {% include technologytag-list.html %}
+{% endif %}
