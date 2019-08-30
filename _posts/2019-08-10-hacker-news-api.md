@@ -23,7 +23,7 @@ classes: wide #expand the page
 ## Project Description
 Retrieved Hacker News' top articles and listed them by number of comments using API calls to extract data from a public source.
 
-**Project Replicated From**:<br/>
+**Project Replicated From**<br/>
 Python Crash Course by Eric Matthes<br/>
 
 ```python
@@ -212,7 +212,7 @@ for article in sorted_dict:
     Discussion Link: http://nsaphra.github.io/post/hands/
     Comments: 0
 
-**Resources Consulted:**
+**Resources Consulted**
     1. Why use requests? <https://2.python-requests.org/en/master/user/quickstart/><br>
     2. What are the parameters of the HackerNews API? <br> <https://github.com/HackerNews/API><br>
     3. What is the purpose '\n'?<br> <https://teamtreehouse.com/community/why-does-the-print-syntax-append-a-n-at-the-end-of-a-line>

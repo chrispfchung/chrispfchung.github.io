@@ -21,7 +21,7 @@ mathjax: "true"
 ## Project Description
 Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.<br/>
 
-**Project Replicated From**:<br/>
+**Project Replicated From**<br/>
  <https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/>
 
 

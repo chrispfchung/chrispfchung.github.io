@@ -21,7 +21,7 @@ classes: wide #expand the page
 ## Project Description
 Visualized companies' revenue using Matplotlib by showing how much different companies made using sample sales data
 
-**Project Replicated From:**
+**Project Replicated From**
 1.<https://matplotlib.org/tutorials/introductory/lifecycle.html#sphx-glr-tutorials-introductory-lifecycle-py>
 2. <https://pbpython.com/effective-matplotlib.html>
 

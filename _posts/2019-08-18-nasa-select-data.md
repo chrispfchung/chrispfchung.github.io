@@ -23,7 +23,7 @@ classes: wide #expand the page
 
 Created a datastore on SQLite3 where I added planet attributes, altered columns and queried specific data regarding the 9 planets (8 when we remove Pluto from our database!).
 
-## Project Replicated From:
+## Project Replicated From
 <https://github.com/learn-co-students/dsc-1-05-06-selecting-data-lab-nyc-career-ds-102218>
 
 ## 1. Introduction

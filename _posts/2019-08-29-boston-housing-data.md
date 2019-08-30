@@ -17,14 +17,10 @@ classes: wide #expand the page
 {% include toc icon="book-open" title="Table of Contents" %}<br/>
 
 ## Project Description
-Predicted Suburban housing prices in Boston using Multiple Linear Regression on an already existing dataset, "Boston Housing" to model and analyze the results.
-
-
-## Project Description
 Predicted suburban housing prices in Boston of 1979 using Multiple Linear Regression on an already existing dataset, "Boston Housing" to model and analyze the results. I deal with missing values, check multicollinearity, check for linear relationship with variables, create a model, evaluate and then provide an analysis of my predictions.
 
 
-## Project Replicated From:
+## Project Replicated From
 1. <https://www.weirdgeek.com/2018/12/linear-regression-to-boston-housing-dataset/>
 2. <https://www.codeingschool.com/2019/04/multiple-linear-regression-how-it-works-python.html>
 3. <https://towardsdatascience.com/linear-regression-on-boston-housing-dataset-f409b7e4a155>
