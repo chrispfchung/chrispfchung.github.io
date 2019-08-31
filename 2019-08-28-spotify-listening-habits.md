@@ -15,6 +15,8 @@ mathjax: "true"
 classes: wide #expand the page
 ---
 
+{% include toc icon="book-open" title="Table of Contents" %}<br/>
+
 ## Project Description
 Visualized my Spotify listening habits by finding stories within the data. The author of the original project used 10 years worth of data that he "scrobbled" or tracked using last.fm. I chose the alternative which was to request max 3 months of data directly from Spotify.
 
