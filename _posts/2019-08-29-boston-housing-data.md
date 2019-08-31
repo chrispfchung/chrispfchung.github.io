@@ -9,7 +9,7 @@ techniquetags: [machine learning, linear regression]
 
 categories: [Model Data]
 header:
-  image: "/images/boston-housing-data/house-header.jpg"
+  image: "/images/boston-housing-data_files/house-header.jpg"
 excerpt: "Linear Regression is one of the fundamental machine learning techniques in data science. It makes predictions..."
 mathjax: "true"
 classes: wide #expand the page
@@ -283,7 +283,7 @@ sns.heatmap(df.corr().round(2), square=True, cmap='YlGnBu', annot=True, mask=mas
 ```
 
 
-![png](boston-housing-data_files/boston-housing-data_16_0.png)
+![png](/images/boston-housing-data_files/boston-housing-data_16_0.png)
 
 
 #### Analysis of Heatmap
@@ -332,7 +332,7 @@ for index, feature_name in enumerate(features):
 ```
 
 
-![png](boston-housing-data_files/boston-housing-data_22_0.png)
+![png](/images/boston-housing-data_files/boston-housing-data_22_0.png)
 
 
 #### Linear Relationships
@@ -371,7 +371,7 @@ plt.show()
 ```
 
 
-![png](boston-housing-data_files/boston-housing-data_24_0.png)
+![png](/images/boston-housing-data_files/boston-housing-data_24_0.png)
 
 
 In the left plot, I could not fit the data right through in one shot from corner to corner. I had to change where my line fits through to capture more data. After transformation, We were able to minimize the nonlinear relationship, it's better now.
@@ -476,7 +476,7 @@ plt.show()
 ```
 
 
-![png](boston-housing-data_files/boston-housing-data_38_0.png)
+![png](/images/boston-housing-data_files/boston-housing-data_38_0.png)
 
 
 ## Plot Residual Errors
@@ -506,7 +506,7 @@ residuals()
 
 
 
-![png](boston-housing-data_files/boston-housing-data_41_1.png)
+![png](/images/boston-housing-data_files/boston-housing-data_41_1.png)
 
 
 ## Insight from Data
