@@ -12,13 +12,13 @@ var store = [{
         "url": "http://localhost:4000/transform%20data/color-clustering/",
         "teaser":null},{
         "title": "Used API calls to extract top articles from Hacker News (YCombinator)",
-        "excerpt":"Table of Contents Project Description Overview Create Top Articles Dictionary Sort Dictionary Final Output Project Description Retrieved Hacker News’ top articles and listed them by number of comments using API calls to extract data from a public source. Project Replicated From: Python Crash Course by Eric Matthes import requests from...","categories": ["Extract Data"],
+        "excerpt":"Table of Contents Project Description Overview Create Top Articles Dictionary Sort Dictionary Final Output Project Description Retrieved Hacker News’ top articles and listed them by number of comments using API calls to extract data from a public source. Project Replicated From Python Crash Course by Eric Matthes import requests from...","categories": ["Extract Data"],
         "tags": [],
         "tooltags": null,
         "url": "http://localhost:4000/extract%20data/hacker-news-api/",
         "teaser":null},{
         "title": "Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data",
-        "excerpt":"Table of Contents Project Description Introduction Overview Our Dataset Plotting Data Customizing Plot Customize Label Annotating Plot Save Plot Parameter overview Recall from Beginning Resources Consulted: Conclusion Project Description Visualized companies’ revenue using Matplotlib by showing how much different companies made using sample sales data Project Replicated From: 1.https://matplotlib.org/tutorials/introductory/lifecycle.html#sphx-glr-tutorials-introductory-lifecycle-py https://pbpython.com/effective-matplotlib.html...","categories": ["Visualize Data"],
+        "excerpt":"Table of Contents Project Description Introduction Overview Our Dataset Plotting Data Customizing Plot Customize Label Annotating Plot Save Plot Parameter overview Recall from Beginning Resources Consulted: Conclusion Project Description Visualized companies’ revenue using Matplotlib by showing how much different companies made using sample sales data Project Replicated From 1.https://matplotlib.org/tutorials/introductory/lifecycle.html#sphx-glr-tutorials-introductory-lifecycle-py https://pbpython.com/effective-matplotlib.html...","categories": ["Visualize Data"],
         "tags": [],
         "tooltags": null,
         "url": "http://localhost:4000/visualize%20data/lifecycle-of-a-plot/",
@@ -36,7 +36,7 @@ var store = [{
         "url": "http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/",
         "teaser":null},{
         "title": "Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query",
-        "excerpt":"Table of Contents Project Description Project Replicated From: 1. Introduction 2. Start SQLite3 3. Create a Table 5. Alter the table 6. Add and remove data Add Data Remove data from the table Update table data SQL to Pandas Select Data Select just the name and color of each planet...","categories": ["Store Data","Extract Data"],
+        "excerpt":"Table of Contents Project Description Project Replicated From 1. Introduction 2. Start SQLite3 3. Create a Table 5. Alter the table 6. Add and remove data Add Data Remove data from the table Update table data SQL to Pandas Select Data Select just the name and color of each planet...","categories": ["Store Data","Extract Data"],
         "tags": [],
         "tooltags": null,
         "url": "http://localhost:4000/store%20data/extract%20data/nasa-select-data/",
@@ -46,4 +46,22 @@ var store = [{
         "tags": [],
         "tooltags": null,
         "url": "http://localhost:4000/tidy%20data/seatgeek-data-cleaning/",
+        "teaser":null},{
+        "title": "Finagled with IMDB datasets to Organize Data for Analysis of U.S. Movie Quality Over the Last 3 Decades",
+        "excerpt":"Table of Contents Project Description Introduction Import Libraries and Datasets Filter U.S Movies Convert Year Made and Movie Runtime to Integers Remove Duplicates Final Output Final Features Conclusion Next Steps Resources Consulted Project Description Combined three datasets from IMDB and filtered necessary data to answer the question, “Has the quality...","categories": ["Organize Data","Tidy Data"],
+        "tags": [],
+        "tooltags": null,
+        "url": "http://localhost:4000/organize%20data/tidy%20data/data-imdb/",
+        "teaser":null},{
+        "title": "Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset",
+        "excerpt":"Table of Contents Project Description Project Replicated From Introduction Load Libraries &amp; Dataset Our Features Prepare Dataset for Modeling Missing Data Check Multicollinearity Analysis of Heatmap Explore Dataset Linear Relationships Create Model Evaluate Model with Metrics Actual Vs. Predicted Price Plot Plot Residual Errors Insight from Data Log Transformed Coefficient...","categories": ["Model Data"],
+        "tags": [],
+        "tooltags": null,
+        "url": "http://localhost:4000/model%20data/boston-housing-data/",
+        "teaser":null},{
+        "title": "Visualizing Spotify Global's Top 200 Summer Songs 2019 with Tableau",
+        "excerpt":"Table of Contents Project Description Most Popular Tracks and Artists Most Popular Tracks Creating Dashboard Final Output Conclusion Project Description Visualized Spotify’s Weekly Global Top 200 Songs From June-September 2019 and analyzed Most Popular Artists, Most Popular Artists vs. Actual Stream Time and Most Popular Tracks. The datasets are merged...","categories": ["Visualize Data"],
+        "tags": [],
+        "tooltags": null,
+        "url": "http://localhost:4000/visualize%20data/spotify-top-200/",
         "teaser":null}]

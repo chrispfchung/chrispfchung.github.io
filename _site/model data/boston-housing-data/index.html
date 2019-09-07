@@ -1,0 +1,1208 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset - Chris Chung</title>
+<meta name="description" content="Linear Regression is one of the fundamental machine learning techniques in data science. It makes predictions…">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Chris Chung">
+<meta property="og:title" content="Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset">
+<meta property="og:url" content="http://localhost:4000/model%20data/boston-housing-data/">
+
+
+  <meta property="og:description" content="Linear Regression is one of the fundamental machine learning techniques in data science. It makes predictions…">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/images/boston-housing-data_files/house-header.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-08-29T00:00:00-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/model%20data/boston-housing-data/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chris Chung",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+  <meta name="google-site-verification" content="eTEQHHs6V5HyxKsaNQsx3NZ6pw6ULe6bYc0B2x4-RrU" />
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chris Chung Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Chris Chung
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/" >Projects</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/images/boston-housing-data_files/house-header.jpg" alt="Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-pic.png" alt="Chris Chung" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chris Chung</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Data Science Project Portfolio</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact Info</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">New York, NY</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> chrispfchung@gmail.com</a></li>
+          
+        
+          
+            <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset">
+    <meta itemprop="description" content="Linear Regression is one of the fundamental machine learning techniques in data science. It makes predictions…">
+    <meta itemprop="datePublished" content="August 29, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#project-replicated-from" id="markdown-toc-project-replicated-from">Project Replicated From</a></li>
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#load-libraries--dataset" id="markdown-toc-load-libraries--dataset">Load Libraries &amp; Dataset</a>    <ul>
+      <li><a href="#our-features" id="markdown-toc-our-features">Our Features</a></li>
+    </ul>
+  </li>
+  <li><a href="#prepare-dataset-for-modeling" id="markdown-toc-prepare-dataset-for-modeling">Prepare Dataset for Modeling</a>    <ul>
+      <li><a href="#missing-data" id="markdown-toc-missing-data">Missing Data</a></li>
+      <li><a href="#check-multicollinearity" id="markdown-toc-check-multicollinearity">Check Multicollinearity</a>        <ul>
+          <li><a href="#analysis-of-heatmap" id="markdown-toc-analysis-of-heatmap">Analysis of Heatmap</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#explore-dataset" id="markdown-toc-explore-dataset">Explore Dataset</a>    <ul>
+      <li><a href="#linear-relationships" id="markdown-toc-linear-relationships">Linear Relationships</a></li>
+    </ul>
+  </li>
+  <li><a href="#create-model" id="markdown-toc-create-model">Create Model</a></li>
+  <li><a href="#evaluate-model-with-metrics" id="markdown-toc-evaluate-model-with-metrics">Evaluate Model with Metrics</a>    <ul>
+      <li><a href="#actual-vs-predicted-price-plot" id="markdown-toc-actual-vs-predicted-price-plot">Actual Vs. Predicted Price Plot</a></li>
+    </ul>
+  </li>
+  <li><a href="#plot-residual-errors" id="markdown-toc-plot-residual-errors">Plot Residual Errors</a></li>
+  <li><a href="#insight-from-data" id="markdown-toc-insight-from-data">Insight from Data</a>    <ul>
+      <li><a href="#log-transformed-coefficient-understanding" id="markdown-toc-log-transformed-coefficient-understanding">Log Transformed Coefficient Understanding</a></li>
+      <li><a href="#analysis" id="markdown-toc-analysis">Analysis</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ul>
+
+  </nav>
+</aside>
+<p><br /></p>
+
+<h2 id="project-description">Project Description</h2>
+<p>Predicted suburban housing prices in Boston of 1979 using Multiple Linear Regression on an already existing dataset, “Boston Housing” to model and analyze the results. I deal with missing values, check multicollinearity, check for linear relationship with variables, create a model, evaluate and then provide an analysis of my predictions.</p>
+
+<h2 id="project-replicated-from">Project Replicated From</h2>
+<ol>
+  <li><a href="https://www.weirdgeek.com/2018/12/linear-regression-to-boston-housing-dataset/">https://www.weirdgeek.com/2018/12/linear-regression-to-boston-housing-dataset/</a></li>
+  <li><a href="https://www.codeingschool.com/2019/04/multiple-linear-regression-how-it-works-python.html">https://www.codeingschool.com/2019/04/multiple-linear-regression-how-it-works-python.html</a></li>
+  <li><a href="https://towardsdatascience.com/linear-regression-on-boston-housing-dataset-f409b7e4a155">https://towardsdatascience.com/linear-regression-on-boston-housing-dataset-f409b7e4a155</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+<p>Linear Regression is one of the fundamental machine learning techniques in data science. It makes predictions by discovering the best fit line that reaches the most points. Once it learns, it can start to predict prices, weight, and more. In this project, “Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset,” I will run through the steps to create a linear regression model using appropriate features, data, and analyze my results.</p>
+
+<h2 id="load-libraries--dataset">Load Libraries &amp; Dataset</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Libraries . I will also import them again when I run the related code
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="c1">#Load Dataset from sklearn
+</span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
+
+
+<span class="c1"># Load Data
+</span><span class="n">boston</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span>
+
+<span class="c1"># Data is in dictionary, Populate dataframe with data key
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="c1"># Columns are indexed, Fill in Column names with feature_names key
+</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">boston</span><span class="o">.</span><span class="n">feature_names</span>
+
+<span class="c1"># We need Median Value! boston.data contains only the features, no price value.
+</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'MEDV'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># Our dataset contains 506 data points and 14 columns
+</span>
+<span class="c1"># Here is a glimpse of our data first 3 rows
+</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRIM</th>
+      <th>ZN</th>
+      <th>INDUS</th>
+      <th>CHAS</th>
+      <th>NOX</th>
+      <th>RM</th>
+      <th>AGE</th>
+      <th>DIS</th>
+      <th>RAD</th>
+      <th>TAX</th>
+      <th>PTRATIO</th>
+      <th>B</th>
+      <th>LSTAT</th>
+      <th>MEDV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00632</td>
+      <td>18.0</td>
+      <td>2.31</td>
+      <td>0.0</td>
+      <td>0.538</td>
+      <td>6.575</td>
+      <td>65.2</td>
+      <td>4.0900</td>
+      <td>1.0</td>
+      <td>296.0</td>
+      <td>15.3</td>
+      <td>396.90</td>
+      <td>4.98</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.02731</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0.0</td>
+      <td>0.469</td>
+      <td>6.421</td>
+      <td>78.9</td>
+      <td>4.9671</td>
+      <td>2.0</td>
+      <td>242.0</td>
+      <td>17.8</td>
+      <td>396.90</td>
+      <td>9.14</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.02729</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0.0</td>
+      <td>0.469</td>
+      <td>7.185</td>
+      <td>61.1</td>
+      <td>4.9671</td>
+      <td>2.0</td>
+      <td>242.0</td>
+      <td>17.8</td>
+      <td>392.83</td>
+      <td>4.03</td>
+      <td>34.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="our-features">Our Features</h3>
+<p>Below are the definitions of each feature name in the housing dataset. We will be focused on using Median Value of homes in $1000s (MEDV) as our target variable. I was able to get this data with <strong><em>print(boston.DESCR)</em></strong></p>
+
+<p><em>Attribute Information (in order):</em>
+        - CRIM     per capita crime rate by town
+        - ZN       proportion of residential land zoned for lots over 25,000 sq.ft.
+        - INDUS    proportion of non-retail business acres per town
+        - CHAS     Charles River dummy variable (= 1 if tract bounds river; 0 otherwise)
+        - NOX      nitric oxides concentration (parts per 10 million)
+        - RM       average number of rooms per dwelling
+        - AGE      proportion of owner-occupied units built prior to 1940
+        - DIS      weighted distances to five Boston employment centres
+        - RAD      index of accessibility to radial highways
+        - TAX      full-value property-tax rate per $10,000
+        - PTRATIO  pupil-teacher ratio by town
+        - B        1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town (dataset created in 1979, questionable attribute. Will leave in for the purposes of following the project)
+        - LSTAT    % lower status of the population
+        - MEDV     Median value of owner-occupied homes in $1000’s</p>
+
+<h2 id="prepare-dataset-for-modeling">Prepare Dataset for Modeling</h2>
+
+<h3 id="missing-data">Missing Data</h3>
+
+<p>Let’s check if we have any missing values.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 506 entries, 0 to 505
+Data columns (total 14 columns):
+CRIM       506 non-null float64
+ZN         506 non-null float64
+INDUS      506 non-null float64
+CHAS       506 non-null float64
+NOX        506 non-null float64
+RM         506 non-null float64
+AGE        506 non-null float64
+DIS        506 non-null float64
+RAD        506 non-null float64
+TAX        506 non-null float64
+PTRATIO    506 non-null float64
+B          506 non-null float64
+LSTAT      506 non-null float64
+MEDV       506 non-null float64
+dtypes: float64(14)
+memory usage: 55.4 KB
+</code></pre></div></div>
+
+<p>It doesn’t show null values but when we look at df.head() from above, we can see that there are values of 0 which can also be missing values.<br /> For good measure, we’ll turn the 0 values into np.nan where we can see what is missing.<br /><br />
+The author from WeirdGeek.com made a good point to check what percentage of missing values exist in the columns and mentioned a rule of thumb to drop columns that are missing 70-75% of their data. If it consists of 20-25%, then there may be some hope and opportunity to finagle with filling the values in.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First replace the 0 values with np.nan values
+</span><span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check what percentage of each column's data is missing
+</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CRIM       0.000000
+ZN         0.735178
+INDUS      0.000000
+CHAS       0.930830
+NOX        0.000000
+RM         0.000000
+AGE        0.000000
+DIS        0.000000
+RAD        0.000000
+TAX        0.000000
+PTRATIO    0.000000
+B          0.000000
+LSTAT      0.000000
+MEDV       0.000000
+dtype: float64
+</code></pre></div></div>
+
+<p>This shows that 73% of the ZN feature and 93% of CHAS feature are missing. We will leave them out of our variables to test as they do not give us enough information for our regression model to interpret.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Drop ZN and CHAS with too many missing columns
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">'ZN'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">'CHAS'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="check-multicollinearity">Check Multicollinearity</h3>
+
+<p>It’s helpful to see which features increase/decrease together. Features that correlate together may make interpretability of their effectiveness difficult. An analogy that someone made on stackoverflow was that if you want to measure the strength of two people who are pushing the same boulder up a hill, it’s hard to tell who is pushing at what rate. Another analogy was if two scientists contribute to a research report, and they are twins who work similarly, how can you tell who did what? A better situation would be if one scientist is good at creating experiments and the other one is good at writing the report–then you can tell how each scientist, or “feature” contributed to the report, or “target”.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+
+<span class="c1"># Steps to remove redundant values
+</span><span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">())</span>
+<span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c1"># How to remove redundant correlation
+# &lt;https://stackoverflow.com/questions/33282368/plotting-a-2d-heatmap-with-matplotlib&gt;
+</span>
+<span class="n">sns</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s">'figure.figsize'</span><span class="p">:</span> <span class="p">(</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">)})</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">square</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'YlGnBu'</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">);</span>
+
+<span class="c1"># vmax emphasizes a color based on the gradient that you chose
+# cmap is the color scheme of the heatmap
+# square shapes the heatmap to a square for neatness
+# annot shows the individual correlations of each pair of values
+# mask removes redundacy and prevents repeat of the correlation values
+</span></code></pre></div></div>
+
+<p><img src="/images/boston-housing-data_files/boston-housing-data_16_0.png" alt="png" /></p>
+
+<h4 id="analysis-of-heatmap">Analysis of Heatmap</h4>
+
+<p>From the heatmap, if I set a cut off for high correlation to be +- .75, I see that:</p>
+<ul>
+  <li><em>TAX</em> and <em>RAD</em> have a high correlation of <strong>0.91</strong></li>
+  <li><em>NOX</em> and <em>INDUS</em> have a high correlation of <strong>0.76</strong></li>
+  <li><em>DIS</em> and <em>NOX</em> have a high correlation of <strong>-0.77</strong></li>
+</ul>
+
+<p>I will drop all of these values for better accuracy.</p>
+
+<p>I can also see that:</p>
+<ul>
+  <li><em>MEDV</em> has high correlation with <em>RM</em> and <em>LSTAT</em> <strong>0.7 and -0.74</strong></li>
+</ul>
+
+<p><em>For Reference:</em></p>
+<ul>
+  <li><em>MEDV</em> = Median value of house</li>
+  <li><em>RM</em> = Avg number of rooms per house</li>
+  <li><em>LSTAT</em> = Neighborhood Affluence</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># drop correlated values
+</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'TAX'</span><span class="p">,</span> <span class="s">'RAD'</span><span class="p">,</span> <span class="s">'NOX'</span><span class="p">,</span> <span class="s">'INDUS'</span><span class="p">,</span> <span class="s">'DIS'</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="explore-dataset">Explore Dataset</h2>
+
+<p>I’m going to create a loop to plot each relationship between a feature and our target variable MEDV (Median Price). We’ll be able to see which features have linear relationships.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create multiple plots
+</span><span class="n">features</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">'MEDV'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'MEDV'</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">feature_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
+    <span class="c1"># 4 rows of plots, 13/3 == 4 plots per row, index+1 where the plot begins
+</span>    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature_name</span><span class="p">],</span> <span class="n">target</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">feature_name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">feature_name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1">#Removed for easier view of plots
+</span>    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'MEDV'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/boston-housing-data_files/boston-housing-data_22_0.png" alt="png" /></p>
+
+<h4 id="linear-relationships">Linear Relationships</h4>
+<p>LSTAT and RM look like the only ones that have some sort of linear relationship. I would want to use these two features. As part of the assumptions of a linear regression, it is important because this model is trying to understand the linear relatinship between the feature and dependent variable. The model may underfit as a result of not checking this assumption. It underfits because if we draw a line through the data points in a non-linear relationship, the line would not be able to capture as much of the data.<br /></p>
+
+<p>I can transform the non-linear relationship logging the values.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"LOGLSTAT"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"LSTAT"</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># showing plot 1
+</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"LSTAT"</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'MEDV'</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Original </span><span class="si">% </span><span class="s">Status of Neighborhood vs Median Price of House'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'LSTAT'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'MEDV'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">],[</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># showing plot 2
+</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">"LOGLSTAT"</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'MEDV'</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Log Transformed </span><span class="si">% </span><span class="s">Status of Neighborhood vs Median Price of House'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Transformed LSTAT'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Transformed MEDV'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="c1">#Apply global parameters
+</span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'xtick'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'ytick'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/images/boston-housing-data_files/boston-housing-data_24_0.png" alt="png" /></p>
+
+<p>In the left plot, I could not fit the data right through in one shot from corner to corner. I had to change where my line fits through to capture more data. After transformation, We were able to minimize the nonlinear relationship, it’s better now.</p>
+
+<h2 id="create-model">Create Model</h2>
+
+<p>First we create our list of features and our target variable. These are the values that we will train and test our values on. One author uses .values and another does not. Not sure what the difference is but I’d like to find out.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">'LOGLSTAT'</span><span class="p">,</span> <span class="s">'RM'</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">MEDV</span>
+</code></pre></div></div>
+
+<p>Let’s create our train test split data. We need the training set to teach our model about the true values and then we’ll use what it learned to predict our prices.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1">#random_state 10 for consistent data to train/test
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># 339 rows 6 features
+</span><span class="k">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># 167 rows 6 features
+</span><span class="k">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># 339 rows 1 feature
+</span><span class="k">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># 167 rows 1 feature
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(339, 2)
+(167, 2)
+(339,)
+(167,)
+</code></pre></div></div>
+
+<p>Now we instantiate a Linear Regression object, fit the training data and then predict.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="c1"># Create LinearRegression Instance
+</span><span class="n">lrm</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Fit data on to the model
+</span><span class="n">lrm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict
+</span><span class="n">y_predicted</span> <span class="o">=</span> <span class="n">lrm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>Let’s evaluate how well our model did using metrics r-squared and root mean squared error (rmse). The r-squared value shows how strong our features determined the target value. The rmse defines the difference between predicted and the test values. The higher the value of the rmse, the less accurate the model.</p>
+
+<h2 id="evaluate-model-with-metrics">Evaluate Model with Metrics</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="k">def</span> <span class="nf">linear_metrics</span><span class="p">():</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">lrm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'r-squared: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">r2</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'---------------------------------------'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'root mean squared error: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">rmse</span><span class="p">))</span>
+<span class="n">linear_metrics</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>r-squared: 0.7155988559379332
+---------------------------------------
+root mean squared error: 5.214330262011093
+</code></pre></div></div>
+
+<p>With an r-squared value of .72, the model is not terrible but it’s not perfect. This could be improved by:</p>
+
+<ul>
+  <li>bigger dataset</li>
+  <li>better features or maybe more features</li>
+  <li>remove outliers</li>
+  <li>perform optimization techniques like Lasso and Ridge</li>
+</ul>
+
+<p>The root mean squared error we can interpret that on average we are 5.2k dollars off the actual value.</p>
+
+<h3 id="actual-vs-predicted-price-plot">Actual Vs. Predicted Price Plot</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Plot my predictions vs actual
+</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="s">'--k'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'tight'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'The True Prices'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'My Predicted Prices'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Predicted Boston Housing Prices vs. Actual in $1000's"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'xtick'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'ytick'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/images/boston-housing-data_files/boston-housing-data_38_0.png" alt="png" /></p>
+
+<h2 id="plot-residual-errors">Plot Residual Errors</h2>
+
+<p>The closer we can get the points to be at the 0 line, the more accurate the model is at predicting the prices.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Create Residuals Function
+</span>
+<span class="k">def</span> <span class="nf">residuals</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">lrm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">lrm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">''</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Residual Errors of Test Data'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1"># The closer to 1, the more perfect the prediction
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Variance score: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">lrm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+
+
+<span class="n">residuals</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Variance score: 0.7155988559379332
+</code></pre></div></div>
+
+<p><img src="/images/boston-housing-data_files/boston-housing-data_41_1.png" alt="png" /></p>
+
+<h2 id="insight-from-data">Insight from Data</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Combine coefficient with their value
+</span><span class="n">coeff</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">lrm</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
+
+<span class="c1"># sort keys by value of coefficient
+</span><span class="k">print</span><span class="p">([</span><span class="s">'y-intercept = {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">lrm</span><span class="o">.</span><span class="n">intercept_</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['y-intercept = 25.77607508783125', [('LOGLSTAT', -9.968206663480515), ('RM', 3.23108538198644)]]
+</code></pre></div></div>
+
+<h3 id="log-transformed-coefficient-understanding">Log Transformed Coefficient Understanding</h3>
+
+<ul>
+  <li>For every one percent increase in the independent variable, the dep. variable changes by: Coefficient * ln(1.01)</li>
+  <li>ln(1.01) or ln(101/100) is also equal to just about 1%</li>
+  <li>
+    <p>If you want to see a different percent increase, you can put ln(1.10) - a 10% increase</p>
+  </li>
+  <li>log(coefficient) follows a log-normal distribution</li>
+  <li>ln(coefficient) follows a normal distribution</li>
+</ul>
+
+<p><a href="https://www.cscu.cornell.edu/news/statnews/stnews83.pdf">https://www.cscu.cornell.edu/news/statnews/stnews83.pdf</a><br />
+<a href="https://data.library.virginia.edu/interpreting-log-transformations-in-a-linear-model/">https://data.library.virginia.edu/interpreting-log-transformations-in-a-linear-model/</a><br />
+(I want a better understanding of interpreting the log values)</p>
+
+<h3 id="analysis">Analysis</h3>
+<ul>
+  <li>The y-intercept can be interpreted that in general the starting price of a house in Boston 1979 would be around 25K-26K.</li>
+  <li>‘RM’, or rooms per home, at 3.23 can be interpreted that for every room, the price increases by 3K.</li>
+  <li>The Log Transformed ‘LSTAT’, % of lower status, can be interpreted as for every 1% increase of lower status, using the formula -9.96*ln(1.01), then our median value will decrease by 0.09, or by 100 dollars.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this project we went over the Boston dataset in extensive detail. Learning from other people’s posts, I learned that although their steps were basically the same, they included and excluded different aspects of linear regression such as checking assumptions, log transforming data, visualizing residuals, provide some type of explanation for the results. This project was a combination of reading from other posts and customizing it to the way that I like it. I enjoyed working on this linear regression project, a fundamental part of machine learning, I’ve only reached tip of the iceberg as there are optimization techniques and other assumptions that I didn’t include.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+<p>I could check for all assumptions, as one author has posted an excellent explanation of how to check for them, <a href="https://jeffmacaluso.github.io/post/LinearRegressionAssumptions/">https://jeffmacaluso.github.io/post/LinearRegressionAssumptions/</a>. I would also play with Lasso and Ridge techniques especially if I have polynomial terms. Finally, I’d like to experiment with logging the dependent variable as well.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#model-data" class="page__taxonomy-item" rel="tag">Model Data</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Data Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/datatags/#labeled-data" class="page__taxonomy-item" rel="tag">labeled data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/datatags/#sample-data" class="page__taxonomy-item" rel="tag">sample data</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Technology Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/technologytags/#seaborn" class="page__taxonomy-item" rel="tag">seaborn</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/technologytags/#sklearn" class="page__taxonomy-item" rel="tag">sklearn</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-29T00:00:00-04:00">August 29, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Used+Linear+Regression+to+Model+and+Predict+Housing+Prices+with+the+Classic+Boston+Housing+Dataset%20http%3A%2F%2Flocalhost%3A4000%2Fmodel%2520data%2Fboston-housing-data%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fmodel%2520data%2Fboston-housing-data%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fmodel%2520data%2Fboston-housing-data%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/organize%20data/tidy%20data/data-imdb/" class="pagination--pager" title="Finagled with IMDB datasets to Organize Data for Analysis of U.S. Movie Quality Over the Last 3 Decades
+">Previous</a>
+    
+    
+      <a href="/visualize%20data/spotify-top-200/" class="pagination--pager" title="Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/visualize%20data/spotify-top-200/" rel="permalink">Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Global Top 200 Songs…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/organize%20data/tidy%20data/data-imdb/" rel="permalink">Finagled with IMDB datasets to Organize Data for Analysis of U.S. Movie Quality Over the Last 3 Decades
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">I was rewatching some of my favorite movies from the 90s and early 2000s like Austin Powers…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tidy%20data/seatgeek-data-cleaning/" rel="permalink">Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">It’s a cliché that data cleaning takes 85% …
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/store%20data/extract%20data/nasa-select-data/" rel="permalink">Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  13 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">SQLite3 is a database where I can perform SQL commands to extract…
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact Info:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email Me</a></li>
+        
+      
+        
+          <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Chris Chung. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+  </body>
+</html>

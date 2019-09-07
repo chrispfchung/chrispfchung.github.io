@@ -1,0 +1,749 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.5 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau - Chris Chung</title>
+<meta name="description" content="Global Top 200 Songs…">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Chris Chung">
+<meta property="og:title" content="Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau">
+<meta property="og:url" content="http://localhost:4000/visualize%20data/spotify-top-200/">
+
+
+  <meta property="og:description" content="Global Top 200 Songs…">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/images/boston-housing-data_files/house-header.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2019-09-06T00:00:00-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/visualize%20data/spotify-top-200/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chris Chung",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+  <meta name="google-site-verification" content="eTEQHHs6V5HyxKsaNQsx3NZ6pw6ULe6bYc0B2x4-RrU" />
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chris Chung Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Chris Chung
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/" >Projects</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="/images/boston-housing-data_files/house-header.jpg" alt="Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-pic.png" alt="Chris Chung" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Chris Chung</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Data Science Project Portfolio</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact Info</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">New York, NY</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> chrispfchung@gmail.com</a></li>
+          
+        
+          
+            <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau">
+    <meta itemprop="description" content="Global Top 200 Songs…">
+    <meta itemprop="datePublished" content="September 06, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#most-popular-tracks-and-artists" id="markdown-toc-most-popular-tracks-and-artists">Most Popular Tracks and Artists</a></li>
+  <li><a href="#most-popular-tracks" id="markdown-toc-most-popular-tracks">Most Popular Tracks</a></li>
+  <li><a href="#creating-dashboard" id="markdown-toc-creating-dashboard">Creating Dashboard</a></li>
+  <li><a href="#final-output" id="markdown-toc-final-output">Final Output</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+  </nav>
+</aside>
+<p><br /></p>
+
+<h2 id="project-description">Project Description</h2>
+<p>Visualized Spotify’s Weekly Global Top 200 Songs From June-September 2019 and analyzed Most Popular Artists, Most Popular Artists vs. Actual Stream Time and Most Popular Tracks. The datasets are merged into 1 CSV file and my final product is a Tableau dashboard with 3 different worksheets. I follow Tableau Public and follow the guide “How to visualize Spotify music trends in Tableau” by Scott Teal of the Tableau team. He uses a different dataset. This project will answer questions about songs of Summer 2019 like,</p>
+
+<ol>
+  <li>Who are the most listened to artists in the world?</li>
+  <li>Which artists do people listen to the longest?</li>
+  <li>What songs are the most popular?</li>
+  <li>What’s the relationship between number of tracks and stream time?</li>
+</ol>
+
+<p><strong>Project Replicated From</strong>
+<a href="https://www.tableau.com/about/blog/2019/7/how-visualize-spotify-music-trends-tableau">https://www.tableau.com/about/blog/2019/7/how-visualize-spotify-music-trends-tableau</a></p>
+
+<p>I consulted this website to merge my files with pandas. <a href="https://www.techbeamers.com/pandas-merge-csv-files/">https://www.techbeamers.com/pandas-merge-csv-files/</a>. After merging the 12 CSV files within Python, I open up my Tableau and go to <strong>“Text File”</strong> and select my CSV file labeled <em>Spotify__Weekly__Streaming.csv</em>.  Under <strong>Files</strong>, I’m so happy that all the CSV files are there. The Column names are “Unnamed” as it looks like the title names did not carry over. I label them as in the photo below. You can also alter change it directly in the CSV.</p>
+
+<p><img src="file:///Users/chrischung/DS/portfolio/chrispfchung.github.io/images/spotify-top-200/changecolumns.png" alt="" /></p>
+
+<p>Before beginning, check for null values. My main CSV carried over each CSV files’ columns so I added a filter to remove the null values from my data. In the top right corner under <em>Filters</em>, click <strong>Add</strong>, <strong>Add</strong> again, double click a field with a continuous variable like <em>Positions</em> or <em>Streams</em>, and click <em>OK</em> and <em>OK</em>. The null values are removed from our data.</p>
+
+<p>***insert</p>
+
+<h2 id="most-popular-tracks-and-artists">Most Popular Tracks and Artists</h2>
+<p>We click <strong>Sheet 1</strong> at the bottom of the left of Tableau and drag <strong>Track Name</strong> in the Columns field. This shows each time a track from the artist showed up on the Top 200 list which is helpful to see how many of the artists’ songs ended up on the list over the summer.</p>
+
+<ol>
+  <li>Once we drag <strong>Track Name</strong> into Columns, change the <em>Measure</em> option to <em>Count (Distinct)</em>. We’ll see that there are 389 unique tracks.</li>
+  <li>Then we drag <strong>Artist</strong> into Rows and sort them by highest to lowest. We’ll see which top 3 artists have the most tracks. Ordered by highest tracks. It looks like Ed Sheeran, Billie Eillish, and Shawn Mendes.</li>
+  <li>Now we drag <strong>Streams</strong> into Columns. According to Spotify, a stream is counted when a user listens for over 30 seconds. Teal, the author of the original post, makes a point that although there can be more of the artists’ tracks on the list it doesn’t mean that the author had the most stream time, or listening time. Looking at the graph, although Taylor Swift is in second place for highest number of tracks, there are several artists that have more streams than her! We’ll see this relationship clearer in the next step.</li>
+</ol>
+
+<p><strong><em>INSERT most pop artist and streams here</em></strong></p>
+
+<ol>
+  <li>To a different view of the relationship between <strong>Streams</strong> and <strong>Track Name</strong>, we can look at a scatter plot. Add a <strong>New Worksheet</strong> and go to <strong>Show Me</strong> in the top corner and select the <em>scatter plots</em> option. All the points to the right of Taylor Swift have more streams than her though she has a high number of tracks. Nonetheless with 18 tracks over 12 weeks and high streams, she has much more presence than the rest of the points. We can see the majority of tracks have between 0-200 Million streams with 1-3 tracks. We see Ed Sheeran in the top right blowing everyone out of the water in terms of number of tracks and stream time. I don’t blame Spotify listeners, his songs are amazing!</li>
+</ol>
+
+<p><strong><em>INSERT SHAWN MENDES STREAM VS ARTIST HERE</em></strong></p>
+
+<h2 id="most-popular-tracks">Most Popular Tracks</h2>
+<p>Now let’s look at the popularity of the tracks. Add a <strong>New Worksheet</strong>.</p>
+
+<ol>
+  <li>We drag <strong>Track Name</strong> into Rows and <strong>SUM(Streams)</strong> into Columns and sort them by descending order.</li>
+  <li>Shawn Mendes’ “Señorita” is by far the highest at 626 million streams while second place is Ed Sheeran’s “I Don’t Care” with Justin Bieber at 359 million streams!</li>
+</ol>
+
+<p><strong><em>INSERT MOST POP TRACK HERE</em></strong></p>
+
+<h2 id="creating-dashboard">Creating Dashboard</h2>
+<ol>
+  <li>Add a <strong>New Dashboard</strong> and drag your <em>Sheets</em> on to the dashboard.</li>
+  <li>Organize it the way that you like it. I organized mine in thirds from top to bottom.</li>
+</ol>
+
+<h2 id="final-output">Final Output</h2>
+<p><strong><em>INSERT DASHBOARD HERE</em></strong></p>
+
+<p>You can interact with [this dashboard] on Tableau Public.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>This was a fun project that let me see what the world is listening to. It’s cool to see that some artists dominate the rest like Ed Sheeran and Shawn Mendes. I also thought it was interesting that most tracks doesn’t mean that they have the most listening time. In the next project, I will use the author’s dataset to create a map &amp; streaming activity dashboard to take a closer look at what songs each country is listening to!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#visualize-data" class="page__taxonomy-item" rel="tag">Visualize Data</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Data Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/datatags/#labeled-data" class="page__taxonomy-item" rel="tag">labeled data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/datatags/#music-data" class="page__taxonomy-item" rel="tag">music data</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Technology Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/technologytags/#tableau" class="page__taxonomy-item" rel="tag">tableau</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-09-06T00:00:00-04:00">September 06, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Visualizing+Spotify+Global%27s+Top+200+Summer+Songs+2019+with+Tableau%20http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Fspotify-top-200%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Fspotify-top-200%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Fspotify-top-200%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/model%20data/boston-housing-data/" class="pagination--pager" title="Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/model%20data/boston-housing-data/" rel="permalink">Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  11 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Linear Regression is one of the fundamental machine learning techniques in data science. It makes predictions…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/organize%20data/tidy%20data/data-imdb/" rel="permalink">Finagled with IMDB datasets to Organize Data for Analysis of U.S. Movie Quality Over the Last 3 Decades
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">I was rewatching some of my favorite movies from the 90s and early 2000s like Austin Powers…
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tidy%20data/seatgeek-data-cleaning/" rel="permalink">Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">It’s a cliché that data cleaning takes 85% …
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/store%20data/extract%20data/nasa-select-data/" rel="permalink">Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  13 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">SQLite3 is a database where I can perform SQL commands to extract…
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact Info:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:chrispfchung@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email Me</a></li>
+        
+      
+        
+          <li><a href="https://chrispfchung.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Portfolio</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/chrischung28/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://instagram.com/chrispfchung" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Chris Chung. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+  </body>
+</html>
