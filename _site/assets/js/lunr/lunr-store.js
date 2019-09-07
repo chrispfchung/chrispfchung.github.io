@@ -59,8 +59,8 @@ var store = [{
         "tooltags": null,
         "url": "http://localhost:4000/model%20data/boston-housing-data/",
         "teaser":null},{
-        "title": "Visualizing Spotify Global's Top 200 Summer Songs 2019 with Tableau",
-        "excerpt":"Table of Contents Project Description Most Popular Tracks and Artists Most Popular Tracks Creating Dashboard Final Output Conclusion Project Description Visualized Spotify’s Weekly Global Top 200 Songs From June-September 2019 and analyzed Most Popular Artists, Most Popular Artists vs. Actual Stream Time and Most Popular Tracks. The datasets are merged...","categories": ["Visualize Data"],
+        "title": "Visualized Spotify Global's Top 200 Summer Songs 2019 with Tableau",
+        "excerpt":"Table of Contents Project Description Introduction Most Popular Tracks and Artists Dashboard Final Output Conclusion Next Steps Project Description Visualized Spotify’s Weekly Global Top 200 Songs From June-September 2019 and analyzed Most Popular Artists, Most Popular Artists vs. Actual Streams and Most Popular Tracks. The datasets are merged into 1...","categories": ["Visualize Data"],
         "tags": [],
         "tooltags": null,
         "url": "http://localhost:4000/visualize%20data/spotify-top-200/",

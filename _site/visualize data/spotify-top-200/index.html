@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau - Chris Chung</title>
+<!-- begin _includes/seo.html --><title>Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau - Chris Chung</title>
 <meta name="description" content="Global Top 200 Songs…">
 
 
@@ -17,7 +17,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Chris Chung">
-<meta property="og:title" content="Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau">
+<meta property="og:title" content="Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau">
 <meta property="og:url" content="http://localhost:4000/visualize%20data/spotify-top-200/">
 
 
@@ -25,7 +25,7 @@
 
 
 
-  <meta property="og:image" content="http://localhost:4000/images/boston-housing-data_files/house-header.jpg">
+  <meta property="og:image" content="http://localhost:4000/images/seatgeek-data-cleaning/concert-header.jpg">
 
 
 
@@ -175,7 +175,7 @@
   style=" "
 >
   
-    <img src="/images/boston-housing-data_files/house-header.jpg" alt="Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau" class="page__hero-image">
+    <img src="/images/seatgeek-data-cleaning/concert-header.jpg" alt="Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau" class="page__hero-image">
   
   
 </div>
@@ -315,7 +315,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau">
+    <meta itemprop="headline" content="Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau">
     <meta itemprop="description" content="Global Top 200 Songs…">
     <meta itemprop="datePublished" content="September 06, 2019">
     
@@ -323,7 +323,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau
+          <h1 id="page-title" class="page__title" itemprop="headline">Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau
 </h1>
           
             <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
@@ -344,11 +344,12 @@
     <header><h4 class="nav__title"><i class="fas fa-book-open"></i> Table of Contents</h4></header>
 <ul class="toc__menu" id="markdown-toc">
   <li><a href="#project-description" id="markdown-toc-project-description">Project Description</a></li>
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#most-popular-tracks-and-artists" id="markdown-toc-most-popular-tracks-and-artists">Most Popular Tracks and Artists</a></li>
-  <li><a href="#most-popular-tracks" id="markdown-toc-most-popular-tracks">Most Popular Tracks</a></li>
-  <li><a href="#creating-dashboard" id="markdown-toc-creating-dashboard">Creating Dashboard</a></li>
+  <li><a href="#dashboard" id="markdown-toc-dashboard">Dashboard</a></li>
   <li><a href="#final-output" id="markdown-toc-final-output">Final Output</a></li>
   <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
 </ul>
 
   </nav>
@@ -356,25 +357,28 @@
 <p><br /></p>
 
 <h2 id="project-description">Project Description</h2>
-<p>Visualized Spotify’s Weekly Global Top 200 Songs From June-September 2019 and analyzed Most Popular Artists, Most Popular Artists vs. Actual Stream Time and Most Popular Tracks. The datasets are merged into 1 CSV file and my final product is a Tableau dashboard with 3 different worksheets. I follow Tableau Public and follow the guide “How to visualize Spotify music trends in Tableau” by Scott Teal of the Tableau team. He uses a different dataset. This project will answer questions about songs of Summer 2019 like,</p>
+<p>Visualized Spotify’s Weekly Global Top 200 Songs From June-September 2019 and analyzed Most Popular Artists, Most Popular Artists vs. Actual Streams and Most Popular Tracks. The datasets are merged into 1 CSV file and my final product is a Tableau dashboard with 3 different worksheets. I follow Tableau Public and follow the guide “How to visualize Spotify music trends in Tableau” by Scott Teal of the Tableau team. He uses a different dataset. This project will answer questions about songs of Summer 2019 like,</p>
 
 <ol>
   <li>Who are the most listened to artists in the world?</li>
   <li>Which artists do people listen to the longest?</li>
   <li>What songs are the most popular?</li>
-  <li>What’s the relationship between number of tracks and stream time?</li>
+  <li>What’s the relationship between number of tracks and streams?</li>
 </ol>
+
+<h2 id="introduction">Introduction</h2>
+<p>I use Spotify every day. I like 90s rock, Korean songs, Chinese songs, and Jazz… What does the world like to listen to? In this project, “Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau”, I will make it easy to see who are the top artists in the world. We will see how to utilize Tableau to show relationship and make it clear what the data shows.</p>
 
 <p><strong>Project Replicated From</strong>
 <a href="https://www.tableau.com/about/blog/2019/7/how-visualize-spotify-music-trends-tableau">https://www.tableau.com/about/blog/2019/7/how-visualize-spotify-music-trends-tableau</a></p>
 
 <p>I consulted this website to merge my files with pandas. <a href="https://www.techbeamers.com/pandas-merge-csv-files/">https://www.techbeamers.com/pandas-merge-csv-files/</a>. After merging the 12 CSV files within Python, I open up my Tableau and go to <strong>“Text File”</strong> and select my CSV file labeled <em>Spotify__Weekly__Streaming.csv</em>.  Under <strong>Files</strong>, I’m so happy that all the CSV files are there. The Column names are “Unnamed” as it looks like the title names did not carry over. I label them as in the photo below. You can also alter change it directly in the CSV.</p>
 
-<p><img src="file:///Users/chrischung/DS/portfolio/chrispfchung.github.io/images/spotify-top-200/changecolumns.png" alt="" /></p>
+<p><img src="http://localhost:4000/images/spotify-top-200/changecolumns.png" alt="" /></p>
 
 <p>Before beginning, check for null values. My main CSV carried over each CSV files’ columns so I added a filter to remove the null values from my data. In the top right corner under <em>Filters</em>, click <strong>Add</strong>, <strong>Add</strong> again, double click a field with a continuous variable like <em>Positions</em> or <em>Streams</em>, and click <em>OK</em> and <em>OK</em>. The null values are removed from our data.</p>
 
-<p>***insert</p>
+<p><img src="http://localhost:4000/images/spotify-top-200/datasource.png" alt="" /></p>
 
 <h2 id="most-popular-tracks-and-artists">Most Popular Tracks and Artists</h2>
 <p>We click <strong>Sheet 1</strong> at the bottom of the left of Tableau and drag <strong>Track Name</strong> in the Columns field. This shows each time a track from the artist showed up on the Top 200 list which is helpful to see how many of the artists’ songs ended up on the list over the summer.</p>
@@ -382,18 +386,17 @@
 <ol>
   <li>Once we drag <strong>Track Name</strong> into Columns, change the <em>Measure</em> option to <em>Count (Distinct)</em>. We’ll see that there are 389 unique tracks.</li>
   <li>Then we drag <strong>Artist</strong> into Rows and sort them by highest to lowest. We’ll see which top 3 artists have the most tracks. Ordered by highest tracks. It looks like Ed Sheeran, Billie Eillish, and Shawn Mendes.</li>
-  <li>Now we drag <strong>Streams</strong> into Columns. According to Spotify, a stream is counted when a user listens for over 30 seconds. Teal, the author of the original post, makes a point that although there can be more of the artists’ tracks on the list it doesn’t mean that the author had the most stream time, or listening time. Looking at the graph, although Taylor Swift is in second place for highest number of tracks, there are several artists that have more streams than her! We’ll see this relationship clearer in the next step.</li>
+  <li>Now we drag <strong>Streams</strong> into Columns. According to Spotify, a stream is counted when a user listens for over 30 seconds. Teal, the author of the original post, makes a point that although there can be more of the artists’ tracks on the list it doesn’t mean that the author had the most streams, or listening time. Looking at the graph, although Taylor Swift is in second place for highest number of tracks, there are several artists that have more streams than her! We’ll see this relationship clearer in the next step.</li>
 </ol>
 
-<p><strong><em>INSERT most pop artist and streams here</em></strong></p>
+<p><img src="http://localhost:4000/images/spotify-top-200/mostpopularartists.png" alt="" /></p>
 
 <ol>
-  <li>To a different view of the relationship between <strong>Streams</strong> and <strong>Track Name</strong>, we can look at a scatter plot. Add a <strong>New Worksheet</strong> and go to <strong>Show Me</strong> in the top corner and select the <em>scatter plots</em> option. All the points to the right of Taylor Swift have more streams than her though she has a high number of tracks. Nonetheless with 18 tracks over 12 weeks and high streams, she has much more presence than the rest of the points. We can see the majority of tracks have between 0-200 Million streams with 1-3 tracks. We see Ed Sheeran in the top right blowing everyone out of the water in terms of number of tracks and stream time. I don’t blame Spotify listeners, his songs are amazing!</li>
+  <li>To a different view of the relationship between <strong>Streams</strong> and <strong>Track Name</strong>, we can look at a scatter plot. Add a <strong>New Worksheet</strong> and go to <strong>Show Me</strong> in the top corner and select the <em>scatter plots</em> option. All the points to the right of Taylor Swift have more streams than her though she has a high number of tracks. Nonetheless with 18 tracks over 12 weeks and high streams, she has much more presence than the rest of the points. We can see the majority of tracks have between 0-200 Million streams with 1-3 tracks. We see Ed Sheeran in the top right blowing everyone out of the water in terms of number of tracks and streams. I don’t blame Spotify listeners, his songs are amazing!</li>
 </ol>
 
-<p><strong><em>INSERT SHAWN MENDES STREAM VS ARTIST HERE</em></strong></p>
+<p><img src="http://localhost:4000/images/spotify-top-200/artistsvsstreamtime.png" alt="" /></p>
 
-<h2 id="most-popular-tracks">Most Popular Tracks</h2>
 <p>Now let’s look at the popularity of the tracks. Add a <strong>New Worksheet</strong>.</p>
 
 <ol>
@@ -401,21 +404,24 @@
   <li>Shawn Mendes’ “Señorita” is by far the highest at 626 million streams while second place is Ed Sheeran’s “I Don’t Care” with Justin Bieber at 359 million streams!</li>
 </ol>
 
-<p><strong><em>INSERT MOST POP TRACK HERE</em></strong></p>
+<p><img src="http://localhost:4000/images/spotify-top-200/mostpopulartracks.png" alt="" /></p>
 
-<h2 id="creating-dashboard">Creating Dashboard</h2>
+<h2 id="dashboard">Dashboard</h2>
 <ol>
   <li>Add a <strong>New Dashboard</strong> and drag your <em>Sheets</em> on to the dashboard.</li>
   <li>Organize it the way that you like it. I organized mine in thirds from top to bottom.</li>
 </ol>
 
 <h2 id="final-output">Final Output</h2>
-<p><strong><em>INSERT DASHBOARD HERE</em></strong></p>
+<p><img src="http://localhost:4000/images/spotify-top-200/dashboard.png" alt="" /></p>
 
-<p>You can interact with [this dashboard] on Tableau Public.</p>
+<p>You can interact with <a href="https://public.tableau.com/profile/christopher.chung1603#!/vizhome/VisualizedSpotifyGlobalsTop200SummerSongs2019withTableau/SummerSongs2019Dashboard">this dashboard</a> on Tableau Public.</p>
 
 <h2 id="conclusion">Conclusion</h2>
-<p>This was a fun project that let me see what the world is listening to. It’s cool to see that some artists dominate the rest like Ed Sheeran and Shawn Mendes. I also thought it was interesting that most tracks doesn’t mean that they have the most listening time. In the next project, I will use the author’s dataset to create a map &amp; streaming activity dashboard to take a closer look at what songs each country is listening to!</p>
+<p>This was a fun project that let me see what the world is listening to. It’s cool to see that some artists dominate the rest like Ed Sheeran and Shawn Mendes. I also thought it was interesting that most tracks doesn’t mean that they have the most listening time.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+<p>In the next project, I will use the author’s dataset to create a map &amp; streaming activity dashboard to take a closer look at what songs each country is listening to!</p>
 
         
       </section>
@@ -507,7 +513,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Visualizing+Spotify+Global%27s+Top+200+Summer+Songs+2019+with+Tableau%20http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Fspotify-top-200%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Visualized+Spotify+Global%27s+Top+200+Summer+Songs+2019+with+Tableau%20http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Fspotify-top-200%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fvisualize%2520data%2Fspotify-top-200%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 

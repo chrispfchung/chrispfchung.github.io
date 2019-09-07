@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-07T12:54:24-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Chung</title><subtitle>Data Science Project Portfolio</subtitle><author><name>Chris Chung</name></author><entry><title type="html">Visualizing Spotify Global’s Top 200 Summer Songs 2019 with Tableau</title><link href="http://localhost:4000/visualize%20data/spotify-top-200/" rel="alternate" type="text/html" title="Visualizing Spotify Global's Top 200 Summer Songs 2019 with Tableau" /><published>2019-09-06T00:00:00-04:00</published><updated>2019-09-06T00:00:00-04:00</updated><id>http://localhost:4000/visualize%20data/spotify-top-200</id><content type="html" xml:base="http://localhost:4000/visualize%20data/spotify-top-200/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-07T13:39:38-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Chung</title><subtitle>Data Science Project Portfolio</subtitle><author><name>Chris Chung</name></author><entry><title type="html">Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau</title><link href="http://localhost:4000/visualize%20data/spotify-top-200/" rel="alternate" type="text/html" title="Visualized Spotify Global's Top 200 Summer Songs 2019 with Tableau" /><published>2019-09-06T00:00:00-04:00</published><updated>2019-09-06T00:00:00-04:00</updated><id>http://localhost:4000/visualize%20data/spotify-top-200</id><content type="html" xml:base="http://localhost:4000/visualize%20data/spotify-top-200/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#project-description&quot; id=&quot;markdown-toc-project-description&quot;&gt;Project Description&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#most-popular-tracks-and-artists&quot; id=&quot;markdown-toc-most-popular-tracks-and-artists&quot;&gt;Most Popular Tracks and Artists&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#most-popular-tracks&quot; id=&quot;markdown-toc-most-popular-tracks&quot;&gt;Most Popular Tracks&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#creating-dashboard&quot; id=&quot;markdown-toc-creating-dashboard&quot;&gt;Creating Dashboard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dashboard&quot; id=&quot;markdown-toc-dashboard&quot;&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#final-output&quot; id=&quot;markdown-toc-final-output&quot;&gt;Final Output&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#next-steps&quot; id=&quot;markdown-toc-next-steps&quot;&gt;Next Steps&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
   &lt;/nav&gt;
@@ -15,25 +16,28 @@
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;project-description&quot;&gt;Project Description&lt;/h2&gt;
-&lt;p&gt;Visualized Spotify’s Weekly Global Top 200 Songs From June-September 2019 and analyzed Most Popular Artists, Most Popular Artists vs. Actual Stream Time and Most Popular Tracks. The datasets are merged into 1 CSV file and my final product is a Tableau dashboard with 3 different worksheets. I follow Tableau Public and follow the guide “How to visualize Spotify music trends in Tableau” by Scott Teal of the Tableau team. He uses a different dataset. This project will answer questions about songs of Summer 2019 like,&lt;/p&gt;
+&lt;p&gt;Visualized Spotify’s Weekly Global Top 200 Songs From June-September 2019 and analyzed Most Popular Artists, Most Popular Artists vs. Actual Streams and Most Popular Tracks. The datasets are merged into 1 CSV file and my final product is a Tableau dashboard with 3 different worksheets. I follow Tableau Public and follow the guide “How to visualize Spotify music trends in Tableau” by Scott Teal of the Tableau team. He uses a different dataset. This project will answer questions about songs of Summer 2019 like,&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Who are the most listened to artists in the world?&lt;/li&gt;
   &lt;li&gt;Which artists do people listen to the longest?&lt;/li&gt;
   &lt;li&gt;What songs are the most popular?&lt;/li&gt;
-  &lt;li&gt;What’s the relationship between number of tracks and stream time?&lt;/li&gt;
+  &lt;li&gt;What’s the relationship between number of tracks and streams?&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I use Spotify every day. I like 90s rock, Korean songs, Chinese songs, and Jazz… What does the world like to listen to? In this project, “Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau”, I will make it easy to see who are the top artists in the world. We will see how to utilize Tableau to show relationship and make it clear what the data shows.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Project Replicated From&lt;/strong&gt;
 &lt;a href=&quot;https://www.tableau.com/about/blog/2019/7/how-visualize-spotify-music-trends-tableau&quot;&gt;https://www.tableau.com/about/blog/2019/7/how-visualize-spotify-music-trends-tableau&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;I consulted this website to merge my files with pandas. &lt;a href=&quot;https://www.techbeamers.com/pandas-merge-csv-files/&quot;&gt;https://www.techbeamers.com/pandas-merge-csv-files/&lt;/a&gt;. After merging the 12 CSV files within Python, I open up my Tableau and go to &lt;strong&gt;“Text File”&lt;/strong&gt; and select my CSV file labeled &lt;em&gt;Spotify__Weekly__Streaming.csv&lt;/em&gt;.  Under &lt;strong&gt;Files&lt;/strong&gt;, I’m so happy that all the CSV files are there. The Column names are “Unnamed” as it looks like the title names did not carry over. I label them as in the photo below. You can also alter change it directly in the CSV.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;file:///Users/chrischung/DS/portfolio/chrispfchung.github.io/images/spotify-top-200/changecolumns.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-top-200/changecolumns.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Before beginning, check for null values. My main CSV carried over each CSV files’ columns so I added a filter to remove the null values from my data. In the top right corner under &lt;em&gt;Filters&lt;/em&gt;, click &lt;strong&gt;Add&lt;/strong&gt;, &lt;strong&gt;Add&lt;/strong&gt; again, double click a field with a continuous variable like &lt;em&gt;Positions&lt;/em&gt; or &lt;em&gt;Streams&lt;/em&gt;, and click &lt;em&gt;OK&lt;/em&gt; and &lt;em&gt;OK&lt;/em&gt;. The null values are removed from our data.&lt;/p&gt;
 
-&lt;p&gt;***insert&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-top-200/datasource.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;most-popular-tracks-and-artists&quot;&gt;Most Popular Tracks and Artists&lt;/h2&gt;
 &lt;p&gt;We click &lt;strong&gt;Sheet 1&lt;/strong&gt; at the bottom of the left of Tableau and drag &lt;strong&gt;Track Name&lt;/strong&gt; in the Columns field. This shows each time a track from the artist showed up on the Top 200 list which is helpful to see how many of the artists’ songs ended up on the list over the summer.&lt;/p&gt;
@@ -41,18 +45,17 @@
 &lt;ol&gt;
   &lt;li&gt;Once we drag &lt;strong&gt;Track Name&lt;/strong&gt; into Columns, change the &lt;em&gt;Measure&lt;/em&gt; option to &lt;em&gt;Count (Distinct)&lt;/em&gt;. We’ll see that there are 389 unique tracks.&lt;/li&gt;
   &lt;li&gt;Then we drag &lt;strong&gt;Artist&lt;/strong&gt; into Rows and sort them by highest to lowest. We’ll see which top 3 artists have the most tracks. Ordered by highest tracks. It looks like Ed Sheeran, Billie Eillish, and Shawn Mendes.&lt;/li&gt;
-  &lt;li&gt;Now we drag &lt;strong&gt;Streams&lt;/strong&gt; into Columns. According to Spotify, a stream is counted when a user listens for over 30 seconds. Teal, the author of the original post, makes a point that although there can be more of the artists’ tracks on the list it doesn’t mean that the author had the most stream time, or listening time. Looking at the graph, although Taylor Swift is in second place for highest number of tracks, there are several artists that have more streams than her! We’ll see this relationship clearer in the next step.&lt;/li&gt;
+  &lt;li&gt;Now we drag &lt;strong&gt;Streams&lt;/strong&gt; into Columns. According to Spotify, a stream is counted when a user listens for over 30 seconds. Teal, the author of the original post, makes a point that although there can be more of the artists’ tracks on the list it doesn’t mean that the author had the most streams, or listening time. Looking at the graph, although Taylor Swift is in second place for highest number of tracks, there are several artists that have more streams than her! We’ll see this relationship clearer in the next step.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;INSERT most pop artist and streams here&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-top-200/mostpopularartists.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;To a different view of the relationship between &lt;strong&gt;Streams&lt;/strong&gt; and &lt;strong&gt;Track Name&lt;/strong&gt;, we can look at a scatter plot. Add a &lt;strong&gt;New Worksheet&lt;/strong&gt; and go to &lt;strong&gt;Show Me&lt;/strong&gt; in the top corner and select the &lt;em&gt;scatter plots&lt;/em&gt; option. All the points to the right of Taylor Swift have more streams than her though she has a high number of tracks. Nonetheless with 18 tracks over 12 weeks and high streams, she has much more presence than the rest of the points. We can see the majority of tracks have between 0-200 Million streams with 1-3 tracks. We see Ed Sheeran in the top right blowing everyone out of the water in terms of number of tracks and stream time. I don’t blame Spotify listeners, his songs are amazing!&lt;/li&gt;
+  &lt;li&gt;To a different view of the relationship between &lt;strong&gt;Streams&lt;/strong&gt; and &lt;strong&gt;Track Name&lt;/strong&gt;, we can look at a scatter plot. Add a &lt;strong&gt;New Worksheet&lt;/strong&gt; and go to &lt;strong&gt;Show Me&lt;/strong&gt; in the top corner and select the &lt;em&gt;scatter plots&lt;/em&gt; option. All the points to the right of Taylor Swift have more streams than her though she has a high number of tracks. Nonetheless with 18 tracks over 12 weeks and high streams, she has much more presence than the rest of the points. We can see the majority of tracks have between 0-200 Million streams with 1-3 tracks. We see Ed Sheeran in the top right blowing everyone out of the water in terms of number of tracks and streams. I don’t blame Spotify listeners, his songs are amazing!&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;INSERT SHAWN MENDES STREAM VS ARTIST HERE&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-top-200/artistsvsstreamtime.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;most-popular-tracks&quot;&gt;Most Popular Tracks&lt;/h2&gt;
 &lt;p&gt;Now let’s look at the popularity of the tracks. Add a &lt;strong&gt;New Worksheet&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -60,21 +63,24 @@
   &lt;li&gt;Shawn Mendes’ “Señorita” is by far the highest at 626 million streams while second place is Ed Sheeran’s “I Don’t Care” with Justin Bieber at 359 million streams!&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;INSERT MOST POP TRACK HERE&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-top-200/mostpopulartracks.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;creating-dashboard&quot;&gt;Creating Dashboard&lt;/h2&gt;
+&lt;h2 id=&quot;dashboard&quot;&gt;Dashboard&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;Add a &lt;strong&gt;New Dashboard&lt;/strong&gt; and drag your &lt;em&gt;Sheets&lt;/em&gt; on to the dashboard.&lt;/li&gt;
   &lt;li&gt;Organize it the way that you like it. I organized mine in thirds from top to bottom.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;final-output&quot;&gt;Final Output&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;INSERT DASHBOARD HERE&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-top-200/dashboard.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;You can interact with [this dashboard] on Tableau Public.&lt;/p&gt;
+&lt;p&gt;You can interact with &lt;a href=&quot;https://public.tableau.com/profile/christopher.chung1603#!/vizhome/VisualizedSpotifyGlobalsTop200SummerSongs2019withTableau/SummerSongs2019Dashboard&quot;&gt;this dashboard&lt;/a&gt; on Tableau Public.&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;This was a fun project that let me see what the world is listening to. It’s cool to see that some artists dominate the rest like Ed Sheeran and Shawn Mendes. I also thought it was interesting that most tracks doesn’t mean that they have the most listening time. In the next project, I will use the author’s dataset to create a map &amp;amp; streaming activity dashboard to take a closer look at what songs each country is listening to!&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Global Top 200 Songs...</summary></entry><entry><title type="html">Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset</title><link href="http://localhost:4000/model%20data/boston-housing-data/" rel="alternate" type="text/html" title="Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset" /><published>2019-08-29T00:00:00-04:00</published><updated>2019-08-29T00:00:00-04:00</updated><id>http://localhost:4000/model%20data/boston-housing-data</id><content type="html" xml:base="http://localhost:4000/model%20data/boston-housing-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;This was a fun project that let me see what the world is listening to. It’s cool to see that some artists dominate the rest like Ed Sheeran and Shawn Mendes. I also thought it was interesting that most tracks doesn’t mean that they have the most listening time.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
+&lt;p&gt;In the next project, I will use the author’s dataset to create a map &amp;amp; streaming activity dashboard to take a closer look at what songs each country is listening to!&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Global Top 200 Songs...</summary></entry><entry><title type="html">Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset</title><link href="http://localhost:4000/model%20data/boston-housing-data/" rel="alternate" type="text/html" title="Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset" /><published>2019-08-29T00:00:00-04:00</published><updated>2019-08-29T00:00:00-04:00</updated><id>http://localhost:4000/model%20data/boston-housing-data</id><content type="html" xml:base="http://localhost:4000/model%20data/boston-housing-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;

@@ -1,6 +1,7 @@
 ---
 title: "About"
 permalink: /about/
+author_profile: true
 header:
   image: "/images/slanted-world.jpg"
 ---
@@ -11,7 +12,7 @@ While I explored different fields of interest, I noticed that most members on a 
 
 
 {% include base_path %}
-{% include group-by-array collection=site.posts field="tooltags" %}
+{% include group-by-array collection=site.posts field="" %}
 
 {% for tag in group_names %}
   {% assign posts = group_items[forloop.index0] %}
