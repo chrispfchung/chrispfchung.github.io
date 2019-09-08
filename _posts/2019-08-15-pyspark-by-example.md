@@ -1,5 +1,5 @@
 ---
-title: "Utilized the Spark DataFrame API to extract data from Chicago's Reported Crime Dataset (2001-2018)"
+title: "Utilized The Spark DataFrame API To Extract Data From Chicago's Reported Crime Dataset (2001-2018)"
 
 date: 2019-08-15
 

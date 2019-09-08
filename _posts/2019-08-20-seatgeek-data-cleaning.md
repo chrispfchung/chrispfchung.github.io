@@ -1,5 +1,5 @@
 ---
-title: "Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis"
+title: "Dove Into SeatGeek New York Concert Dataset To Clean Data For Future Visualization and Analysis"
 
 date: 2019-08-16
 

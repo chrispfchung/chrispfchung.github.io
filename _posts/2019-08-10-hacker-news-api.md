@@ -1,5 +1,5 @@
 ---
-title: "Used API calls to extract top articles from Hacker News (YCombinator)"
+title: "Used API Calls To Extract Top articles From Hacker News (YCombinator)"
 
 date: 2019-08-10
 

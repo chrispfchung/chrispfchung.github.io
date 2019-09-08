@@ -1,5 +1,5 @@
 ---
-title: "Constructed Functions to Extract Live Concert Music Data from SeatGeek's API"
+title: "Constructed Functions To Extract Live Concert Music Data From SeatGeek's API"
 
 date: 2019-08-16
 

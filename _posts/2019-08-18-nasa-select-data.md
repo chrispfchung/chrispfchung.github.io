@@ -1,5 +1,5 @@
 ---
-title: "Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query"
+title: "Created A Database Of Planet Information To Store Data So That Our Imaginary NASA Has Data to Query"
 
 date: 2019-08-16
 

@@ -1,5 +1,5 @@
 ---
-title: "Used K-means Clustering to Visualize Dominant Colors in an Image"
+title: "Used K-means Clustering To Visualize Dominant Colors In An Image"
 
 date: 2019-08-09
 tags:

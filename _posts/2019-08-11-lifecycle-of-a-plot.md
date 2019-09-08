@@ -1,5 +1,5 @@
 ---
-title: "Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data"
+title: "Created A Detailed Plot Using Matplotlib To Visualize Sample Sales Data"
 
 date: 2019-08-11
 

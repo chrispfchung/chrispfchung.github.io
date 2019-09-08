@@ -1,5 +1,5 @@
 ---
-title: "Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset"
+title: "Used Linear Regression To Model And Predict Housing Prices With The Classic Boston Housing Dataset"
 
 date: 2019-08-29
 
