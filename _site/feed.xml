@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-07T13:56:21-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Chung</title><subtitle>Data Science Project Portfolio</subtitle><author><name>Chris Chung</name></author><entry><title type="html">Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau</title><link href="http://localhost:4000/visualize%20data/spotify-top-200/" rel="alternate" type="text/html" title="Visualized Spotify Global's Top 200 Summer Songs 2019 with Tableau" /><published>2019-09-06T00:00:00-04:00</published><updated>2019-09-06T00:00:00-04:00</updated><id>http://localhost:4000/visualize%20data/spotify-top-200</id><content type="html" xml:base="http://localhost:4000/visualize%20data/spotify-top-200/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-14T22:45:04-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Chung</title><subtitle>Data Science Project Portfolio</subtitle><author><name>Chris Chung</name></author><entry><title type="html">Visualized Spotify Global’s Top 200 Summer Songs 2019 With Tableau</title><link href="http://localhost:4000/visualize%20data/spotify-top-200/" rel="alternate" type="text/html" title="Visualized Spotify Global's Top 200 Summer Songs 2019 With Tableau" /><published>2019-09-06T00:00:00-04:00</published><updated>2019-09-06T00:00:00-04:00</updated><id>http://localhost:4000/visualize%20data/spotify-top-200</id><content type="html" xml:base="http://localhost:4000/visualize%20data/spotify-top-200/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -26,7 +26,7 @@
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;I use Spotify every day. I like 90s rock, Korean songs, Chinese songs, and Jazz… What does the world like to listen to? In this project, “Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau”, I will make it easy to see who are the top artists in the world. We will see how to utilize Tableau to show relationship and make it clear what the data shows.&lt;/p&gt;
+&lt;p&gt;I use Spotify every day. I like 90s rock, Korean songs, Chinese songs, and Jazz… What does the world like to listen to? In this project, “Visualized Spotify Global’s Top 200 Summer Songs 2019 with Tableau”, I will make it easy to see who are the top artists and most listened to tracks in the world. We will see how to utilize Tableau to show relationship and make it clear what the data shows.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Project Replicated From&lt;/strong&gt;
 &lt;a href=&quot;https://www.tableau.com/about/blog/2019/7/how-visualize-spotify-music-trends-tableau&quot;&gt;https://www.tableau.com/about/blog/2019/7/how-visualize-spotify-music-trends-tableau&lt;/a&gt;&lt;/p&gt;
@@ -68,7 +68,10 @@
 &lt;h2 id=&quot;dashboard&quot;&gt;Dashboard&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;Add a &lt;strong&gt;New Dashboard&lt;/strong&gt; and drag your &lt;em&gt;Sheets&lt;/em&gt; on to the dashboard.&lt;/li&gt;
-  &lt;li&gt;Organize it the way that you like it. I organized mine in thirds from top to bottom.&lt;/li&gt;
+  &lt;li&gt;Organize it the way that you like it. I organized mine by Click on the &lt;strong&gt;Layout&lt;/strong&gt; tab next to &lt;strong&gt;Dashboard&lt;/strong&gt;, right clicking each chart in &lt;em&gt;Item Hierarchy&lt;/em&gt; and separating them.&lt;/li&gt;
+  &lt;li&gt;Click each bar chart and select the funnel &lt;strong&gt;Use as Filter&lt;/strong&gt; so that when you click an artist or track, the rest of the charts will pull information related to it. For example, if you click Taylor Swift in “Most Popular Artists”, all of her tracks are selected on the “Most Popular Tracks” chart and number of streams show up on our scatter plot.&lt;/li&gt;
+  &lt;li&gt;Customize the dashboard’s color, borders, shading, and title sizes by going to &lt;em&gt;Format&lt;/em&gt; at the top of the screen and select Dashboard.&lt;/li&gt;
+  &lt;li&gt;Before saving the dashboard, I made sure to rename the &lt;em&gt;Sheets&lt;/em&gt; titles.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;final-output&quot;&gt;Final Output&lt;/h2&gt;
@@ -77,10 +80,126 @@
 &lt;p&gt;You can interact with &lt;a href=&quot;https://public.tableau.com/profile/christopher.chung1603#!/vizhome/VisualizedSpotifyGlobalsTop200SummerSongs2019withTableau/SummerSongs2019Dashboard&quot;&gt;this dashboard&lt;/a&gt; on Tableau Public.&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;This was a fun project that let me see what the world is listening to. It’s cool to see that some artists dominate the rest like Ed Sheeran and Shawn Mendes. I also thought it was interesting that most tracks doesn’t mean that they have the most listening time.&lt;/p&gt;
+&lt;p&gt;This was a fun project that let me see what the world is listening to. It’s cool to see that some artists dominate the rest like Ed Sheeran and Shawn Mendes. I also thought it was interesting that most tracks doesn’t mean that they have the most listening time. I went back the next day and decided that my original layout was not very clear. I had the layout in thirds like a long hamburger but I felt that the information was hard to access. After messing around looking at other people’s examples, I saw that I could manually rearrange the charts and format the colors.&lt;/p&gt;
 
 &lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
-&lt;p&gt;In the next project, I will use the author’s dataset to create a map &amp;amp; streaming activity dashboard to take a closer look at what songs each country is listening to!&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Global Top 200 Songs...</summary></entry><entry><title type="html">Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset</title><link href="http://localhost:4000/model%20data/boston-housing-data/" rel="alternate" type="text/html" title="Used Linear Regression to Model and Predict Housing Prices with the Classic Boston Housing Dataset" /><published>2019-08-29T00:00:00-04:00</published><updated>2019-08-29T00:00:00-04:00</updated><id>http://localhost:4000/model%20data/boston-housing-data</id><content type="html" xml:base="http://localhost:4000/model%20data/boston-housing-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;In the next project, I will use the author’s dataset to create a map &amp;amp; streaming activity dashboard to take a closer look at what songs each country is listening to!&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">I will make it easy to see who are the top artists and most listened to tracks in the world...</summary></entry><entry><title type="html">Visualized My Spotify Listening Habits Over The Last 3 Months With Tableau</title><link href="http://localhost:4000/visualize%20data/communication/next%20steps/spotify-listening-habits/" rel="alternate" type="text/html" title="Visualized My Spotify Listening Habits Over The Last 3 Months With Tableau" /><published>2019-09-06T00:00:00-04:00</published><updated>2019-09-06T00:00:00-04:00</updated><id>http://localhost:4000/visualize%20data/communication/next%20steps/spotify-listening-habits</id><content type="html" xml:base="http://localhost:4000/visualize%20data/communication/next%20steps/spotify-listening-habits/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;nav class=&quot;toc&quot;&gt;
+    &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
+&lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#project-description&quot; id=&quot;markdown-toc-project-description&quot;&gt;Project Description&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#these-questions-guided-my-analysis&quot; id=&quot;markdown-toc-these-questions-guided-my-analysis&quot;&gt;These questions guided my analysis.&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#most-listened-to-artists&quot; id=&quot;markdown-toc-most-listened-to-artists&quot;&gt;Most Listened To Artists&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#most-listened-to-tracks&quot; id=&quot;markdown-toc-most-listened-to-tracks&quot;&gt;Most Listened To Tracks&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#days-i-listened-the-most&quot; id=&quot;markdown-toc-days-i-listened-the-most&quot;&gt;Days I Listened The Most&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#artists-on-repeat&quot; id=&quot;markdown-toc-artists-on-repeat&quot;&gt;Artists On Repeat&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#when-i-listened-the-most&quot; id=&quot;markdown-toc-when-i-listened-the-most&quot;&gt;When I Listened The Most&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#how-frequent-i-listened-every-day&quot; id=&quot;markdown-toc-how-frequent-i-listened-every-day&quot;&gt;How Frequent I Listened Every Day&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#next-steps&quot; id=&quot;markdown-toc-next-steps&quot;&gt;Next Steps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/nav&gt;
+&lt;/aside&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;project-description&quot;&gt;Project Description&lt;/h2&gt;
+&lt;p&gt;In this project, I am going to use Tableau to visualize my Spotify listening habits over the last 3 months and answer questions like who are my favorite tracks and artists, how many times I listened to Spotify, and who I binge listened to. Interact with the &lt;a href=&quot;https://public.tableau.com/views/MySpotifyListeningHabitsOver3MonthsUsingTableau/MainSpotifyDashboard?:embed=y&amp;amp;:display_count=yes&amp;amp;publish=yes&amp;amp;:origin=viz_share_link&quot;&gt;final dashboard&lt;/a&gt; here.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Project Replicated From&lt;/strong&gt;
+&lt;a href=&quot;https://public.tableau.com/en-us/s/blog/2019/07/visualize-your-listening-habits-lastfm-and-spotify-data&quot;&gt;https://public.tableau.com/en-us/s/blog/2019/07/visualize-your-listening-habits-lastfm-and-spotify-data&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I consulted this site to understand my downloaded Spotify data. This was important so I know what my data means: &lt;a href=&quot;https://support.spotify.com/us/account_payment_help/privacy/understanding-my-data/&quot;&gt;https://support.spotify.com/us/account_payment_help/privacy/understanding-my-data/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;these-questions-guided-my-analysis&quot;&gt;These questions guided my analysis.&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Who do I listen to the most, top 3 tracks top 3 artists?&lt;/li&gt;
+  &lt;li&gt;Which albums do I have on repeat?&lt;/li&gt;
+  &lt;li&gt;How many times do I listen to a song before stopping?&lt;/li&gt;
+  &lt;li&gt;How often do I listen to Spotify?&lt;/li&gt;
+  &lt;li&gt;Per day? Per month? Per year?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Creating visualizations is one of the best ways to understand your data. It allows you to quickly answer questions in a memorable format. I created many worksheets in Tableau and combined them into dashboards with some answering multiple questions and some answering one. I have the downloadable Tableau worksheet available. In this write up I will analyze my visualizations and provide some of my reasoning and calculations. You can see individual sheets and donwload the entire dashboard to work with  &lt;a href=&quot;https://public.tableau.com/profile/christopher.chung1603#!/vizhome/MySpotifyListeningHabitsOver3MonthsUsingTableau/MainSpotifyDashboard&quot;&gt;here&lt;/a&gt; on Tableau Public.&lt;/p&gt;
+
+&lt;h2 id=&quot;most-listened-to-artists&quot;&gt;Most Listened To Artists&lt;/h2&gt;
+&lt;p&gt;Top 3 artists: Lena Raine, Bill Evans, and Rain. As we’ll see in the next sheet, I listened to one of Lena Raine’s songs nonstop for some period of time. For rank 2, I recently discovered Bill Evans and he’s become one of my favorite jazz musicians. One of his albums, “Symbiosis” has become one of my favorites. I also recently picked up Matchbox Twenty and I LOVE them. When I was younger, they were always on the radio…and actually this past year I heard their song “3 AM” while at Dugan’s, my favorite sandwich shop, and that’s when I “discovered” them.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-listening-habits/Dashboard1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;most-listened-to-tracks&quot;&gt;Most Listened To Tracks&lt;/h3&gt;
+&lt;p&gt;Top 3 Tracks: “Quiet and Falling” by Lena Raine, a Korean song by Rain, and “Mississippi” by Bob Dylan. I’m pretty surprised by the amount of Bob Dylan I had on repeat. For “Quiet and Falling” and “Missisippi”, I remember there was a period of time this summer when I heard from multiple sources that listening to a song on repeat helped you get into a flow state better. Did it work? Sort of. As long as the music was able to provide some consistent background noise, then it worked. Otherwise it’s a distraction as though you put any other song on.&lt;/p&gt;
+
+&lt;h2 id=&quot;days-i-listened-the-most&quot;&gt;Days I Listened The Most&lt;/h2&gt;
+&lt;p&gt;To get the top 5 days, I created a line chart that showed the amount of times I listened each day. I copied the 5 highest peaks and created a &lt;strong&gt;Set&lt;/strong&gt; that I could used in a &lt;strong&gt;Filter&lt;/strong&gt; so that I could separately select days. I then use this set to visualize each days total listens and each days top 5 artists.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-listening-habits/Dashboard2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;artists-on-repeat&quot;&gt;Artists On Repeat&lt;/h2&gt;
+&lt;p&gt;This one was tricky because I never came across &lt;strong&gt;previous(artist name)&lt;/strong&gt; before. The author’s final product of this chart looked great and showed how many times I listened to artists on repeat…I was curious to find out! What he did was create a a new &lt;strong&gt;Measure&lt;/strong&gt; and use this formula:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IF ATTR([Artist Name]) = LOOKUP(ATTR([Artist Name]),-1) then  
+ PREVIOUS_VALUE(0) + 1
+ELSE
+ 1
+END
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Let’s dissect each part of this calculation.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;ATTR&lt;/em&gt; = This is attribute. In plain English, “It returns a value if it’s unique, else it returns *.” Another definition is “Does every row have the same value? If so, value. If not, *.” If we use &lt;strong&gt;ATTR([Artist Name])&lt;/strong&gt; in &lt;em&gt;Rows&lt;/em&gt; and place &lt;strong&gt;Track Name&lt;/strong&gt; next to it, we’ll see a * next to each track that has more than one artist value. In other words, if a song’s name is used by 2 or more artists, making it not unique, then *. Otherwise, you’ll get the unique artist name that matches with the track. More than one artist for a song name, *. If not, artist name.
+Consulted: &lt;a href=&quot;https://interworks.com/blog/tcostello/2014/05/15/attr-tableaus-attribute-function-explained&quot;&gt;https://interworks.com/blog/tcostello/2014/05/15/attr-tableaus-attribute-function-explained&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;LOOKUP&lt;/em&gt; = This is lookup. “At its most basic, it returns a value from a different row in the partition.” Create a calculated field with formula &lt;code class=&quot;highlighter-rouge&quot;&gt;LOOKUP([Listens], -1)&lt;/code&gt;, place &lt;strong&gt;Month(Date Time)&lt;/strong&gt; next to it Rows and you get the number of listens of each previous month. The &lt;em&gt;-1&lt;/em&gt; looks at the value before, in this case a month before.&lt;/p&gt;
+
+&lt;p&gt;So if we combine LOOKUP() with ATTR()
+Consulted: &lt;a href=&quot;https://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&quot;&gt;https://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-listening-habits/Dashboard3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;when-i-listened-the-most&quot;&gt;When I Listened The Most&lt;/h2&gt;
+&lt;p&gt;My listening habits fluctuate through the days, it has not been crazy consistent. On Fridays and Mondays, I am listening in the afternoon-evening. I am listening a lot more during the wee hours of the night.&lt;/p&gt;
+
+&lt;p&gt;I also created a heatmap that shows similar insight that I’m listening a lot during the latest hours of the night as well as some in the prime of evening.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-listening-habits/Dashboard4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-frequent-i-listened-every-day&quot;&gt;How Frequent I Listened Every Day&lt;/h2&gt;
+&lt;p&gt;The highest number of times I played a song was 190, on July 3, 2019. It looks like on this day I listened to a lot of jazz. Second, is 183 on July 8, 2019 which was a combination of Lauv, Korean songs, and more jazz by Bill Evans. According to the data, there were some days where I rarely listened to Spotify at all.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/spotify-listening-habits/Dashboard5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I had a great time putting this project together. Tableau gets easier to use every time I run through a project. Although the author did not give step by step reasoning behind his calculations, I was able to use my data, slightly different from his, and put in the appropriate calculations, sheets and formatting to get the visualizations that I wanted. I listed several questions that I wasn’t sure about to make sure that I could answer them post project.&lt;/p&gt;
+
+&lt;p&gt;You can interact with &lt;a href=&quot;https://public.tableau.com/views/MySpotifyListeningHabitsOver3MonthsUsingTableau/MainSpotifyDashboard?:embed=y&amp;amp;:display_count=yes&amp;amp;publish=yes&amp;amp;:origin=viz_share_link&quot;&gt;this dashboard&lt;/a&gt; on Tableau Public.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
+&lt;p&gt;I want to take what I learned and do my own project regarding non-profit organizations and the distribution of the money that they raise. If I can’t get the visualizations that I want, I will take steps back and go through another author’s Tableau project to practice more.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Questions I asked&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;What is Add to Context?&lt;/li&gt;
+  &lt;li&gt;What is a Set?&lt;/li&gt;
+  &lt;li&gt;What’s the difference between continuous and discrete?&lt;/li&gt;
+  &lt;li&gt;What is Moving Average?&lt;/li&gt;
+  &lt;li&gt;How did I put Morning or Afternoon?&lt;/li&gt;
+  &lt;li&gt;Dissect this:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;IF ATTR([Artist]) = LOOKUP(ATTR([Artist]),-1) then  
+ PREVIOUS_VALUE(0) + 1
+ELSE
+ 1
+END
+&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Why is it consecutive days start or stop?&lt;/li&gt;
+  &lt;li&gt;What is Index? - Physical position of the record. Different from rank which deals with the value of the record.&lt;/li&gt;
+  &lt;li&gt;What does Allow Section by Category and Include Command Buttons do in Edit Tooltip?&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Chris Chung</name></author><summary type="html">I will learn about my Spotify listening habits..</summary></entry><entry><title type="html">Used Linear Regression To Model And Predict Housing Prices With The Classic Boston Housing Dataset</title><link href="http://localhost:4000/model%20data/boston-housing-data/" rel="alternate" type="text/html" title="Used Linear Regression To Model And Predict Housing Prices With The Classic Boston Housing Dataset" /><published>2019-08-29T00:00:00-04:00</published><updated>2019-08-29T00:00:00-04:00</updated><id>http://localhost:4000/model%20data/boston-housing-data</id><content type="html" xml:base="http://localhost:4000/model%20data/boston-housing-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -610,7 +729,7 @@ root mean squared error: 5.214330262011093
 &lt;p&gt;In this project we went over the Boston dataset in extensive detail. Learning from other people’s posts, I learned that although their steps were basically the same, they included and excluded different aspects of linear regression such as checking assumptions, log transforming data, visualizing residuals, provide some type of explanation for the results. This project was a combination of reading from other posts and customizing it to the way that I like it. I enjoyed working on this linear regression project, a fundamental part of machine learning, I’ve only reached tip of the iceberg as there are optimization techniques and other assumptions that I didn’t include.&lt;/p&gt;
 
 &lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
-&lt;p&gt;I could check for all assumptions, as one author has posted an excellent explanation of how to check for them, &lt;a href=&quot;https://jeffmacaluso.github.io/post/LinearRegressionAssumptions/&quot;&gt;https://jeffmacaluso.github.io/post/LinearRegressionAssumptions/&lt;/a&gt;. I would also play with Lasso and Ridge techniques especially if I have polynomial terms. Finally, I’d like to experiment with logging the dependent variable as well.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Linear Regression is one of the fundamental machine learning techniques in data science. It makes predictions...</summary></entry><entry><title type="html">Finagled with IMDB datasets to Organize Data for Analysis of U.S. Movie Quality Over the Last 3 Decades</title><link href="http://localhost:4000/organize%20data/tidy%20data/data-imdb/" rel="alternate" type="text/html" title="Finagled with IMDB datasets to Organize Data for Analysis of U.S. Movie Quality Over the Last 3 Decades" /><published>2019-08-23T00:00:00-04:00</published><updated>2019-08-23T00:00:00-04:00</updated><id>http://localhost:4000/organize%20data/tidy%20data/data-imdb</id><content type="html" xml:base="http://localhost:4000/organize%20data/tidy%20data/data-imdb/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;I could check for all assumptions, as one author has posted an excellent explanation of how to check for them, &lt;a href=&quot;https://jeffmacaluso.github.io/post/LinearRegressionAssumptions/&quot;&gt;https://jeffmacaluso.github.io/post/LinearRegressionAssumptions/&lt;/a&gt;. I would also play with Lasso and Ridge techniques especially if I have polynomial terms. Finally, I’d like to experiment with logging the dependent variable as well.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Linear Regression is one of the fundamental machine learning techniques in data science. It makes predictions...</summary></entry><entry><title type="html">Finagled With IMDB Datasets To Organize Data For Analysis Of U.S. Movie Quality Over the Last 3 Decades</title><link href="http://localhost:4000/organize%20data/tidy%20data/data-imdb/" rel="alternate" type="text/html" title="Finagled With IMDB Datasets To Organize Data For Analysis Of U.S. Movie Quality Over the Last 3 Decades" /><published>2019-08-23T00:00:00-04:00</published><updated>2019-08-23T00:00:00-04:00</updated><id>http://localhost:4000/organize%20data/tidy%20data/data-imdb</id><content type="html" xml:base="http://localhost:4000/organize%20data/tidy%20data/data-imdb/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -1261,7 +1380,7 @@ There’s something called ‘working title’ which means it was a tentative ti
 &lt;ol&gt;
   &lt;li&gt;How do you show duplicated dataframe?&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.duplicated.html&quot;&gt;https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.duplicated.html&lt;/a&gt;&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">I was rewatching some of my favorite movies from the 90s and early 2000s like Austin Powers...</summary></entry><entry><title type="html">Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query</title><link href="http://localhost:4000/store%20data/extract%20data/nasa-select-data/" rel="alternate" type="text/html" title="Created a Database of Planet Information to Store Data so That Our Imaginary NASA Has Data to Query" /><published>2019-08-16T00:00:00-04:00</published><updated>2019-08-16T00:00:00-04:00</updated><id>http://localhost:4000/store%20data/extract%20data/nasa-select-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/nasa-select-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.duplicated.html&quot;&gt;https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.duplicated.html&lt;/a&gt;&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">I was rewatching some of my favorite movies from the 90s and early 2000s like Austin Powers...</summary></entry><entry><title type="html">Created A Database Of Planet Information To Store Data So That Our Imaginary NASA Has Data to Query</title><link href="http://localhost:4000/store%20data/extract%20data/nasa-select-data/" rel="alternate" type="text/html" title="Created A Database Of Planet Information To Store Data So That Our Imaginary NASA Has Data to Query" /><published>2019-08-16T00:00:00-04:00</published><updated>2019-08-16T00:00:00-04:00</updated><id>http://localhost:4000/store%20data/extract%20data/nasa-select-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/nasa-select-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -2162,7 +2281,7 @@ SET num_of_moons = 53 WHERE name = 'Jupiter';
 &lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
 &lt;p&gt;With these basic SQL queries demonstrated within this project, I want to not only continue to practice them but also find them in future queries that are more advanced.&lt;/p&gt;
 
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">SQLite3 is a database where I can perform SQL commands to extract...</summary></entry><entry><title type="html">Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis</title><link href="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/" rel="alternate" type="text/html" title="Dove into SeatGeek New York Concert Dataset to Clean Data for Future Visualization and Analysis" /><published>2019-08-16T00:00:00-04:00</published><updated>2019-08-16T00:00:00-04:00</updated><id>http://localhost:4000/tidy%20data/seatgeek-data-cleaning</id><content type="html" xml:base="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">SQLite3 is a database where I can perform SQL commands to extract...</summary></entry><entry><title type="html">Dove Into SeatGeek New York Concert Dataset To Clean Data For Future Visualization and Analysis</title><link href="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/" rel="alternate" type="text/html" title="Dove Into SeatGeek New York Concert Dataset To Clean Data For Future Visualization and Analysis" /><published>2019-08-16T00:00:00-04:00</published><updated>2019-08-16T00:00:00-04:00</updated><id>http://localhost:4000/tidy%20data/seatgeek-data-cleaning</id><content type="html" xml:base="http://localhost:4000/tidy%20data/seatgeek-data-cleaning/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -2825,7 +2944,7 @@ Let’s try to see why the info is missing and maybe I can find a solution to fi
 &lt;div class=&quot;alert alert-block alert-success&quot;&gt; The answer to the fun fact is Hozier. The average price for one of his tickets was $34003! &lt;/div&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Chris Chung</name></author><summary type="html">It's a cliché that data cleaning takes 85% ...</summary></entry><entry><title type="html">Constructed Functions to Extract Live Concert Music Data from SeatGeek’s API</title><link href="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/" rel="alternate" type="text/html" title="Constructed Functions to Extract Live Concert Music Data from SeatGeek's API" /><published>2019-08-16T00:00:00-04:00</published><updated>2019-08-16T00:00:00-04:00</updated><id>http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Chris Chung</name></author><summary type="html">It's a cliché that data cleaning takes 85% ...</summary></entry><entry><title type="html">Constructed Functions To Extract Live Concert Music Data From SeatGeek’s API</title><link href="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/" rel="alternate" type="text/html" title="Constructed Functions To Extract Live Concert Music Data From SeatGeek's API" /><published>2019-08-16T00:00:00-04:00</published><updated>2019-08-16T00:00:00-04:00</updated><id>http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data</id><content type="html" xml:base="http://localhost:4000/store%20data/extract%20data/seatgeek-extract-data/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -3307,7 +3426,7 @@ Let’s try to see why the info is missing and maybe I can find a solution to fi
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;In this project, we accessed SeatGeek’s API by following their documentation on &lt;a href=&quot;https://platform.seatgeek.com/&quot;&gt;https://platform.seatgeek.com/&lt;/a&gt;. We took a bird’s eye view of all data and what’s available for us to extract. Then we honed in on NY concert data and created a function that pulls all the information that I want. Finally we saved it into a json file and converted it into a dataframe for easier access.&lt;/p&gt;
 
-&lt;p&gt;Looking online for more info on saving JSON files, I reminded myself that many other people are also looking programming information up and–people are providing this information for us. This community is vast and I love how people are in different stages getting involved.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">It's always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet...</summary></entry><entry><title type="html">Utilized the Spark DataFrame API to extract data from Chicago’s Reported Crime Dataset (2001-2018)</title><link href="http://localhost:4000/import%20data/pyspark-by-example/" rel="alternate" type="text/html" title="Utilized the Spark DataFrame API to extract data from Chicago's Reported Crime Dataset (2001-2018)" /><published>2019-08-15T00:00:00-04:00</published><updated>2019-08-15T00:00:00-04:00</updated><id>http://localhost:4000/import%20data/pyspark-by-example</id><content type="html" xml:base="http://localhost:4000/import%20data/pyspark-by-example/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Looking online for more info on saving JSON files, I reminded myself that many other people are also looking programming information up and–people are providing this information for us. This community is vast and I love how people are in different stages getting involved.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">It's always been interesting to me how people can utilize tools to retrieve massive amounts of data from the internet...</summary></entry><entry><title type="html">Utilized The Spark DataFrame API To Extract Data From Chicago’s Reported Crime Dataset (2001-2018)</title><link href="http://localhost:4000/import%20data/pyspark-by-example/" rel="alternate" type="text/html" title="Utilized The Spark DataFrame API To Extract Data From Chicago's Reported Crime Dataset (2001-2018)" /><published>2019-08-15T00:00:00-04:00</published><updated>2019-08-15T00:00:00-04:00</updated><id>http://localhost:4000/import%20data/pyspark-by-example</id><content type="html" xml:base="http://localhost:4000/import%20data/pyspark-by-example/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -3599,7 +3718,7 @@ only showing top 3 rows
 
 &lt;p&gt;In the second question, I made the mistake of following too closely to the question and grouped by the ‘Location’ column when I needed to group to ‘Location Description’ in order to return understandable locations.&lt;/p&gt;
 
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Let's get into the Chicago Reported Crime Dataset to find out...</summary></entry><entry><title type="html">Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data</title><link href="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/" rel="alternate" type="text/html" title="Created a Detailed Plot Using Matplotlib to Visualize Sample Sales Data" /><published>2019-08-11T00:00:00-04:00</published><updated>2019-08-11T00:00:00-04:00</updated><id>http://localhost:4000/visualize%20data/lifecycle-of-a-plot</id><content type="html" xml:base="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Let's get into the Chicago Reported Crime Dataset to find out...</summary></entry><entry><title type="html">Created A Detailed Plot Using Matplotlib To Visualize Sample Sales Data</title><link href="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/" rel="alternate" type="text/html" title="Created A Detailed Plot Using Matplotlib To Visualize Sample Sales Data" /><published>2019-08-11T00:00:00-04:00</published><updated>2019-08-11T00:00:00-04:00</updated><id>http://localhost:4000/visualize%20data/lifecycle-of-a-plot</id><content type="html" xml:base="http://localhost:4000/visualize%20data/lifecycle-of-a-plot/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -3889,7 +4008,7 @@ x*1e-3 = snips the last 3 zeroes from the number&lt;br /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;We went over the fig and ax subplots. We work on each plot with ax and change the properties of all plots at once with fig. We read in our data and grouped them into our x/y axis. We labeled our x/y axis, titles, and set properties such as label format. We formatted the prices from long digits to a cleaner format. We added in another axes that represents the average mean of prices.  Finally, we saved our figure into PNG format.&lt;/p&gt;
 
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">We will visualize sample sales data using Matplotlib...</summary></entry><entry><title type="html">Used API calls to extract top articles from Hacker News (YCombinator)</title><link href="http://localhost:4000/extract%20data/hacker-news-api/" rel="alternate" type="text/html" title="Used API calls to extract top articles from Hacker News (YCombinator)" /><published>2019-08-10T00:00:00-04:00</published><updated>2019-08-10T00:00:00-04:00</updated><id>http://localhost:4000/extract%20data/hacker-news-api</id><content type="html" xml:base="http://localhost:4000/extract%20data/hacker-news-api/">&lt;aside class=&quot;sidebar__right&quot;&gt;
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">We will visualize sample sales data using Matplotlib...</summary></entry><entry><title type="html">Used API Calls To Extract Top articles From Hacker News (YCombinator)</title><link href="http://localhost:4000/extract%20data/hacker-news-api/" rel="alternate" type="text/html" title="Used API Calls To Extract Top articles From Hacker News (YCombinator)" /><published>2019-08-10T00:00:00-04:00</published><updated>2019-08-10T00:00:00-04:00</updated><id>http://localhost:4000/extract%20data/hacker-news-api</id><content type="html" xml:base="http://localhost:4000/extract%20data/hacker-news-api/">&lt;aside class=&quot;sidebar__right&quot;&gt;
 &lt;nav class=&quot;toc&quot;&gt;
     &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
 &lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
@@ -4079,385 +4198,4 @@ Comments: 0
     2. What are the parameters of the HackerNews API? &lt;br /&gt; &lt;a href=&quot;https://github.com/HackerNews/API&quot;&gt;https://github.com/HackerNews/API&lt;/a&gt;&lt;br /&gt;
     3. What is the purpose ‘\n’?&lt;br /&gt; &lt;a href=&quot;https://teamtreehouse.com/community/why-does-the-print-syntax-append-a-n-at-the-end-of-a-line&quot;&gt;https://teamtreehouse.com/community/why-does-the-print-syntax-append-a-n-at-the-end-of-a-line&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Let's get the top stories with the most comments...</summary></entry><entry><title type="html">Used K-means Clustering to Visualize Dominant Colors in an Image</title><link href="http://localhost:4000/transform%20data/color-clustering/" rel="alternate" type="text/html" title="Used K-means Clustering to Visualize Dominant Colors in an Image" /><published>2019-08-09T00:00:00-04:00</published><updated>2019-08-09T00:00:00-04:00</updated><id>http://localhost:4000/transform%20data/color-clustering</id><content type="html" xml:base="http://localhost:4000/transform%20data/color-clustering/">&lt;aside class=&quot;sidebar__right&quot;&gt;
-&lt;nav class=&quot;toc&quot;&gt;
-    &lt;header&gt;&lt;h4 class=&quot;nav__title&quot;&gt;&lt;i class=&quot;fas fa-book-open&quot;&gt;&lt;/i&gt; Table of Contents&lt;/h4&gt;&lt;/header&gt;
-&lt;ul class=&quot;toc__menu&quot; id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#project-description&quot; id=&quot;markdown-toc-project-description&quot;&gt;Project Description&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#tldr-&quot; id=&quot;markdown-toc-tldr-&quot;&gt;TL;DR &lt;a name=&quot;tl;dr&quot;&gt;&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#introduction-&quot; id=&quot;markdown-toc-introduction-&quot;&gt;Introduction &lt;a name=&quot;introduction&quot;&gt;&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jpg-image-basics-&quot; id=&quot;markdown-toc-jpg-image-basics-&quot;&gt;JPG Image Basics &lt;a name=&quot;basic of images&quot;&gt;&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#reading-in-an-image-&quot; id=&quot;markdown-toc-reading-in-an-image-&quot;&gt;Reading in an Image &lt;a name=&quot;reading in an image&quot;&gt;&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#clustering-basics&quot; id=&quot;markdown-toc-clustering-basics&quot;&gt;Clustering Basics&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#deciding--of-clusters-&quot; id=&quot;markdown-toc-deciding--of-clusters-&quot;&gt;Deciding # of Clusters &lt;a name=&quot;number of clusters&quot;&gt;&lt;/a&gt;&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#k-means-clustering-with-scipy&quot; id=&quot;markdown-toc-k-means-clustering-with-scipy&quot;&gt;K-means Clustering with SciPy&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#3-steps-to-clustering&quot; id=&quot;markdown-toc-3-steps-to-clustering&quot;&gt;3 Steps to Clustering&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-standardize-data-&quot; id=&quot;markdown-toc-1-standardize-data-&quot;&gt;1. Standardize Data &lt;a name=&quot;standardize data&quot;&gt;&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-create-cluster-centers&quot; id=&quot;markdown-toc-2-create-cluster-centers&quot;&gt;2. Create Cluster Centers&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#3-display-dominant-colors&quot; id=&quot;markdown-toc-3-display-dominant-colors&quot;&gt;3. Display Dominant Colors&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#final-output&quot; id=&quot;markdown-toc-final-output&quot;&gt;Final Output&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#conclusion&quot; id=&quot;markdown-toc-conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-  &lt;/nav&gt;
-&lt;/aside&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h2 id=&quot;project-description&quot;&gt;Project Description&lt;/h2&gt;
-&lt;p&gt;Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Project Replicated From&lt;/strong&gt;&lt;br /&gt;
- &lt;a href=&quot;https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/&quot;&gt;https://www.dataquest.io/blog/tutorial-colors-image-clustering-python/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;tldr-&quot;&gt;TL;DR &lt;a name=&quot;tl;dr&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Used k-means clustering to visualize dominant colors of an image whereas businesses can also group their unstructured data into insightful categories like in customer segmentation.&lt;/p&gt;
-
-&lt;h2 id=&quot;introduction-&quot;&gt;Introduction &lt;a name=&quot;introduction&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Has a teacher ever handed your class a bag of candy to count out the number of each color? How would you have done this? K-means clustering is a machine learning technique that groups large amounts of data together based on their similarities. For this particular project, “Using K-means Clustering to Visualize Dominant Colors in an Image”, I will identify and visualize the dominant colors of a web image.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Neat trick to print out everything at once, as seen in the next cell
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;IPython.core.interactiveshell&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InteractiveShell&lt;/span&gt;  
-&lt;span class=&quot;n&quot;&gt;InteractiveShell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ast_node_interactivity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;all&quot;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#pillow to view imagess
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PIL&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;PIL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;scipy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;'3.0.2'
-
-'5.4.1'
-
-'1.1.0'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;jpg-image-basics-&quot;&gt;JPG Image Basics &lt;a name=&quot;basic of images&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;A JPG image is made up of pixels and each pixel is made up of different values of three component colors, red, green and blue (RGB). In this project, we will work with Dataquest’s logo in JPG format.&lt;/p&gt;
-
-&lt;h2 id=&quot;reading-in-an-image-&quot;&gt;Reading in an Image &lt;a name=&quot;reading in an image&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;How do you read in the image? &lt;br /&gt;
-First, using matplotlib’s class image, input image.imread() to transform our logo into a matrix of RGB values.This matrix of RGB values represents every combination of color values of every pixel. Why? The computer reads in the RGB values and then is able to display it.&lt;br /&gt;
-Our shape (200,200,3) represents width, height, and number of color lists (red + green + blue). 200x200 is a small image as we will see below.
-&lt;br /&gt;
-It returns an array with each pixels RGB values&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./dataquest.jpg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# [255, 255, 255] : RGB values of 1 pixel
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# (200, 200, 3)
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;array([255, 255, 255], dtype=uint8)
-
-(200, 200, 3)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Building off the last cell, we will reuse our “img” variable that contains the color values of each pixel.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/k-means-color-cluster/k-means%20cluster_9_1.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now before moving on to the clustering step. We have another step of processing. We need to create a list for each color that will contain every value of the color that shows up on each pixel. We should have 40,000 colors in each list because (200x200) means the area is 40,000 and each pixel contains red  green and blue values.
-&lt;br /&gt;
-&lt;br /&gt;
-We will loop through each pixel in our logo which contains our 3 channel RGB values, and then loop through each RGB value within each pixel, identify it as a variable and then add them to their respective list.
-&lt;br /&gt;
-Why are we doing this?
-&lt;br /&gt;
-We need to know how dominant each color is on their value scale of 0 - 255. After getting&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pixel&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;rvalue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gvalue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bvalue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pixel&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rvalue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gvalue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bvalue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;39995&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# [255, 255, 255, 255, 255]
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9950&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9955&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# [82, 82, 82, 82, 82]
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# [255, 255, 255, 255, 255]
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;clustering-basics&quot;&gt;Clustering Basics&lt;/h2&gt;
-
-&lt;p&gt;Clustering is when you group items based on their similarities. First you determine how many clusters or groups your data should be in. If you determined 3 clusters, then three cluster centers will be plotted. That will be the first iteration. In the next iteration, each cluster center is assigned to their nearest data point. Then the distance is calculated and the center will readjust itself to be in the center of those points. This process is repeated until there are no more changes.&lt;/p&gt;
-
-&lt;h2 id=&quot;deciding--of-clusters-&quot;&gt;Deciding # of Clusters &lt;a name=&quot;number of clusters&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;Our next step is to determine how many clusters to group our colors into. By visualizing our data, we can see how many clusters we might need. We can also use this elbow method to determine how many clusters are optimal for the data that we have. In our case, after plotting out our data in a scatter plot, we have two areas where there are many more points suggesting that there are mainly two colors.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;mpl_toolkits.mplot3d.axes3d&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Axes3D&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axe&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# create figure class
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#use Axes3D class to render 3D space
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'$X = Red$'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'$Y = Green$'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_zlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'$Z = Blue$'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# create axis labels
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/k-means-color-cluster/k-means%20cluster_16_4.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;k-means-clustering-with-scipy&quot;&gt;K-means Clustering with SciPy&lt;/h3&gt;
-
-&lt;p&gt;Let’s look at our data easier by visualizing with a pandas dataframe.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'red'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'green'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'blue'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div&gt;
-&lt;style scoped=&quot;&quot;&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr style=&quot;text-align: right;&quot;&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;red&lt;/th&gt;
-      &lt;th&gt;green&lt;/th&gt;
-      &lt;th&gt;blue&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;20995&lt;/th&gt;
-      &lt;td&gt;77&lt;/td&gt;
-      &lt;td&gt;83&lt;/td&gt;
-      &lt;td&gt;99&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;26694&lt;/th&gt;
-      &lt;td&gt;77&lt;/td&gt;
-      &lt;td&gt;86&lt;/td&gt;
-      &lt;td&gt;103&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;36546&lt;/th&gt;
-      &lt;td&gt;69&lt;/td&gt;
-      &lt;td&gt;76&lt;/td&gt;
-      &lt;td&gt;94&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;19181&lt;/th&gt;
-      &lt;td&gt;75&lt;/td&gt;
-      &lt;td&gt;82&lt;/td&gt;
-      &lt;td&gt;101&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;6253&lt;/th&gt;
-      &lt;td&gt;75&lt;/td&gt;
-      &lt;td&gt;82&lt;/td&gt;
-      &lt;td&gt;101&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;3-steps-to-clustering&quot;&gt;3 Steps to Clustering&lt;/h2&gt;
-&lt;p&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Standarize data&lt;b&gt;
-&lt;br /&gt;&lt;/b&gt;&lt;/li&gt;
-  &lt;li&gt;Create cluster centers
-&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;Generate cluster labels for each data point (in our case we will only be identifying dominant colors)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;1-standardize-data-&quot;&gt;1. Standardize Data &lt;a name=&quot;standardize data&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;You want the scale of the data even. 255,255,255 for one pixel will affect our model more than a 60,60,60 pixel. Putting the pixels on an equal scale ensures accurate results. We will use the &lt;strong&gt;whiten( )&lt;/strong&gt; method. Mathematically we divide each data point by its standard deviation.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 83.11570119050913
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 80.44125788486512
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# divide each color value by its respective standard deviation to get scaled value
-&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 3.0680123772945818
-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 3.1700150731727654
-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# scaled values match whiten() outputs below
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# imported different classes than the guide as his were not working
-# import libraries
-# vq = vector quantization
-# whiten = our standardizer class
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.cluster.vq&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kmeans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whiten&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'scaled_r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whiten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'scaled_g'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whiten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'scaled_b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whiten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# pretty straightforward code, whiten standarizes the values
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#to see a variety of values
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div&gt;
-&lt;style scoped=&quot;&quot;&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr style=&quot;text-align: right;&quot;&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;red&lt;/th&gt;
-      &lt;th&gt;green&lt;/th&gt;
-      &lt;th&gt;blue&lt;/th&gt;
-      &lt;th&gt;scaled_r&lt;/th&gt;
-      &lt;th&gt;scaled_g&lt;/th&gt;
-      &lt;th&gt;scaled_b&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;34360&lt;/th&gt;
-      &lt;td&gt;73&lt;/td&gt;
-      &lt;td&gt;81&lt;/td&gt;
-      &lt;td&gt;100&lt;/td&gt;
-      &lt;td&gt;0.878294&lt;/td&gt;
-      &lt;td&gt;1.006946&lt;/td&gt;
-      &lt;td&gt;1.407954&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;22878&lt;/th&gt;
-      &lt;td&gt;73&lt;/td&gt;
-      &lt;td&gt;76&lt;/td&gt;
-      &lt;td&gt;91&lt;/td&gt;
-      &lt;td&gt;0.878294&lt;/td&gt;
-      &lt;td&gt;0.944789&lt;/td&gt;
-      &lt;td&gt;1.281238&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1351&lt;/th&gt;
-      &lt;td&gt;255&lt;/td&gt;
-      &lt;td&gt;255&lt;/td&gt;
-      &lt;td&gt;255&lt;/td&gt;
-      &lt;td&gt;3.068012&lt;/td&gt;
-      &lt;td&gt;3.170015&lt;/td&gt;
-      &lt;td&gt;3.590282&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;2-create-cluster-centers&quot;&gt;2. Create Cluster Centers&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.cluster.vq&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kmeans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whiten&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cluster_centers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;distortion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kmeans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'scaled_r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'scaled_g'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'scaled_b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# parameters our data and number of clusters
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cluster_centers&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# array([[2.94846993, 3.12453287, 3.52607825],
-&lt;/span&gt;                &lt;span class=&quot;c1&quot;&gt;#       [0.91844555, 1.05218697, 1.44734558]])
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;distortion&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the author did not go indepth with distortion. My understanding is that the lower the distortion is, the better the clustering was.
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In our array, we have two sets that represent our cluster centers. Each center represents the color data points that were closest to them. We are almost there!&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cluster_centers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# our cluster centers
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[[2.94846993 3.12453287 3.52607825]
- [0.91844555 1.05218697 1.44734558]]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3-display-dominant-colors&quot;&gt;3. Display Dominant Colors&lt;/h3&gt;
-
-&lt;p&gt;We will need to take our centroid_center values and multiply them by their standard deviation to essentially reverse standardize them so that they mean something to us.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# standard deviations of each color
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'red'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'green'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'blue'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;std_r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std_g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'red'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'green'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'blue'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;red      83.116740
-green    80.442263
-blue     71.025957
-dtype: float64
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;After getting our color values, we need to render it in a format where we can display the image using imshow( ).&lt;br /&gt;
-The output will be divided by 255 so that the imshow( ) method can read the values. If you plot the values then you will get 6 different colors. By putting the colors list into its own list, the centroid_centers are separated finally outputting two colors. I have displayed both colors and [colors] below.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cluster_centers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;scaled_r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scaled_g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scaled_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;scaled_r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std_r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;scaled_g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std_g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;scaled_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#careful to make sure the append stays within the loop
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;array([2.94846993, 3.12453287, 3.52607825]) # first cluster center
-
-
-array([0.91844555, 1.05218697, 1.44734558]) # second cluster center
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# each individual color
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#imshow reads in dimension of 1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[(0.9610478786610961, 0.9856646918396453, 0.9821297287115202),
- (0.29936548922183137, 0.3319227505937144, 0.40313374434676263)]
-
-
-[[(0.9610478786610961, 0.9856646918396453, 0.9821297287115202),
-  (0.29936548922183137, 0.3319227505937144, 0.40313374434676263)]]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/k-means-color-cluster/k-means%20cluster_35_1.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;final-output&quot;&gt;Final Output&lt;/h2&gt;
-&lt;p&gt;And finally, the two most dominant colors in the image.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/k-means-color-cluster/k-means%20cluster_5_6.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;In this project we overviewed what an image was made of. We referred to the red green blue values often throughout the project. The higher the value up to 255, the stronger the color was present in the pixel. We used matplotlib to read and show the image. We saw how the RGB values looked in a 3D plot and used this information to determine how many clusters to use. Finally we scaled the image values and transformed them in ways that helped us interpret their meaning and use in our k-means algorithm.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;I enjoyed doing this project because I could see if I was off or not. I also underestimated the amount of time that it took to finish this tutorial. I wanted to understand the material as it was a good lesson to dig in and keep myself from skimming. Some of the author’s code formatting was off so it was enjoyable to dig in to the documentation and find out what worked out. I also consulted wonderful stack overflow to resolve any of my confusions. Going forward I want to keep track of the sources that I used so that I can always refer back to them - great learning material.&lt;br /&gt;
-e.g&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;How to convert jupyter notebooks into markdown format:&lt;br /&gt; &lt;a href=&quot;https://ipython.org/ipython-doc/dev/notebook/nbconvert.html&quot;&gt;https://ipython.org/ipython-doc/dev/notebook/nbconvert.html&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;In the future I want to try using a different image like a bag of gumballs with the actual counts of each color so that I can cross-reference my answers. I would also try a different image format. Finally, I would use the elbow method to determine the optimal number of clusters to use.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Has a teacher ever handed your class a bag of candy to count...</summary></entry></feed>
+&lt;p&gt;Chris Chung is a data scientist with a background in retail who focuses on solving problems in the video game industry. Specifically, Chris uses Python and SQL to solve problems and generate insights to improve player retention and scale data systems using Tableau, AWS and regression.&lt;/p&gt;</content><author><name>Chris Chung</name></author><summary type="html">Let's get the top stories with the most comments...</summary></entry></feed>
