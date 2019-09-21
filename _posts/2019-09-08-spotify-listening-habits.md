@@ -1,7 +1,7 @@
 ---
 title: "Visualized My Spotify Listening Habits Over The Last 3 Months With Tableau"
 
-date: 2019-09-06
+date: 2019-09-08
 
 datatags: [music data, labeled data]
 technologytags: [tableau]

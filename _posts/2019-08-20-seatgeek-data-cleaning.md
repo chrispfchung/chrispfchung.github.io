@@ -1,7 +1,7 @@
 ---
 title: "Dove Into SeatGeek New York Concert Dataset To Clean Data For Future Visualization and Analysis"
 
-date: 2019-08-16
+date: 2019-08-20
 
 datatags: [concert data, labeled data]
 technologytags: [pandas, python]

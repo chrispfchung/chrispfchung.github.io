@@ -1,7 +1,7 @@
 ---
 title: "Created A Database Of Planet Information To Store Data So That Our Imaginary NASA Has Data to Query"
 
-date: 2019-08-16
+date: 2019-08-18
 
 datatags: [sample data]
 technologytags: [pandas, sqlite3, sql, python]
