@@ -67,7 +67,6 @@ Consulted: <https://interworks.com/blog/tcostello/2014/05/15/attr-tableaus-attri
 
 *LOOKUP* = This is lookup. "At its most basic, it returns a value from a different row in the partition." Create a calculated field with formula ```LOOKUP([Listens], -1)```, place **Month(Date Time)** next to it Rows and you get the number of listens of each previous month. The *-1* looks at the value before, in this case a month before.
 
-So if we combine LOOKUP() with ATTR()
 Consulted: <https://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html>
 
 
